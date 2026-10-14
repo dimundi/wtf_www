@@ -1,0 +1,28 @@
+- Nie przenosimy wszystkiego z oryginalnej strony, ale przenosimy większość zawartości. Strony będziemy przenosić kolejno, jedna po drugiej.
+- Kolejność i wybór podstron do przebudowy ustalamy na bieżąco.
+- Katalog będzie osobną podstroną o nieregularnym układzie, bez podziału na trzy sztywne kategorie „gry”, „publikacje” i „dodatki”.
+- Prezentację organizujemy wokół konkretnych gier: blok Elekta z jego dodatkami obok, analogicznie Tsukuyumi i Kurzołaki. Klanarchia również ma dodatek, który pokazujemy przy niej.
+- Katalog obejmuje także publikacje. Ich miejsce i kompozycję ustalimy podczas projektowania.
+- Dla bloków gier przyjęto kompozycję Elekta: grafika gry po lewej, jej dodatki po prawej. Nieznane treści zostawiamy puste. Publikacje zachowują osobną kompozycję „Światy poza planszą”.
+- Sekcja „W co dziś gramy?” na stronie głównej ma charakter marketingowy: prezentuje wybrane gry, a nie pełny katalog.
+- Przycisk banera „Odkryj nasze gry” oraz pozycja menu „Wszystkie gry” mają prowadzić do osobnej strony katalogu.
+- Na etapie początkowym mamy swobodę wyboru i prototypowania motywu; dopuszczamy eksperymenty i skróty.
+- Pierwszą wersję możemy potraktować jako prototyp, a następnie zbudować stronę ponownie „na czysto”, wykorzystując wypracowane rozwiązania i zasady. Decyzja zależy od przebiegu prototypowania i nie jest jeszcze przesądzona.
+- Po wypracowaniu motywu bardzo ściśle przestrzegamy ustalonych zasad, aby sprawnie zarządzać dużą liczbą produktów. Zasady docelowe wypracujemy i udokumentujemy podczas prototypowania.
+- Strona ma być dwujęzyczna: na razie polski i angielski.
+- Strona ma mieć motyw jasny i ciemny.
+- Docelowo większość stron ma być edytowalna z edytora stron WordPressa. Wybór konkretnego edytora pozostaje otwarty.
+- Bardziej skomplikowane funkcjonalności możemy realizować we własnych wtyczkach WordPressa.
+- Wybrane podstrony mogą mieć odmienny wygląd, w szczególności kolorystykę. Dotyczy to dowolnych podstron, nie tylko opisów gier.
+- Wspólne style kolorystyczne nadpisujemy przez klasę stylu na głównym kontenerze podstrony, np. `klanarchia`. Klasa zmienia kolory główne i pozostałe elementy palety.
+- Zachowujemy obsługę motywu jasnego i ciemnego również dla podstron z własną kolorystyką.
+- Układ podstron i ewentualne odmienne menu ustawiamy ręcznie; klasa kolorystyczna nie określa automatycznie układu.
+- Strona zawiera sklep internetowy. Rozważymy wydzielenie go ze strony głównej; decyzja pozostaje otwarta.
+- Sklep działa na WooCommerce i ma być dostępny również w języku angielskim.
+- Sklep ma obsługiwać wysyłkę za granicę oraz integracje z płatnościami i firmą wysyłkową. Większość tych rozwiązań jest już przygotowana w starej wersji; sprawdzimy je przed przeniesieniem.
+- Wymagany jest eksport i import zasobów sklepu internetowego, użytkowników oraz list mailingowych. Szczegółowy zakres danych i sposób ich przeniesienia ustalimy po sprawdzeniu istniejących rozwiązań.
+- Eksport i import danych sklepu omówimy osobno w [[sklep/migracja-danych-sklepu|migracja-danych-sklepu]].
+- Listy mailingowe są obsługiwane przez wtyczkę MailPoet.
+- Podczas projektowania pobieramy potrzebne grafiki z działającej strony na zlecenie użytkownika. W razie potrzeby tworzymy nowe.
+- Wszystkie assety zapisujemy w katalogu `media` i udostępniamy w bibliotece mediów WordPressa. Pliki muszą być również zarejestrowane w WordPressie; samo umieszczenie ich w katalogu nie wystarcza.
+- Dokładne położenie i sposób podłączenia katalogu `media` ustalimy podczas implementacji.

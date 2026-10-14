@@ -1,0 +1,7 @@
+- Przenosimy stronę whatthefrog.pl, napisaną w WordPressie.
+- Docelowa strona również będzie działała na WordPressie.
+- Docelowy serwer to VPS, na którym uruchomimy kontener proxy i kontener WordPressa.
+- Kod trzymamy poza kontenerem i podłączamy go do kontenera przez montowanie katalogu.
+- Lokalnie tworzymy podobne środowisko, w którym wszystko konfigurujemy. Gdy będzie gotowe, przenosimy je na serwer docelowy.
+- Wdrożenie strony wykonamy za pomocą wtyczki WordPressa: lokalnie przygotujemy paczkę migracyjną i przeniesiemy ją na serwer docelowy do importu.
+- Wybór wtyczki migracyjnej pozostaje do ustalenia.

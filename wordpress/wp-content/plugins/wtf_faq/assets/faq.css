@@ -1,0 +1,24 @@
+.wtf-faq{color:inherit;font:inherit;--faq-accent:var(--accent,currentColor);--faq-line:var(--line,currentColor)}
+.wtf-faq .wtf-faq__group{margin:0 0 36px}
+.wtf-faq .wtf-faq__heading{font:inherit;font-size:1.35em;font-weight:700;line-height:1.3;letter-spacing:normal;color:var(--faq-accent);margin:0 0 16px}
+.wtf-faq .wtf-faq__item{border-bottom:1px solid var(--faq-line);margin:0;padding:0}
+.wtf-faq .wtf-faq__question{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;cursor:pointer;padding:18px 0;font:inherit;font-weight:700;line-height:1.5;color:inherit}
+.wtf-faq .wtf-faq__question::-webkit-details-marker{display:none}
+.wtf-faq .wtf-faq__question svg{flex-shrink:0;color:var(--faq-accent);transition:transform .15s}
+.wtf-faq .wtf-faq__item[open]>.wtf-faq__question svg{transform:rotate(180deg)}
+.wtf-faq .wtf-faq__answer{padding:0 0 20px;line-height:1.8;overflow-wrap:anywhere}
+.wtf-faq .wtf-faq__answer p{font-size:inherit;margin:0 0 15px}
+.wtf-faq .wtf-faq__answer a{color:var(--faq-accent);text-decoration:underline;text-underline-offset:3px}
+.wtf-faq .wtf-faq__answer img{max-width:100%;height:auto}
+.wtf-faq .wtf-faq__feedback{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:20px;font-size:.85em}
+.wtf-faq .wtf-faq__vote{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;min-width:52px;padding:7px 10px;border:1px solid var(--faq-line);background:transparent;color:inherit;font:inherit;border-radius:3px;cursor:pointer}
+.wtf-faq .wtf-faq__vote[aria-pressed=true]{border-color:var(--faq-accent);box-shadow:inset 0 0 0 1px var(--faq-accent)}
+.wtf-faq .wtf-faq__vote:disabled{cursor:default}
+.wtf-faq .wtf-faq__thumb--down{transform:rotate(180deg)}
+.wtf-faq .wtf-faq__status{flex-basis:100%;font-size:.95em}
+.wtf-faq .wtf-faq__question:focus-visible,.wtf-faq .wtf-faq__vote:focus-visible{outline:2px solid var(--faq-accent);outline-offset:4px}
+@media(max-width:700px){
+ .wtf-faq .wtf-faq__feedback{display:grid;grid-template-columns:max-content max-content;justify-content:start}
+ .wtf-faq .wtf-faq__feedback>span:first-child,.wtf-faq .wtf-faq__status{grid-column:1 / -1}
+}
+@media(prefers-reduced-motion:reduce){.wtf-faq .wtf-faq__question svg{transition:none}}

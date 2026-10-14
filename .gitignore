@@ -1,0 +1,83 @@
+# Lokalne ustawienia i dane dostępowe; jawne przykłady pozostają w Git.
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.*.sample
+.ssh/
+.aws/
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+wtf_backup_agent
+
+# Rdzeń WordPressa, zewnętrzne motywy/wtyczki i uploads są odtwarzane osobno.
+/wordpress/*
+!/wordpress/.gitkeep
+!/wordpress/wp-content/
+/wordpress/wp-content/*
+!/wordpress/wp-content/themes/
+!/wordpress/wp-content/plugins/
+/wordpress/wp-content/themes/*
+!/wordpress/wp-content/themes/wtf/
+/wordpress/wp-content/plugins/*
+!/wordpress/wp-content/plugins/wtf-core/
+!/wordpress/wp-content/plugins/wtf_faq/
+
+# Biblioteka mediów poza Git. Wyjątki: małe assety wymagane przez własny motyw.
+/media/*
+!/media/.gitkeep
+!/media/wtf-logo.svg
+!/media/wtf-logo-navy-green.svg
+!/media/wtf-logo-white-green.svg
+!/media/tsu-weathered-hexes.svg
+
+# Kopie baz, paczki migracyjne i archiwa — także z danymi klientów.
+backups/
+backup/
+database-dumps/
+*.sql
+*.sql.gz
+*.sql.bz2
+*.sql.xz
+*.dump
+*.wpress
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tgz
+*.7z
+
+# Zależności i cache; wynikowe CSS/JS własnego motywu pozostają w Git.
+node_modules/
+vendor/
+.cache/
+__pycache__/
+*.pyc
+*.log
+*.log.*
+*.tmp
+*.bak
+*~
+
+# Podglądy i dane przeglądarki tworzone podczas lokalnego sprawdzania.
+/preview/
+/deploy/backup-old/browser-check/
+/deploy/backup-old/homepage-check.html
+/deploy/backup-old/homepage-check.png
+
+# Ustawienia osobiste edytorów, Obsidiana i systemu.
+.obsidian/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

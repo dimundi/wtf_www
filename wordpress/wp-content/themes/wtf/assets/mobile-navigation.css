@@ -1,0 +1,69 @@
+/* Wspólne menu mobilne, również dla nagłówków na ilustracji. */
+.header .mobile-menu-toggle{display:none}
+.header .games-navigation summary .games-chevron{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex-shrink:0;transform-origin:center}
+.header .games-chevron svg{display:block}
+.header .games-links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.header .games-links .navigation-game{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:0;min-width:0;font-size:16px;font-weight:700}
+.header .games-links .navigation-game img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:3px}
+.header .games-links .navigation-game>span:last-child{margin:0;padding:0 0 8px}
+.header .games-links .navigation-game:hover img{outline:2px solid var(--accent);outline-offset:3px}
+@media(min-width:701px){
+  .header .games-navigation{position:static}
+  .header .games-dropdown{left:0;right:0;top:100%;width:100%;padding:24px;background:var(--bg)}
+  .header .tools .header-cart{order:1}
+  .header .tools .language{order:2}
+  .header .tools .header-login{order:3}
+  .header .tools #theme-toggle{order:4}
+}
+@media(max-width:700px){
+  body.mobile-menu-open{overflow:hidden}
+  body .header.wrap.menu-open{position:fixed;inset:0;transform:none;width:100%;max-width:none;height:100dvh;margin:0;padding:16px;z-index:1000;background:var(--bg);color:var(--text);grid-template-rows:50px minmax(0,1fr) auto;align-items:start;overflow:hidden}
+  body .header.menu-open .brand{align-self:center}
+  body .header.menu-open .mobile-menu-toggle{align-self:center}
+  body .header.menu-open .mobile-menu-toggle svg{display:none}
+  body .header.menu-open .mobile-menu-toggle::before{content:'×';font-size:34px;line-height:1}
+  body .header.wrap{height:auto;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;padding:16px 0;width:calc(100% - 32px)}
+  body .header .brand-svg{width:72px;height:50px}
+  body .header .tools{grid-column:1 / -1;grid-row:3;margin:0;max-width:none;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-top:0;border-radius:0 0 3px 3px}
+  body .header.has-mobile-menu .tools{display:none}
+  body .header.has-mobile-menu.menu-open .tools{display:flex;margin-top:-12px}
+  body .header .header-login{min-height:44px;padding:0;font-size:14px;color:var(--text)}
+  body .header .header-login span{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:nowrap;max-width:none}
+  body .header .header-login svg{width:20px}
+  body .header .header-cart{min-height:44px;gap:4px}
+  body .header .language{min-height:44px;padding-left:12px;font-size:12px;letter-spacing:0;color:var(--text);text-shadow:none}
+  body .header .tools #theme-toggle{width:44px;height:44px}
+  body .header.has-mobile-menu .mobile-menu-toggle{display:flex;grid-column:3;grid-row:1;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:3px;background:transparent;color:var(--text);cursor:pointer}
+  body .header .mobile-menu-toggle>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  body .header .mobile-menu-toggle svg{width:26px;height:26px}
+  body .header.has-mobile-menu>nav{display:none}
+  body .header>nav,body .header.has-mobile-menu.menu-open>nav{grid-column:1 / -1;grid-row:2;display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%;padding:8px 16px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:3px 3px 0 0;font-size:15px;max-height:55vh;overflow-y:auto}
+  body .header>nav>a,body .header .games-navigation>summary{min-height:48px;display:flex;align-items:center;padding:12px 0;color:var(--text);text-shadow:none}
+  body .header>nav>a{border-top:1px solid var(--line)}
+  body .header .games-navigation{position:static}
+  body .header .games-navigation>summary{justify-content:space-between}
+  body .header .games-dropdown{position:static;width:auto;padding:0 0 8px 12px;border:0;box-shadow:none;background:transparent}
+  body .header .navigation-game{min-height:44px;padding:12px 0;color:var(--text);text-shadow:none}
+  body .header .navigation-game img{display:none}
+  body .header .navigation-game>span:last-child{margin-left:0}
+  body .header .navigation-all{min-height:44px;padding:14px 0;color:var(--text);text-shadow:none}
+  body .header .main-shop-link[aria-current=page]{border-bottom:0;padding-bottom:12px;color:var(--accent)}
+  body .header.has-mobile-menu.menu-open>nav{height:100%;max-height:none;border:0;border-radius:0;padding:8px 0;overflow-y:auto;overscroll-behavior:contain}
+  body .header.has-mobile-menu.menu-open .tools{margin:0;padding:12px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;padding-bottom:env(safe-area-inset-bottom)}
+  body .header .navigation-game{gap:14px}
+  body .header .navigation-game img{display:block;width:36px;height:36px;object-fit:cover;border-radius:4px;flex-shrink:0}
+  body .header>nav,body .header.has-mobile-menu.menu-open>nav{justify-content:flex-start}
+  body .header>nav>*{flex-shrink:0}
+  body .header .navigation-game{padding:6px 0;min-height:48px}
+  body .header>nav .header-login{justify-content:flex-start;gap:10px;font-size:15px}
+  body .header.has-mobile-menu.menu-open .tools{justify-content:flex-end}
+  body .header .language{border:0;padding-left:0}
+  body .header>.header-cart{grid-column:2;grid-row:1;align-self:center;color:var(--text)}
+  body .header .header-cart [data-cart-count]{background:var(--accent);color:var(--bg)}
+  body .header .games-dropdown{padding:0 0 12px}
+  body .header .games-links{display:flex;flex-direction:column;gap:0;padding:0 0 8px}
+  body .header .games-links .navigation-game{flex-direction:row;align-items:center;min-height:44px;padding:6px 0;gap:12px;font-size:14px;overflow-wrap:anywhere}
+  body .header .games-links .navigation-game img{width:36px;height:36px;aspect-ratio:1;border-radius:3px}
+  body .header .games-links .navigation-game>span:last-child{padding:0}
+  body .header .navigation-all{margin-top:4px}
+}

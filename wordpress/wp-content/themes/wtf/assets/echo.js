@@ -1,0 +1,1 @@
+document.querySelectorAll('.echo-track audio').forEach(player=>player.addEventListener('play',()=>{document.querySelectorAll('.echo-track audio').forEach(other=>{if(other!==player)other.pause();});}));

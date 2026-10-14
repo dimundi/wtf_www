@@ -1,0 +1,120 @@
+{
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1400px",
+      "wideSize": "1800px"
+    },
+    "color": {
+      "custom": false,
+      "palette": [
+        {
+          "slug": "green",
+          "name": "Zielony WTF",
+          "color": "#90C11D"
+        },
+        {
+          "slug": "navy",
+          "name": "Granatowy WTF",
+          "color": "#1C263C"
+        },
+        {
+          "slug": "white",
+          "name": "Biały",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "black",
+          "name": "Czarny",
+          "color": "#000000"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "sans",
+          "name": "Systemowy",
+          "fontFamily": "Arial, Helvetica, sans-serif"
+        },
+        {
+          "slug": "serif",
+          "name": "Szeryfowy",
+          "fontFamily": "Georgia, serif"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "spacing": {
+      "blockGap": "0"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|sans"
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Nagłówek",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Stopka",
+      "area": "footer"
+    }
+  ],
+  "customTemplates": [
+    {
+      "name": "react-app",
+      "title": "Aplikacja React",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "tsukuyumi",
+      "title": "Tsukuyumi",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "elekt",
+      "title": "Elekt",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "echo",
+      "title": "Echo Światów",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "kurzolaki",
+      "title": "Kurzołaki",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "catalog",
+      "title": "Wszystkie gry",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "contact",
+      "title": "Kontakt",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+- Eksport i import danych sklepu WooCommerce pozostawiamy do oddzielnej dyskusji.
+- Szczegółowy zakres danych, narzędzia oraz procedura migracji nie zostały jeszcze ustalone.
+- Podczas ustalania zakresu omówimy produkty i ich zasoby, konta klientów, zamówienia, stany magazynowe, kupony oraz powiązania z listami mailingowymi. Ta lista obejmuje tematy do omówienia, a nie zatwierdzony zakres migracji.
+- Uwzględnimy działający sklep i dane powstające na produkcji podczas przebudowy.

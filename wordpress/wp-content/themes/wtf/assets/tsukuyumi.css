@@ -1,0 +1,132 @@
+.tsukuyumi-theme .header{position:relative;z-index:30;height:110px}.tsukuyumi-theme .header .brand-svg{background:#e60020!important;mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat!important;-webkit-mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat!important}.tsukuyumi-theme .brand-two-tone{display:none!important}.tsukuyumi-theme .games-dropdown{background:#f6f6f7}.tsukuyumi-theme .variants a[aria-current]{background:#e60020;color:#fff}
+.tsu-world h2,.tsu-faction-page h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,4.5vw,68px);line-height:1.05;letter-spacing:-2px}.tsu-world em{font-style:italic;color:#e60020}.tsu-world p{line-height:1.8}.tsu-eyebrow{font-size:10px;letter-spacing:2.4px;font-weight:700;color:#e60020}.tsu-hero{position:relative;min-height:700px;height:calc(100svh - 110px);max-height:950px;overflow:hidden;background:#f5f5f2}.tsu-red-moon{position:absolute;left:4%;top:13%;width:480px;height:480px;border-radius:50%;background:#e60020;opacity:.09}.tsu-hero-art{position:absolute;right:0;top:0;width:65%;height:100%;object-fit:cover;object-position:40% center;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%)}.tsu-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#f6f6f7 10%,#f6f6f7d9 33%,transparent 62%);pointer-events:none}.tsu-hero-copy{position:relative;z-index:2;padding:150px max(48px,calc((100vw - 1450px)/2));width:65%}.tsu-hero-copy h1{margin:40px 0 25px;font-size:0}.tsu-hero-copy h1 img{width:560px;max-width:100%;height:auto}.tsu-hero-copy>p{font-family:Georgia,serif;font-size:clamp(25px,3vw,42px);line-height:1.35}.tsu-hero-foot{position:absolute;left:48px;bottom:35px;z-index:2;font-size:9px;letter-spacing:3px;color:#535951}
+.tsu-reading-layout{display:grid;grid-template-columns:165px minmax(0,1fr);gap:55px;padding:0 48px;max-width:1700px;margin:auto}.tsu-sidebar{position:sticky;top:45px;align-self:start;padding:40px 0;max-height:calc(100svh - 65px);overflow:auto}.tsu-publisher{display:block;width:65px;height:45px;margin-bottom:40px;background:#e60020;mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat;-webkit-mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat}.tsu-section-menu>summary{display:none}.tsu-section-menu nav{display:flex;flex-direction:column;gap:23px;align-items:flex-start}.tsu-section-menu a{font-size:12px;color:#62636a;border-bottom:1px solid transparent;padding-bottom:5px}.tsu-section-menu a[aria-current],.tsu-section-menu a:hover{color:#e60020;border-bottom-color:#e60020}.tsu-reading-content{min-width:0}.tsu-section{padding:75px 0;border-bottom:1px solid #20232225;scroll-margin-top:45px}.tsu-section h2{margin:15px 0 35px}.tsu-intro{max-width:950px}.tsu-intro>p{font-size:20px;max-width:780px}.tsu-lead{font-size:24px;font-family:Georgia,serif;max-width:850px;margin:25px 0}.tsu-facts{display:flex;gap:15px 30px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:1px;color:#e60020;border-top:1px solid #20232225;padding-top:20px;margin:30px 0}.tsu-components{display:block;width:100%;max-height:600px;object-fit:contain;margin:35px 0}.tsu-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.tsu-pillars h3,.tsu-sunrise-modules h3{font-size:25px;font-family:Georgia,serif;font-weight:400;letter-spacing:-.5px}.tsu-pillars p{font-size:15px;color:#62636a}.tsu-faction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 35px}.tsu-faction-card{display:block;min-width:0;border-bottom:2px solid #20232225;padding-bottom:25px}.tsu-faction-card:hover{border-bottom-color:#e60020}.tsu-faction-image{background:#d7d8cf;height:280px;overflow:hidden}.tsu-faction-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s}.tsu-faction-card:hover img{transform:scale(1.035)}.tsu-faction-caption h3{font-family:Georgia,serif;font-size:30px;font-weight:400;margin:22px 0 12px}.tsu-difficulty{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#e60020}.tsu-faction-caption p{font-size:14px;line-height:1.7;color:#62636a}.tsu-faction-link{display:inline-block;font-size:12px;border-bottom:1px solid #e60020;padding-bottom:5px;margin-top:10px}.tsu-sunrise{background:linear-gradient(160deg,#e4be7333,transparent 60%)}.tsu-sunrise-intro{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:center;margin:35px 0}.tsu-sunrise-intro img{width:100%;mix-blend-mode:multiply}.tsu-sunrise-intro p{font-size:18px}.tsu-sunrise-modules{display:grid;grid-template-columns:1fr 1fr;gap:40px}.tsu-sunrise-modules img{width:100%;height:auto}.tsu-sunrise-modules p{font-size:16px}.tsu-videos{display:grid;grid-template-columns:1fr 1fr;gap:25px}.tsu-videos iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#202322}.tsu-button{display:inline-block;border:1px solid #e60020;color:#e60020;padding:15px 22px;font-size:12px;margin:10px 15px 10px 0}.tsu-button:hover{background:#e60020;color:#fff}.tsu-license{font-size:10px;line-height:1.8;color:#62636a;padding:35px 0 65px}
+.tsu-faction-page{padding:40px 0 80px}.tsu-back{font-size:12px;color:#e60020;border-bottom:1px solid #e60020;padding-bottom:5px}.tsu-faction-header{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin:60px 0}.tsu-faction-header h1{font-size:clamp(40px,5vw,80px);margin:25px 0}.tsu-faction-header p{font-size:17px;line-height:1.8}.tsu-faction-header>img{width:100%;height:auto}.tsu-faction-description{max-width:1050px;margin:0 auto 60px;font-size:16px;line-height:1.8;overflow-wrap:anywhere}.tsu-faction-description img{display:block;max-width:100%;max-height:650px;height:auto;object-fit:contain;margin:30px auto}.tsu-faction-description h1,.tsu-faction-description h2,.tsu-faction-description h3{font-family:Georgia,serif;font-size:30px;font-weight:400;margin:40px 0 20px}.tsu-faction-description table{max-width:100%;font-size:14px}.tsu-faction-description a{color:#e60020;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1100px){.tsu-reading-layout{display:block;padding:0 24px}.tsu-sidebar{position:sticky;top:0;z-index:40;background:#f6f6f7f5;padding:0;border-bottom:1px solid #20232225;overflow:visible;max-height:none}.tsu-publisher{display:none}.tsu-section-menu>summary{display:flex;justify-content:space-between;padding:18px 0;font-size:13px;cursor:pointer;list-style:none}.tsu-section-menu>summary::-webkit-details-marker{display:none}.tsu-section-menu:not([open])>nav{display:none}.tsu-section-menu[open]>nav{padding:10px 0 25px;max-height:calc(100svh - 80px);overflow:auto}.tsu-section{scroll-margin-top:80px}.tsu-hero-copy{padding:130px 35px;width:70%}.tsu-pillars{grid-template-columns:minmax(0,1fr)}.tsu-faction-image{height:240px}}
+@media(max-width:650px){.tsu-hero{min-height:650px}.tsu-hero-art{width:100%;opacity:.45;clip-path:none;object-position:45% center}.tsu-hero:after{background:linear-gradient(0deg,#f6f6f7,transparent 70%),linear-gradient(90deg,#f6f6f7d9,transparent)}.tsu-hero-copy{padding:160px 24px 90px;width:100%}.tsu-hero-copy>p{font-size:30px}.tsu-hero-foot{left:24px;font-size:8px}.tsu-faction-grid,.tsu-sunrise-modules,.tsu-videos,.tsu-faction-header,.tsu-sunrise-intro{grid-template-columns:minmax(0,1fr)}.tsu-section{padding:50px 0}.tsu-faction-image{height:auto;aspect-ratio:1.5}.tsu-sunrise-intro img{max-width:230px}.tsu-faction-header{gap:25px;margin:40px 0}.tsu-intro>p{font-size:18px}.tsu-lead{font-size:22px}}
+@media(max-width:650px){.tsukuyumi-theme .header{height:auto;min-height:110px;flex-wrap:wrap}.tsukuyumi-theme .header .brand{flex-shrink:0}.tsukuyumi-theme .tools{gap:10px}.tsu-hero-copy{max-width:100%;min-width:0}.tsu-hero-copy h1{width:100%;min-width:0}.tsu-hero-copy h1 img{display:block;width:100%;max-width:100%}.tsu-hero-copy>p{font-size:clamp(24px,6.5vw,30px);overflow-wrap:break-word}.tsu-hero-foot{right:24px;line-height:1.6}}
+body.tsukuyumi-theme{--bg:#f6f6f7;--surface:#ededf0;--text:#202322;--muted:#62636a;--line:#20232230;--accent:#e60020;background:#f6f6f7;color:#202322;background-image:radial-gradient(#20232212 .6px,transparent .6px);background-size:5px 5px}
+
+/* White and red, with scattered worn board hexes. */
+.tsu-faction-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0 0 40px}
+.tsu-faction-stats--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tsu-faction-stats--1{grid-template-columns:minmax(0,1fr)}
+.tsu-faction-stat{padding:22px;border:1px solid var(--line);min-width:0}
+.tsu-faction-description .tsu-faction-stat h3{font:700 18px/1.3 Arial,Helvetica,sans-serif;margin:0 0 20px;text-transform:uppercase;letter-spacing:normal}
+.tsu-faction-stat .tsu-faction-meta{display:block;font-size:16px;color:inherit;margin:0 0 12px}
+.tsu-faction-stat .tsu-faction-meta>span{display:block;margin:5px 0}
+.tsu-faction-description .tsu-faction-stat p{margin:0}
+.tsu-faction-stat ul{padding-left:22px;margin:0}
+.tsu-faction-description .tsu-faction-stat li{margin:0}
+@media(max-width:900px){.tsu-faction-stats{grid-template-columns:minmax(0,1fr);gap:16px}}
+body.tsukuyumi-theme{background-color:#f6f6f7;background-image:url("/wp-content/uploads/media/tsu-weathered-hexes.svg");background-size:1008px 1080px;background-repeat:repeat;--surface:#ededf0}
+.tsu-hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("/wp-content/uploads/media/tsu-weathered-hexes.svg") left top/1008px 1080px;mask-image:linear-gradient(90deg,#000,transparent 65%)}
+.tsu-sunrise{background:linear-gradient(160deg,#e6002008,transparent 65%)}
+
+/* Tsukuyumi reference palette: cool white, black and vivid red. */
+.tsukuyumi-theme .header .brand-svg{background:#080808!important}
+.tsu-publisher{background:#080808}
+body.tsukuyumi-theme{--bg:#f6f6f7;--text:#111114;--muted:#62636a;--line:#20232225;--accent:#e60020;color:#111114}
+.tsu-hero{background:#f6f6f7}
+.tsu-hero:before{mask-image:linear-gradient(90deg,#000 0%,#0009 40%,transparent 70%)}
+.tsu-red-moon{opacity:.035}
+@media(max-width:1100px){.tsu-sidebar{background:#f6f6f7f5}}
+.tsu-hero-panorama{height:auto;min-height:0;max-height:none;background:transparent;overflow:visible}
+.tsu-hero-panorama:before,.tsu-hero-panorama:after{display:none}
+.tsu-hero-panorama .tsu-hero-copy{width:100%;max-width:1450px;margin:auto;padding:50px 48px 45px;display:flex;justify-content:space-between;align-items:center;gap:35px}
+.tsu-hero-panorama .tsu-hero-copy>p{margin:0;font-size:clamp(25px,2.5vw,36px);text-align:right}
+.tsu-hero-panorama .tsu-panorama-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.tsu-panorama{display:block;width:100%}
+.tsu-panorama img{display:block;width:100%;height:auto}
+@media(max-width:650px){.tsu-hero-panorama .tsu-hero-copy{display:block;padding:35px 24px}.tsu-hero-panorama .tsu-hero-copy>p{margin-top:18px;text-align:left;font-size:26px}.tsu-panorama img{aspect-ratio:480/854;object-fit:contain}}
+
+
+/* Main navigation floats over the panorama on the game landing page. */
+.tsukuyumi-theme:has(.tsu-hero-panorama) .header{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:30;background:transparent}
+.tsu-faction-image{height:auto;aspect-ratio:4/3;background:transparent;padding:15px}
+.tsu-faction-image img{object-fit:contain;object-position:center;transform:none}
+.tsu-faction-card:hover img{transform:none}
+
+
+.tsu-faction-grid{grid-template-columns:minmax(0,1fr);gap:0}.tsu-faction-card{display:grid;grid-template-columns:minmax(200px,30%) minmax(0,1fr);gap:45px;align-items:center;padding:40px 0;border-bottom:1px solid var(--line)}.tsu-faction-image{display:block;aspect-ratio:1;height:auto;padding:0}.tsu-faction-image img{width:100%;height:100%;object-fit:contain}.tsu-faction-caption h3{margin:15px 0;font-size:clamp(30px,3vw,44px)}.tsu-faction-set{font-size:11px;letter-spacing:1px;color:var(--muted)}.tsu-faction-actions{display:flex;align-items:center;gap:25px;flex-wrap:wrap;margin-top:20px}.tsu-faction-actions .tsu-faction-link,.tsu-faction-actions .tsu-button{margin:0}.tsu-faction-neutral{font-style:italic}
+@media(max-width:650px){.tsu-faction-card{grid-template-columns:minmax(0,1fr);gap:20px;padding:30px 0}.tsu-faction-image{width:100%;max-width:320px;margin:auto;aspect-ratio:1}.tsu-faction-actions{gap:20px}}
+
+/* Compact faction pages and consistent facts on the list. */
+.tsu-faction-meta{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:12px;color:var(--muted);margin:15px 0}.tsu-two-players{font-weight:700}.tsu-faction-page{max-width:1150px}.tsu-faction-header{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:45px;margin:35px 0 45px;align-items:center}.tsu-faction-header>img{max-height:350px;object-fit:contain}.tsu-faction-header h1{font-size:clamp(40px,4.5vw,64px)}.tsu-faction-description{max-width:none;margin:0 0 40px}.tsu-faction-feature{padding:22px 0;border-top:1px solid var(--line)}.tsu-faction-feature>strong:first-child{display:block;font:400 27px Georgia,serif;margin-bottom:20px}.tsu-faction-description table{width:100%;border-collapse:collapse;margin:25px 0}.tsu-faction-description td{padding:15px;vertical-align:top}.tsu-faction-description td:first-child:has(img){width:160px}.tsu-faction-description td img{width:140px;height:auto;margin:0 auto}.tsu-faction-description li{margin:8px 0}.tsu-faction-description p{margin:15px 0}
+@media(max-width:650px){.tsu-faction-header{grid-template-columns:minmax(0,1fr);gap:25px;margin:30px 0}.tsu-faction-header>img{max-height:270px}.tsu-faction-description td{padding:8px}.tsu-faction-description td:first-child:has(img){width:90px}.tsu-faction-description td img{width:80px}.tsu-faction-meta{gap:10px 18px}}
+
+/* Sunrise Kingdom inset and outlined hex accents. */
+.tsu-sunrise{padding-left:clamp(24px,4vw,60px);padding-right:clamp(24px,4vw,60px)}
+.tsu-sunrise-modules h3,.tsu-sunrise-factions h3{display:flex;align-items:center;gap:14px;font-family:Georgia,serif;font-weight:400;font-size:25px}
+.tsu-sunrise-modules h3:before,.tsu-sunrise-factions h3:before{content:"";flex:0 0 26px;width:26px;height:29px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2 26 9v14L14 30 2 23V9Z' fill='none' stroke='%23ad7c20' stroke-width='1.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.tsu-sunrise-factions{margin:35px 0 45px}.tsu-sunrise-factions p{font-size:16px}.tsu-sunrise-factions ul{display:flex;flex-wrap:wrap;gap:16px 28px;list-style:none;padding:0;margin:22px 0}.tsu-sunrise-factions a{display:inline-block;font-size:15px;border-bottom:1px solid #e60020;padding-bottom:6px}.tsu-sunrise-factions a:hover{color:#e60020}
+@media(max-width:650px){.tsu-sunrise{padding-left:22px;padding-right:22px}.tsu-sunrise-factions ul{gap:16px 22px}}
+
+.tsu-sunrise>.tsu-eyebrow{color:#ad7c20}
+
+.tsu-faction-submenu{display:flex;flex-direction:column;gap:12px;padding-left:13px;border-left:1px solid var(--line);margin-top:-9px}.tsu-faction-submenu a{font-size:11px;line-height:1.4}.tsu-faction-card{scroll-margin-top:45px}@media(max-width:1100px){.tsu-faction-card{scroll-margin-top:80px}}
+
+.tsu-world-panorama{display:block;width:100%;height:auto;margin:40px 0}.tsu-world-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin:45px 0}.tsu-world-number{display:block;color:#e60020;font-size:12px;letter-spacing:2px;border-top:1px solid #e60020;padding-top:17px}.tsu-world-chapters h3,.tsu-world-comic h3{font:400 28px Georgia,serif;margin:20px 0}.tsu-world-chapters p{font-size:16px;color:var(--muted)}.tsu-world-comic{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:25px 30px;background:#e6002006;border-left:2px solid #e60020}.tsu-world-comic p{font-size:15px}.tsu-world-comic .tsu-button{flex-shrink:0;margin:0}@media(max-width:900px){.tsu-world-chapters{grid-template-columns:minmax(0,1fr);gap:25px}.tsu-world-comic{display:block;padding:20px 24px}.tsu-world-comic .tsu-button{margin-top:15px}}
+
+.tsu-rules-steps{margin:40px 0}.tsu-rules-steps article{display:grid;grid-template-columns:55px minmax(0,1fr);gap:25px;padding:25px 0;border-top:1px solid var(--line)}.tsu-rules-steps article>span{font-size:12px;color:#e60020;letter-spacing:2px;padding-top:7px}.tsu-rules h3{font:400 28px Georgia,serif;margin:0 0 15px}.tsu-rules-steps p{margin:0;max-width:800px;color:var(--muted);font-size:16px}.tsu-rules-round{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:15px 30px;padding:30px;background:#e6002005;margin:25px 0}.tsu-rules-round h3{margin:0}.tsu-rules-round p{grid-column:1;margin:0;color:var(--muted);font-size:15px}.tsu-phase-colours{grid-column:2;grid-row:1/3;display:flex;gap:13px;align-items:center}.tsu-phase-colours span{display:block;width:25px;height:29px;background:var(--phase);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}.tsu-phase-colours span:first-child{background:#e1e1e5}@media(max-width:650px){.tsu-rules-steps article{grid-template-columns:30px minmax(0,1fr);gap:15px}.tsu-rules-round{display:block;padding:24px}.tsu-rules-round p{margin:15px 0}.tsu-phase-colours{margin-top:20px}}
+
+.tsu-rules-accordions{margin:40px 0}.tsu-rule{border-top:1px solid var(--line)}.tsu-rule:last-child{border-bottom:1px solid var(--line)}.tsu-rule>summary{display:grid;grid-template-columns:40px minmax(0,1fr) 24px;gap:20px;align-items:center;padding:25px 0;cursor:pointer;list-style:none}.tsu-rule>summary::-webkit-details-marker{display:none}.tsu-rule>summary:focus-visible{outline:2px solid #e60020;outline-offset:4px}.tsu-rule>summary h3{margin:0}.tsu-rule-number{color:#e60020;font-size:12px;letter-spacing:2px}.tsu-rule-toggle{position:relative;width:18px;height:18px}.tsu-rule-toggle:before,.tsu-rule-toggle:after{content:"";position:absolute;background:#e60020;left:0;top:8px;width:18px;height:1px}.tsu-rule-toggle:after{transform:rotate(90deg)}.tsu-rule[open] .tsu-rule-toggle:after{display:none}.tsu-rule-body{padding:0 0 30px 60px;max-width:1000px}.tsu-rule-body p{font-size:16px;line-height:1.8;margin:20px 0;color:var(--text)}.tsu-rule-video{display:block;width:100%;aspect-ratio:16/9;border:0;background:#111114;margin:0 0 30px}@media(max-width:650px){.tsu-rule>summary{grid-template-columns:25px minmax(0,1fr) 18px;gap:12px}.tsu-rule>summary h3{font-size:23px}.tsu-rule-body{padding-left:0}}
+
+.tsu-rules .tsu-rules-detail-heading{margin-top:55px}.tsu-rules-detail-heading+.tsu-rules-accordions{margin-top:25px}
+
+.tsu-base-intro{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);align-items:center;gap:45px}.tsu-base-box{display:block;width:100%;max-height:450px;object-fit:contain;mix-blend-mode:multiply}.tsu-base-intro>div>p:not(.tsu-lead){font-size:16px;color:var(--muted);max-width:650px}.tsu-base-intro h2{margin-bottom:25px}.tsu-base-actions{display:flex;gap:25px;align-items:center;flex-wrap:wrap;margin-top:25px}.tsu-base-actions .tsu-button,.tsu-base-actions .tsu-faction-link{margin:0}.tsu-base-specs{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:40px;margin:50px 0 35px;padding:30px 0;border-top:1px solid var(--line)}.tsu-base-specs h3{font:400 28px Georgia,serif;color:#e60020;margin:0 0 22px}.tsu-base-specs p,.tsu-base-specs li,.tsu-base-specs dl{font-size:16px;line-height:1.8}.tsu-base-specs dl{margin:0}.tsu-base-specs dt{font-size:12px;color:var(--muted);margin-top:16px}.tsu-base-specs dt:first-child{margin-top:0}.tsu-base-specs dd{margin:0}.tsu-base-specs ul{margin:0;padding-left:20px}.tsu-base-specs p{margin:0}.tsu-base-contents>summary{grid-template-columns:minmax(0,1fr) 24px}.tsu-base-contents .tsu-components{max-height:none;width:100%;max-width:800px;margin:20px auto 35px}@media(max-width:900px){.tsu-base-intro{grid-template-columns:minmax(0,32%) minmax(0,1fr);gap:25px}.tsu-base-specs{gap:25px}}@media(max-width:650px){.tsu-base-intro,.tsu-base-specs{grid-template-columns:minmax(0,1fr)}.tsu-base-box{max-height:300px}.tsu-base-specs{gap:30px;margin-top:35px}.tsu-base-specs h3{margin-bottom:15px}}
+
+.tsu-expansion{padding:40px 0;border-top:1px solid var(--line);scroll-margin-top:45px}.tsu-expansion>img{display:block;width:100%;height:auto;max-width:1001px;margin-bottom:30px;mix-blend-mode:multiply}.tsu-expansion>div{max-width:850px}.tsu-expansion h3{font:400 34px Georgia,serif;margin:0 0 20px}.tsu-expansion p,.tsu-expansion li{font-size:16px;line-height:1.8}.tsu-expansion li{margin:8px 0}.tsu-expansion-actions{display:flex;align-items:center;gap:25px;flex-wrap:wrap;margin-top:25px}.tsu-expansion-actions a{margin:0}.tsu-expansion-submenu{display:flex;flex-direction:column;gap:12px;padding-left:13px;border-left:1px solid var(--line);margin-top:-9px}.tsu-expansion-submenu a{font-size:11px}@media(max-width:1100px){.tsu-expansion{scroll-margin-top:80px}}
+
+.tsu-review-more-title{font:400 30px Georgia,serif;margin:55px 0 25px}.tsu-review-video p{font-size:15px;margin:15px 0 0}.tsu-review-video p span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+
+/* Chapter accents fade down into the shared hex texture. */
+.tsu-reading-content>.tsu-section{background:linear-gradient(160deg,#e6002008,transparent 60%);padding-left:clamp(24px,4vw,60px);padding-right:clamp(24px,4vw,60px)}
+.tsu-reading-content>.tsu-sunrise{background:linear-gradient(160deg,#ad7c2015,transparent 60%)}
+@media(max-width:650px){.tsu-reading-content>.tsu-section{padding-left:22px;padding-right:22px}}
+
+.tsu-intro-film-heading{margin-bottom:30px}.tsu-intro-film iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#111114}.tsu-intro-film h2{font-size:clamp(32px,3.4vw,50px)}
+
+.tsu-menu-group-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}.tsu-menu-group-heading>a{margin:0}.tsu-submenu-toggle{display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--accent);cursor:pointer}.tsu-submenu-toggle span{position:relative;width:10px;height:10px}.tsu-submenu-toggle span:before,.tsu-submenu-toggle span:after{content:"";position:absolute;left:0;top:4px;width:10px;height:1px;background:currentColor}.tsu-submenu-toggle[aria-expanded="false"] span:after{transform:rotate(90deg)}.tsu-submenu-toggle:hover{border-color:var(--accent)}.tsu-submenu-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.tsu-faction-submenu[hidden],.tsu-expansion-submenu[hidden]{display:none}
+
+.tsu-section-menu nav{width:100%;min-width:0}.tsu-menu-group-heading{width:100%;max-width:100%;min-width:0;padding-right:8px;box-sizing:border-box}.tsu-menu-group-heading>a{min-width:0}.tsu-submenu-toggle{flex-shrink:0}.tsu-sidebar{scrollbar-gutter:stable}
+
+/* Menu sekcji: wspólny układ z Elektem, paleta Tsukuyumi. */
+.tsu-sidebar-top{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.tsu-sidebar-top .tsu-publisher{margin:0}
+.tsu-back-to-top{display:flex;align-items:center;justify-content:center;width:36px;height:44px;flex-shrink:0;padding:0;border:1px solid #e6002080;border-radius:3px;background:transparent;color:#e60020;cursor:pointer}
+.tsu-back-to-top:hover{border-color:#e60020;background:#e6002010}
+.tsu-submenu-toggle{display:flex;align-items:center;justify-content:center;flex-basis:28px;width:28px;height:28px;border:0;border-radius:0;background:transparent}
+.tsu-submenu-toggle svg,.tsu-section-menu>summary svg{display:block;flex-shrink:0;transform-origin:center;color:#e60020}
+.tsu-submenu-toggle[aria-expanded=true] svg,.tsu-section-menu[open]>summary svg{transform:rotate(180deg)}
+@media(max-width:1100px){
+  .tsu-sidebar{top:8px;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start;padding:0;border:0;background:transparent;overflow:visible;scrollbar-gutter:auto}
+  .tsu-sidebar-top{display:contents}
+  .tsu-back-to-top{height:44px;background:#e60020;color:#fff;border:0}
+  .tsu-back-to-top:hover{background:#c4001b}
+  .tsu-back-to-top svg{width:18px;height:18px}
+  .tsu-section-menu{min-width:0;padding:0 12px;background:#fff;border:1px solid #e6002080;box-shadow:0 4px 16px #00000018}
+  .tsu-section-menu>summary{min-height:42px;padding:9px 0;align-items:center;color:#202322;font-size:14px;font-weight:700}
+  .tsu-section-menu nav{justify-content:flex-start;gap:18px}
+  .tsu-section-menu nav a{color:#202322}
+  .tsu-section-menu nav a:hover,.tsu-section-menu nav a[aria-current]{color:#e60020}
+  .tsu-menu-group-heading{padding-right:0}
+  .tsu-submenu-toggle{flex-basis:44px;width:44px;height:44px}
+}
+
+/* Dwie ilustracje Moon Circus w jednej edytowalnej grupie. */
+.tsu-faction-art-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:center;max-width:900px;margin:30px auto}
+.tsu-faction-description .tsu-faction-art-pair img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;margin:0}
+@media(max-width:650px){.tsu-faction-art-pair{grid-template-columns:minmax(0,1fr);gap:20px;max-width:380px}.tsu-faction-description .tsu-faction-art-pair img{max-height:400px}}
+
+.tsu-faction-tactics{max-width:78ch;margin:35px 0;padding-left:24px;border-left:3px solid #e60020}
+.tsu-faction-description .tsu-faction-tactics h3{margin:0 0 20px}
+.tsu-faction-description .tsu-faction-tactics p{font-size:18px;line-height:1.8;margin:0 0 18px}
+.tsu-faction-tactics p:last-child{margin-bottom:0}
+.tsu-faction-contents ul{columns:2;column-gap:48px;padding-left:24px}
+.tsu-faction-description .tsu-faction-contents li{break-inside:avoid;margin:0 0 10px;padding-left:4px;line-height:1.7}
+@media(max-width:650px){.tsu-faction-tactics{padding-left:16px}.tsu-faction-description .tsu-faction-tactics p{font-size:16px}.tsu-faction-contents ul{columns:1}}
+
+.tsu-faction-description ul.tsu-contents-list{columns:2;column-gap:48px;padding-left:24px}
+.tsu-faction-description ul.tsu-contents-list>li{break-inside:avoid;margin:0 0 10px;line-height:1.7}
+@media(max-width:650px){.tsu-faction-description ul.tsu-contents-list{columns:1}}

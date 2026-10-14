@@ -1,0 +1,9 @@
+wp-content/themes/dimundi/comments.php
+wp-content/themes/dimundi/functions.php
+wp-content/themes/dimundi/header.php
+wp-content/themes/dimundi/header__.php
+wp-content/themes/dimundi/page-wiedzmy.php
+wp-content/themes/dimundi/js/frog-the-game.js
+wp-content/themes/dimundi/template-parts/content-funding.php
+wp-content/themes/dimundi/template-parts/content-page.php
+wp-content/themes/dimundi/template-parts/_content-funding.php

@@ -1,0 +1,7 @@
+- `wtf_www`: `/kontakt/`, PL 600 opublikowana / EN 602 szkic; para Polylang.
+- Układ i dane firmy z prototypu. Biuro: Glazurowa 21/4, Kowale; adres rejestrowy: Wały Piastowskie 1/1508, Gdańsk.
+- Teksty i etykiety formularza edytowalne w blokach WTF Core. Formularz demonstracyjny: pola i przycisk wyłączone, brak wysyłania; kontakt przez e-mail.
+- Nagłówek i stopka wspólne, link Kontakt lokalny; strona respektuje jasny/ciemny motyw.
+- Kod: `wtf-core/contact.php`, `contact-editor.js`; oprawa `wtf/assets/contact.css`, szablon `contact.html`.
+- Import `wp eval-file wp-content/plugins/wtf-core/setup-contact.php --allow-root` zachowuje istniejące edycje.
+- Sprawdzone: desktop i telefon bez przewijania poziomego, nieaktywne pola, poprawne linki, 34 poprawne bloki oraz zapis i przywrócenie etykiety w edytorze.

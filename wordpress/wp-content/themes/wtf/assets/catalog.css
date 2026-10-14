@@ -1,0 +1,70 @@
+.catalog{padding:55px 0 70px}.catalog-intro{margin-bottom:65px}.catalog-intro h1{font-size:clamp(44px,5.5vw,80px);margin:24px 0}.catalog-intro>p{max-width:580px;color:var(--muted);line-height:1.8}.catalog-jump{flex-wrap:wrap;margin-top:35px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);gap:30px}.catalog-jump a{font-size:13px}.catalog-world{display:grid;gap:32px;margin:0 0 80px;scroll-margin-top:25px}.world-elekt{grid-template-columns:1.8fr 1fr}.catalog-feature{position:relative;min-height:510px;overflow:hidden;background:#1C263C;color:#FFFFFF}.catalog-feature>img{position:absolute;width:100%;height:100%;object-fit:cover;inset:0;transition:transform .5s}.catalog-feature:hover>img{transform:scale(1.025)}.catalog-feature:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#000000D9,transparent 90%)}.catalog-feature>div{position:absolute;bottom:35px;left:35px;right:35px;z-index:1}.catalog-feature .eyebrow{color:#90C11D!important}.catalog h2{font-size:clamp(35px,4vw,58px)}.catalog h3{font-size:29px;letter-spacing:-1px;margin:18px 0}.catalog-feature p{max-width:390px;line-height:1.7}.catalog-cta{display:inline-block;font-size:13px;font-weight:700;padding-bottom:8px;border-bottom:2px solid #90C11D;margin-top:15px}.catalog-side{padding:35px;background:var(--surface);align-self:center}.catalog-side p{color:var(--muted);font-size:14px;line-height:1.8}.expansion-art{display:block;margin-top:26px}.expansion-art img{width:100%;height:200px;object-fit:contain;display:block}.expansion-art>span{display:block;font-weight:700;margin-top:20px}.world-tsukuyumi{grid-template-columns:1fr 1.4fr;align-items:center;padding:25px 40px;background:var(--surface)}.world-tsukuyumi .catalog-side{padding:25px 0}.tsuku-box img{width:100%;max-height:530px;object-fit:contain;display:block}.expansion-text{display:block;border-top:1px solid var(--line);padding-top:25px;margin-top:35px}.expansion-text>span{font-size:10px;letter-spacing:2px;color:var(--muted)}.expansion-text h3{font-size:26px}.world-dust{grid-template-columns:2.2fr 1fr;gap:0}.world-dust .catalog-feature{min-height:550px}.world-dust .compact-side{align-self:end;margin-left:-50px;position:relative;z-index:2;margin-bottom:35px}.world-clan{grid-template-columns:1.3fr .8fr;margin-left:8%;gap:35px}.world-clan .catalog-feature{min-height:540px}.catalog-publications{display:grid;grid-template-columns:.85fr 1.4fr .75fr;gap:40px;border-top:1px solid var(--line);padding-top:65px;align-items:start}.catalog-publications header{padding-top:25px}.catalog-publications header p,.publication p{color:var(--muted);font-size:14px;line-height:1.8}.publication img{width:100%;height:270px;object-fit:contain;background:var(--surface);display:block;margin-bottom:25px}.publication-echo{margin-top:65px}.publication-comic img{height:360px}.publication:hover h3,.catalog-jump a:hover{color:var(--accent)}:root[data-theme=light] .publication:hover h3{color:#1C263C}
+@media(max-width:900px){.catalog-world{gap:20px}.catalog-side{padding:24px}.world-clan{margin-left:0}.catalog-publications{grid-template-columns:1fr 1fr;gap:25px}.catalog-publications header{grid-column:1/-1}.publication-echo{margin-top:0}.world-dust .compact-side{margin-left:-30px}.catalog-feature>div{left:25px;right:25px}.catalog-feature{min-height:460px}}
+@media(max-width:600px){.catalog{padding-top:30px}.catalog-intro{margin-bottom:40px}.catalog-jump{gap:18px}.catalog-world{grid-template-columns:minmax(0,1fr);margin-bottom:45px;gap:0}.catalog-feature,.world-dust .catalog-feature,.world-clan .catalog-feature{min-height:430px}.catalog-side{align-self:stretch}.world-tsukuyumi{padding:20px}.world-tsukuyumi .catalog-side{order:2}.tsuku-box img{max-height:300px}.world-dust .compact-side{margin:0}.catalog-publications{grid-template-columns:minmax(0,1fr);padding-top:35px;gap:35px}.catalog-publications header{grid-column:auto}.publication-comic img{height:330px}.catalog h2{font-size:38px}.catalog-feature>div{bottom:25px}.expansion-art img{height:170px}}
+.catalog-feature-box>img{object-fit:contain;padding:20px 20px 145px}.catalog-side-empty{min-height:340px}.catalog-side .expansion-text:first-of-type{margin-top:25px}
+.catalog .catalog-intro{margin-bottom:40px}.catalog .catalog-intro .catalog-title{font-size:24px;letter-spacing:-.6px;line-height:1.2;margin:0 0 22px}.catalog .catalog-jump{margin-top:0}
+#elekt .elekt-expansions{align-self:stretch;display:flex;flex-direction:column}
+#elekt .expansions-button{margin-top:auto;align-self:flex-start}
+#elekt .elekt-expansions>p{margin-bottom:25px}
+.elekt-page{padding-bottom:70px}.elekt-navigation{padding:18px 0 25px;flex-wrap:wrap;font-size:12px}.elekt-cover{position:relative;min-height:590px;overflow:hidden;color:#FFFFFF;background:#1C263C}.elekt-cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.elekt-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#000000BB,transparent 85%)}.elekt-cover>div{position:relative;z-index:1;padding:140px 55px 60px}.elekt-cover h1{font-family:Georgia,serif;font-size:110px;letter-spacing:-4px;margin:25px 0}.elekt-cover .eyebrow{color:#90C11D!important}.elekt-cover p{font-size:20px;max-width:360px;line-height:1.6}.elekt-description{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:70px 0}.elekt-description p,.elekt-addons p{line-height:1.8;color:var(--muted)}.elekt-addons{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;padding:40px;background:var(--surface);align-items:center}.elekt-addons img{width:100%;max-height:300px;object-fit:contain}@media(max-width:600px){.elekt-cover{min-height:500px}.elekt-cover>div{padding:100px 25px 40px}.elekt-cover h1{font-size:80px}.elekt-description,.elekt-addons{grid-template-columns:1fr;gap:25px}.elekt-description{padding:45px 0}.elekt-addons{padding:25px}}
+/* Katalog: wspólny układ, konkretne prezentacje produktów. */
+.catalog-world{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr)}
+.catalog-world>.catalog-side{align-self:stretch;display:flex;flex-direction:column;min-width:0}
+.catalog-world .expansions-button{margin-top:auto;align-self:flex-start}
+.catalog-world .catalog-side>p{margin-bottom:25px}
+.catalog-related{display:flex;flex-wrap:wrap;gap:12px 20px;padding-bottom:25px;font-size:12px}
+.catalog-related a{border-bottom:1px solid var(--line);padding-bottom:5px}
+.catalog-publications{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:32px}
+.catalog-publications>header{grid-column:1/-1;max-width:700px;padding:0}
+.catalog-publications>header h2{margin-top:15px}
+.catalog-publications .publication-echo{margin-top:0;background:var(--surface);padding:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:30px;align-items:center}
+.publication-echo img{height:auto;margin:0;background:none}
+.publication-copy{min-width:0}.publication-copy h3{margin-top:16px}
+.catalog-audio-label{display:block;font-size:12px;font-weight:700;margin:25px 0 12px}
+.publication-echo audio{width:100%;height:40px}
+:root[data-theme=dark] .publication-echo audio{color-scheme:dark}
+@media(max-width:900px){.catalog-publications .publication-echo{grid-template-columns:minmax(0,1fr);gap:20px}.publication-echo>a{max-width:330px;margin:auto}.catalog-side h3{font-size:25px}}
+@media(max-width:600px){.catalog-world,.catalog-publications{grid-template-columns:minmax(0,1fr)}.catalog-publications>header{grid-column:auto}.catalog-world .catalog-side{padding:25px}.catalog-side-empty{display:none}.catalog-world .expansions-button{margin-top:15px}.catalog-publications .publication-echo{padding:25px}}
+/* Portfolio zawsze dostępne w bocznej nawigacji. */
+.catalog{display:grid;grid-template-columns:165px minmax(0,1fr);gap:40px;align-items:start}
+.catalog-sidebar{position:sticky;top:30px;min-width:0}
+.catalog-portfolio-menu{display:flex;flex-direction:column;gap:5px;border-right:1px solid var(--line);padding-right:20px}
+.catalog-portfolio-menu>.eyebrow{font-size:10px;margin-bottom:20px;line-height:1.7}
+.catalog-portfolio-menu>a{display:block;padding:11px 0;font-size:13px;line-height:1.4}
+.catalog-portfolio-menu>a:hover,.catalog-portfolio-menu>a[aria-current]{color:var(--accent)}
+.catalog-portfolio-menu>a[aria-current]{font-weight:700;text-decoration:underline;text-decoration-color:#90c11d;text-underline-offset:8px}
+.catalog-menu-divider{height:1px;background:var(--line);margin:15px 0}
+.catalog-content{min-width:0}.catalog-publications .publication{scroll-margin-top:30px}
+@media(min-width:901px){.catalog-feature>div{left:25px;right:25px}.catalog-side{padding:25px}.catalog-world{gap:24px}}
+@media(max-width:900px){.catalog{grid-template-columns:135px minmax(0,1fr);gap:22px}.catalog-world{grid-template-columns:minmax(0,1fr)}.catalog-side-empty{display:none}.catalog-portfolio-menu{padding-right:15px}.catalog-publications{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.catalog{display:block}.catalog-sidebar{top:0;z-index:40;background:var(--bg);margin-bottom:25px;border-bottom:1px solid var(--line)}.catalog-portfolio-menu{flex-direction:row;overflow-x:auto;gap:22px;padding:15px 0;border:0}.catalog-portfolio-menu>.eyebrow,.catalog-menu-divider{display:none}.catalog-portfolio-menu>a{white-space:nowrap;padding:8px 0;font-size:12px}.catalog-world,.catalog-publications .publication{scroll-margin-top:85px}}
+/* Elekt i dodatki jako jedna, wspólna prezentacja. */
+.catalog #elekt{gap:0;background:#152629;overflow:hidden}
+.catalog #elekt .catalog-feature{background:#152629}
+.catalog #elekt .catalog-feature:after{background:linear-gradient(90deg,transparent 65%,#152629 100%),linear-gradient(0deg,#101d21e6,transparent 85%)}
+.catalog #elekt .elekt-expansions{background:linear-gradient(135deg,#20383b,#152629 75%);color:#f1f3ef;padding:35px}
+.catalog #elekt .elekt-expansions .eyebrow{color:#90c11d}
+.catalog #elekt .elekt-expansions>p{color:#c0cdcd}
+.catalog #elekt .expansion-art>span{display:none}
+.catalog #elekt .elekt-expansions h3{margin-bottom:25px}
+.catalog #elekt .catalog-feature>div{bottom:35px}
+.catalog #elekt .expansions-button{margin-top:auto}
+@media(max-width:900px){.catalog #elekt .catalog-feature:after{background:linear-gradient(0deg,#152629,transparent 85%)}.catalog #elekt .elekt-expansions{background:#152629}.catalog #elekt .expansions-button{margin-top:15px}}
+@media(max-width:600px){.catalog #elekt .elekt-expansions{padding:25px}.catalog #elekt .catalog-feature>div{bottom:25px}}
+/* Pozostałe gry: jedna kompozycja z dodatkami; palety robocze. */
+.catalog #tsukuyumi{--world-bg:#26343b;--world-top:#364a52;--world-muted:#c7d3d8}
+.catalog #kurzolaki{--world-bg:#492b46;--world-top:#643955;--world-muted:#ead2e2}
+.catalog #klanarchia{--world-bg:#292823;--world-top:#403c31;--world-muted:#d7d2c4}
+.catalog #tsukuyumi,.catalog #kurzolaki,.catalog #klanarchia{gap:0;background:var(--world-bg);overflow:hidden}
+.catalog #tsukuyumi .catalog-feature,.catalog #kurzolaki .catalog-feature,.catalog #klanarchia .catalog-feature{background:var(--world-bg)}
+.catalog #tsukuyumi .catalog-feature:after,.catalog #kurzolaki .catalog-feature:after,.catalog #klanarchia .catalog-feature:after{background:linear-gradient(90deg,transparent 65%,var(--world-bg)),linear-gradient(0deg,#000000d9,transparent 85%)}
+.catalog #tsukuyumi .catalog-side,.catalog #kurzolaki .catalog-side,.catalog #klanarchia .catalog-side{background:linear-gradient(135deg,var(--world-top),var(--world-bg) 75%);color:#fff;padding:35px}
+.catalog #tsukuyumi .catalog-side>p,.catalog #kurzolaki .catalog-side>p{color:var(--world-muted)}
+.catalog #tsukuyumi .catalog-side .eyebrow,.catalog #kurzolaki .catalog-side .eyebrow{color:#90c11d}
+.catalog #tsukuyumi .catalog-related a{border-color:#ffffff40}
+.catalog #tsukuyumi .catalog-feature>div,.catalog #kurzolaki .catalog-feature>div,.catalog #klanarchia .catalog-feature>div{bottom:35px}
+.catalog #tsukuyumi .catalog-side h3,.catalog #kurzolaki .catalog-side h3{margin-bottom:25px}
+@media(max-width:900px){.catalog #tsukuyumi .catalog-feature:after,.catalog #kurzolaki .catalog-feature:after,.catalog #klanarchia .catalog-feature:after{background:linear-gradient(0deg,var(--world-bg),transparent 85%)}.catalog #tsukuyumi .catalog-side,.catalog #kurzolaki .catalog-side,.catalog #klanarchia .catalog-side{background:var(--world-bg)}}
+@media(max-width:600px){.catalog #tsukuyumi .catalog-side,.catalog #kurzolaki .catalog-side,.catalog #klanarchia .catalog-side{padding:25px}.catalog #tsukuyumi .catalog-feature>div,.catalog #kurzolaki .catalog-feature>div,.catalog #klanarchia .catalog-feature>div{bottom:25px}}
+
+.catalog img{max-width:100%}.catalog-content{min-width:0}

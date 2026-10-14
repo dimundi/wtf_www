@@ -1,0 +1,54 @@
+name: wtf-www-dev
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${WORDPRESS_DB_NAME:?}
+      MARIADB_USER: ${WORDPRESS_DB_USER:?}
+      MARIADB_PASSWORD: ${WORDPRESS_DB_PASSWORD:?}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?}
+    volumes:
+      - db-dev:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: wtf-www-wordpress:dev
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${WORDPRESS_PORT:-8081}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME:?}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER:?}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD:?}
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'local');
+        define('WP_DEBUG_DISPLAY', false);
+      WORDPRESS_URL: ${WORDPRESS_URL:?}
+      WORDPRESS_ADMIN_USER: ${WORDPRESS_ADMIN_USER:?}
+      WORDPRESS_ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD:?}
+      WORDPRESS_ADMIN_EMAIL: ${WORDPRESS_ADMIN_EMAIL:?}
+    volumes:
+      - ../../wordpress:/var/www/html
+      - ../../media:/var/www/html/wp-content/uploads/media
+      - ./init-dev.sh:/usr/local/bin/init-dev.sh:ro
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(is_file('/var/www/html/wp-config.php') && @fsockopen('127.0.0.1', 80) ? 0 : 1);"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+volumes:
+  db-dev:

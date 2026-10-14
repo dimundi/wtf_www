@@ -1,0 +1,74 @@
+name: whatthefrogpl-backup
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:?}
+      MYSQL_USER: ${MYSQL_USER:?}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?}
+    volumes:
+      - db-local:/var/lib/mysql
+    networks:
+      - local-only
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_ROOT_PASSWORD\" mysql -h 127.0.0.1 -u root -Nse 'SELECT 1' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  wordpress:
+    build: .
+    image: whatthefrogpl-backup-wordpress:local
+    restart: unless-stopped
+    # Nie uruchamia instalatora obrazu WordPress ani nie kopiuje jego rdzenia.
+    entrypoint: ["apache2-foreground"]
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:?}
+      WORDPRESS_DB_USER: ${MYSQL_USER:?}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:?}
+    volumes:
+      - site-local:/var/www/html
+      - ./local.ini:/usr/local/etc/php/conf.d/zz-local.ini:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - local-only
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@fsockopen('127.0.0.1', 80) ? 0 : 1);"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  proxy:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8082:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - local-only
+      - frontend
+    depends_on:
+      wordpress:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/_container-health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+networks:
+  local-only:
+    internal: true
+  frontend:
+
+volumes:
+  db-local:
+  site-local:

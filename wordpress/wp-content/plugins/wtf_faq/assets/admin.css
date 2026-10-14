@@ -1,0 +1,24 @@
+.wtf-faq-terms-ready #col-container #col-right{float:none;width:100%}
+.wtf-faq-terms-ready #col-left{float:none;width:100%;max-width:640px;margin:20px 0}
+.wtf-faq-terms-ready #col-left[hidden]{display:none}
+.wtf-faq-terms-ready #col-left .col-wrap{padding:0}
+.wtf-faq-admin-filters{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:20px 0}
+.wtf-faq-admin-filters label{display:flex;align-items:center;gap:6px}
+.wtf-faq-admin-tree{max-width:1200px}
+.wtf-faq-admin-game{background:#fff;border:1px solid #c3c4c7;border-radius:3px;margin:0 0 16px}
+.wtf-faq-admin-tree summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;padding:14px 18px;font-size:15px;font-weight:600}
+.wtf-faq-admin-tree summary::-webkit-details-marker{display:none}
+.wtf-faq-admin-tree summary svg{flex-shrink:0}
+.wtf-faq-admin-tree details[open]>summary svg{transform:rotate(180deg)}
+.wtf-faq-admin-tree summary:focus-visible{outline:2px solid #2271b1;outline-offset:-2px}
+.wtf-faq-admin-count{margin-left:auto;font-size:12px;font-weight:400;color:#50575e}
+.wtf-faq-admin-groups{padding:0 18px 12px}
+.wtf-faq-admin-group{border-top:1px solid #dcdcde}
+.wtf-faq-admin-group>summary{font-size:14px;padding-left:8px}
+.wtf-faq-admin-questions{margin:0;padding:0 8px 12px 34px}
+.wtf-faq-admin-questions li{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0;padding:12px 0;border-top:1px solid #f0f0f1;line-height:1.5}
+.wtf-faq-admin-questions a{font-weight:600;text-decoration:none}
+.wtf-faq-admin-votes{flex-shrink:0;color:#50575e;font-size:12px}
+.wtf-faq-admin-status{font-size:12px;color:#646970}
+.wtf-faq-admin-add-question{margin:0 8px 12px 34px}
+@media(max-width:782px){.wtf-faq-admin-questions li{align-items:flex-start;flex-direction:column;gap:4px}.wtf-faq-admin-questions{padding-left:8px}}
