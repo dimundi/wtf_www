@@ -11,7 +11,16 @@ add_action('wp_enqueue_scripts', function () {
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
     add_editor_style(['assets/site.css', 'assets/opening.css', 'assets/mobile-navigation.css', 'assets/blocks.css']);
+});
+add_action('wp_enqueue_scripts',function(){
+    if(!function_exists('is_woocommerce') || !(is_woocommerce()||is_cart()||is_checkout()||is_account_page())) return;
+    wp_enqueue_style('wtf-shop',get_theme_file_uri('assets/shop.css'),['wtf-blocks'],filemtime(get_theme_file_path('assets/shop.css')));
+    wp_enqueue_script('wtf-shop',get_theme_file_uri('assets/shop.js'),[],filemtime(get_theme_file_path('assets/shop.js')),true);
+    if(is_product()) wp_enqueue_style('wtf-product',get_theme_file_uri('assets/product.css'),['wtf-shop'],filemtime(get_theme_file_path('assets/product.css')));
 });
 add_action('wp_enqueue_scripts', function () {
     foreach (['site', 'opening', 'mobile-navigation', 'blocks'] as $file) {

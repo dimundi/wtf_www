@@ -17,6 +17,15 @@ if ! wp plugin is-installed webp-uploads --allow-root; then
 fi
 wp plugin activate polylang webp-uploads wtf-core --allow-root
 wp plugin activate wtf_faq --allow-root
+if ! wp plugin is-installed woocommerce --allow-root; then
+  wp plugin install woocommerce --version=10.3.8 --allow-root
+fi
+wp plugin activate woocommerce --allow-root
+wp option update woocommerce_coming_soon no --allow-root
+if [ ! -f wp-content/languages/plugins/woocommerce-pl_PL.mo ]; then
+  wp language plugin install woocommerce pl_PL --allow-root
+fi
+wp eval-file wp-content/plugins/wtf-core/setup-shop.php --allow-root
 wp option update perflab_modern_image_format webp --allow-root
 wp theme activate wtf --allow-root
 wp eval-file wp-content/plugins/wtf-core/setup-home.php --allow-root

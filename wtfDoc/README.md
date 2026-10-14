@@ -25,6 +25,10 @@
 
 ## sklep
 
+- [szablon-produktu](sklep/szablon-produktu.md)
+- [wyglad-sklepu](sklep/wyglad-sklepu.md)
+- [uruchomienie-sklepu](sklep/uruchomienie-sklepu.md)
+- [lista-przeniesienia-sklepu](sklep/lista-przeniesienia-sklepu.md)
 - [jezyki-i-waluty-sklepu](sklep/jezyki-i-waluty-sklepu.md)
 - [migracja-danych-sklepu](sklep/migracja-danych-sklepu.md)
 

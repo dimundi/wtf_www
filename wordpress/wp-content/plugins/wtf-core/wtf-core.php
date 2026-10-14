@@ -13,6 +13,9 @@ require_once __DIR__.'/kurzolaki.php';
 require_once __DIR__.'/catalog.php';
 require_once __DIR__.'/contact.php';
 require_once __DIR__.'/media-groups.php';
+require_once __DIR__.'/shop.php';
+require_once __DIR__.'/shop-classification.php';
+require_once __DIR__.'/shop-product.php';
 
 if (is_admin()) { require_once __DIR__ . '/admin.php'; }
 
@@ -52,6 +55,11 @@ function wtf_core_schema() {
     $image = fn($name, $file) => ['title'=>$name, 'image'=>wtf_core_media($file), 'imageId'=>0, 'url'=>'https://whatthefrog.pl/' . ($name === 'Kurzołaki' ? 'kurzolaki' : ($name === 'Echo Światów' ? 'echo-swiatow' : strtolower($name))) . '/'];
     $games = [$image('Klanarchia','klanarchia.jpg'),$image('Kurzołaki','kurzolaki.jpg'),$image('Elekt','elekt.jpg'),$image('Tsukuyumi','tsukuyumi.png'),$image('Echo Światów','echo-swiatow.jpg')];
     return [
+        'shop'=>[
+            'title'=>'Sklep WTF',
+            'fields'=>['eyebrow'=>'Nadtytuł','title'=>'Nagłówek','description'=>'Wprowadzenie','image'=>'Baner Elekta','elektTitle'=>'Elekt — nagłówek banera','elektDescription'=>'Elekt — opis banera','elektBaseDescription'=>'Elekt — wprowadzenie do podstawki'],
+            'defaults'=>['eyebrow'=>'PROSTO OD WYDAWNICTWA','title'=>'Zabierz grę do domu.','description'=>'Zacznij od gry. Dobierz dodatki z jej świata.','image'=>wtf_core_media('elekt.jpg'),'imageId'=>0,'elektTitle'=>'Tron jest jeden.','elektDescription'=>'Przywołuj upiory. Rozsyłaj kultystów. Sięgnij po władzę w Dominacie.','elektBaseDescription'=>'Zacznij od gry podstawowej. Dodatki i akcesoria do swojego zestawu dobierzesz poniżej.'],
+        ],
         'header'=>[
             'title'=>'Nagłówek WTF',
             'fields'=>['gamesLabel'=>'Napis menu gier','allLabel'=>'Link do wszystkich gier','allUrl'=>'Adres katalogu','contactLabel'=>'Napis Kontakt','contactUrl'=>'Adres kontaktu','shopLabel'=>'Napis Sklep','shopUrl'=>'Adres sklepu'],
@@ -136,6 +144,7 @@ add_action('admin_init',function(){
 
 function wtf_core_render($type, $a) {
     $a = array_merge(wtf_core_schema()[$type]['defaults'], $a);
+    if($type==='shop') return wtf_shop_render($a);
     if (isset($a['items'])) {
         foreach ($a['items'] as &$item) { if (isset($item['url'])) { $item['url']=wtf_contact_local_game_link(wtf_catalog_local_game_link(wtf_kurz_local_game_link(wtf_echo_local_game_link(wtf_ele_local_game_link(wtf_tsu_local_game_link($item['url'])))))); } }
         unset($item);

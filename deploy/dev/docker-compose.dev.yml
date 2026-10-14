@@ -39,6 +39,8 @@ services:
     volumes:
       - ../../wordpress:/var/www/html
       - ../../media:/var/www/html/wp-content/uploads/media
+      # Zewnętrzna zależność: szybki odczyt z Linuksa zamiast tysięcy plików z Windows.
+      - woocommerce-dev:/var/www/html/wp-content/plugins/woocommerce
       - ./init-dev.sh:/usr/local/bin/init-dev.sh:ro
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
     depends_on:
@@ -52,3 +54,4 @@ services:
       start_period: 30s
 volumes:
   db-dev:
+  woocommerce-dev:

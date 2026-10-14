@@ -6,6 +6,7 @@
   const ServerSideRender = wp.serverSideRender.default || wp.serverSideRender;
   const schemas = window.wtfBlockSchemas;
   const imageGuidance = {
+    shop: 'Baner Elekta: zalecane 1920 × 800 px, bez napisów. Ilustracja po prawej, spokojne tło pod tekst po lewej. Na telefonie obraz jest kadrowany do węższego banera; zostaw zapas wokół głównego motywu.',
     header: 'Zalecany rozmiar: 600 × 600 px (kwadrat 1:1). Grafika jest kadrowana do kwadratu; najważniejsze elementy umieść bliżej środka. Bez drobnych napisów — na telefonach ikonka ma 36 × 36 px, a nazwa gry wyświetla się obok.',
     cards: 'Zalecany rozmiar: 900 × 750 px, najlepiej bez napisów. Zostaw zapas przy krawędziach — grafika jest kadrowana zależnie od szerokości ekranu. Najważniejsze elementy umieść bliżej środka.',
     hero: 'Zalecany rozmiar: 1920 × 800 px. Bez napisów i przycisków — dodaje je strona. Główny motyw po prawej, spokojniejsze tło po lewej pod tekst. Zostaw zapas przy krawędziach: na telefonach ten sam obraz jest mocniej kadrowany.',
