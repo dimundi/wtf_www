@@ -130,3 +130,13 @@ body.tsukuyumi-theme{--bg:#f6f6f7;--text:#111114;--muted:#62636a;--line:#2023222
 .tsu-faction-description ul.tsu-contents-list{columns:2;column-gap:48px;padding-left:24px}
 .tsu-faction-description ul.tsu-contents-list>li{break-inside:avoid;margin:0 0 10px;line-height:1.7}
 @media(max-width:650px){.tsu-faction-description ul.tsu-contents-list{columns:1}}
+.tsu-oni-character{display:grid;grid-template-columns:minmax(0,32%) minmax(0,1fr);gap:40px;align-items:center;padding:35px 0;border-top:1px solid var(--line)}
+.tsu-faction-description .tsu-oni-character>img{width:100%;max-height:440px;object-fit:contain;margin:0}
+.tsu-oni-character-copy{min-width:0}
+.tsu-faction-description .tsu-oni-character-copy h3{margin:0 0 20px}
+@media(max-width:650px){.tsu-oni-character{grid-template-columns:minmax(0,1fr);gap:24px}.tsu-faction-description .tsu-oni-character>img{max-width:300px;max-height:360px;margin:auto}}
+.tsu-wum-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:30px 0}
+.tsu-wum-gallery-photo{display:block;min-width:0}
+.tsu-faction-description .tsu-wum-gallery-photo img{display:block;width:100%;height:auto;max-height:none;margin:0}
+.tsu-wum-gallery-photo:focus-visible{outline:2px solid #e60020;outline-offset:5px}
+@media(max-width:650px){.tsu-wum-gallery{grid-template-columns:minmax(0,1fr);gap:20px}}

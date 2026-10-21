@@ -28,7 +28,7 @@ Panorama desktopowa i osobny kadr mobilny, przezroczysty nagłówek na ilustracj
 
 Menu boczne, przycisk na górę, mobilne „Na tej stronie” oraz zwijanie Frakcji i Rozszerzeń zachowują zachowania prototypu. Zasady mają pięć domyślnie zamkniętych pól szczegółowych; film wprowadzający, cztery filmy zasad i jedenaście recenzji/innych filmów — łącznie 16 osadzeń.
 
-Nie dopisano brakującego pełnego opisu Władców Utraconych Mórz. Zachowano potwierdzone odnośniki zakupu do istniejącego sklepu i zewnętrzne PDF. Nie przenoszono produktów WooCommerce. Pozostałe linki frakcji oraz powroty prowadzą lokalnie. Link Tsukuyumi na głównej i w globalnym menu również prowadzi lokalnie, zachowując podmienione przez użytkownika grafiki i teksty.
+Zachowano potwierdzone odnośniki zakupu do istniejącego sklepu i zewnętrzne PDF. Nie przenoszono produktów WooCommerce. Pozostałe linki frakcji oraz powroty prowadzą lokalnie. Link Tsukuyumi na głównej i w globalnym menu również prowadzi lokalnie, zachowując podmienione przez użytkownika grafiki i teksty.
 
 ## Edycja
 
@@ -62,3 +62,17 @@ docker exec wtf-www-dev-wordpress-1 wp eval-file wp-content/plugins/wtf-core/set
 - `preview/verify-tsukuyumi-import.php`: 34 strony, 17 par, właściwe statusy, ponowny import zachowuje treść i nie dodaje mediów. Podczas dopracowania testu usunięto nieużywane rekordy duplikatów, zachowując pliki i używane załączniki.
 
 Skrypty QA i zrzuty znajdują się w `preview/` projektu referencyjnego. Nie są elementem publicznej strony.
+
+## Układ postaci ONI
+
+Na /tsukuyumi/oni/ sześć legendarnych postaci ma grafikę po lewej oraz nazwę, opis i zdolności po prawej. Do 650 px układ pionowy. Treści nadal w edytowalnych blokach. Ręczny, idempotentny skrypt: wordpress/wp-content/plugins/wtf-core/tools/layout-oni.php (WP-CLI eval-file); zachowuje kopię poprzedniej treści w metadanych strony. Sprawdzono sześć wierszy przy 1440 px i układ pionowy przy 390 px, bez poziomego przepełnienia.
+
+## Opis Władców Utraconych Mórz
+
+Uzupełniono PL /tsukuyumi/wum/ (ID 82) na podstawie strony 7973 w lokalnej kopii whatthefrogpl_backup (slug wum-2). Przeniesiono pełną fabułę, sześć akapitów taktyki i trzy cechy specjalne; potwierdzono tryb dla 2 graczy. Teksty pozostają edytowalnymi blokami WTF Core. EN pozostaje bez zmian. Ręczny skrypt: wordpress/wp-content/plugins/wtf-core/tools/restore-wum-description.php, dane źródłowe w wum-description.json. Kopia wcześniejszej treści w metadanych strony. Sprawdzono HTTP 200 i zgodność wszystkich akapitów ze źródłem oraz obecność FAQ. Dodano również ilustracje Wladcy, Anik/Malak i Król oraz osiem zdjęć galerii z podpisem @photoboardgamer, w kolejności źródłowej. Pliki w media/tsu-wum-*, zarejestrowane w Mediach w grupie Tsukuyumi; bloki grafik pozostają edytowalne. Galeria: dwie kolumny na komputerze, jedna na telefonie, odnośniki do pełnych zdjęć. Ręczny skrypt restore-wum-images.php zachowuje poprzednią treść i nie powiela importu. Sprawdzono ładowanie wszystkich 11 grafik przy 1440 i 390 px oraz brak poziomego przepełnienia.
+
+Na życzenie usunięto z treści WUM parę ilustracji Anik/Malak i Król pod taktyką. Ilustracja fabularna i galeria ośmiu zdjęć pozostają. Pliki zachowano w Mediach. Ręczny skrypt: remove-wum-unit-art.php.
+
+Galeria WUM: po obejrzeniu ośmiu fotografii nadano indywidualne tytuły, ALT opisujące kadry, podpisy z autorem oraz opisy w Mediach. ALT zsynchronizowano z blokami strony. Potwierdzono osiem unikalnych ALT w HTML i grupę Tsukuyumi dla wszystkich zdjęć. Ręczny skrypt: describe-wum-gallery.php; zachowuje poprzednie metadane i treść strony.
+
+Lista 16 frakcji na głównej Tsukuyumi PL oraz podmenu Frakcje mają kolejność alfabetyczną według wyświetlanych nazw (polskie reguły sortowania). Zachowano treści, kotwice i adresy podstron; EN bez zmian. Ręczny skrypt sort-tsu-factions.php, kolejność tsu-faction-order.json. Sprawdzono zgodność kolejności wszystkich kart i linków menu w HTML.

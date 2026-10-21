@@ -181,3 +181,35 @@ body.elekt-theme{--bg:#101214;--surface:#1b1e21;--text:#e6dfd3;--muted:#a9a8a2;-
 .elekt-world .wtf-faq .wtf-faq__answer{font-size:15px;line-height:1.75;color:var(--muted)}
 .elekt-world .wtf-faq .wtf-faq__answer p{line-height:inherit}
 .elekt-world .wtf-faq .wtf-faq__feedback{margin-top:16px;font-size:13px}
+.elekt-expansion-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:24px}
+.elekt-expansion-list>.elekt-expansion{grid-template-columns:130px minmax(0,1fr);gap:24px;padding:24px;min-width:0;height:100%}
+.elekt-expansion-list .expansion-visual{position:static}
+.elekt-expansion-list .expansion-visual img{height:230px}
+.elekt-expansion-list .expansion-description{min-width:0}
+.elekt-expansion-list .expansion-description h3{font-size:30px;margin:0 0 18px}
+.elekt-expansion-list .expansion-description .elekt-imported{font-size:14px;line-height:1.8}
+.expansion-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px 22px;margin-top:24px}
+.expansion-actions .expansion-buy,.expansion-actions p{margin:0}
+.elekt-expansion .expansion-page-link{color:var(--expansion-color);border-bottom-color:currentColor}
+.elekt-wiedzmy2-art{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin:48px 0}
+.elekt-wiedzmy2-art>img{display:block;width:100%;height:auto;max-height:550px;object-fit:contain}
+.elekt-wiedzmy2-boxes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:center}
+.elekt-wiedzmy2-boxes img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain}
+.elekt-expansion-page>.elekt-section>img{display:block;max-width:100%;height:auto;margin:40px auto 0}
+@media(max-width:700px){.elekt-wiedzmy2-art{grid-template-columns:minmax(0,1fr);gap:32px}.elekt-wiedzmy2-art>img{max-height:440px}}
+.expansion-description>.expansion-card-count{display:block;text-align:left;margin:0 0 18px;color:var(--expansion-color);font-size:14px}
+@media(max-width:1200px){.elekt-expansion-list{grid-template-columns:minmax(0,1fr)}.elekt-expansion-list>.elekt-expansion{grid-template-columns:170px minmax(0,1fr)}}
+@media(max-width:700px){.elekt-expansion-list>.elekt-expansion{grid-template-columns:minmax(0,1fr);gap:24px}.elekt-expansion-list .expansion-visual img{height:240px}}
+
+/* Próbne tło Elekta PL: statyczna mgła, bez plików graficznych i animacji.
+   Usunięcie tego bloku przywraca poprzednie tło. */
+html[lang^="pl"] body.elekt-theme{
+  background-color:#171b1e;
+  background-image:
+    linear-gradient(90deg,transparent,#10141666 28%,#10141688 65%,transparent),
+    linear-gradient(90deg,#aab2b51c,transparent 36%,transparent 64%,#939da321),
+    radial-gradient(ellipse 90% 65% at 0% 15%,#aab2b514,transparent 80%),
+    radial-gradient(ellipse 85% 70% at 100% 85%,#939da318,transparent 80%);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
