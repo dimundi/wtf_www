@@ -17,6 +17,9 @@ require_once __DIR__.'/shop.php';
 require_once __DIR__.'/shop-classification.php';
 require_once __DIR__.'/shop-product.php';
 require_once __DIR__.'/shop-account.php';
+require_once __DIR__.'/shop-registration.php';
+require_once __DIR__.'/shop-checkout.php';
+require_once __DIR__.'/shop-cart.php';
 require_once __DIR__.'/shop-history.php';
 require_once __DIR__.'/customer-switch.php';
 

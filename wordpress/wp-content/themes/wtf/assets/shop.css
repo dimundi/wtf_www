@@ -166,3 +166,15 @@
 @media(max-width:700px){
   .shop-page.has-game .shop-game-nav a{min-height:44px}
 }
+/* Shared compact headings and centered containers for cart and checkout. */
+.woocommerce-cart .wtf-commerce-page-title,.woocommerce-checkout .wtf-commerce-page-title{max-width:1240px;width:calc(100% - 96px);margin:24px auto 0;padding:0 0 16px;border-bottom:1px solid var(--line)}
+.woocommerce-cart .wtf-commerce-page-title h1,.woocommerce-checkout .wtf-commerce-page-title h1{font-size:clamp(26px,2.5vw,34px);line-height:1.2;letter-spacing:-.7px;margin:0}
+.woocommerce-cart .wtf-commerce-page-title+.wp-block-post-content,.woocommerce-checkout .wtf-commerce-page-title+.wp-block-post-content{max-width:1240px;margin:20px auto 64px}
+.woocommerce-cart .wp-block-post-content>*{max-width:none;margin-left:auto;margin-right:auto}
+.woocommerce-cart .wp-block-post-content>.woocommerce{width:100%;max-width:none}
+.woocommerce-cart .woocommerce-cart-form,.woocommerce-cart .woocommerce-cart-form table.shop_table{width:100%;box-sizing:border-box}
+@media(max-width:650px){.woocommerce-cart .wtf-commerce-page-title,.woocommerce-checkout .wtf-commerce-page-title{width:calc(100% - 40px);margin-top:16px;padding-bottom:12px}.woocommerce-cart .wtf-commerce-page-title+.wp-block-post-content,.woocommerce-checkout .wtf-commerce-page-title+.wp-block-post-content{margin-top:16px}}
+/* Keep cart recalculation legible without a white flash in dark mode. */
+.woocommerce-cart .blockUI.blockOverlay,.woocommerce-checkout .blockUI.blockOverlay{background:var(--bg)!important;opacity:.72!important}
+.woocommerce-cart .blockUI.blockOverlay::before,.woocommerce-checkout .blockUI.blockOverlay::before{content:''!important;background:none!important;width:24px!important;height:24px!important;margin:-12px 0 0 -12px!important;box-sizing:border-box;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;box-shadow:none!important;animation:wtf-commerce-spinner .75s linear infinite!important}
+@keyframes wtf-commerce-spinner{to{transform:rotate(360deg)}}

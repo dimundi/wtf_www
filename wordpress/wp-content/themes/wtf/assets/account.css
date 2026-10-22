@@ -1,4 +1,45 @@
 .woocommerce-account{--account-surface:#273247}
+.wtf-login-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:64px;max-width:1040px;margin:48px auto 72px}
+.wtf-login-art{min-width:0;overflow:hidden;margin:0}
+.wtf-login-art img{display:block;width:100%;height:auto}
+.wtf-login-art figcaption{margin-top:12px;text-align:center;font-size:12px;line-height:1.5;color:var(--muted)}
+.wtf-login-art figcaption a{text-decoration:underline;text-underline-offset:3px}
+.wtf-login-panel{min-width:0;grid-column:1;grid-row:1}
+.wtf-login-art{grid-column:2;grid-row:1}
+.woocommerce .wtf-login-layout{margin-left:auto;margin-right:auto}
+.woocommerce-account .wp-block-post-content:has(.wtf-login-layout)>*,.woocommerce-account .woocommerce:has(.wtf-login-layout){max-width:none;width:100%}
+.woocommerce .wtf-login-panel h2{font-size:40px;line-height:1.15;letter-spacing:-1px;margin:0 0 28px}
+.woocommerce .wtf-login-panel form.login{border:0;border-radius:0;padding:0;margin:0;text-align:left}
+.woocommerce .wtf-login-panel form.login .form-row{padding:0;margin:0 0 22px}
+.woocommerce .wtf-login-panel form.login label{font-size:14px;line-height:1.5;margin-bottom:8px}
+.woocommerce .wtf-login-panel form.login input.input-text{height:50px;padding:12px 14px;background:#fff;color:#1c263c;border:1px solid #1c263c66;border-radius:4px;font-size:16px;box-sizing:border-box}
+.woocommerce .wtf-login-panel form.login input.input-text:focus{outline:2px solid var(--accent);outline-offset:2px}
+.woocommerce .wtf-login-panel form.login .password-input input{padding-right:48px}
+.woocommerce .wtf-login-panel form.login .show-password-input{color:#1c263c}
+.woocommerce .wtf-login-panel form.login .form-row:has(.woocommerce-form-login__submit){display:flex;flex-direction:column;gap:20px;align-items:stretch;margin-bottom:20px}
+.woocommerce .wtf-login-panel form.login .woocommerce-form-login__rememberme{display:flex;align-items:center;gap:9px;margin:0;font-size:14px}
+.woocommerce .wtf-login-panel input[type=checkbox]{width:17px;height:17px;margin:0;accent-color:var(--accent)}
+.woocommerce .wtf-login-panel form.login .woocommerce-form-login__submit{float:none;width:100%;margin:0;min-height:50px;font-size:15px;border-radius:4px;text-align:center;justify-content:center}
+.woocommerce .wtf-login-panel .lost_password{font-size:14px;margin:0;text-align:center}
+.woocommerce .wtf-login-panel .lost_password a{text-underline-offset:4px}
+.wtf-registration-invite{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);font-size:14px}
+.wtf-registration-invite a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;box-sizing:border-box;border:1px solid var(--accent);border-radius:4px;font-weight:700}
+.wtf-registration-invite a:hover{background:var(--accent);color:#1c263c}
+.wtf-registration-description{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 22px}
+.wtf-registration-form>p{margin:0 0 20px}
+.wtf-registration-form label{display:block;font-size:14px;line-height:1.5;margin-bottom:8px}
+.wtf-registration-form input[type=email],.wtf-registration-form input[type=password]{width:100%;height:50px;box-sizing:border-box;padding:12px 14px;border:1px solid #1c263c66;border-radius:4px;background:#fff;color:#1c263c;font-size:16px}
+.wtf-registration-form input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wtf-registration-form small{display:block;color:var(--muted);font-size:12px;margin-top:7px}
+.woocommerce .wtf-registration-primary,.wtf-registration-primary{display:flex;justify-content:center;align-items:center;width:100%;min-height:50px;box-sizing:border-box;padding:12px 18px;border:0;border-radius:4px;background:var(--accent);color:#1c263c;font-weight:700;font-size:15px;margin:0;cursor:pointer;text-align:center}
+.wtf-registration-back{font-size:14px;margin:24px 0 0;text-align:center}
+.wtf-registration-back a,.wtf-registration-secondary,.wtf-registration-privacy a{text-decoration:underline;text-underline-offset:3px}
+.wtf-registration-form .wtf-registration-privacy{font-size:12px;line-height:1.6;color:var(--muted)}
+.wtf-registration-secondary{font-size:14px;line-height:1.6}
+.wtf-login-panel #customer_login{display:flex;flex-direction:column;gap:32px}
+.woocommerce .wtf-login-panel #customer_login>div{float:none;width:100%}
+@media(max-width:900px){.wtf-login-layout{gap:32px;margin:32px auto 48px}}
+@media(max-width:650px){.wtf-login-layout{grid-template-columns:minmax(0,1fr);max-width:440px;gap:24px;margin:16px auto 40px}.wtf-login-art{display:none}.woocommerce .wtf-login-panel h2{font-size:32px;margin-bottom:24px}}
 :root[data-theme=light] .woocommerce-account{--account-surface:var(--surface)}
 .woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation){display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px 44px}
 .woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation)::before,.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation)::after{display:none}
@@ -189,6 +230,9 @@
 /* Address editor: paired identity, location and contact fields. */
 .woocommerce-account .woocommerce-MyAccount-content form:has(.woocommerce-address-fields)>h2{font-size:24px;line-height:1.35;letter-spacing:-.4px;margin:0 0 22px}
 .woocommerce-account .woocommerce-address-fields__field-wrapper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 20px}
+.woocommerce-account #billing_vat_invoice_field label{display:flex;align-items:center;gap:10px;margin:0;cursor:pointer}
+.woocommerce-account #billing_vat_invoice{width:18px;height:18px;margin:0;accent-color:var(--accent)}
+.woocommerce-account #billing_vat_invoice_field .optional{display:none}
 .woocommerce-account .woocommerce-address-fields__field-wrapper .form-row{grid-column:1/-1;float:none;width:auto;padding:0;margin:0;min-width:0;box-sizing:border-box}
 .woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_first_name_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_last_name_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_phone_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_email_field"]{grid-column:span 3}
 .woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_postcode_field"]{grid-column:span 2}

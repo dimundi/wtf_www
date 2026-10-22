@@ -1,6 +1,17 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Keep WooCommerce's login fields, hooks and validation inside our visual layout.
+add_action('woocommerce_before_customer_login_form',function () {
+    if (!is_account_page()) return;
+    $uploads=wp_upload_dir();
+    echo '<div class="wtf-login-layout"><figure class="wtf-login-art"><img src="'.esc_url($uploads['baseurl'].'/media/witaj_stworek.png').'" alt="" width="1200" height="1083" fetchpriority="high"><figcaption>Kornik Głodomór - gra <a href="'.esc_url(home_url('/kurzolaki/')).'">Kurzołaki</a></figcaption></figure><div class="wtf-login-panel">';
+});
+
+add_action('woocommerce_after_customer_login_form',function () {
+    if (is_account_page()) echo '</div></div>';
+});
+
 add_filter('woocommerce_default_address_fields',function ($fields) {
     if (function_exists('is_account_page') && is_account_page() && isset($fields['address_1'])) {
         $fields['address_1']['label']='Adres';
@@ -16,20 +27,41 @@ function wtf_account_billing_nip($user_id) {
     return '';
 }
 
+function wtf_account_wants_invoice() {
+    if (isset($_POST['action']) && $_POST['action']==='edit_address') {
+        return isset($_POST['billing_vat_invoice']);
+    }
+    $user_id=get_current_user_id();
+    if (metadata_exists('user',$user_id,'billing_vat_invoice')) {
+        return (bool)get_user_meta($user_id,'billing_vat_invoice',true);
+    }
+    return get_user_meta($user_id,'billing_company',true)!=='' || wtf_account_billing_nip($user_id)!=='';
+}
+
 add_filter('woocommerce_billing_fields',function ($fields) {
     if (!function_exists('is_account_page') || !is_account_page()) return $fields;
+    $invoice=wtf_account_wants_invoice();
+    $fields['billing_vat_invoice']=[
+        'type'=>'checkbox','label'=>'Chcę otrzymać fakturę VAT','required'=>false,'priority'=>5,
+        'class'=>['form-row-wide'],
+    ];
+    foreach (['billing_first_name','billing_last_name'] as $key) {
+        if (isset($fields[$key])) $fields[$key]['required']=!$invoice;
+    }
     $fields['billing_company']=array_merge($fields['billing_company'] ?? [],[
-        'type'=>'text','label'=>'Nazwa firmy','required'=>false,'priority'=>25,
+        'type'=>'text','label'=>'Nazwa firmy','required'=>$invoice,'priority'=>25,
         'class'=>['form-row-wide'],'autocomplete'=>'organization',
     ]);
     $fields['billing_nip']=[
-        'type'=>'text','label'=>'NIP','required'=>false,'priority'=>26,
+        'type'=>'text','label'=>'NIP','required'=>$invoice,'priority'=>26,
         'class'=>['form-row-wide'],'maxlength'=>32,
     ];
     return $fields;
 },30);
 
 add_filter('woocommerce_my_account_edit_address_field_value',function ($value,$key) {
+    if ($key==='billing_country' && $value==='') return 'PL';
+    if ($key==='billing_vat_invoice') return wtf_account_wants_invoice() ? 1 : 0;
     return $key==='billing_nip' ? wtf_account_billing_nip(get_current_user_id()) : $value;
 },10,2);
 

@@ -21,7 +21,16 @@ add_action('wp_enqueue_scripts',function(){
     wp_enqueue_style('wtf-shop',get_theme_file_uri('assets/shop.css'),['wtf-blocks'],filemtime(get_theme_file_path('assets/shop.css')));
     wp_enqueue_script('wtf-shop',get_theme_file_uri('assets/shop.js'),[],filemtime(get_theme_file_path('assets/shop.js')),true);
     if(is_product()) wp_enqueue_style('wtf-product',get_theme_file_uri('assets/product.css'),['wtf-shop'],filemtime(get_theme_file_path('assets/product.css')));
+    if(is_cart()) {
+        wp_enqueue_style('wtf-cart',get_theme_file_uri('assets/cart.css'),['wtf-shop'],filemtime(get_theme_file_path('assets/cart.css')));
+        wp_enqueue_script('wtf-cart',get_theme_file_uri('assets/cart.js'),['jquery','wc-cart'],filemtime(get_theme_file_path('assets/cart.js')),true);
+    }
     if(is_account_page()) wp_enqueue_style('wtf-account',get_theme_file_uri('assets/account.css'),['wtf-shop'],filemtime(get_theme_file_path('assets/account.css')));
+    if(is_account_page()) wp_enqueue_script('wtf-account',get_theme_file_uri('assets/account.js'),['jquery','wc-country-select'],filemtime(get_theme_file_path('assets/account.js')),true);
+    if(is_checkout() && !is_wc_endpoint_url()) {
+        wp_enqueue_style('wtf-checkout',get_theme_file_uri('assets/checkout.css'),['wtf-shop'],filemtime(get_theme_file_path('assets/checkout.css')));
+        wp_enqueue_script('wtf-checkout',get_theme_file_uri('assets/checkout.js'),['jquery','wc-checkout'],filemtime(get_theme_file_path('assets/checkout.js')),true);
+    }
 });
 add_action('wp_enqueue_scripts',function () {
     if (function_exists('wtf_customer_switch_context') && wtf_customer_switch_context()) {

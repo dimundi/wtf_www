@@ -1,6 +1,6 @@
 <?php
 if(!defined('WP_CLI')||!WP_CLI) exit;
-foreach(['shop'=>['sklep','Sklep','<!-- wp:wtf/shop /-->'],'cart'=>['koszyk','Koszyk','<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->'],'checkout'=>['zamowienie','Zamówienie','<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->'],'myaccount'=>['moje-konto','Moje konto','<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->']] as $key=>$data){
+foreach(['shop'=>['sklep','Sklep','<!-- wp:wtf/shop /-->'],'cart'=>['koszyk','Koszyk','<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->'],'checkout'=>['zamowienie','Finalizowanie zamówienia','<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->'],'myaccount'=>['moje-konto','Moje konto','<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->']] as $key=>$data){
     $id=(int)get_option('woocommerce_'.$key.'_page_id');
     if(!$id||!get_post($id)) {
         $page=get_page_by_path($data[0],OBJECT,['page']);

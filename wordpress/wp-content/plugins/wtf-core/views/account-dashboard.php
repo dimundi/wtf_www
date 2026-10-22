@@ -22,7 +22,7 @@ $shortcuts=[
         <?php if ($order): ?>
         <div class="wtf-account-order-summary"><div><a class="wtf-account-order-number" href="<?php echo esc_url($order->get_view_order_url()); ?>">Zamówienie #<?php echo esc_html($order->get_order_number()); ?></a><?php if ($order->get_date_created()): ?><p><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></p><?php endif; ?></div><span class="wtf-account-status"><?php echo esc_html(wc_get_order_status_name($order->get_status())); ?></span><strong><?php echo wp_kses_post($order->get_formatted_order_total()); ?></strong><a class="wtf-account-button" href="<?php echo esc_url($order->get_view_order_url()); ?>">Zobacz zamówienie</a></div>
         <?php else: ?>
-        <p>Nie masz jeszcze zamówień. Wybierz grę dla siebie — po zakupie jej szczegóły pojawią się tutaj.</p><a class="wtf-account-button" href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Przejdź do sklepu</a>
+        <p>Nie masz jeszcze zamówień. Wybierz grę dla siebie.</p><a class="wtf-account-button" href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Przejdź do sklepu</a>
         <?php endif; ?>
     </section>
 </div>
