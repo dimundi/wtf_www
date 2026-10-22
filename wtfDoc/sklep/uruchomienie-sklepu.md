@@ -21,14 +21,14 @@ Zakres zatwierdzony 15.10.2026:
 
 Import stanowi początkową ofertę do dalszej edycji. Powtórzenie importu nie powinno tworzyć duplikatów ani nadpisywać ręcznych zmian.
 
-Klienci, zamówienia, kupony, MailPoet i konfiguracja integracji pozostają osobnymi etapami. Nie publikujemy szkiców EN ani nie wdrażamy na produkcję. Zasady historycznych zamówień: [migracja danych](migracja-danych-sklepu.md).
+Klienci i zamówienia zostały przeniesione próbnie 22.10.2026: [procedura i wyniki](probna-migracja-klientow-zamowien.md). Kupony, MailPoet i konfiguracja integracji pozostają osobnymi etapami. Nie publikujemy szkiców EN ani nie wdrażamy na produkcję. Zasady historycznych zamówień: [migracja danych](migracja-danych-sklepu.md).
 
 ## Wykonanie
 
 - WooCommerce 10.3.8, sklep: `http://localhost:8081/sklep/`. Koszyk `/koszyk/`, zamówienie `/zamowienie/`, konto `/moje-konto/`.
 - Przeniesiono 33 produkty widoczne w starym katalogu. Pozostałe opublikowane produkty były wykluczone przez ukrywanie wyprzedanych. W wybranej ofercie wszystkie produkty są proste, bez wariantów.
 - Zachowane opisy, ceny i promocje, dostępność, SKU, parametry, kategorie, klasy wysyłkowe i ścieżki `/produkt/.../`. Grafiki i próbki audio zarejestrowane w Mediach, grupa Sklep.
-- Cyfrowy album Echo Światów: 14 plików i zachowane identyfikatory pobrań. Pliki w `uploads/woocommerce_uploads`, bez bezpośredniego dostępu HTTP; metoda wymuszonego pobierania. Dostępy dawnych klientów nadal czekają na migrację zamówień.
+- Cyfrowy album Echo Światów: 14 plików i zachowane identyfikatory pobrań. Pliki w `uploads/woocommerce_uploads`, bez bezpośredniego dostępu HTTP; metoda wymuszonego pobierania. W próbie 22.10.2026 przeniesiono 2100 uprawnień dawnych klientów wraz z zamówieniami.
 - Mapowania: [mapowanie-produktow.json](mapowanie-produktow.json); również opcja `wtf_shop_import_map` w bazie i metadane `_wtf_source_product_id`. Dodatkowo mapowania kategorii, klas wysyłkowych oraz mediów.
 - Wygląd w motywie `wtf`, obsługa katalogu w WTF Core. Nagłówek sklepu edytuje się w bloku „Sklep WTF” na stronie Sklep; produkty w panelu WooCommerce.
 

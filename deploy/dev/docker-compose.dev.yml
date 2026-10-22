@@ -43,6 +43,7 @@ services:
       - woocommerce-dev:/var/www/html/wp-content/plugins/woocommerce
       - ./init-dev.sh:/usr/local/bin/init-dev.sh:ro
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./commerce-guard.php:/var/www/html/wp-content/mu-plugins/wtf-dev-commerce-guard.php:ro
     depends_on:
       db:
         condition: service_healthy

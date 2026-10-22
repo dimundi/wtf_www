@@ -25,6 +25,8 @@
 
 ## sklep
 
+- [próbna migracja klientów, zamówień i pobrań](sklep/probna-migracja-klientow-zamowien.md)
+
 - [szablon-produktu](sklep/szablon-produktu.md)
 - [wyglad-sklepu](sklep/wyglad-sklepu.md)
 - [uruchomienie-sklepu](sklep/uruchomienie-sklepu.md)

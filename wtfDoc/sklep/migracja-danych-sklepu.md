@@ -1,5 +1,7 @@
 # Migracja danych sklepu
 
+Próba klientów, zamówień i pobrań wykonana 22.10.2026 na kopiach 8082 → 8081. [Procedura, wyniki i przygotowanie migracji docelowej](probna-migracja-klientow-zamowien.md).
+
 ## Ustalenia — 15.10.2026
 
 - Początkową ofertę importujemy z produktów widocznych w katalogu starego sklepu, do dalszej edycji. Zachowujemy ścieżki adresów i zapisujemy mapowania nowych ID. Zakres: [uruchomienie sklepu](uruchomienie-sklepu.md).
@@ -51,4 +53,4 @@
 
 Źródło: [obsługa produktów cyfrowych w WooCommerce](https://woocommerce.com/document/digital-downloadable-product-handling/).
 
-Narzędzia i procedura migracji pozostają do wyboru. Stany magazynowe i media produktów omówimy osobno. Na razie ustalamy zasady i dokumentujemy je, bez implementacji.
+Narzędzia i procedura próbnej migracji klientów, zamówień i pobrań są opisane w podlinkowanym dokumencie. Kupony, MailPoet, konfiguracja integracji i końcowe wdrożenie pozostają osobnymi etapami.

@@ -39,23 +39,19 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     <?php
 }
 
-function wtf_shop_elekt($products,$a,$overview=false) {
+function wtf_shop_game($products,$a,$game) {
     $groups=['podstawka'=>[],'dodatek'=>[],'akcesorium'=>[],'pozostale'=>[]];
     foreach($products as $product) { $kind=wtf_shop_product_term($product,'wtf_product_kind'); $groups[isset($groups[$kind])?$kind:'pozostale'][]=$product; }
     $labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
     ?>
-    <section class="shop-elekt <?php echo $overview?'is-overview':''; ?>" aria-label="Sklep gry Elekt">
-      <header class="shop-elekt-hero">
-        <?php echo wtf_core_image($a,'full',['class'=>'shop-elekt-art','alt'=>'','loading'=>'eager','sizes'=>'(max-width: 650px) 100vw, 1100px']); ?>
-        <div class="shop-elekt-hero-copy"><span class="shop-elekt-label">ELEKT / GRA I DODATKI</span><h2><?php echo esc_html($a['elektTitle']); ?></h2><p><?php echo esc_html($a['elektDescription']); ?></p><a href="<?php echo esc_url(wtf_ele_local_game_link('https://whatthefrog.pl/elekt/')); ?>">Poznaj grę Elekt</a></div>
-      </header>
-      <nav class="shop-elekt-nav" aria-label="Oferta Elekta"><?php foreach($groups as $key=>$items): if(!$items)continue; ?><a href="#elekt-<?php echo esc_attr($key); ?>"><?php echo esc_html($labels[$key]); ?><span><?php echo count($items); ?></span></a><?php endforeach; ?></nav>
-      <div class="shop-elekt-offer">
+    <section class="shop-game" aria-label="Oferta gry">
+      <nav class="shop-game-nav" aria-label="Sekcje oferty"><?php foreach($groups as $key=>$items): if(!$items)continue; ?><a href="#<?php echo esc_attr($game.'-'.$key); ?>"><?php echo esc_html($labels[$key]); ?><span><?php echo count($items); ?></span></a><?php endforeach; ?></nav>
+      <div class="shop-game-offer">
         <?php foreach($groups as $key=>$items): if(!$items)continue; ?>
-        <section class="shop-elekt-section" id="elekt-<?php echo esc_attr($key); ?>" aria-labelledby="elekt-title-<?php echo esc_attr($key); ?>">
-          <header class="shop-elekt-section-heading"><span><?php echo $key==='podstawka'?'01':($key==='dodatek'?'02':($key==='akcesorium'?'03':'04')); ?></span><h2 id="elekt-title-<?php echo esc_attr($key); ?>"><?php echo esc_html($labels[$key]); ?></h2></header>
+        <section class="shop-game-section shop-section--<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($game.'-'.$key); ?>" aria-labelledby="<?php echo esc_attr($game.'-title-'.$key); ?>">
+          <header class="shop-game-section-heading"><span><?php echo $key==='podstawka'?'01':($key==='dodatek'?'02':($key==='akcesorium'?'03':'04')); ?></span><h2 id="<?php echo esc_attr($game.'-title-'.$key); ?>"><?php echo esc_html($labels[$key]); ?></h2></header>
           <div class="<?php echo $key==='podstawka'?'shop-base-products':($key==='akcesorium'?'shop-accessories':'shop-products'); ?>">
-          <?php foreach($items as $product) wtf_shop_card($product,$key==='podstawka'?'base':($key==='akcesorium'?'accessory':'card'),$key==='podstawka'?$a['elektBaseDescription']:''); ?>
+          <?php foreach($items as $product) wtf_shop_card($product,$key==='podstawka'?'base':($key==='akcesorium'?'accessory':'card'),$key==='podstawka'&&$game==='elekt'?$a['elektBaseDescription']:''); ?>
           </div>
         </section>
         <?php endforeach; ?>
@@ -102,11 +98,10 @@ function wtf_shop_render($a=[]) {
           <?php if(!$selected): ?><div class="shop-sort"><label for="shop-sort">Sortowanie</label><select id="shop-sort" name="sort" form="shop-filters"><?php foreach(['menu_order'=>'Polecane','price'=>'Cena rosnąco','price-desc'=>'Cena malejąco','title'=>'Nazwa A–Z'] as $key=>$label): ?><option value="<?php echo esc_attr($key); ?>" <?php selected($order,$key); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?></select></div><?php endif; ?>
         </div>
         <?php
-        $elekt=$selected==='elekt'?array_filter($products,fn($p)=>wtf_shop_product_term($p,'wtf_product_game')==='elekt'):[];
-        if($elekt) wtf_shop_elekt($elekt,$a,!$selected);
-        $others=$selected==='elekt'?[]:$products;
+        $grouped=in_array($selected,['elekt','kurzolaki','tsukuyumi'],true);
+        if($grouped && $products) wtf_shop_game($products,$a,$selected);
+        $others=$grouped?[]:$products;
         if($others): ?>
-          <?php if($elekt): ?><h2 class="shop-other-heading">Pozostałe gry i publikacje</h2><?php endif; ?>
           <div class="shop-products"><?php foreach($others as $product)wtf_shop_card($product); ?></div>
         <?php endif; ?>
         <?php if(!$products): ?><p>Nie znaleziono produktów. Zmień filtry lub wyszukiwanie.</p><?php endif; ?></section>

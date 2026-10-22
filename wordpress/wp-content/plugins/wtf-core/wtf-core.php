@@ -16,6 +16,9 @@ require_once __DIR__.'/media-groups.php';
 require_once __DIR__.'/shop.php';
 require_once __DIR__.'/shop-classification.php';
 require_once __DIR__.'/shop-product.php';
+require_once __DIR__.'/shop-account.php';
+require_once __DIR__.'/shop-history.php';
+require_once __DIR__.'/customer-switch.php';
 
 if (is_admin()) { require_once __DIR__ . '/admin.php'; }
 

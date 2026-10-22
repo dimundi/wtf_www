@@ -1,0 +1,217 @@
+.woocommerce-account{--account-surface:#273247}
+:root[data-theme=light] .woocommerce-account{--account-surface:var(--surface)}
+.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation){display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px 44px}
+.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation)::before,.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation)::after{display:none}
+.wtf-account-intro{grid-column:1/-1;border-bottom:1px solid var(--line);padding:0 0 28px}
+.wtf-account-intro h1{font-size:clamp(32px,4vw,46px);line-height:1.15;letter-spacing:-1px;margin:0 0 12px}
+.wtf-account-intro p,.wtf-account-welcome p{color:var(--muted);line-height:1.7;margin:0}
+.woocommerce-account .woocommerce-MyAccount-navigation,.woocommerce-account .woocommerce-MyAccount-content{float:none;width:auto;min-width:0}
+.woocommerce-account .woocommerce-MyAccount-navigation{align-self:start;border:1px solid var(--line);padding:10px;background:var(--account-surface)}
+.woocommerce-account .woocommerce-MyAccount-navigation ul{list-style:none;padding:0;margin:0}
+.woocommerce-account .woocommerce-MyAccount-navigation li{margin:3px 0;padding:0}
+.woocommerce-account .woocommerce-MyAccount-navigation a{display:flex;align-items:center;min-height:46px;padding:10px 14px;border-left:3px solid transparent;box-sizing:border-box;text-decoration:none;font-size:15px}
+.woocommerce-account .woocommerce-MyAccount-navigation a:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.woocommerce-account .woocommerce-MyAccount-navigation .is-active a{border-left-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);font-weight:700}
+.woocommerce-account .woocommerce-MyAccount-navigation-link--customer-logout{border-top:1px solid var(--line);padding-top:8px!important;margin-top:12px!important}
+.wtf-account-welcome h2{font-size:28px;letter-spacing:-.6px;margin:0 0 10px}
+.wtf-account-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:26px 0}
+.wtf-account-shortcut{display:block;padding:24px;border:1px solid var(--line);background:var(--account-surface);text-decoration:none;transition:border-color .15s}
+.wtf-account-shortcut:hover{border-color:var(--accent)}
+.wtf-account-shortcut svg{color:var(--accent);margin-bottom:16px}
+.wtf-account-shortcut h3{font-size:19px;line-height:1.3;letter-spacing:-.3px;margin:0 0 10px}
+.wtf-account-shortcut p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}
+.wtf-account-order{border:1px solid var(--line);border-top:3px solid var(--accent);padding:26px;background:var(--account-surface)}
+.wtf-account-order h2{font-size:22px;letter-spacing:-.4px;margin:0 0 16px}
+.wtf-account-order>p{color:var(--muted);line-height:1.7;margin:0 0 22px}
+.wtf-account-order-summary{display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap}
+.wtf-account-order-number{font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.wtf-account-order-summary p{font-size:13px;color:var(--muted);margin:8px 0 0}
+.wtf-account-status{font-size:13px;border:1px solid var(--line);padding:6px 10px}
+.wtf-account-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;box-sizing:border-box;background:var(--accent);color:#1c263c;font-size:14px;font-weight:700;text-decoration:none}
+.wtf-account-button:hover{background:#a5d636;color:#1c263c}
+.woocommerce-account .woocommerce-MyAccount-content>p:first-child{margin-top:0}
+.woocommerce-account .woocommerce-MyAccount-content form{line-height:1.6}
+.woocommerce-account .woocommerce-MyAccount-content input.input-text{max-width:100%;box-sizing:border-box;min-height:44px}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-orders-table{font-size:14px}
+@media(max-width:1000px){
+ .woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation){grid-template-columns:180px minmax(0,1fr);gap:24px}
+ .wtf-account-shortcuts{grid-template-columns:minmax(0,1fr);gap:12px}
+ .wtf-account-shortcut{display:grid;grid-template-columns:28px minmax(0,1fr);gap:6px 14px;padding:18px}
+ .wtf-account-shortcut svg{grid-row:1/3;margin:0}
+ .wtf-account-shortcut h3,.wtf-account-shortcut p{margin:0}
+}
+@media(max-width:700px){
+ .woocommerce-account .wp-block-post-content{width:calc(100% - 40px);margin-top:20px}
+ .woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation){grid-template-columns:minmax(0,1fr);gap:24px}
+ .wtf-account-intro{padding-bottom:20px}
+ .woocommerce-account .woocommerce-MyAccount-navigation ul{display:flex;flex-wrap:wrap;gap:4px}
+ .woocommerce-account .woocommerce-MyAccount-navigation li{margin:0}
+ .woocommerce-account .woocommerce-MyAccount-navigation a{font-size:13px;min-height:44px;padding:8px 10px}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--customer-logout{border-top:0;padding-top:0!important;margin-top:0!important}
+ .wtf-account-welcome h2{font-size:24px}
+ .wtf-account-order{padding:20px}
+ .wtf-account-order-summary{align-items:flex-start;flex-direction:column}
+ .wtf-account-order-summary .wtf-account-button{width:100%}
+}
+.woocommerce-account .woocommerce-MyAccount-content table.woocommerce-orders-table{border:0;border-collapse:separate;border-spacing:0 12px;margin-top:-12px}
+.woocommerce-account table.woocommerce-orders-table thead th{border:0;padding:12px 18px;color:var(--muted);font-size:13px;font-weight:500}
+.woocommerce-account table.woocommerce-orders-table tbody th,.woocommerce-account table.woocommerce-orders-table tbody td{background:var(--account-surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 18px;vertical-align:middle}
+.woocommerce-account table.woocommerce-orders-table tbody th:first-child{border-left:3px solid var(--accent)}
+.woocommerce-account table.woocommerce-orders-table tbody td:last-child{border-right:1px solid var(--line)}
+.woocommerce-account table.woocommerce-orders-table .wtf-account-status{display:inline-block;line-height:1.4}
+.woocommerce-account table.woocommerce-orders-table .woocommerce-button{min-height:44px;padding:12px 18px;box-sizing:border-box;font-size:14px;line-height:20px;margin:3px 4px 3px 0}
+.woocommerce-account table.woocommerce-orders-table time,.woocommerce-account table.woocommerce-orders-table .amount{white-space:nowrap}
+@media(max-width:1100px){
+ .woocommerce-account .woocommerce-MyAccount-content table.woocommerce-orders-table{display:block;margin-top:0}
+ .woocommerce-account table.woocommerce-orders-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .woocommerce-account table.woocommerce-orders-table tbody{display:grid;gap:16px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;padding:20px;background:var(--account-surface);border:1px solid var(--line);border-left:3px solid var(--accent)}
+ .woocommerce-account table.woocommerce-orders-table tbody tr th,.woocommerce-account table.woocommerce-orders-table tbody tr td{display:block;border:0;padding:0;text-align:left!important;background:transparent}
+ .woocommerce-account table.woocommerce-orders-table tbody tr [data-title]::before{content:attr(data-title);display:block;float:none;color:var(--muted);font-size:12px;font-weight:400;margin-bottom:8px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-actions{grid-column:1/-1}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-actions::before{display:none}
+ .woocommerce-account table.woocommerce-orders-table .woocommerce-button{margin:0 8px 0 0}
+}
+@media(max-width:1100px){
+ .woocommerce-account table.woocommerce-orders-table tbody tr th:first-child,.woocommerce-account table.woocommerce-orders-table tbody tr td:last-child{border:0}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-number{font-size:20px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-number::before{font-size:12px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-actions{border-top:1px solid var(--line);padding-top:16px}
+ .woocommerce-account table.woocommerce-orders-table .woocommerce-button{width:auto;min-width:112px}
+}
+@media(max-width:700px){
+ .woocommerce-account table.woocommerce-orders-table tbody tr{gap:20px 14px;padding:20px 18px;border-left-width:1px;border-top:3px solid var(--accent)}
+ .woocommerce-account table.woocommerce-orders-table .wtf-account-status{border:0;padding:0;font-size:14px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr [data-title]::before{line-height:1.4;margin-bottom:6px}
+ .woocommerce-account table.woocommerce-orders-table tbody tr .woocommerce-orders-table__cell-order-actions{text-align:right!important}
+ .woocommerce-account table.woocommerce-orders-table .woocommerce-button{margin:0}
+}
+/* Order details keep the account's compact typography and spacing. */
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-order-details{margin:24px 0 28px}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-order-details__title{font-size:24px;line-height:1.3;letter-spacing:-.4px;margin:0 0 16px}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-customer-details{margin:0 0 24px}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-column__title{font-size:20px;line-height:1.35;letter-spacing:-.3px;margin:0 0 12px}
+.woocommerce-account .woocommerce-MyAccount-content>p{font-size:15px;line-height:1.7;margin:0 0 20px}
+.woocommerce-account .woocommerce-order-details table.shop_table{font-size:14px;line-height:1.6;border-collapse:collapse;border-radius:0;margin:0;background:var(--account-surface)}
+.woocommerce-account .woocommerce-order-details table.shop_table th,.woocommerce-account .woocommerce-order-details table.shop_table td{padding:12px 18px;vertical-align:top;border-color:var(--line)}
+.woocommerce-account .woocommerce-order-details table.shop_table thead th{font-size:13px;color:var(--muted)}
+.woocommerce-account .woocommerce-order-details table.shop_table tfoot th{font-weight:500}
+.woocommerce-account .woocommerce-order-details table.shop_table tfoot td{font-weight:400}
+.woocommerce-account .woocommerce-order-details table.shop_table .product-total{width:36%}
+.woocommerce-account .woocommerce-order-details table.shop_table .amount{white-space:nowrap}
+.woocommerce-account .woocommerce-customer-details .woocommerce-columns--addresses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.woocommerce-account .woocommerce-customer-details .woocommerce-columns--addresses::before,.woocommerce-account .woocommerce-customer-details .woocommerce-columns--addresses::after{display:none}
+.woocommerce-account .woocommerce-customer-details .woocommerce-column{float:none;width:auto;min-width:0}
+.woocommerce-account .woocommerce-customer-details address{box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:18px;font-size:14px;line-height:1.7;background:var(--account-surface);overflow-wrap:anywhere}
+.woocommerce-account .woocommerce-customer-details address p{margin:12px 0 0;line-height:1.7}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-navigation{border:0;padding:0;background:transparent;margin-inline:-20px}
+ .woocommerce-account .woocommerce-MyAccount-navigation ul{gap:4px 0}
+ .woocommerce-account .woocommerce-MyAccount-navigation a{border-left:0;padding:10px 14px;text-decoration:none}
+ .woocommerce-account .woocommerce-MyAccount-navigation .is-active a{border-left:0;text-decoration:none}
+ .woocommerce-account .woocommerce-MyAccount-content .woocommerce-order-details{margin:20px 0 24px}
+ .woocommerce-account .woocommerce-MyAccount-content .woocommerce-order-details__title{font-size:21px;margin-bottom:12px}
+ .woocommerce-account .woocommerce-MyAccount-content .woocommerce-column__title{font-size:18px;margin-bottom:10px}
+ .woocommerce-account .woocommerce-order-details table.shop_table th,.woocommerce-account .woocommerce-order-details table.shop_table td{padding:10px 12px}
+ .woocommerce-account .woocommerce-order-details table.shop_table .product-total{width:40%}
+ .woocommerce-account .woocommerce-customer-details .woocommerce-columns--addresses{grid-template-columns:minmax(0,1fr);gap:20px}
+ .woocommerce-account .woocommerce-customer-details address{padding:14px}
+}
+/* Invoice-like separation of products, settlement and payment. */
+.wtf-order-heading{margin:0 0 26px}
+.woocommerce-account .wtf-order-heading h2{font-size:24px;line-height:1.35;letter-spacing:-.4px;margin:0 0 18px}
+.wtf-order-heading dl{display:flex;flex-wrap:wrap;gap:16px 40px;margin:0}
+.wtf-order-heading dl>div{display:grid;gap:6px}
+.wtf-order-heading dt{font-size:12px;color:var(--muted)}
+.wtf-order-heading dd{font-size:15px;margin:0;font-weight:600}
+.wtf-order-heading .wtf-account-status{display:inline-block;border:0;padding:0;font-size:15px}
+.woocommerce-account .wtf-order-section-title{font-size:16px;line-height:1.4;letter-spacing:0;margin:0 0 12px;font-weight:700}
+.woocommerce-account .woocommerce-order-details table.order_details{background:transparent;border:0;border-top:2px solid var(--line)}
+.woocommerce-account .woocommerce-order-details table.order_details thead{background:var(--account-surface)}
+.woocommerce-account .woocommerce-order-details table.order_details tbody td{padding-block:18px;border-bottom:1px solid var(--line)}
+.woocommerce-account .woocommerce-order-details table.order_details .product-name{font-weight:600}
+.woocommerce-account .woocommerce-order-details table.order_details .product-total{width:25%;text-align:right}
+.woocommerce-account .woocommerce-order-details table.order_details .wtf-order-quantity{width:12%;text-align:center;white-space:nowrap}
+.woocommerce-account .woocommerce-order-details .wc-item-meta{font-size:12px;font-weight:400;padding-left:0;list-style:none;margin:8px 0 0}
+.wtf-order-settlement{max-width:440px;margin:28px 0 0 auto;padding:20px;background:var(--account-surface);border-top:2px solid var(--line)}
+.woocommerce-account .woocommerce-order-details table.wtf-order-totals{border:0;background:transparent;width:100%}
+.woocommerce-account .woocommerce-order-details table.wtf-order-totals th,.woocommerce-account .woocommerce-order-details table.wtf-order-totals td{padding:9px 0;border:0}
+.woocommerce-account .woocommerce-order-details table.wtf-order-totals td{text-align:right;padding-left:20px}
+.woocommerce-account .woocommerce-order-details table.wtf-order-totals .wtf-order-grand-total th,.woocommerce-account .woocommerce-order-details table.wtf-order-totals .wtf-order-grand-total td{border-top:2px solid var(--line);padding-top:14px;font-weight:700;font-size:17px}
+.wtf-order-payment{margin:24px 0 0;padding:18px 0;border-top:1px solid var(--line)}
+.wtf-order-payment p{font-size:14px;margin:0;line-height:1.6}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-navigation{background:color-mix(in srgb,var(--account-surface) 70%,transparent);padding:6px 8px}
+ .woocommerce-account .woocommerce-MyAccount-navigation ul{gap:0;align-items:center}
+ .woocommerce-account .woocommerce-MyAccount-navigation li{display:flex;align-items:center}
+ .woocommerce-account .woocommerce-MyAccount-navigation li+li::before{content:'|';color:var(--muted);font-size:12px;opacity:.5}
+ .woocommerce-account .woocommerce-MyAccount-navigation a{padding:8px;min-height:42px;font-size:13px}
+ .woocommerce-account .wtf-order-heading h2{font-size:21px;margin-bottom:16px}
+ .wtf-order-heading dl{gap:16px 24px}
+ .wtf-order-settlement{max-width:none;padding:16px;margin-top:22px}
+ .woocommerce-account .woocommerce-order-details table.order_details th,.woocommerce-account .woocommerce-order-details table.order_details td{padding:12px 8px}
+ .woocommerce-account .woocommerce-order-details table.order_details .product-total{width:28%}
+ .woocommerce-account .woocommerce-order-details table.order_details .wtf-order-quantity{width:10%}
+}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-navigation ul{overflow:hidden}
+ .woocommerce-account .woocommerce-MyAccount-navigation li{position:relative}
+ .woocommerce-account .woocommerce-MyAccount-navigation li+li::before{content:'';position:absolute;left:-1px;width:0;height:12px;border-left:1px solid var(--muted);opacity:.5}
+ .woocommerce-account .woocommerce-MyAccount-navigation .is-active a{background:transparent;text-decoration:underline;text-underline-offset:4px;font-weight:600}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--dashboard a{font-size:0;min-width:38px;justify-content:center}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--dashboard a::before{content:'';display:block;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 10.5 12 3l9 7.5M5 9v12h5v-7h4v7h5V9' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--dashboard.is-active a::before{box-shadow:0 4px 0 -3px currentColor}
+}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--dashboard.is-active a::before{box-shadow:none}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--dashboard.is-active a::after{content:'';position:absolute;bottom:8px;width:18px;border-bottom:1px solid currentColor}
+}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--edit-account a{font-size:0}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--edit-account a::after{content:'Szczegóły';font-size:13px}
+ .woocommerce-account .woocommerce-MyAccount-navigation-link--edit-account.is-active a::after{text-decoration:underline;text-underline-offset:4px}
+}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+.woocommerce-account .woocommerce-Addresses::before,.woocommerce-account .woocommerce-Addresses::after{display:none}
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address{float:none;width:auto;min-width:0;padding:20px;border:1px solid var(--line);background:var(--account-surface);box-sizing:border-box}
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 16px}
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address-title::before,.woocommerce-account .woocommerce-Addresses .woocommerce-Address-title::after{display:none}
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address-title h2{float:none;font-size:20px;line-height:1.35;letter-spacing:-.3px;margin:0}
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address-title .edit{float:none;font-size:13px;white-space:nowrap;text-decoration:underline;text-underline-offset:3px;padding:10px 0;margin:-10px 0}
+.woocommerce-account .woocommerce-Addresses address{font-style:normal;font-size:14px;line-height:1.7;margin:0;overflow-wrap:anywhere}
+@media(max-width:1100px){
+ .woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses{grid-template-columns:minmax(0,1fr);gap:16px}
+}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-Addresses .woocommerce-Address{padding:18px}
+ .woocommerce-account .woocommerce-Addresses .woocommerce-Address-title h2{font-size:18px}
+}
+/* Address editor: paired identity, location and contact fields. */
+.woocommerce-account .woocommerce-MyAccount-content form:has(.woocommerce-address-fields)>h2{font-size:24px;line-height:1.35;letter-spacing:-.4px;margin:0 0 22px}
+.woocommerce-account .woocommerce-address-fields__field-wrapper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 20px}
+.woocommerce-account .woocommerce-address-fields__field-wrapper .form-row{grid-column:1/-1;float:none;width:auto;padding:0;margin:0;min-width:0;box-sizing:border-box}
+.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_first_name_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_last_name_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_phone_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_email_field"]{grid-column:span 3}
+.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_postcode_field"]{grid-column:span 2}
+.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_city_field"]{grid-column:span 4}
+.woocommerce-account .woocommerce-address-fields label{font-size:14px;line-height:1.5;margin:0 0 7px}
+.woocommerce-account .woocommerce-address-fields input.input-text,.woocommerce-account .woocommerce-address-fields select{width:100%;min-height:44px;padding:10px 12px;font-size:15px;line-height:1.5;box-sizing:border-box;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--text)}
+.woocommerce-account .woocommerce-address-fields .select2-container{max-width:100%;width:100%!important}
+.woocommerce-account .woocommerce-address-fields .select2-selection--single{min-height:44px;border:1px solid var(--line);border-radius:0;background:var(--bg)}
+.woocommerce-account .woocommerce-address-fields .select2-selection__rendered{line-height:42px;padding-left:12px;color:var(--text);font-size:15px}
+.woocommerce-account .woocommerce-address-fields .select2-selection__arrow{height:42px}
+.woocommerce-account .woocommerce-address-fields>p:last-child{margin:24px 0 0}
+@media(max-width:700px){
+ .woocommerce-account .woocommerce-MyAccount-content form:has(.woocommerce-address-fields)>h2{font-size:21px;margin-bottom:18px}
+ .woocommerce-account .woocommerce-address-fields__field-wrapper{gap:16px 12px}
+ .woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_phone_field"],.woocommerce-account .woocommerce-address-fields__field-wrapper [id$="_email_field"]{grid-column:1/-1}
+}
+/* White form fields with legible text in both account themes. */
+.woocommerce-account .woocommerce-MyAccount-content form input.input-text,.woocommerce-account .woocommerce-MyAccount-content form textarea,.woocommerce-account .woocommerce-MyAccount-content form select,.woocommerce-account .woocommerce-address-fields .select2-selection--single{background:#fff;color:#1c263c;border-color:#1c263c66}
+.woocommerce-account .woocommerce-address-fields .select2-selection__rendered{color:#1c263c}
+.woocommerce-account .woocommerce-MyAccount-content form input::placeholder,.woocommerce-account .woocommerce-MyAccount-content form textarea::placeholder{color:#1c263c99;opacity:1}
+.woocommerce-account .woocommerce-MyAccount-content form select{color-scheme:light}
+.woocommerce-account .woocommerce-Addresses .wtf-account-nip{font-size:14px;margin:12px 0 0}
+@media(min-width:701px){
+ .woocommerce-account .woocommerce-address-fields__field-wrapper #billing_company_field{grid-column:span 4}
+ .woocommerce-account .woocommerce-address-fields__field-wrapper #billing_nip_field{grid-column:span 2}
+}

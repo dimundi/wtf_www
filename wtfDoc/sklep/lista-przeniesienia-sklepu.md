@@ -1,5 +1,7 @@
 # Przeniesienie sklepu — tematy do omówienia
 
+Próba klientów/zamówień/pobrań 22.10.2026: [procedura i wyniki](probna-migracja-klientow-zamowien.md). Pozostałe etapy poniżej nie są przez to uznane za wykonane.
+
 1. Konta klientów: przenosimy tylko klientów, zachowując hasła i powiązania z zamówieniami. Nadajemy rolę „Klient” (`customer`). Kont administratorów i innych kont nieklienckich nie przenosimy.
 2. Historia zamówień: notatki, zwroty, dane płatności, przesyłek i faktur.
 3. Nowe produkty tworzymy od nowa; szczegóły oferty, SKU i wariantów ustalamy podczas implementacji sklepu.

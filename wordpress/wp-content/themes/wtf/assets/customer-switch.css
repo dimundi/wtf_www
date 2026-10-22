@@ -1,0 +1,4 @@
+.wtf-customer-switch-banner{position:sticky;top:0;z-index:100001;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px max(20px,calc((100vw - 1800px)/2));background:#90c11d;color:#1c263c;font:14px/1.5 Arial,Helvetica,sans-serif;box-sizing:border-box}
+.wtf-customer-switch-return{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;background:#1c263c;color:#fff;font-weight:700;white-space:nowrap;box-sizing:border-box}
+.wtf-customer-switch-return:hover{background:#30415c;color:#fff}
+@media(max-width:600px){.wtf-customer-switch-banner{flex-wrap:wrap}.wtf-customer-switch-banner>span{min-width:0;overflow-wrap:anywhere}}
