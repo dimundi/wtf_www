@@ -44,6 +44,8 @@
 
 ## wtyczki
 
+- [wtf_omnibus](wtyczki/wtf_omnibus.md)
+
 - [wtf_faq](wtyczki/wtf_faq.md)
 - [wtf-core](wtyczki/wtf-core.md)
 

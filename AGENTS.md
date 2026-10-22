@@ -1,5 +1,7 @@
 # WTF — wersja docelowa
 
+- Jednorazowe skrypty migracji, importu i poprawek treści oraz ich pliki pomocnicze umieszczamy wyłącznie w `local-scripts/one-off/` (np. `wtf-core/`), poza kodem wtyczek. Cały katalog `local-scripts/` jest wyłączony z Gita i nie trafia na produkcję. Nie usuwać tych plików bez polecenia użytkownika. Stałe narzędzia inicjalizacji i powtarzalne testy pozostają w kodzie projektu.
+
 - Roboczy szablon pojedynczego produktu jest włączony tylko na podstawce Elekta `/produkt/gra-karciana-elekt-wydanie-2/` (ID 802). Duża galeria, panel zakupu, informacje i opis, polecane dodatki; grafit i złoto. Pola „Nowy szablon produktu” i „Krótka zajawka przy cenie” w Dane produktu → Ogólne. Obecne ilustracje robocze do późniejszej oceny. Inne produkty używają dotychczasowego szablonu. Kod `wtf-core/shop-product.php`, motyw `assets/product.css`; dokumentacja `wtfDoc/sklep/szablon-produktu.md`.
 
 - Sklep: pierwszy wzorzec witryny gry to Elekt (`/sklep/?game=elekt`); baner i grafitowo-złota oprawa, wyróżniona podstawka, dodatki w kartach, akcesoria w zwartej liście. Sekcja także w „Wszystkich”; reszta gier do opracowania osobno. Pola produktu „Gra” i „Rodzaj produktu” (Podstawka/Dodatek/Akcesorium) w Dane produktu → Ogólne; niezależne taksonomie `wtf_product_game` i `wtf_product_kind`. Ręczny idempotentny setup zachowuje edycje. Baner/teksty edytowalne w bloku Sklep WTF. Dokumentacja: `wtfDoc/sklep/wyglad-sklepu.md`.

@@ -68,6 +68,7 @@ function wtf_shop_product_render() {
     $short=$product->get_short_description(); $priceNote='';
     $parts=preg_split('/\R\s*\R/',trim($short),2);
     if(isset($parts[1])&&preg_match('/^najniższa cena/iu',trim(wp_strip_all_tags($parts[0])))) {$priceNote=wp_strip_all_tags($parts[0]);$short=$parts[1];}
+    if(function_exists('wtfo_note') && wtfo_note($product)) $priceNote='';
     $shortHtml=apply_filters('woocommerce_short_description',$short);
     $descriptionHtml=wtf_shop_unique_description(apply_filters('the_content',$product->get_description()),$shortHtml);
     $related=[];

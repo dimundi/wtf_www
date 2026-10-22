@@ -21,6 +21,7 @@ if ! wp plugin is-installed woocommerce --allow-root; then
   wp plugin install woocommerce --version=10.3.8 --allow-root
 fi
 wp plugin activate woocommerce --allow-root
+wp plugin activate wtf_omnibus --allow-root
 wp option update woocommerce_coming_soon no --allow-root
 if [ ! -f wp-content/languages/plugins/woocommerce-pl_PL.mo ]; then
   wp language plugin install woocommerce pl_PL --allow-root

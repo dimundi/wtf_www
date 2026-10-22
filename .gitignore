@@ -29,6 +29,7 @@ wtf_backup_agent
 /wordpress/wp-content/plugins/*
 !/wordpress/wp-content/plugins/wtf-core/
 !/wordpress/wp-content/plugins/wtf_faq/
+!/wordpress/wp-content/plugins/wtf_omnibus/
 
 # Biblioteka mediów poza Git. Wyjątki: małe assety wymagane przez własny motyw.
 /media/*
@@ -70,6 +71,7 @@ __pycache__/
 
 # Podglądy i dane przeglądarki tworzone podczas lokalnego sprawdzania.
 /preview/
+/local-scripts/
 /deploy/backup-old/browser-check/
 /deploy/backup-old/homepage-check.html
 /deploy/backup-old/homepage-check.png

@@ -1,0 +1,5 @@
+.wtfo-price-note{display:block;font-size:12px;font-weight:400;line-height:1.5;margin-top:8px;color:var(--muted,inherit)}
+.wtfo-price-note .amount{font-size:inherit!important;font-weight:600}
+.wtfo-reference{white-space:nowrap}
+.wtfo-variant-notes{display:block;margin-top:8px;font-size:12px;line-height:1.5;font-weight:400}
+.wtfo-variant-name{display:block;font-weight:600;margin-top:8px}

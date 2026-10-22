@@ -3,3 +3,6 @@ document.querySelectorAll('[data-shop-filters]').forEach(form => {
     input.addEventListener('change', () => form.requestSubmit());
   });
 });
+document.querySelector('#shop-sort')?.addEventListener('change', event => {
+  event.target.form?.requestSubmit();
+});

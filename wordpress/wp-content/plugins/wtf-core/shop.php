@@ -29,12 +29,11 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     $labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatek','akcesorium'=>'Akcesorium'];
     ?>
     <article class="shop-card shop-card--<?php echo esc_attr($layout); ?>">
-      <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image($layout==='base'?'woocommerce_single':'woocommerce_thumbnail',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?></a>
+      <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image('medium_large',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?></a>
       <div class="shop-card-copy"><span class="shop-kind"><?php echo esc_html($labels[$kind]??($games[$game]??'WTF')); ?></span>
         <h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3>
         <?php if($introduction): ?><p class="shop-base-intro"><?php echo esc_html($introduction); ?></p><?php endif; ?>
         <div class="shop-card-bottom"><span class="shop-price"><?php echo wp_kses_post($product->get_price_html()); ?></span><a class="shop-add" href="<?php echo esc_url($product->add_to_cart_url()); ?>" rel="nofollow" aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>"><?php echo esc_html($product->add_to_cart_text()); ?></a></div>
-        <?php if($layout==='base'): ?><a class="shop-product-details" href="<?php echo esc_url($product->get_permalink()); ?>">Zobacz opis i zawartość zestawu</a><?php endif; ?>
       </div>
     </article>
     <?php
@@ -76,6 +75,7 @@ function wtf_shop_render($a=[]) {
     $search=sanitize_text_field(wp_unslash($_GET['search']??''));
     $order=sanitize_key($_GET['sort']??'menu_order');
     $allowed=['menu_order','price','price-desc','title']; if(!in_array($order,$allowed,true)) $order='menu_order';
+    if($selected) $order='menu_order';
     $args=['status'=>'publish','visibility'=>'catalog','limit'=>-1,'stock_status'=>['instock','onbackorder'],'orderby'=>'menu_order','order'=>'ASC'];
     if(is_product_category()) $args['category']=[get_queried_object()->slug];
     if(is_product_tag()) $args['tag']=[get_queried_object()->slug];
@@ -91,17 +91,20 @@ function wtf_shop_render($a=[]) {
       <header class="shop-heading"><span class="eyebrow"><?php echo esc_html($a['eyebrow']); ?></span><h1><?php echo esc_html($a['title']); ?></h1><p><?php echo esc_html($a['description']); ?></p></header>
       <?php woocommerce_output_all_notices(); ?>
       <div class="shop-browser">
-        <form class="shop-filters" action="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" method="get" data-shop-filters>
+        <form id="shop-filters" class="shop-filters" action="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" method="get" data-shop-filters>
           <h2>Wybierz grę</h2><div class="shop-filter-buttons">
           <?php foreach([''=>'Wszystkie']+$games as $slug=>$label): ?><label class="shop-world <?php echo $selected===$slug?'active':''; ?>"><input type="radio" name="game" value="<?php echo esc_attr($slug); ?>" <?php checked($selected,$slug); ?>><?php echo esc_html($label); ?></label><?php endforeach; ?>
-          </div><label for="shop-search">Szukaj produktu</label><input id="shop-search" type="search" name="search" value="<?php echo esc_attr($search); ?>" placeholder="Nazwa produktu">
-          <label for="shop-sort">Kolejność</label><select id="shop-sort" name="sort"><?php foreach(['menu_order'=>'Polecane','price'=>'Cena rosnąco','price-desc'=>'Cena malejąco','title'=>'Nazwa A–Z'] as $key=>$label): ?><option value="<?php echo esc_attr($key); ?>" <?php selected($order,$key); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?></select><button type="submit" class="shop-apply">Pokaż produkty</button>
+          </div><label for="shop-search">Szukaj produktu</label><div class="shop-search-field"><input id="shop-search" type="search" name="search" value="<?php echo esc_attr($search); ?>" placeholder="Nazwa produktu"><button type="submit" class="shop-search-submit" aria-label="Szukaj produktu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button></div>
         </form>
-        <section class="shop-results" aria-label="Produkty"><p class="shop-results-count"><?php echo count($products); ?> produktów<?php if(isset($games[$selected])) echo ' / '.esc_html($games[$selected]); ?></p>
+        <section class="shop-results" aria-label="Produkty"><div class="shop-results-toolbar">
+          <?php if(isset($games[$selected])): ?><h2 class="shop-game-preview-title"><?php echo esc_html($games[$selected]); ?></h2><?php endif; ?>
+          <p class="shop-results-count"><?php echo count($products); ?> produktów</p>
+          <?php if(!$selected): ?><div class="shop-sort"><label for="shop-sort">Sortowanie</label><select id="shop-sort" name="sort" form="shop-filters"><?php foreach(['menu_order'=>'Polecane','price'=>'Cena rosnąco','price-desc'=>'Cena malejąco','title'=>'Nazwa A–Z'] as $key=>$label): ?><option value="<?php echo esc_attr($key); ?>" <?php selected($order,$key); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?></select></div><?php endif; ?>
+        </div>
         <?php
-        $elekt=array_filter($products,fn($p)=>wtf_shop_product_term($p,'wtf_product_game')==='elekt');
+        $elekt=$selected==='elekt'?array_filter($products,fn($p)=>wtf_shop_product_term($p,'wtf_product_game')==='elekt'):[];
         if($elekt) wtf_shop_elekt($elekt,$a,!$selected);
-        $others=array_filter($products,fn($p)=>wtf_shop_product_term($p,'wtf_product_game')!=='elekt');
+        $others=$selected==='elekt'?[]:$products;
         if($others): ?>
           <?php if($elekt): ?><h2 class="shop-other-heading">Pozostałe gry i publikacje</h2><?php endif; ?>
           <div class="shop-products"><?php foreach($others as $product)wtf_shop_card($product); ?></div>

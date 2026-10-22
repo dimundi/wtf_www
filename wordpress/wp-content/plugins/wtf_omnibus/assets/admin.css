@@ -1,0 +1,10 @@
+.wtfo-admin{max-width:1500px}
+.wtfo-form{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin:8px 0}
+.wtfo-form label{display:flex;flex-direction:column;gap:4px;font-size:12px}
+.wtfo-form input:not([type=hidden]){max-width:180px}
+.wtfo-search{margin:24px 0 16px}
+.wtfo-table{overflow:auto}
+.wtfo-table table{min-width:850px}
+.wtfo-table td{vertical-align:top;padding:12px}
+.wtfo-table th:first-child{width:23%}
+.wtfo-table small{color:#50575e;line-height:1.6}
