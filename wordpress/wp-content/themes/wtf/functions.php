@@ -1,4 +1,14 @@
 <?php
+add_action('wp_enqueue_scripts', function () {
+    if (!is_page() || get_page_template_slug() !== 'klanarchia') return;
+    wp_enqueue_style('wtf-klanarchia', get_theme_file_uri('assets/klanarchia.css'), ['wtf-blocks','wtf-mobile-navigation'], filemtime(get_theme_file_path('assets/klanarchia.css')));
+    wp_enqueue_style('wtf-klanarchia-subpage-header',get_theme_file_uri('assets/klanarchia-subpage-header.css'),['wtf-klanarchia'],filemtime(get_theme_file_path('assets/klanarchia-subpage-header.css')));
+    wp_enqueue_script('wtf-klanarchia', get_theme_file_uri('assets/tsukuyumi.js'), ['wtf-site'], filemtime(get_theme_file_path('assets/tsukuyumi.js')), true);
+});
+add_filter('body_class', function ($classes) {
+    if (is_page() && get_page_template_slug() === 'klanarchia') $classes[] = 'klan-page';
+    return $classes;
+});
 add_filter('body_class', function ($classes) {
     if (is_page() && get_post_meta(get_queried_object_id(), '_wtf_tsu_kind', true)) { $classes[] = 'tsukuyumi-theme'; }
     return $classes;

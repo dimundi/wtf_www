@@ -49,6 +49,7 @@
 - [wtf_omnibus](wtyczki/wtf_omnibus.md)
 
 - [wtf_faq](wtyczki/wtf_faq.md)
+- [wtf_quiz](wtyczki/wtf_quiz.md)
 - [wtf-core](wtyczki/wtf-core.md)
 
 Dokumentacja prototypów i archiwum pozostają w [wtf_web_page](../../wtf_web_page/wtfDoc/README.md).

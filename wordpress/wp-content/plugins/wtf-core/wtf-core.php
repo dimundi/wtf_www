@@ -12,6 +12,7 @@ require_once __DIR__.'/echo.php';
 require_once __DIR__.'/kurzolaki.php';
 require_once __DIR__.'/catalog.php';
 require_once __DIR__.'/contact.php';
+require_once __DIR__.'/klanarchia.php';
 require_once __DIR__.'/media-groups.php';
 require_once __DIR__.'/shop.php';
 require_once __DIR__.'/shop-classification.php';

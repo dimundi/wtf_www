@@ -1,0 +1,11 @@
+const assert = require('node:assert/strict');
+const {scoreQuiz} = require('../assets/quiz.js');
+const data={outcomes:['a','b','c'],questions:[[['a','b'],['c']],[['a'],['b','c']]]};
+assert.equal(scoreQuiz(data,[0,0]),'a','Points from multiple answers accumulate');
+assert.equal(scoreQuiz(data,[1,1]),'c','One answer may award several outcomes');
+assert.equal(scoreQuiz(data,[0,1],()=>0),'b','Only highest-scoring outcomes may win');
+const tie={outcomes:['a','b','c'],questions:[[['a','c']]]};
+assert.equal(scoreQuiz(tie,[0],()=>0),'a');
+assert.equal(scoreQuiz(tie,[0],()=>0.999999),'c','Tie can select the last tied outcome, skipping lower scores');
+assert.throws(()=>scoreQuiz(data,[7,0]),/Brak odpowiedzi/);
+console.log('Scoring: accumulation, multiple targets, winner, ties and missing answers OK');
