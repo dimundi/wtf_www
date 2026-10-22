@@ -48,9 +48,13 @@ add_action('init', function () {
     ]);
     register_block_type('wtf/ele-video', $common + [
         'title'=>'Film Elekt',
-        'attributes'=>['url'=>['type'=>'string','default'=>''], 'title'=>['type'=>'string','default'=>'Film Elekt']],
+        'attributes'=>['url'=>['type'=>'string','default'=>''], 'title'=>['type'=>'string','default'=>'Film Elekt'], 'clickToPlay'=>['type'=>'boolean','default'=>false]],
         'render_callback'=>function ($a) {
             if (!preg_match('~^https://www\.youtube-nocookie\.com/embed/[a-zA-Z0-9_-]+(?:\?.*)?$~', $a['url'])) { return ''; }
+            if (!empty($a['clickToPlay'])) {
+                $id=basename(parse_url($a['url'],PHP_URL_PATH));
+                return '<a class="elekt-video-preview" href="https://www.youtube.com/watch?v='.esc_attr($id).'" data-elekt-video="'.esc_url($a['url']).'" aria-label="'.esc_attr('Odtwórz: '.$a['title']).'"><img src="https://i.ytimg.com/vi/'.esc_attr($id).'/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span>Odtwórz film</span></a>';
+            }
             return '<iframe src="'.esc_url($a['url']).'" title="'.esc_attr($a['title']).'" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         },
     ]);

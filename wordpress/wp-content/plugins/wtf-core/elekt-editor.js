@@ -21,7 +21,7 @@
       mediaField(a,setAttributes),a.mobileId?mediaField(a,setAttributes,true):null,
       h(TextControl,{label:'Opis alternatywny',value:a.alt,onChange:alt=>setAttributes({alt})})),save:()=>null,
   });
-  wp.blocks.registerBlockType('wtf/ele-video',{...base,title:'Film Elekt',icon:'video-alt3',attributes:{url:string(''),title:string('Film Elekt')},
+  wp.blocks.registerBlockType('wtf/ele-video',{...base,title:'Film Elekt',icon:'video-alt3',attributes:{url:string(''),title:string('Film Elekt'),clickToPlay:{type:'boolean',default:false}},
     edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),h(TextControl,{label:'Tytuł filmu',value:a.title,onChange:title=>setAttributes({title})}),h(TextControl,{label:'Adres osadzenia YouTube',help:'https://www.youtube-nocookie.com/embed/IDENTYFIKATOR',value:a.url,onChange:url=>setAttributes({url})})),save:()=>null,
   });
 })();

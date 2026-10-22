@@ -67,3 +67,95 @@
     updateSection();
   }
 })();
+
+// Native scrolling keeps the card gallery usable without JavaScript as well.
+document.querySelectorAll('.elekt-video-preview').forEach(preview => {
+  preview.addEventListener('click', event => {
+    event.preventDefault();
+    const frame = document.createElement('iframe');
+    frame.src = preview.dataset.elektVideo + '?autoplay=1';
+    frame.title = preview.getAttribute('aria-label').replace(/^Odtwórz: /, '');
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    preview.replaceWith(frame);
+    frame.focus();
+  });
+});
+document.querySelectorAll('.elekt-card-carousel').forEach(gallery => {
+  const track = gallery.querySelector('.elekt-card-carousel-track');
+  if (!track || gallery.querySelector('.elekt-card-carousel-controls')) return;
+  const cards = [...track.children];
+  track.tabIndex = 0;
+  const controls = document.createElement('div');
+  controls.className = 'elekt-card-carousel-controls';
+  const stage = document.createElement('div');
+  stage.className = 'elekt-card-carousel-stage';
+  const previous = document.createElement('button');
+  const next = document.createElement('button');
+  const status = document.createElement('span');
+  previous.type = next.type = 'button';
+  previous.textContent = '‹';
+  next.textContent = '›';
+  previous.className = 'elekt-card-carousel-arrow';
+  next.className = 'elekt-card-carousel-arrow';
+  previous.setAttribute('aria-label', 'Poprzednia karta');
+  next.setAttribute('aria-label', 'Następna karta');
+  previous.setAttribute('aria-controls', track.id);
+  next.setAttribute('aria-controls', track.id);
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.className = 'elekt-card-carousel-status';
+  const indicators = document.createElement('div');
+  indicators.className = 'elekt-card-carousel-indicators';
+  indicators.setAttribute('role', 'group');
+  indicators.setAttribute('aria-label', 'Wybierz kartę');
+  const behavior = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+  const markers = cards.map((card, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    const title = card.querySelector('figcaption')?.textContent || `Karta ${index + 1}`;
+    button.setAttribute('aria-label', `Pokaż kartę ${index + 1}: ${title}`);
+    button.setAttribute('aria-controls', track.id);
+    button.addEventListener('click', () => {
+      const left = track.scrollLeft + card.getBoundingClientRect().left - track.getBoundingClientRect().left;
+      track.scrollTo({left, behavior: behavior()});
+    });
+    indicators.append(button);
+    return button;
+  });
+  controls.append(indicators, status);
+  track.before(stage);
+  stage.append(previous, track, next);
+  stage.after(controls);
+  gallery.classList.add('is-enhanced');
+  const update = () => {
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const step = cards[0].getBoundingClientRect().width + gap;
+    const bounds = track.getBoundingClientRect();
+    const visibleCards = cards.map((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const visible = Math.min(rect.right, bounds.right) - Math.max(rect.left, bounds.left) > rect.width / 2;
+      markers[index].setAttribute('aria-pressed', String(visible));
+      return visible ? index : -1;
+    }).filter(index => index >= 0);
+    const first = visibleCards[0] ?? Math.round(track.scrollLeft / step);
+    const last = (visibleCards.at(-1) ?? first) + 1;
+    status.textContent = first + 1 === last ? `${last} z ${cards.length}` : `${first + 1}–${last} z ${cards.length}`;
+    previous.disabled = track.scrollLeft < 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  };
+  const move = direction => {
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    track.scrollBy({left: direction * (cards[0].getBoundingClientRect().width + gap), behavior: behavior()});
+  };
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  let queued = false;
+  track.addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { update(); queued = false; });
+  }, {passive: true});
+  new ResizeObserver(update).observe(track);
+  update();
+});
