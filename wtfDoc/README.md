@@ -10,6 +10,7 @@
 
 ## srodowiska
 
+- [lista-przekierowan](srodowiska/lista-przekierowan.md)
 - [aktualizacje](srodowiska/aktualizacje.md)
 - [backup-starej-strony](srodowiska/backup-starej-strony.md)
 
@@ -36,6 +37,8 @@
 
 ## przenoszenie
 
+- [przeniesienie-materialow-klanarchii](przenoszenie/przeniesienie-materialow-klanarchii.md)
+- [przeniesienie-noty-klanarchii](przenoszenie/przeniesienie-noty-klanarchii.md)
 - [implementacja-etap-1](przenoszenie/implementacja-etap-1.md)
 - [przeniesienie-echa-swiatow](przenoszenie/przeniesienie-echa-swiatow.md)
 - [przeniesienie-elekta](przenoszenie/przeniesienie-elekta.md)
@@ -50,6 +53,7 @@
 
 - [wtf_faq](wtyczki/wtf_faq.md)
 - [wtf_quiz](wtyczki/wtf_quiz.md)
+- [wtf_gamefound](wtyczki/wtf_gamefound.md)
 - [wtf-core](wtyczki/wtf-core.md)
 
 Dokumentacja prototypów i archiwum pozostają w [wtf_web_page](../../wtf_web_page/wtfDoc/README.md).

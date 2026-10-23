@@ -18,6 +18,7 @@ fi
 wp plugin activate polylang webp-uploads wtf-core --allow-root
 wp plugin activate wtf_faq --allow-root
 wp plugin activate wtf_quiz --allow-root
+wp plugin activate wtf_gamefound --allow-root
 if ! wp plugin is-installed woocommerce --allow-root; then
   wp plugin install woocommerce --version=10.3.8 --allow-root
 fi

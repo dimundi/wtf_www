@@ -153,11 +153,11 @@ function wtf_core_render($type, $a) {
     $a = array_merge(wtf_core_schema()[$type]['defaults'], $a);
     if($type==='shop') return wtf_shop_render($a);
     if (isset($a['items'])) {
-        foreach ($a['items'] as &$item) { if (isset($item['url'])) { $item['url']=wtf_contact_local_game_link(wtf_catalog_local_game_link(wtf_kurz_local_game_link(wtf_echo_local_game_link(wtf_ele_local_game_link(wtf_tsu_local_game_link($item['url'])))))); } }
+        foreach ($a['items'] as &$item) { if (isset($item['url'])) { $item['url']=wtf_klan_local_game_link(wtf_contact_local_game_link(wtf_catalog_local_game_link(wtf_kurz_local_game_link(wtf_echo_local_game_link(wtf_ele_local_game_link(wtf_tsu_local_game_link($item['url']))))))); } }
         unset($item);
     }
     $e=fn($key)=>esc_html(wtf_core_text($a[$key]??''));
-    $url=fn($key)=>esc_url(wtf_contact_local_game_link(wtf_catalog_local_game_link($a[$key]??'')));
+    $url=fn($key)=>esc_url(wtf_klan_local_game_link(wtf_contact_local_game_link(wtf_catalog_local_game_link($a[$key]??''))));
     $chevron='<span class="games-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></span>';
     ob_start();
     if ($type==='header') {
@@ -166,7 +166,9 @@ function wtf_core_render($type, $a) {
         ?>
         <a class="skip" href="#main"><?php echo esc_html(wtf_core_text('Przejdź do treści')); ?></a>
         <header class="header wrap">
+            <?php $klan_download_header=is_page() && get_page_template_slug()==='klanarchia';if($klan_download_header): ?><div class="klan-header-logos"><?php endif; ?>
             <a class="brand" href="<?php echo esc_url(function_exists('pll_home_url')?pll_home_url():home_url('/')); ?>" aria-label="What The Frog"><span class="brand-svg"><img class="brand-two-tone" src="<?php echo esc_url(wtf_core_media('wtf-logo-white-green.svg')); ?>" alt=""></span></a>
+            <?php if($klan_download_header): ?><nav class="klan-header-game-links" aria-label="Klanarchia"><a href="<?php echo esc_url(home_url('/klanarchia/')); ?>"<?php if(get_post_field('post_name',get_queried_object_id())==='klanarchia')echo ' aria-current="page"'; ?>>Klanarchia</a><a href="<?php echo esc_url(home_url('/klanarchia/download/')); ?>"<?php if(get_post_meta(get_queried_object_id(),'_wtf_klan_downloads',true))echo ' aria-current="page"'; ?>>Pobierz</a><span class="klan-header-upcoming" aria-disabled="true">Edytor talentów</span></nav></div><?php endif; ?>
             <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation header-tools" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
             <nav id="main-navigation" aria-label="<?php echo esc_attr(wtf_core_text('Menu główne')); ?>"><details class="games-navigation"><summary><?php echo $e('gamesLabel').$chevron; ?></summary><div class="games-dropdown"><div class="games-links">
                 <?php foreach($a['items'] as $item): ?><a class="navigation-game" href="<?php echo esc_url($item['url']??''); ?>"><?php echo wtf_core_image($item, 'medium', ['alt'=>'', 'loading'=>'lazy', 'sizes'=>'(max-width: 700px) 36px, 260px']); ?><span><?php echo esc_html(wtf_core_text($item['title']??'')); ?></span></a><?php endforeach; ?>
@@ -174,7 +176,7 @@ function wtf_core_render($type, $a) {
             <div class="tools" id="header-tools"><a class="header-login" href="<?php echo esc_url(function_exists('wc_get_page_permalink')?wc_get_page_permalink('myaccount'):wp_login_url()); ?>"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><span><?php echo esc_html(wtf_core_text(is_user_logged_in()?'Moje konto':'Zaloguj się')); ?></span></a>
             <?php $count=function_exists('WC')&&WC()->cart?WC()->cart->get_cart_contents_count():0; ?><a class="header-cart" <?php if(!$count)echo 'hidden'; ?> href="<?php echo esc_url(function_exists('wc_get_cart_url')?wc_get_cart_url():$a['shopUrl']); ?>" aria-label="<?php echo esc_attr(wtf_core_text('Koszyk')); ?>"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h2l2.2 11h10.6l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg><span data-cart-count><?php echo (int)$count; ?></span></a>
             <?php if(count($languages)>1): foreach($languages as $language): if($language['current_lang'])continue; ?><a class="language" href="<?php echo esc_url($language['url']); ?>" lang="<?php echo esc_attr($language['slug']); ?>"><?php echo esc_html(strtoupper($lang).' / '.strtoupper($language['slug'])); ?></a><?php endforeach; else: ?><span class="language"><?php echo esc_html(strtoupper($lang)); ?></span><?php endif; ?>
-            <button id="theme-toggle" aria-label="<?php echo esc_attr(wtf_core_text('Zmień motyw kolorystyczny')); ?>" aria-pressed="false">☀</button></div>
+            <?php if(!$klan_download_header): ?><button id="theme-toggle" aria-label="<?php echo esc_attr(wtf_core_text('Zmień motyw kolorystyczny')); ?>" aria-pressed="false">☀</button><?php endif; ?></div>
         </header>
         <?php
     } elseif ($type==='hero') {

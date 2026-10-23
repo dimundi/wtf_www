@@ -59,3 +59,29 @@ body .klan-header .header-cart [data-cart-count]{background:#c4a66a;color:#15171
 .klan-quiz-invitation p{font-size:16px;line-height:1.8;color:var(--klan-muted);max-width:650px;margin:0}
 .klan-quiz-invitation .klan-button{flex-shrink:0}
 @media(max-width:700px){.klan-archetypes-opening{grid-template-columns:1fr;gap:25px;margin-bottom:28px}.klan-archetypes-choice>p,.klan-quiz-invitation p{font-size:15px}.klan-quiz-invitation{flex-direction:column;align-items:stretch;gap:18px;margin-top:24px}.klan-quiz-invitation .klan-button{align-self:flex-start}}
+.klan-opening>.klan-inner{padding-top:130px;padding-bottom:50px;row-gap:24px}
+.klan-opening .klan-opening-logo{grid-column:1;grid-row:1;justify-self:start;width:220px;max-width:100%;margin:0}
+.klan-opening>.klan-inner>.klan-copy{grid-column:1;grid-row:2;padding:0}
+.klan-opening .klan-actions a[href*="gamefound.com"]{gap:12px;background:transparent;border-color:#3ccf91;color:#3ccf91}
+.klan-opening .klan-actions a[href*="gamefound.com"]::after{content:"↗";font-size:18px;line-height:1}
+.klan-opening .klan-actions a[href*="gamefound.com"]:hover{background:#3ccf9118;border-color:#6ce3ad;color:#6ce3ad}
+.klan-second-edition{padding:40px 0 55px;border-top:1px solid var(--klan-line);scroll-margin-top:90px}.klan-second-edition h2{max-width:none;margin:0 0 28px}.klan-second-edition h3{font:400 27px/1.25 Georgia,serif;color:var(--klan-gold);margin:30px 0 14px}.klan-second-edition>p:not(.klan-kicker){max-width:none;color:var(--klan-muted);font-size:16px;line-height:1.85;margin:0 0 18px}.klan-second-edition a{color:var(--klan-gold);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.klan-second-edition{padding:30px 0 35px}.klan-second-edition>p:not(.klan-kicker){font-size:15px}.klan-second-edition h3{font-size:24px}}
+.klan-edition-video{width:100%;aspect-ratio:16/9;margin:24px 0 0;background:#171b17}.klan-edition-video iframe{display:block;width:100%;height:100%;border:0}
+.klan-starter-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px;padding:45px 0;border-bottom:1px solid var(--klan-line);scroll-margin-top:90px}.klan-starter-copy h2{margin:0 0 22px}.klan-starter-copy>p:not(.klan-kicker){font-size:16px;line-height:1.8;color:var(--klan-muted);margin:0 0 20px}.klan-starter-copy .klan-starter-adventure{padding-left:16px;border-left:2px solid var(--klan-gold)}.klan-starter-adventure strong{color:var(--klan-text);font-weight:600}.klan-starter-covers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}.klan-starter-covers figure{margin:0;min-width:0}.klan-starter-covers a{display:block}.klan-starter-covers img{display:block;width:100%;height:auto;box-shadow:0 12px 30px #0005}.klan-starter-covers figcaption{font-size:12px;line-height:1.5;color:var(--klan-gold);margin-top:12px;text-align:center}
+@media(max-width:900px){.klan-starter-section{grid-template-columns:1fr;gap:28px}.klan-starter-covers{max-width:470px;width:100%}.klan-starter-copy>p:not(.klan-kicker){font-size:15px}}
+.klan-starter-covers figure:last-child a{position:relative;aspect-ratio:560/792;overflow:hidden;box-shadow:0 12px 30px #0005}.klan-starter-covers figure:last-child img{position:absolute;width:167.5%;max-width:none;height:auto;left:-35.8%;top:-8.2%;box-shadow:none}
+@media(max-width:700px){
+ .klan-opening>.klan-inner{padding-top:130px;padding-bottom:32px;gap:18px}
+ .klan-opening .klan-opening-logo{width:145px}
+ .klan-opening>.klan-inner>.klan-copy{max-width:none;width:100%;min-width:0}
+ .klan-opening .klan-copy h1{font-size:clamp(34px,9vw,40px);line-height:1.08;letter-spacing:-1px;text-wrap:wrap;margin-bottom:22px}
+ .klan-opening .klan-copy h1 br{display:contents}
+ .klan-opening .klan-copy h1 br::after{content:" "}
+ .klan-opening .klan-kicker{font-size:9px;letter-spacing:1.5px;margin-bottom:20px}
+ .klan-opening .klan-lead{font-size:15px;line-height:1.7;max-width:none}
+ .klan-opening .klan-actions{margin-top:24px;gap:10px}
+ .klan-opening .klan-author{margin-top:20px}
+ .klan-page .klan-opening::after{background:linear-gradient(90deg,#22251fe8,#22251fa8 62%,#22251f30),linear-gradient(0deg,#22251f,transparent 35%)}
+}
+@media(max-width:700px){.klan-opening>.klan-inner{align-items:flex-start;padding-top:125px;padding-bottom:40px;gap:22px}.klan-opening .klan-opening-logo{width:180px}.klan-opening>.klan-inner>.klan-copy{padding:0}}

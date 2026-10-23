@@ -1,0 +1,8 @@
+.wtf-gamefound{--wtfg-accent:#3ccf91;--wtfg-text:#f0faf5;--wtfg-bg:#10251e;box-sizing:border-box;min-width:0;padding:26px;border:1px solid #3ccf9166;background:linear-gradient(145deg,#183c2e,var(--wtfg-bg));color:var(--wtfg-text);line-height:1.65}
+.wtf-gamefound [hidden]{display:none!important}.wtf-gamefound h2{color:inherit;font:400 clamp(25px,3vw,32px)/1.2 Georgia,serif;margin:0 0 16px}.wtf-gamefound p{margin:0 0 18px}.wtf-gamefound__countdown{color:var(--wtfg-accent);font-variant-numeric:tabular-nums}.wtf-gamefound a.wtf-gamefound__button{display:inline-block;padding:12px 20px;background:var(--wtfg-accent);color:#151713;text-decoration:none;font-weight:700;overflow-wrap:anywhere}.wtf-gamefound__button:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+.wtf-gamefound .wtf-gamefound__logo{display:block;width:210px;max-width:100%;height:auto;margin:0 0 26px}
+.wtf-gamefound .wtf-gamefound__countdown{color:#86eab9}
+.wtf-gamefound a.wtf-gamefound__button{background:#3ccf91;color:#09251a;border:1px solid #3ccf91;border-radius:4px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5}
+.wtf-gamefound a.wtf-gamefound__button:hover{background:#6ce3ad;border-color:#6ce3ad;color:#09251a}
+:root[data-theme=light] .wtf-gamefound{--wtfg-accent:#3ccf91;--wtfg-text:#f0faf5;--wtfg-bg:#10251e}
+@media(max-width:600px){.wtf-gamefound{padding:22px}}

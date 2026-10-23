@@ -3,10 +3,20 @@ add_action('wp_enqueue_scripts', function () {
     if (!is_page() || get_page_template_slug() !== 'klanarchia') return;
     wp_enqueue_style('wtf-klanarchia', get_theme_file_uri('assets/klanarchia.css'), ['wtf-blocks','wtf-mobile-navigation'], filemtime(get_theme_file_path('assets/klanarchia.css')));
     wp_enqueue_style('wtf-klanarchia-subpage-header',get_theme_file_uri('assets/klanarchia-subpage-header.css'),['wtf-klanarchia'],filemtime(get_theme_file_path('assets/klanarchia-subpage-header.css')));
+    wp_enqueue_style('wtf-klanarchia-header',get_theme_file_uri('assets/klanarchia-header.css'),['wtf-klanarchia-subpage-header'],filemtime(get_theme_file_path('assets/klanarchia-header.css')));
+    if(get_post_meta(get_queried_object_id(),'_wtf_klan_note',true))wp_enqueue_style('wtf-klanarchia-note',get_theme_file_uri('assets/klanarchia-note.css'),['wtf-klanarchia-header'],filemtime(get_theme_file_path('assets/klanarchia-note.css')));
     wp_enqueue_script('wtf-klanarchia', get_theme_file_uri('assets/tsukuyumi.js'), ['wtf-site'], filemtime(get_theme_file_path('assets/tsukuyumi.js')), true);
+    if(get_post_meta(get_queried_object_id(),'_wtf_klan_downloads',true)){
+        wp_enqueue_style('wtf-klanarchia-downloads',get_theme_file_uri('assets/klanarchia-downloads.css'),['wtf-klanarchia-subpage-header'],filemtime(get_theme_file_path('assets/klanarchia-downloads.css')));
+        wp_enqueue_script('wtf-klanarchia-downloads',get_theme_file_uri('assets/klanarchia-downloads.js'),[],filemtime(get_theme_file_path('assets/klanarchia-downloads.js')),true);
+    }
 });
 add_filter('body_class', function ($classes) {
-    if (is_page() && get_page_template_slug() === 'klanarchia') $classes[] = 'klan-page';
+    if (is_page() && get_page_template_slug() === 'klanarchia') {
+        $classes[] = 'klan-page';
+        if(get_post_field('post_name',get_queried_object_id())!=='klanarchia')$classes[]='klan-subpage';
+    }
+    if (is_page() && get_post_meta(get_queried_object_id(),'_wtf_klan_downloads',true)) $classes[] = 'klan-download-page';
     return $classes;
 });
 add_filter('body_class', function ($classes) {
@@ -57,6 +67,10 @@ add_action('wp_enqueue_scripts', function () {
 add_action('wp_head', function () {
     $url = wp_upload_dir()['baseurl'] . '/media/wtf-logo-navy-green.svg';
     echo '<style>:root[data-theme=light] .brand-svg{background-image:url(' . esc_url($url) . ')}</style>';
+    if(is_page() && get_page_template_slug()==='klanarchia'){
+        echo '<script>document.documentElement.dataset.theme="dark";</script>';
+        return;
+    }
     echo '<script>try{document.documentElement.dataset.theme=localStorage.getItem("wtf-theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>';
 }, 1);
 
