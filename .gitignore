@@ -73,6 +73,7 @@ __pycache__/
 
 # Podglądy i dane przeglądarki tworzone podczas lokalnego sprawdzania.
 /preview/
+/output/
 /local-scripts/
 /deploy/backup-old/browser-check/
 /deploy/backup-old/homepage-check.html

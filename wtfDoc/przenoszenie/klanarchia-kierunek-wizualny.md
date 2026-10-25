@@ -24,3 +24,9 @@ Archetypy przeniesione pod /klanarchia/archetyp-.../ z zachowaniem ID i slugów;
 Pod opisem i odnośnikiem do karty każdej z dziewięciu stron jest sekcja Poznaj inne archetypy. Dziewięć kart z linkami, bieżący archetyp wyróżniony złotem i aria-current. Krótkie opisy pochodzą z fragmentu podręcznika dostarczonego przez użytkownika (jedynie korekta przecinków). Wprowadzenie: Wybrany archetyp określa twoje wyjściowe cechy i zapewnia listę unikatowych talentów archetypu. Lista i wprowadzenie są edytowalnymi natywnymi blokami WP. Jednorazowy zapis: local-scripts/one-off/klanarchia/add-archetype-directory.php.
 
 Klanarchia ma stały ciemny motyw, bez przełącznika na wszystkich stronach szablonu. Nie zmieniamy zapisanego wyboru użytkownika dla reszty serwisu. Główna korzysta z cieplejszego grafitu i gradientów podstron; ilustracja otwarcia zachowana. Sekcja archetypów głównej wyjaśnia wyjściowe cechy i unikatowe talenty na podstawie fragmentu podręcznika od użytkownika; zaproszenie do quizu ujednolicone do formy ciebie.
+
+Edytor talentów: /klanarchia/edytor-talentow/, PL 3275. Wyłącznie zapowiedź odblokowania podczas zbiórki i rychłej dostępności. Natywne bloki WP, wspólna oprawa Klanarchii i aktywny link w menu; bez funkcji edytora i bez EN. Jednorazowe utworzenie: local-scripts/one-off/klanarchia/create-talent-editor-teaser.php.
+
+Pozycja menu: Edytor. Zapowiedź PL 3275 obejmuje edytor talentów i edytor kart postaci, oba odblokowane podczas zbiórki. Nagłówek: Edytory Klanarchii. Adres na razie bez zmiany: /klanarchia/edytor-talentow/.
+
+Docelowa zapowiedź edytorów: /klanarchia/edytor/ (PL 3275, ID bez zmian), link menu Edytor. Osobne kolumny Edytor postaci i Edytor talentów z informacją o odblokowaniu podczas zbiórki; na telefonie układ pionowy. Treści w natywnych blokach WP. Dawny adres edytor-talentow był roboczy i nie trafił na produkcję.
