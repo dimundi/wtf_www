@@ -68,3 +68,20 @@
 @media(max-width:600px){.catalog #tsukuyumi .catalog-side,.catalog #kurzolaki .catalog-side,.catalog #klanarchia .catalog-side{padding:25px}.catalog #tsukuyumi .catalog-feature>div,.catalog #kurzolaki .catalog-feature>div,.catalog #klanarchia .catalog-feature>div{bottom:25px}}
 
 .catalog img{max-width:100%}.catalog-content{min-width:0}
+.catalog-section-menu>summary,.catalog-back-to-top{display:none}
+@media(min-width:601px){.catalog-section-menu:not([open])>.catalog-portfolio-menu{display:flex}}
+@media(max-width:600px){
+  .wtf-js .catalog-section-menu:not(.is-ready)>.catalog-portfolio-menu{display:none!important}
+  .wtf-js .catalog-section-menu:not(.is-ready)>summary::after{content:'+'}
+  .catalog-sidebar{top:8px;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start;padding:0;background:transparent;border:0}
+  .catalog-section-menu{min-width:0;padding:0 12px;background:var(--bg);border:1px solid var(--line);box-shadow:0 4px 16px #00000030}
+  .catalog-section-menu>summary{display:flex;align-items:center;justify-content:space-between;min-height:42px;padding:9px 0;font-size:14px;font-weight:700;cursor:pointer;list-style:none}
+  .catalog-section-menu>summary::-webkit-details-marker{display:none}
+  .catalog-section-menu>summary::after{content:'+';margin-left:12px}
+  .catalog-section-menu[open]>summary::after{content:'−'}
+  .catalog-section-menu:not([open])>.catalog-portfolio-menu{display:none}
+  .catalog-section-menu .catalog-portfolio-menu{flex-direction:column;gap:5px;overflow:auto;max-height:calc(100svh - 100px);padding:0 0 12px}
+  .catalog-section-menu .catalog-portfolio-menu>a{font-size:14px;padding:10px 0;white-space:normal}
+  .catalog-back-to-top{display:flex;align-items:center;justify-content:center;width:36px;height:44px;margin:0;padding:0;border:0;border-radius:3px;background:var(--accent);color:var(--bg);cursor:pointer}
+  .catalog #elekt .catalog-feature:after,.catalog #tsukuyumi .catalog-feature:after,.catalog #kurzolaki .catalog-feature:after,.catalog #klanarchia .catalog-feature:after{background:#00000065}
+}

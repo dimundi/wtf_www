@@ -14,6 +14,36 @@
       });
     });
     const compactMenu = window.matchMedia('(max-width: 1100px)');
+    const sidebar = sectionMenu.closest('.elekt-sidebar');
+    const layout = sidebar?.closest('.elekt-reading-layout');
+    const spacer = document.createElement('div');
+    spacer.hidden = true;
+    spacer.setAttribute('aria-hidden', 'true');
+    if (sidebar) sidebar.before(spacer);
+    const updatePinnedMenu = () => {
+      if (!sidebar || !layout) return;
+      const pinned = sidebar.classList.contains('is-mobile-pinned');
+      const anchor = (pinned ? spacer : sidebar).getBoundingClientRect();
+      const shouldPin = compactMenu.matches && anchor.top <= 8 && layout.getBoundingClientRect().bottom > sidebar.offsetHeight + 8;
+      if (shouldPin) {
+        if (!pinned) {
+          spacer.style.height = sidebar.offsetHeight + 'px';
+          spacer.hidden = false;
+          sidebar.style.setProperty('--elekt-menu-left', anchor.left + 'px');
+          sidebar.style.setProperty('--elekt-menu-width', anchor.width + 'px');
+          sidebar.classList.add('is-mobile-pinned');
+        }
+        const rect = spacer.getBoundingClientRect();
+        sidebar.style.setProperty('--elekt-menu-left', rect.left + 'px');
+        sidebar.style.setProperty('--elekt-menu-width', rect.width + 'px');
+        sidebar.classList.add('is-mobile-pinned');
+      } else {
+        sidebar.classList.remove('is-mobile-pinned');
+        spacer.hidden = true;
+        sidebar.style.removeProperty('--elekt-menu-left');
+        sidebar.style.removeProperty('--elekt-menu-width');
+      }
+    };
     const syncMenu = () => {
       sectionMenu.open = !compactMenu.matches;
       sectionMenu.querySelectorAll('.elekt-submenu-toggle, .tsu-submenu-toggle').forEach(button => {
@@ -22,11 +52,13 @@
       });
     };
     syncMenu();
+    sectionMenu.classList.add('is-ready');
     compactMenu.addEventListener('change', syncMenu);
     const links = [...sectionMenu.querySelectorAll('nav a')];
     const sections = links.map(link => document.querySelector(link.hash));
     let scheduled = false;
     const updateSection = () => {
+      updatePinnedMenu();
       const marker = window.innerHeight * 0.3;
       let active = 0;
       sections.forEach((section, index) => {

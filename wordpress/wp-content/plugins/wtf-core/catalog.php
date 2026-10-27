@@ -19,7 +19,12 @@ add_action('init', function () {
         'attributes'=>['tag'=>['type'=>'string','default'=>'div'], 'attributes'=>['type'=>'object','default'=>[]], 'label'=>['type'=>'string','default'=>'Układ']],
         'render_callback'=>function ($a, $content) {
             $tag = in_array($a['tag'], ['main','section','div','article','aside','header','nav','details','summary','a','ul','ol','li','dl','dt','dd','picture','label','blockquote','figure','h1','h2','h3'], true) ? $a['tag'] : 'div';
-            return '<'.$tag.wtf_catalog_attributes($a['attributes']).'>'.$content.'</'.$tag.'>';
+            $html = '<'.$tag.wtf_catalog_attributes($a['attributes']).'>'.$content.'</'.$tag.'>';
+            if (in_array('catalog-portfolio-menu', explode(' ', $a['attributes']['class'] ?? ''), true)) {
+                $en = wtf_core_language() === 'en';
+                $html = '<button type="button" class="catalog-back-to-top" aria-label="'.esc_attr($en?'Back to top':'Wróć na górę').'"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 12 6-6 6 6M12 6v13"></path></svg></button><details class="catalog-section-menu" open><summary>'.esc_html($en?'Games and publications':'Gry i publikacje').'</summary>'.$html.'</details>';
+            }
+            return $html;
         },
     ]);
     register_block_type('wtf/catalog-text', $common + [

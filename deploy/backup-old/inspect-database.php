@@ -18,7 +18,7 @@ if ($db->connect_errno) {
     fwrite(STDERR, "Połączenie z bazą nie powiodło się (kod {$db->connect_errno}).\n");
     exit(1);
 }
-$result = $db->query('SELECT VERSION() AS version');
+$result = $db->query('SELECT VERSION() AS version, @@version_comment AS distribution, @@sql_mode AS sql_mode, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@max_allowed_packet AS max_allowed_packet');
 echo json_encode($result->fetch_assoc(), JSON_UNESCAPED_UNICODE) . "\n";
 $statement = $db->prepare('SELECT COUNT(*) AS tables_count, ROUND(SUM(data_length + index_length)/1024/1024, 2) AS size_mb FROM information_schema.tables WHERE table_schema = ?');
 $statement->bind_param('s', $values['DB_NAME']);

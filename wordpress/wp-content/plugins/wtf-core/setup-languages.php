@@ -23,7 +23,7 @@ function wtf_dev_translate($value,$translations){
 $blocks=parse_blocks(get_post_field('post_content',$pl));
 foreach($blocks as &$block)$block['attrs']=wtf_dev_translate($block['attrs'],$translations);
 unset($block);
-$en=wp_insert_post(wp_slash(['post_type'=>'page','post_status'=>'publish','post_title'=>'Home','post_name'=>'home','post_content'=>serialize_blocks($blocks)]),true);
+$en=wp_insert_post(wp_slash(['post_type'=>'page','post_status'=>wtf_core_english_enabled()?'publish':'draft','post_title'=>'Home','post_name'=>'home','post_content'=>serialize_blocks($blocks)]),true);
 if(is_wp_error($en))WP_CLI::error($en->get_error_message());
 pll_set_post_language($en,'en');pll_save_post_translations(['pl'=>$pl,'en'=>$en]);
 // Import pierwszych tłumaczeń napisów interfejsu; dalsza edycja w panelu Polylang.

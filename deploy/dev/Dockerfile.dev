@@ -1,3 +1,15 @@
-FROM wordpress:cli-php8.3 AS cli
-FROM wordpress:php8.3-apache
+FROM wordpress:cli-php8.4 AS cli
+FROM wordpress:php8.4-fpm
 COPY --from=cli /usr/local/bin/wp /usr/local/bin/wp
+
+# OVH obsługuje WWW przez Apache + FPM, nie mod_php.
+RUN php -r 'exit(version_compare(PHP_VERSION, "8.4.27", ">=") ? 0 : 1);' \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends apache2 \
+    && rm -rf /var/lib/apt/lists/* \
+    && a2enmod proxy proxy_fcgi setenvif rewrite headers expires \
+    && a2dissite 000-default
+COPY apache-ovh.conf /etc/apache2/sites-enabled/000-ovh.conf
+COPY apache2-foreground /usr/local/bin/apache2-foreground
+RUN chmod +x /usr/local/bin/apache2-foreground
+CMD ["apache2-foreground"]

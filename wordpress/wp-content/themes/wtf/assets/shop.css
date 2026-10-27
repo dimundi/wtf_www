@@ -129,15 +129,22 @@
   .shop-page.has-game .shop-accessories{grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
 }
 @media(max-width:700px){
-  .shop-page .shop-browser{grid-template-columns:minmax(0,1fr);gap:28px}
+  .shop-page .shop-browser{grid-template-columns:minmax(0,1fr);gap:18px}
+  .shop-page,.shop-page.has-game{padding-top:0}
+  .shop-page .shop-heading,.shop-page.has-game .shop-heading{padding:10px 0 18px}
+  .shop-page .shop-heading .eyebrow{font-size:10px;letter-spacing:2px}
+  .shop-page .shop-heading h1{font-size:clamp(27px,7.5vw,36px);line-height:1.12;letter-spacing:-1px;margin:12px 0}
+  .shop-page .shop-heading p{font-size:14px;line-height:1.5;margin:0}
   .shop-page .shop-filters{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px}
   .shop-page .shop-filters h2,.shop-page .shop-filter-buttons{grid-column:1/-1}
-  .shop-page .shop-filters h2{margin-bottom:2px}
-  .shop-page .shop-filter-buttons{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;margin-bottom:4px}
-  .shop-page .shop-world{display:flex;align-items:center;min-height:44px;padding:8px 10px;box-sizing:border-box}
+  .shop-page .shop-filters h2{font-size:15px;margin-bottom:0}
+  .shop-page .shop-filter-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-bottom:0}
+  .shop-page .shop-world{position:relative;display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 2px;border:1px solid var(--line);font-size:11px;box-sizing:border-box}
+  .shop-page .shop-world.active{border-color:var(--accent)}
+  .shop-page .shop-world input{position:absolute;width:1px;height:1px;opacity:0;margin:0}
+  .shop-page .shop-world:focus-within{outline:2px solid var(--accent);outline-offset:2px}
   .shop-page .shop-filters>label{margin:4px 0 0}
-  .shop-page .shop-filters label[for=shop-search]{grid-column:1;grid-row:3}
-  .shop-page .shop-search-field{grid-column:1/-1;grid-row:4}
+  .shop-page .shop-filters label[for=shop-search],.shop-page .shop-search-field{display:none}
   .shop-page .shop-apply{grid-column:1/-1;margin-top:0;min-height:44px}
   .shop-page.has-game .shop-game-preview-title{font-size:30px;margin-bottom:16px}
   .shop-page.has-game .shop-game-nav{gap:4px 18px;padding:8px 0}
@@ -178,3 +185,6 @@
 .woocommerce-cart .blockUI.blockOverlay,.woocommerce-checkout .blockUI.blockOverlay{background:var(--bg)!important;opacity:.72!important}
 .woocommerce-cart .blockUI.blockOverlay::before,.woocommerce-checkout .blockUI.blockOverlay::before{content:''!important;background:none!important;width:24px!important;height:24px!important;margin:-12px 0 0 -12px!important;box-sizing:border-box;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;box-shadow:none!important;animation:wtf-commerce-spinner .75s linear infinite!important}
 @keyframes wtf-commerce-spinner{to{transform:rotate(360deg)}}
+
+.shop-section-select{display:none}
+@media(max-width:700px){.wtf-js .shop-page.has-section-select .shop-results-count,.wtf-js .shop-page.has-section-select .shop-game-nav{display:none}.wtf-js .shop-page.has-section-select .shop-results-toolbar{flex-wrap:nowrap;justify-content:space-between;gap:12px}.wtf-js .shop-page.has-section-select .shop-game-preview-title{min-width:0;font-size:clamp(22px,6vw,28px)}.wtf-js .shop-page.has-section-select .shop-section-select{display:block;min-width:0;max-width:52%;min-height:44px;padding:8px 24px 8px 10px;border:1px solid var(--line);border-radius:0;background-color:transparent;color:var(--muted);font:inherit;font-size:13px}.shop-section-select option{background:var(--bg);color:var(--text)}}

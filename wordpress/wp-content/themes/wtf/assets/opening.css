@@ -29,3 +29,36 @@
 @media(hover:none){.variant-one .hero-controls .slider-pause{position:static;margin:0;opacity:1;pointer-events:auto}}
 @media(max-width:900px){.header{height:115px}.brand-svg{width:96px;height:67px}.variant-one .hero{width:calc(100% - 24px);min-height:650px}.variant-one .hero-copy{margin-left:35px;width:calc(100% - 70px);padding:100px 0 110px;max-width:560px}.variant-one .hero-bottom{left:35px;right:30px}.variant-one .hero-controls{right:30px}}
 @media(max-width:600px){.header{height:auto;padding:20px 0}.brand-svg{width:88px;height:61px}.variant-one .hero{width:100%;min-height:620px}.variant-one .hero-copy{margin-left:24px;width:calc(100% - 48px);padding:70px 0 130px}.variant-one .hero h1{font-size:42px;letter-spacing:-2px}.variant-one .hero-bottom{left:24px;right:24px}.variant-one .hero-controls{right:24px}.variant-one .hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.12)),linear-gradient(0deg,rgba(0,0,0,.5),transparent 30%)}}
+@media(max-width:700px){
+ body.home .header.wrap:not(.menu-open){position:absolute;top:0;left:16px;right:16px;margin:0;z-index:30;color:#fff;background:transparent}
+ body.home.admin-bar .header.wrap:not(.menu-open){top:46px}
+ body.home .header:not(.menu-open) .brand-svg{background:none!important;mask:none;-webkit-mask:none}
+ body.home .header:not(.menu-open) .brand-two-tone{visibility:visible}
+ body.home .header:not(.menu-open) .mobile-menu-toggle,body.home .header:not(.menu-open)>.header-cart{color:#fff}
+ body.home .variant-one .hero{width:100%;min-height:100vh;min-height:100svh}
+ body.home.admin-bar .variant-one .hero{min-height:calc(100svh - 46px)}
+ body.home .variant-one .hero-copy{margin-left:24px;width:calc(100% - 48px);padding:132px 0 140px;max-width:560px}
+ body.home .variant-one .hero h1{font-size:clamp(32px,9vw,42px);letter-spacing:-1.5px;line-height:1.08;margin:22px 0}
+ body.home .variant-one .hero-copy p{font-size:15px;line-height:1.65}
+ body.home .variant-one .hero-copy .button{font-size:13px;padding:15px 20px;gap:20px}
+ body.home .variant-one .hero-bottom{left:24px;right:24px;bottom:20px}
+ body.home .variant-one .hero-slider-controls{right:24px}
+}
+
+.home-gamefound-mobile{display:block}
+@media(max-width:700px){.home-gamefound-mobile{display:block;padding-top:24px}}
+@media(min-width:701px){
+ body.home .home-gamefound-mobile{margin:32px auto 0;padding:0}
+ body.home .home-gamefound-mobile .wtf-gamefound{display:grid;grid-template-columns:210px minmax(0,1fr);align-items:center;gap:40px;padding:28px 32px;background:radial-gradient(ellipse at 12% 0%,#285e4538,transparent 65%),linear-gradient(180deg,#183c2e,#10251e)}
+ body.home .home-gamefound-mobile .wtf-gamefound__logo{width:210px;margin:0}
+ body.home .home-gamefound-mobile [data-wtfg-state]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:32px}
+ body.home .home-gamefound-mobile .wtf-gamefound h2,body.home .home-gamefound-mobile .wtf-gamefound__text,body.home .home-gamefound-mobile .wtf-gamefound__countdown{grid-column:1}
+ body.home .home-gamefound-mobile .wtf-gamefound__text p{margin:0}
+ body.home .home-gamefound-mobile .wtf-gamefound__countdown{margin:8px 0 0;font-size:14px}
+ body.home .home-gamefound-mobile .wtf-gamefound__button{grid-column:2;grid-row:1 / span 3;justify-self:end;white-space:nowrap}
+}
+@media(min-width:701px) and (max-width:1000px){
+ body.home .home-gamefound-mobile .wtf-gamefound{grid-template-columns:150px minmax(0,1fr);gap:24px;padding-inline:24px}
+ body.home .home-gamefound-mobile .wtf-gamefound__logo{width:150px}
+ body.home .home-gamefound-mobile [data-wtfg-state]{column-gap:20px;font-size:14px}
+}

@@ -10,6 +10,9 @@
 
 ## srodowiska
 
+- [wersja testowa na OVH](srodowiska/test-na-ovh.md)
+- [lokalne środowisko pod OVH](srodowiska/lokalne-ovh.md)
+- [plan uruchomienia i późniejszych aktualizacji](srodowiska/plan-uruchomienia.md)
 - [lista-przekierowan](srodowiska/lista-przekierowan.md)
 - [aktualizacje](srodowiska/aktualizacje.md)
 - [backup-starej-strony](srodowiska/backup-starej-strony.md)

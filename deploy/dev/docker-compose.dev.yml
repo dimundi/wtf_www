@@ -1,20 +1,26 @@
 name: wtf-www-dev
 services:
   db:
-    image: mariadb:11.4
+    image: percona/percona-server:8.0.46-37
     restart: unless-stopped
     environment:
-      MARIADB_DATABASE: ${WORDPRESS_DB_NAME:?}
-      MARIADB_USER: ${WORDPRESS_DB_USER:?}
-      MARIADB_PASSWORD: ${WORDPRESS_DB_PASSWORD:?}
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?}
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME:?}
+      MYSQL_USER: ${WORDPRESS_DB_USER:?}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD:?}
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?}
+    command:
+      - --sql-mode=NO_ENGINE_SUBSTITUTION
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --max-allowed-packet=33554432
     volumes:
-      - db-dev:/var/lib/mysql
+      - db-ovh-dev:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_ROOT_PASSWORD\" mysql -h 127.0.0.1 -u root -Nse 'SELECT 1' >/dev/null"]
       interval: 5s
       timeout: 5s
       retries: 30
+      start_period: 60s
   wordpress:
     build:
       context: .
@@ -42,17 +48,19 @@ services:
       # Zewnętrzna zależność: szybki odczyt z Linuksa zamiast tysięcy plików z Windows.
       - woocommerce-dev:/var/www/html/wp-content/plugins/woocommerce
       - ./init-dev.sh:/usr/local/bin/init-dev.sh:ro
+      - ./check-environment.php:/usr/local/bin/check-environment.php:ro
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./ovh-runtime.ini:/usr/local/etc/php/conf.d/zz-ovh-runtime.ini:ro
       - ./commerce-guard.php:/var/www/html/wp-content/mu-plugins/wtf-dev-commerce-guard.php:ro
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "php", "-r", "exit(is_file('/var/www/html/wp-config.php') && @fsockopen('127.0.0.1', 80) ? 0 : 1);"]
+      test: ["CMD", "php", "-r", "exit(is_file('/var/www/html/wp-config.php') && @fsockopen('127.0.0.1', 80) && @fsockopen('127.0.0.1', 9000) ? 0 : 1);"]
       interval: 5s
       timeout: 5s
       retries: 30
       start_period: 30s
 volumes:
-  db-dev:
+  db-ovh-dev:
   woocommerce-dev:

@@ -19,8 +19,8 @@ body .klan-header .header-cart [data-cart-count]{background:#c4a66a;color:#15171
 @media(min-width:701px) and (max-width:1100px){body .klan-header{padding:0 24px;gap:16px}body .klan-header>nav{gap:14px;font-size:12px}body .klan-header .tools{gap:10px}body .klan-header .klan-header-brand img{width:95px}body .klan-header .language{display:none}}
 @media(max-width:700px){body .klan-header.wrap{width:100%;padding:8px 20px;gap:12px}body .klan-header .klan-header-brand img{width:96px;height:66px}body .klan-header>nav{margin:0}body .klan-header .games-navigation summary{justify-content:flex-start}body .klan-header .klan-publisher-mark{width:48px;height:38px}body .klan-header.menu-open .header-login span{position:static;width:auto;height:auto;clip-path:none}body .klan-header.menu-open .tools{background:#1a1d18;color:#eee8d9}}
 .klan-page .header{--bg:#1a1d18;--text:#eee8d9;--accent:#c4a66a;--line:#c4a66a40;background:transparent;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:30;color:var(--text)}
-.klan-page .header .brand-svg{background:#c4a66a!important;mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat;-webkit-mask:url('/wp-content/uploads/media/wtf-logo.svg') center/contain no-repeat}
-.klan-page .header .brand-two-tone{visibility:hidden}
+.klan-page .header .brand-svg{background:none!important;mask:none;-webkit-mask:none}
+body.klan-page .header .brand-two-tone{visibility:visible}
 .klan-page .header .header-cart [data-cart-count]{background:#c4a66a;color:#151713}
 .klan-opening>.klan-inner{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:35px}
 .klan-opening-logo{grid-column:2;grid-row:1;width:100%;max-width:470px;height:auto;justify-self:center;margin-top:80px;filter:drop-shadow(0 8px 20px #0009)}
@@ -76,12 +76,27 @@ body .klan-header .header-cart [data-cart-count]{background:#c4a66a;color:#15171
  .klan-opening .klan-opening-logo{width:145px}
  .klan-opening>.klan-inner>.klan-copy{max-width:none;width:100%;min-width:0}
  .klan-opening .klan-copy h1{font-size:clamp(34px,9vw,40px);line-height:1.08;letter-spacing:-1px;text-wrap:wrap;margin-bottom:22px}
- .klan-opening .klan-copy h1 br{display:contents}
- .klan-opening .klan-copy h1 br::after{content:" "}
+ .klan-opening .klan-copy h1 br{display:none}
+ .klan-reading-content .klan-intro{row-gap:20px}
  .klan-opening .klan-kicker{font-size:9px;letter-spacing:1.5px;margin-bottom:20px}
  .klan-opening .klan-lead{font-size:15px;line-height:1.7;max-width:none}
  .klan-opening .klan-actions{margin-top:24px;gap:10px}
  .klan-opening .klan-author{margin-top:20px}
  .klan-page .klan-opening::after{background:linear-gradient(90deg,#22251fe8,#22251fa8 62%,#22251f30),linear-gradient(0deg,#22251f,transparent 35%)}
 }
-@media(max-width:700px){.klan-opening>.klan-inner{align-items:flex-start;padding-top:125px;padding-bottom:40px;gap:22px}.klan-opening .klan-opening-logo{width:180px}.klan-opening>.klan-inner>.klan-copy{padding:0}}
+@media(max-width:700px){.klan-opening>.klan-inner{align-items:flex-start;padding-top:125px;padding-bottom:40px;gap:22px}.klan-opening .klan-opening-logo{width:162px}.klan-opening>.klan-inner>.klan-copy{padding:0}}
+.klan-back-to-top{display:none}
+@media(max-width:700px){
+ .klan-opening .klan-actions{flex-wrap:nowrap;gap:10px}
+ .klan-opening .klan-actions .klan-button{font-size:12px;padding:12px;white-space:nowrap;min-height:48px}
+ .klan-opening .klan-actions a[href*="gamefound.com"]{gap:8px}
+ .klan-opening .klan-actions a[href*="gamefound.com"]::after{font-size:16px}
+}
+@media(max-width:1100px){
+ body.klan-page .klan-sidebar{top:8px;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start;padding:0;background:transparent;border:0;box-shadow:none}
+ .klan-sidebar .tsu-section-menu{grid-column:2;grid-row:1;padding:0 12px;background:#292c24;border:1px solid #c4a66a80;box-shadow:0 4px 16px #00000050}
+ .klan-sidebar .tsu-section-menu>summary{min-height:42px;padding:9px 0;box-sizing:border-box;align-items:center}
+ .klan-back-to-top{grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;width:36px;height:44px;margin:0;padding:0;border:0;border-radius:3px;background:#c4a66a;color:#151713;cursor:pointer}
+ .klan-back-to-top svg{width:18px;height:18px}
+ .klan-back-to-top:hover{background:#e0c48c}
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+. /etc/apache2/envvars
+set -u
+mkdir -p "$APACHE_RUN_DIR" "$APACHE_LOCK_DIR"
+rm -f "$APACHE_PID_FILE"
+php-fpm --daemonize
+exec apache2 -DFOREGROUND

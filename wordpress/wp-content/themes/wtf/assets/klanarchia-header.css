@@ -60,11 +60,26 @@ body.klan-page .header .klan-header-logos .brand{width:68.4px;height:46.8px;flex
 .klan-other-archetypes>h2{margin-bottom:16px}
 body.klan-page{background-color:#22251f;background-image:radial-gradient(ellipse 85% 620px at 10% 0%,#a58a4930,transparent 75%),radial-gradient(ellipse 70% 900px at 100% 40%,#6674501c,transparent 75%),linear-gradient(180deg,#292c24 0%,#22251f 55%,#20231e 100%);background-repeat:no-repeat}
 .klan-page .klan-world{--klan-bg:#22251f;background:transparent}
+:root[data-theme=light] body.klan-page{background-color:#eeeadf;background-image:radial-gradient(ellipse 85% 620px at 10% 0%,#c4a66a24,transparent 75%),linear-gradient(180deg,#f3efe5,#e8e5db)}
+.klan-page .klan-opening{--klan-text:#eee8d9;--klan-muted:#c0bcad;--klan-gold:#c4a66a;color:var(--klan-text)}
 .klan-page .klan-opening::after{background:linear-gradient(90deg,#22251ff5 3%,#22251fc9 40%,#22251f08 78%),linear-gradient(0deg,#22251f,transparent 35%)}
+.klan-page .klan-opening>.klan-landscape,.klan-page .klan-opening::after{
+ mask-image:linear-gradient(to bottom,#000 calc(100% - clamp(120px,18vw,220px)),transparent);
+ -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - clamp(120px,18vw,220px)),transparent);
+}
+.klan-page .klan-opening>.klan-landscape{z-index:0}
+.klan-page .klan-opening::after{z-index:1}
+.klan-page .klan-opening>.klan-inner{position:relative;z-index:2}
 .klan-page .klan-sidebar{background:transparent}
 @media(max-width:1100px){.klan-page .klan-sidebar{background:#292c24}}
+@media(max-width:1100px){:root[data-theme=light] .klan-page .klan-sidebar{background:var(--klan-bg)}}
 .klan-talent-teaser{box-sizing:border-box;max-width:850px;width:calc(100% - 48px);margin:0 auto;padding:20px 0 65px;min-height:45vh;color:#eee8d9}.klan-talent-teaser .klan-talent-teaser-logo{width:150px;margin:0 0 28px}.klan-talent-teaser-logo img{display:block;width:100%;height:auto}.klan-talent-teaser h1{font:400 clamp(36px,5vw,56px)/1.15 Georgia,serif;letter-spacing:-1px;margin:0 0 24px}.klan-talent-teaser p{max-width:620px;color:#c0bcad;font-size:18px;line-height:1.8;margin:0}.klan-talent-teaser a:focus-visible{outline:2px solid #c4a66a;outline-offset:5px}
 @media(max-width:700px){.klan-talent-teaser{width:calc(100% - 40px);padding-top:12px;min-height:40vh}.klan-talent-teaser .klan-talent-teaser-logo{width:120px;margin-bottom:22px}.klan-talent-teaser p{font-size:16px}}
 .klan-talent-teaser:has(.klan-editors-grid){max-width:1100px}.klan-editors-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:32px}.klan-editor-module{padding:28px;border:1px solid #c4a66a55;background:linear-gradient(135deg,#c4a66a12,#c4a66a04);min-width:0}.klan-editor-module h2{font:400 clamp(27px,3vw,34px)/1.2 Georgia,serif;color:#c4a66a;margin:0 0 18px}.klan-talent-teaser .klan-editor-module p{font-size:16px;line-height:1.8}
 @media(max-width:700px){.klan-editors-grid{grid-template-columns:1fr;gap:18px;margin-top:24px}.klan-editor-module{padding:22px}.klan-talent-teaser .klan-editor-module p{font-size:15px}}
 .klan-editors-gamefound{margin-top:28px}.klan-editors-gamefound .wp-block-button__link{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border:1px solid #3ccf91;border-radius:0;background:transparent;color:#3ccf91;font-size:14px;font-weight:700;text-decoration:none}.klan-editors-gamefound .wp-block-button__link:hover{background:#3ccf9118;border-color:#6ce3ad;color:#6ce3ad}
+:root[data-theme=light] .klan-talent-teaser{color:#262b23}
+:root[data-theme=light] .klan-talent-teaser p{color:#575d50}
+:root[data-theme=light] .klan-editor-module h2{color:#786031}
+
+@media(max-width:700px){body.klan-page .header.menu-open .klan-header-game-links{display:none}}

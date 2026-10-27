@@ -12,6 +12,7 @@
     hero: 'Zalecany rozmiar: 1920 × 800 px. Bez napisów i przycisków — dodaje je strona. Główny motyw po prawej, spokojniejsze tło po lewej pod tekst. Zostaw zapas przy krawędziach: na telefonach ten sam obraz jest mocniej kadrowany.',
   };
   function field(key, label, value, update, id, imageHelp) {
+    if (typeof value === 'boolean') return h(ToggleControl,{key,label,checked:value,onChange:checked=>update({[key]:checked})});
     if (key === 'image') return h('div', {key},
       imageHelp ? h('p', {className:'components-base-control__help'}, imageHelp) : null,
       value ? h('img', {src:value, alt:''}) : null,
@@ -22,7 +23,7 @@
   }
   Object.entries(schemas).forEach(([name,schema])=>wp.blocks.registerBlockType('wtf/'+name,{
     apiVersion:3,title:schema.title,icon:'layout',category:'wtf',
-    attributes:Object.fromEntries(Object.entries(schema.defaults).map(([key,value])=>[key,{type:Array.isArray(value)?'array':typeof value==='number'?'number':'string',default:value}])),
+    attributes:Object.fromEntries(Object.entries(schema.defaults).map(([key,value])=>[key,{type:Array.isArray(value)?'array':typeof value==='boolean'?'boolean':typeof value==='number'?'number':'string',default:value}])),
     supports:{html:false},
     edit:({attributes:a,setAttributes,isSelected})=>{
       const props=useBlockProps();
@@ -37,7 +38,7 @@
           h(Button,{variant:'primary',onClick:()=>setAttributes({items:[...a.items,Object.fromEntries(Object.keys(schema.itemFields).map(key=>[key,'']))]})},'Dodaj pozycję')):null);
       return h('div',props,
         h(InspectorControls,{},h(PanelBody,{title:'Edycja sekcji'},h('p',{},'Wybierz blok, aby zmieniać teksty, grafiki i linki. Bloki można przenosić lub usuwać w widoku listy.'))),
-        isSelected?editFields:h(ServerSideRender,{block:'wtf/'+name,attributes:a}));
+        isSelected?editFields:name==='promotion'&&a.visible===false?h('div',{className:'wtf-editor-fields'},h('h3',{},'Promocja WTF — ukryta'),h('p',{},'Kliknij blok, aby edytować lub ponownie pokazać promocję.')):h(ServerSideRender,{block:'wtf/'+name,attributes:a}));
     },save:()=>null,
   }));
 })();

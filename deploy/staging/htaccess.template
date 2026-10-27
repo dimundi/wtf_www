@@ -1,0 +1,26 @@
+AuthType Basic
+AuthName "WTF - wersja testowa"
+AuthUserFile @@AUTH_FILE@@
+Require valid-user
+
+<IfModule mod_headers.c>
+Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+Header always set Cache-Control "private, no-store"
+</IfModule>
+
+<FilesMatch "(^\.|\.(sql|sql\.gz|tar|tar\.gz|log|bak)$)">
+Require all denied
+</FilesMatch>
+<Files wp-config.php>
+Require all denied
+</Files>
+
+# BEGIN WordPress
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+# END WordPress

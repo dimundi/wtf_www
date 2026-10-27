@@ -82,8 +82,16 @@ function wtf_shop_render($a=[]) {
         if($order==='title') return strnatcasecmp($a->get_name(),$b->get_name());
         $result=(float)$a->get_price()<=>(float)$b->get_price(); return $order==='price-desc'?-$result:$result;
     });
+    $section_labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
+    $section_keys=[];
+    if(in_array($selected,['elekt','kurzolaki','tsukuyumi'],true)) {
+        foreach($products as $product) {
+            $kind=wtf_shop_product_term($product,'wtf_product_kind');
+            $section_keys[isset($section_labels[$kind])?$kind:'pozostale']=true;
+        }
+    }
     ob_start(); ?>
-    <div class="wrap shop-page <?php echo $selected?'has-game':''; ?>">
+    <div class="wrap shop-page <?php echo $selected?'has-game':''; ?> <?php echo $section_keys?'has-section-select':''; ?>">
       <header class="shop-heading"><span class="eyebrow"><?php echo esc_html($a['eyebrow']); ?></span><h1><?php echo esc_html($a['title']); ?></h1><p><?php echo esc_html($a['description']); ?></p></header>
       <?php woocommerce_output_all_notices(); ?>
       <div class="shop-browser">
@@ -95,6 +103,7 @@ function wtf_shop_render($a=[]) {
         <section class="shop-results" aria-label="Produkty"><div class="shop-results-toolbar">
           <?php if(isset($games[$selected])): ?><h2 class="shop-game-preview-title"><?php echo esc_html($games[$selected]); ?></h2><?php endif; ?>
           <p class="shop-results-count"><?php echo count($products); ?> produktów</p>
+          <?php if($section_keys): ?><select class="shop-section-select" aria-label="Sekcja oferty"><?php foreach($section_labels as $key=>$label): if(!isset($section_keys[$key]))continue; ?><option value="#<?php echo esc_attr($selected.'-'.$key); ?>"><?php echo esc_html($label); ?></option><?php endforeach; ?></select><?php endif; ?>
           <?php if(!$selected): ?><div class="shop-sort"><label for="shop-sort">Sortowanie</label><select id="shop-sort" name="sort" form="shop-filters"><?php foreach(['menu_order'=>'Polecane','price'=>'Cena rosnąco','price-desc'=>'Cena malejąco','title'=>'Nazwa A–Z'] as $key=>$label): ?><option value="<?php echo esc_attr($key); ?>" <?php selected($order,$key); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?></select></div><?php endif; ?>
         </div>
         <?php

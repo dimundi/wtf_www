@@ -1,0 +1,47 @@
+name: wtf-www-staging-check
+services:
+  db:
+    image: percona/percona-server:8.4.11-11
+    environment:
+      MYSQL_DATABASE: wtfstagecheck
+      MYSQL_USER: wtfstagecheck
+      MYSQL_PASSWORD: staging-local-only
+      MYSQL_ROOT_PASSWORD: staging-root-local-only
+    command: ["--sql-mode=NO_ENGINE_SUBSTITUTION", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci", "--max-allowed-packet=33554432"]
+    volumes:
+      - db-check:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_ROOT_PASSWORD\" mysql -h 127.0.0.1 -u root -Nse 'SELECT 1' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+      start_period: 60s
+  php:
+    image: wtf-www-wordpress:dev
+    entrypoint: ["wp", "--require=/usr/local/bin/staging-cli.php", "--allow-root"]
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wtfstagecheck
+      WORDPRESS_DB_USER: wtfstagecheck
+      WORDPRESS_DB_PASSWORD: staging-local-only
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'staging');
+        define('DISABLE_WP_CRON', true);
+        define('WP_HTTP_BLOCK_EXTERNAL', true);
+        define('AUTOMATIC_UPDATER_DISABLED', true);
+    volumes:
+      - ../../wordpress:/var/www/html:ro
+      - ../../media:/var/www/html/wp-content/uploads/media:ro
+      - woocommerce-dev:/var/www/html/wp-content/plugins/woocommerce:ro
+      - ./staging-cli.php:/usr/local/bin/staging-cli.php:ro
+      - ./commerce-guard.php:/usr/local/bin/wtf-staging-guard.php:ro
+      - ./check-site.php:/usr/local/bin/check-staging.php:ro
+      - ../../secrets/ovh-staging-runtime.json:/usr/local/bin/staging-runtime.json:ro
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  db-check:
+  woocommerce-dev:
+    external: true
+    name: wtf-www-dev_woocommerce-dev

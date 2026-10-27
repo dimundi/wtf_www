@@ -21,6 +21,12 @@ add_action('init', function () {
 function wtfg_fields() {
     return ['url'=>'Adres kampanii Gamefound','end'=>'Koniec zbiórki (czas witryny)', 'active_title'=>'Nagłówek podczas zbiórki','active_text'=>'Treść podczas zbiórki','active_button'=>'Przycisk podczas zbiórki','ended_title'=>'Nagłówek po zakończeniu','ended_text'=>'Treść po zakończeniu','ended_button'=>'Przycisk po zakończeniu'];
 }
+add_action('wp_enqueue_scripts', function () {
+    if (is_singular() && has_shortcode((string)get_post_field('post_content', get_queried_object_id()), 'wtf_gamefound')) {
+        wp_enqueue_style('wtf_gamefound');
+        wp_enqueue_script('wtf_gamefound');
+    }
+});
 add_action('add_meta_boxes', function () {
     add_meta_box('wtfg-settings','Komunikat kampanii',function ($post) {
         wp_nonce_field('wtfg_save','wtfg_nonce');

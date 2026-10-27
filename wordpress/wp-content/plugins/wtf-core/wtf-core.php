@@ -6,6 +6,7 @@
  * Requires PHP: 8.3
  */
 if (!defined('ABSPATH')) { exit; }
+require_once __DIR__.'/release.php';
 require_once __DIR__.'/tsukuyumi.php';
 require_once __DIR__.'/elekt.php';
 require_once __DIR__.'/echo.php';
@@ -70,7 +71,7 @@ function wtf_core_schema() {
         'header'=>[
             'title'=>'Nagłówek WTF',
             'fields'=>['gamesLabel'=>'Napis menu gier','allLabel'=>'Link do wszystkich gier','allUrl'=>'Adres katalogu','contactLabel'=>'Napis Kontakt','contactUrl'=>'Adres kontaktu','shopLabel'=>'Napis Sklep','shopUrl'=>'Adres sklepu'],
-            'defaults'=>['gamesLabel'=>'Nasze gry','allLabel'=>'Wszystkie gry','allUrl'=>'https://whatthefrog.pl/katalog/','contactLabel'=>'Kontakt','contactUrl'=>'https://whatthefrog.pl/kontakt/','shopLabel'=>'Sklep','shopUrl'=>'https://whatthefrog.pl/sklep/','items'=>$games],
+            'defaults'=>['gamesLabel'=>'Nasze gry','allLabel'=>'Wszystkie gry','allUrl'=>'https://whatthefrog.pl/katalog/','contactLabel'=>'Kontakt','contactUrl'=>'https://whatthefrog.pl/kontakt/','shopLabel'=>'Sklep','shopUrl'=>'https://whatthefrog.pl/sklep/','items'=>[$games[0],$games[1],$games[2],$games[4],$games[3]]],
             'itemFields'=>['title'=>'Nazwa','image'=>'Grafika','url'=>'Adres'],
         ],
         'hero'=>[
@@ -91,8 +92,8 @@ function wtf_core_schema() {
         ],
         'promotion'=>[
             'title'=>'Promocja WTF',
-            'fields'=>['eyebrow'=>'Nadtytuł','title'=>'Nagłówek','description'=>'Opis','couponLabel'=>'Etykieta kodu','coupon'=>'Kod','buttonLabel'=>'Napis przycisku','buttonUrl'=>'Adres przycisku','note'=>'Dopisek','badge'=>'Oznaczenie rabatu','image'=>'Grafika'],
-            'defaults'=>['eyebrow'=>'PROMOCJA NA ELEKTA','title'=>"Sięgnij po tron.\nZapłać mniej.",'description'=>'Twój kolejny pojedynek zaczyna się tutaj. Z kodem rabatowym Elekt jest o 10% tańszy.','couponLabel'=>'KOD RABATOWY','coupon'=>'ELEKT10','buttonLabel'=>'Kup Elekta','buttonUrl'=>'https://whatthefrog.pl/sklep/','note'=>'Przykładowa promocja — kod do ustalenia.','badge'=>'−10%','image'=>wtf_core_media('elekt.jpg'),'imageId'=>0],
+            'fields'=>['visible'=>'Pokaż promocję','eyebrow'=>'Nadtytuł','title'=>'Nagłówek','description'=>'Opis','couponLabel'=>'Etykieta kodu','coupon'=>'Kod','buttonLabel'=>'Napis przycisku','buttonUrl'=>'Adres przycisku','note'=>'Dopisek','badge'=>'Oznaczenie rabatu','image'=>'Grafika'],
+            'defaults'=>['visible'=>true,'eyebrow'=>'PROMOCJA NA ELEKTA','title'=>"Sięgnij po tron.\nZapłać mniej.",'description'=>'Twój kolejny pojedynek zaczyna się tutaj. Z kodem rabatowym Elekt jest o 10% tańszy.','couponLabel'=>'KOD RABATOWY','coupon'=>'ELEKT10','buttonLabel'=>'Kup Elekta','buttonUrl'=>'https://whatthefrog.pl/sklep/','note'=>'Przykładowa promocja — kod do ustalenia.','badge'=>'−10%','image'=>wtf_core_media('elekt.jpg'),'imageId'=>0],
         ],
         'about'=>[
             'title'=>'O wydawnictwie WTF',
@@ -120,7 +121,7 @@ add_action('init', function () {
     wp_add_inline_script('wtf-block-editor','window.wtfBlockSchemas = '.wp_json_encode(wtf_core_schema()).';','before');
     foreach (wtf_core_schema() as $name=>$schema) {
         $attributes=[];
-        foreach ($schema['defaults'] as $key=>$value) { $attributes[$key]=['type'=>is_array($value)?'array':(is_int($value)?'number':'string'),'default'=>$value]; }
+        foreach ($schema['defaults'] as $key=>$value) { $attributes[$key]=['type'=>is_array($value)?'array':(is_bool($value)?'boolean':(is_int($value)?'number':'string')),'default'=>$value]; }
         register_block_type('wtf/'.$name, ['api_version'=>3,'title'=>$schema['title'],'category'=>'wtf','attributes'=>$attributes,'editor_script'=>'wtf-block-editor','supports'=>['html'=>false],'render_callback'=>fn($attrs)=>wtf_core_render($name,$attrs)]);
     }
     // Kontrakt modułów React: język i oprawę przekazuje host; napisy należą do aplikacji.
@@ -151,6 +152,7 @@ add_action('admin_init',function(){
 
 function wtf_core_render($type, $a) {
     $a = array_merge(wtf_core_schema()[$type]['defaults'], $a);
+    if ($type==='promotion' && $a['visible'] === false) return '';
     if($type==='shop') return wtf_shop_render($a);
     if (isset($a['items'])) {
         foreach ($a['items'] as &$item) { if (isset($item['url'])) { $item['url']=wtf_klan_local_game_link(wtf_contact_local_game_link(wtf_catalog_local_game_link(wtf_kurz_local_game_link(wtf_echo_local_game_link(wtf_ele_local_game_link(wtf_tsu_local_game_link($item['url']))))))); } }
@@ -162,21 +164,21 @@ function wtf_core_render($type, $a) {
     ob_start();
     if ($type==='header') {
         $lang=wtf_core_language();
-        $languages=function_exists('pll_the_languages') ? pll_the_languages(['raw'=>1,'hide_if_no_translation'=>1]) : [];
+        $languages=wtf_core_english_enabled() && function_exists('pll_the_languages') ? pll_the_languages(['raw'=>1,'hide_if_no_translation'=>1]) : [];
         ?>
         <a class="skip" href="#main"><?php echo esc_html(wtf_core_text('Przejdź do treści')); ?></a>
         <header class="header wrap">
             <?php $klan_download_header=is_page() && get_page_template_slug()==='klanarchia';if($klan_download_header): ?><div class="klan-header-logos"><?php endif; ?>
-            <a class="brand" href="<?php echo esc_url(function_exists('pll_home_url')?pll_home_url():home_url('/')); ?>" aria-label="What The Frog"><span class="brand-svg"><img class="brand-two-tone" src="<?php echo esc_url(wtf_core_media('wtf-logo-white-green.svg')); ?>" alt=""></span></a>
+            <a class="brand" href="<?php echo esc_url(function_exists('pll_home_url')?pll_home_url():home_url('/')); ?>" aria-label="What The Frog"><span class="brand-svg"><img class="brand-two-tone" src="<?php echo esc_url($klan_download_header?get_theme_file_uri('assets/wtf-logo-gold.svg'):wtf_core_media('wtf-logo-white-green.svg')); ?>" alt=""></span></a>
             <?php if($klan_download_header): ?><nav class="klan-header-game-links" aria-label="Klanarchia"><a href="<?php echo esc_url(home_url('/klanarchia/')); ?>"<?php if(get_post_field('post_name',get_queried_object_id())==='klanarchia')echo ' aria-current="page"'; ?>>Klanarchia</a><a href="<?php echo esc_url(home_url('/klanarchia/download/')); ?>"<?php if(get_post_meta(get_queried_object_id(),'_wtf_klan_downloads',true))echo ' aria-current="page"'; ?>>Pobierz</a><a href="<?php echo esc_url(home_url('/klanarchia/edytor/')); ?>"<?php if(get_post_meta(get_queried_object_id(),'_wtf_klan_talent_editor',true))echo ' aria-current="page"'; ?>>Edytor</a></nav></div><?php endif; ?>
             <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation header-tools" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
             <nav id="main-navigation" aria-label="<?php echo esc_attr(wtf_core_text('Menu główne')); ?>"><details class="games-navigation"><summary><?php echo $e('gamesLabel').$chevron; ?></summary><div class="games-dropdown"><div class="games-links">
-                <?php foreach($a['items'] as $item): ?><a class="navigation-game" href="<?php echo esc_url($item['url']??''); ?>"><?php echo wtf_core_image($item, 'medium', ['alt'=>'', 'loading'=>'lazy', 'sizes'=>'(max-width: 700px) 36px, 260px']); ?><span><?php echo esc_html(wtf_core_text($item['title']??'')); ?></span></a><?php endforeach; ?>
+                <?php foreach($a['items'] as $item): ?><a class="navigation-game" href="<?php echo esc_url($item['url']??''); ?>"><?php echo wtf_core_image($item, 'medium', ['alt'=>'', 'loading'=>'lazy', 'sizes'=>'(max-width: 700px) calc((100vw - 56px) / 3), 260px']); ?><span><?php echo esc_html(wtf_core_text($item['title']??'')); ?></span></a><?php endforeach; ?>
             </div><a class="navigation-all" href="<?php echo $url('allUrl'); ?>"><?php echo $e('allLabel'); ?></a></div></details><a href="<?php echo $url('contactUrl'); ?>"><?php echo $e('contactLabel'); ?></a><a class="main-shop-link" href="<?php echo $url('shopUrl'); ?>"><?php echo $e('shopLabel'); ?></a></nav>
             <div class="tools" id="header-tools"><a class="header-login" href="<?php echo esc_url(function_exists('wc_get_page_permalink')?wc_get_page_permalink('myaccount'):wp_login_url()); ?>"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><span><?php echo esc_html(wtf_core_text(is_user_logged_in()?'Moje konto':'Zaloguj się')); ?></span></a>
             <?php $count=function_exists('WC')&&WC()->cart?WC()->cart->get_cart_contents_count():0; ?><a class="header-cart" <?php if(!$count)echo 'hidden'; ?> href="<?php echo esc_url(function_exists('wc_get_cart_url')?wc_get_cart_url():$a['shopUrl']); ?>" aria-label="<?php echo esc_attr(wtf_core_text('Koszyk')); ?>"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h2l2.2 11h10.6l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg><span data-cart-count><?php echo (int)$count; ?></span></a>
-            <?php if(count($languages)>1): foreach($languages as $language): if($language['current_lang'])continue; ?><a class="language" href="<?php echo esc_url($language['url']); ?>" lang="<?php echo esc_attr($language['slug']); ?>"><?php echo esc_html(strtoupper($lang).' / '.strtoupper($language['slug'])); ?></a><?php endforeach; else: ?><span class="language"><?php echo esc_html(strtoupper($lang)); ?></span><?php endif; ?>
-            <?php if(!$klan_download_header): ?><button id="theme-toggle" aria-label="<?php echo esc_attr(wtf_core_text('Zmień motyw kolorystyczny')); ?>" aria-pressed="false">☀</button><?php endif; ?></div>
+            <?php if(wtf_core_english_enabled()): if(count($languages)>1): foreach($languages as $language): if($language['current_lang'])continue; ?><a class="language" href="<?php echo esc_url($language['url']); ?>" lang="<?php echo esc_attr($language['slug']); ?>"><?php echo esc_html(strtoupper($lang).' / '.strtoupper($language['slug'])); ?></a><?php endforeach; else: ?><span class="language"><?php echo esc_html(strtoupper($lang)); ?></span><?php endif; endif; ?>
+            <?php if(!$klan_download_header && wtf_core_theme_dev_controls()): ?><button id="theme-toggle" aria-label="<?php echo esc_attr(wtf_core_text('Zmień motyw kolorystyczny')); ?>" aria-pressed="false">☀</button><?php endif; ?></div>
         </header>
         <?php
     } elseif ($type==='hero') {

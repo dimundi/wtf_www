@@ -1,6 +1,6 @@
 (() => {
   const sectionMenu = document.querySelector('.elekt-section-menu, .tsu-section-menu');
-  document.querySelector('.elekt-back-to-top, .tsu-back-to-top')?.addEventListener('click', () => {
+  document.querySelector('.elekt-back-to-top, .tsu-back-to-top, .klan-back-to-top')?.addEventListener('click', () => {
     if (sectionMenu && matchMedia('(max-width: 1100px)').matches) sectionMenu.open = false;
     window.scrollTo({top:0, behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   });
@@ -22,6 +22,7 @@
       });
     };
     syncMenu();
+    sectionMenu.classList.add('is-ready');
     compactMenu.addEventListener('change', syncMenu);
     const links = [...sectionMenu.querySelectorAll('nav a')];
     const sections = links.map(link => document.querySelector(link.hash));

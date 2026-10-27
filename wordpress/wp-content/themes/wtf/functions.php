@@ -67,11 +67,9 @@ add_action('wp_enqueue_scripts', function () {
 add_action('wp_head', function () {
     $url = wp_upload_dir()['baseurl'] . '/media/wtf-logo-navy-green.svg';
     echo '<style>:root[data-theme=light] .brand-svg{background-image:url(' . esc_url($url) . ')}</style>';
-    if(is_page() && get_page_template_slug()==='klanarchia'){
-        echo '<script>document.documentElement.dataset.theme="dark";</script>';
-        return;
-    }
-    echo '<script>try{document.documentElement.dataset.theme=localStorage.getItem("wtf-theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>';
+    $dev = function_exists('wtf_core_theme_dev_controls') && wtf_core_theme_dev_controls();
+    $fixed = is_page() && get_page_template_slug() === 'klanarchia' ? 'dark' : '';
+    wp_print_inline_script_tag(file_get_contents(get_theme_file_path('assets/theme-init.js')), ['id'=>'wtf-theme-init', 'data-dev-controls'=>$dev?'1':'0', 'data-fixed-theme'=>$fixed]);
 }, 1);
 
 add_filter('body_class', function ($classes) {

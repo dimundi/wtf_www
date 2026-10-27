@@ -1,0 +1,22 @@
+<?php
+if (!defined('WP_CLI') || !WP_CLI) exit;
+$checks = [];
+$checks['Środowisko staging'] = wp_get_environment_type() === 'staging' && defined('WTF_STAGING_SITE') && WTF_STAGING_SITE;
+$checks['Adres wersji testowej'] = home_url('/') === 'https://whathefrog.pl/';
+$checks['Cron wyłączony'] = defined('DISABLE_WP_CRON') && DISABLE_WP_CRON;
+$checks['Maile zablokowane'] = wp_mail('test@example.invalid', 'Test', 'Test') === false;
+$http = wp_remote_get('https://example.invalid');
+$checks['HTTP zewnętrzne zablokowane'] = is_wp_error($http) && $http->get_error_code() === 'wtf_staging_http_blocked';
+$checks['Bramki płatności wyłączone'] = WC()->payment_gateways()->get_available_payment_gateways() === [];
+$checks['Webhooki wyłączone'] = apply_filters('woocommerce_webhook_should_deliver', true) === false;
+$checks['Automatyczny runner wyłączony'] = apply_filters('action_scheduler_allow_async_request_runner', true) === false;
+$checks['EN ukryte'] = get_post_status(16) === 'draft' && !wtf_core_english_enabled();
+$checks['Przełącznik motywu ukryty'] = !wtf_core_theme_dev_controls();
+$checks['Noindex'] = (int)get_option('blog_public') === 0;
+$plugins = get_option('active_plugins');
+$checks['SMTP i InPost nieaktywne'] = !array_filter($plugins, fn($plugin) => str_starts_with($plugin, 'inpost-for-woocommerce/') || str_starts_with($plugin, 'wp-mail-smtp/'));
+global $wpdb;
+WP_CLI::log('Baza: ' . $wpdb->get_var('SELECT VERSION()'));
+foreach ($checks as $name => $ok) WP_CLI::log(($ok ? 'OK: ' : 'BŁĄD: ') . $name);
+if (in_array(false, $checks, true)) WP_CLI::error('Kontrola staging nie przeszła.');
+WP_CLI::success('Kontrola staging poprawna.');

@@ -22,8 +22,17 @@ add_action('wp_enqueue_scripts',function(){
     wp_enqueue_script('wc-photoswipe-ui-default');
     wp_enqueue_style('photoswipe-default-skin');
     wp_enqueue_script('wc-single-product');
+    wp_enqueue_script('wtf-product-gallery',get_theme_file_uri('assets/product-gallery.js'),['jquery','wc-single-product'],filemtime(get_theme_file_path('assets/product-gallery.js')),true);
     add_action('wp_footer','woocommerce_photoswipe');
 },30);
+add_filter('woocommerce_single_product_carousel_options',function($options){
+    if(function_exists('is_product') && is_product() && get_template()==='wtf') {
+        $options['controlNav']=false;
+        $options['slideshow']=false;
+        $options['animationSpeed']=450;
+    }
+    return $options;
+});
 
 add_action('woocommerce_product_options_general_product_data',function(){
     global $product_object; if(!$product_object) return;
@@ -50,14 +59,47 @@ function wtf_shop_unique_description($description,$short) {
     },$description);
 }
 
+function wtf_shop_product_trim_empty_paragraphs($html) {
+    return preg_replace_callback('~<p\b[^>]*>.*?</p>~is', function ($match) {
+        if (preg_match('~<(?:img|picture|iframe|audio|video|svg|input|button|hr)\b~i',$match[0])) return $match[0];
+        $text=html_entity_decode(wp_strip_all_tags($match[0]),ENT_QUOTES,'UTF-8');
+        return preg_match('/^[\s\x{00A0}]*$/u',$text) ? '' : $match[0];
+    },$html);
+}
+
 function wtf_shop_product_render() {
     if(!function_exists('wc_get_product')) return '';
     global $product;
     $product=wc_get_product(get_queried_object_id());
     if(!$product)return '';
     if($product->get_meta('_wtf_product_editorial')!=='yes') {
-        ob_start(); echo '<div class="woocommerce">';
-        wc_get_template_part('content','single-product');
+        ob_start(); echo '<div class="woocommerce wtf-product-standard">';
+        $game=wtf_shop_product_term($product,'wtf_product_game');
+        $games=wtf_shop_games();
+        echo '<nav class="woocommerce-breadcrumb" aria-label="Ścieżka produktu"><a href="'.esc_url(wc_get_page_permalink('shop')).'">Sklep</a><span aria-hidden="true"> / </span>';
+        if (isset($games[$game])) echo '<a href="'.esc_url(add_query_arg('game',$game,wc_get_page_permalink('shop'))).'">'.esc_html($games[$game]).'</a><span aria-hidden="true"> / </span>';
+        echo '<span aria-current="page">'.esc_html($product->get_name()).'</span></nav>';
+        $cart_priority=has_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart');
+        $meta_priority=has_action('woocommerce_single_product_summary','woocommerce_template_single_meta');
+        if ($meta_priority!==false) remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta',$meta_priority);
+        // Na razie pokazujemy tylko automatyczne podobne produkty; przypisania up-sell zachowujemy.
+        $upsell_priority=has_action('woocommerce_after_single_product_summary','woocommerce_upsell_display');
+        if ($upsell_priority!==false) remove_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',$upsell_priority);
+        if ($cart_priority!==false) {
+            remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',$cart_priority);
+            add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',15);
+        }
+        add_filter('woocommerce_short_description','wtf_shop_product_trim_empty_paragraphs',30);
+        try { wc_get_template_part('content','single-product'); }
+        finally {
+            remove_filter('woocommerce_short_description','wtf_shop_product_trim_empty_paragraphs',30);
+            if ($meta_priority!==false) add_action('woocommerce_single_product_summary','woocommerce_template_single_meta',$meta_priority);
+            if ($upsell_priority!==false) add_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',$upsell_priority);
+            if ($cart_priority!==false) {
+                remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',15);
+                add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',$cart_priority);
+            }
+        }
         echo '</div>'; return ob_get_clean();
     }
     if(post_password_required())return get_the_password_form();
@@ -82,7 +124,7 @@ function wtf_shop_product_render() {
       <nav class="wtf-product-breadcrumb" aria-label="Ścieżka produktu"><a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Sklep</a><span>/</span><?php if(isset($games[$game])): ?><a href="<?php echo esc_url($shopUrl); ?>"><?php echo esc_html($games[$game]); ?></a><span>/</span><?php endif; ?><span aria-current="page"><?php echo esc_html($kindLabel?:$product->get_name()); ?></span></nav>
       <div id="product-<?php echo absint($product->get_id()); ?>" <?php wc_product_class('wtf-product-frame',$product); ?>>
         <section class="wtf-product-top" aria-label="Produkt i zakup">
-          <div class="wtf-product-visual"><div class="wtf-product-gallery-label"><span>Zdjęcia produktu</span><span><?php echo 1+count($product->get_gallery_image_ids()); ?></span></div><?php woocommerce_show_product_images(); ?></div>
+          <div class="wtf-product-visual"><?php woocommerce_show_product_images(); ?></div>
           <div class="summary entry-summary wtf-product-summary">
             <div class="wtf-product-kicker"><?php echo esc_html(implode(' / ',array_filter([$games[$game]??'WTF',$kindLabel]))); ?></div>
             <?php woocommerce_template_single_title(); ?>

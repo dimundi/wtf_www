@@ -55,9 +55,12 @@
     if(themeButton)themeButton.textContent=dark?'☀':'☾';
   };
   syncTheme();
+  window.addEventListener('wtf:themechange',syncTheme);
   themeButton?.addEventListener('click',()=>{
+    if(document.documentElement.dataset.themeDev!=='1')return;
     const theme=document.documentElement.dataset.theme==='light'?'dark':'light';
     document.documentElement.dataset.theme=theme;
+    document.documentElement.dataset.themeSource='manual';
     try{localStorage.setItem('wtf-theme',theme);}catch{}
     syncTheme();window.dispatchEvent(new CustomEvent('wtf:themechange',{detail:{theme}}));
   });
