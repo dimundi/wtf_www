@@ -1,4 +1,11 @@
 <?php
+add_action('wp_enqueue_scripts', function () {
+    if (!is_page(['sklep-regulamin', 'polityka-prywatnosci', 'polityka-cookies'])) return;
+    wp_enqueue_style('wtf-legal', get_theme_file_uri('assets/legal.css'), ['wtf-blocks'], filemtime(get_theme_file_path('assets/legal.css')));
+});
+add_action('after_setup_theme', function () {
+    add_editor_style('assets/legal.css');
+});
 // Wspólna wektorowa ikona zakładki: łapka z logo WTF.
 function wtf_favicon() {
     echo '<link rel="icon" type="image/svg+xml" href="'.esc_url(add_query_arg('v',filemtime(get_theme_file_path('assets/favicon.svg')),get_theme_file_uri('assets/favicon.svg'))).'">'."\n";

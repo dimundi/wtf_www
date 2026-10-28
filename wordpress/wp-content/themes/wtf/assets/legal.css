@@ -1,0 +1,19 @@
+.wtf-legal {
+  box-sizing: border-box;
+  width: min(100% - 40px, 880px);
+  margin: 0 auto;
+  padding: 64px 0 80px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.wtf-legal h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin: 0 0 40px; }
+.wtf-legal h2 { font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.35; margin: 40px 0 16px; }
+.wtf-legal p { margin: 0 0 16px; }
+.wtf-legal ol { padding-inline-start: 1.6em; }
+.wtf-legal li { padding-inline-start: .3em; margin-bottom: 16px; }
+.wtf-legal a { text-decoration: underline; text-underline-offset: .2em; }
+.wtf-legal .wp-block-table { margin: 24px 0; overflow-x: auto; }
+.wtf-legal table { width: 100%; border-collapse: collapse; font-size: .95em; }
+.wtf-legal th, .wtf-legal td { padding: 12px; border: 1px solid currentColor; vertical-align: top; text-align: left; }
+.wtf-legal th { font-weight: 700; }
+@media (max-width: 600px) { .wtf-legal { padding: 36px 0 48px; } }

@@ -32,6 +32,7 @@ wtf_backup_agent
 !/wordpress/wp-content/plugins/wtf_omnibus/
 !/wordpress/wp-content/plugins/wtf_quiz/
 !/wordpress/wp-content/plugins/wtf_gamefound/
+!/wordpress/wp-content/plugins/wtf_cookies/
 
 # Biblioteka mediów poza Git. Wyjątki: małe assety wymagane przez własny motyw.
 /media/*

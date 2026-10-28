@@ -1,0 +1,25 @@
+.wtfc-panel,.wtfc-dialog,.wtfc-media-notice { font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:1.55; letter-spacing:normal; }
+.wtfc-panel[hidden],.wtfc-media-notice[hidden],#wtfc-storage-error[hidden] { display:none!important; }
+.wtfc-panel { position:fixed; z-index:100000; right:24px; bottom:24px; width:min(540px,calc(100% - 48px)); max-height:65vh; overflow:auto; background:#fff; color:#1C263C; border:1px solid #1C263C; padding:24px; border-radius:8px; box-shadow:0 8px 35px #0003; }
+.wtfc-panel h2,.wtfc-dialog h2 { color:inherit; font-size:22px; line-height:1.25; letter-spacing:normal; margin:0 0 12px; }
+.wtfc-panel p,.wtfc-dialog p,.wtfc-media p { margin:0 0 12px; color:inherit; font-size:inherit; line-height:inherit; }
+.wtfc-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.wtfc-actions button,.wtfc-media button { appearance:none; font:inherit; font-weight:700; border:1px solid #1C263C; border-radius:4px; padding:11px 14px; color:#1C263C; background:#fff; cursor:pointer; }
+.wtfc-actions button { flex:1 1 140px; }
+.wtfc-actions button:hover,.wtfc-media button:hover { background:#edf3df; }
+.wtfc-actions button:focus-visible,.wtfc-media button:focus-visible,.wtfc-footer-link:focus-visible,.wtfc-policy:focus-visible { outline:3px solid #90C11D; outline-offset:3px; }
+.wtfc-policy { text-decoration:underline; color:inherit; text-underline-offset:3px; }
+.wtfc-dialog { border:1px solid #1C263C; border-radius:8px; background:#fff; color:#1C263C; padding:0; width:min(600px,calc(100% - 32px)); max-height:85vh; overflow:auto; }
+.wtfc-dialog::backdrop { background:#0009; }
+.wtfc-dialog-content { padding:24px; }
+.wtfc-category { display:block; padding:16px 0; border-top:1px solid #1C263C33; }
+.wtfc-category input { width:20px; height:20px; vertical-align:middle; accent-color:#1C263C; margin:0 8px 0 0; }
+.wtfc-description { display:block; margin:8px 0 0; }
+.wtfc-dialog .wtfc-revoke-note { font-size:13px; margin:16px 0 0; }
+.wtfc-footer-link { display:block; border:0; padding:12px 0; margin:12px 0 0; background:none; color:inherit; font:inherit; font-size:14px; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.wtfc-media { position:relative; width:100%; min-width:0; aspect-ratio:16/9; background:#1C263C; color:#fff; display:grid; place-items:center; overflow:auto; }
+.wtfc-media-notice { padding:24px; text-align:center; max-width:620px; }
+.wtfc-media .wtfc-media-notice p { font-family:Arial,Helvetica,sans-serif; font-size:inherit; font-weight:400; line-height:1.55; letter-spacing:normal; }
+.wtfc-media>iframe { display:block; width:100%; height:100%; position:absolute; inset:0; border:0; }
+.wtfc-nojs { padding:16px; text-align:center; }
+@media(max-width:600px) { .wtfc-panel { right:12px; bottom:12px; width:calc(100% - 24px); padding:16px; max-height:55vh; } .wtfc-actions button { flex-basis:100%; } .wtfc-media-notice { padding:16px; font-size:13px; } .wtfc-media { min-height:230px; } }

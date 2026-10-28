@@ -29,6 +29,8 @@
 
 ## sklep
 
+- [Projekty regulaminu, polityki prywatności i cookies](sklep/dokumenty/do-publikacji.md)
+
 - [próbna migracja klientów, zamówień i pobrań](sklep/probna-migracja-klientow-zamowien.md)
 
 - [szablon-produktu](sklep/szablon-produktu.md)
@@ -57,6 +59,7 @@
 - [wtf_faq](wtyczki/wtf_faq.md)
 - [wtf_quiz](wtyczki/wtf_quiz.md)
 - [wtf_gamefound](wtyczki/wtf_gamefound.md)
+- [wtf_cookies](wtyczki/wtf_cookies.md)
 - [wtf-core](wtyczki/wtf-core.md)
 
 Dokumentacja prototypów i archiwum pozostają w [wtf_web_page](../../wtf_web_page/wtfDoc/README.md).
