@@ -1,8 +1,10 @@
 # WTF — wersja docelowa
 
-- Zgodnie z najnowszym poleceniem użytkownika poprawki wykonujemy lokalnie, sprawdzamy i od razu wdrażamy na `whathefrog.pl` (nazywane przez użytkownika PROD), bez osobnego potwierdzania każdej poprawki. Nie trzeba podsyłać linków do localhost.
+- Najnowsze ustalenie: zbieramy i sprawdzamy zmiany lokalnie, a na `whathefrog.pl` (nazywane przez użytkownika PROD) wdrażamy hurtowo dopiero na jego polecenie. Bez automatycznego wdrażania każdej poprawki i bez podsyłania linków do localhost.
 
 - Typografia PL: przy pisaniu i poprawianiu treści stosować twardą spację po jednoliterowych słowach „a”, „i”, „o”, „u”, „w”, „z” (również wielkich literach), łącząc je z następnym wyrazem. W HTML używać `&nbsp;`, w zwykłym tekście U+00A0. Dotyczy nagłówków, akapitów i podpisów, także na telefonach. Nie zmieniać w ten sposób kodu, adresów URL ani atrybutów HTML.
+
+- Na wyraźne polecenie użytkownika wszystkie 33 produkty mają lokalnie i na whathefrog.pl adresy `/produkt/<gra>/<produkt>/`, np. `/produkt/elekt/podstawka/`, `/produkt/elekt/mata-rubiez/`, `/produkt/kurzolaki/fanpack/`. Publikacje: `/produkt/echo-swiatow/album/` i `/produkt/echo-swiatow/mp3/`. Nie tworzyć przekierowań ze starych adresów produktów; stare zwracają 404. Mapa i routing w `wtf-core/shop-product-urls.php`, pełna lista `wtfDoc/sklep/adresy-produktow.md`. ID i slugi rekordów zachowane. Wdrożono 28.10.2026; sprawdzono 33 nowe adresy, linki kanoniczne i stare adresy 404 bez przekierowań.
 
 - Klanarchia ma jedną stałą ciemną oprawę złoto/grafit, niezależną od ustawień systemu, przeglądarki i ręcznego wyboru DEV. Dotyczy wszystkich stron z szablonem `klanarchia`. Nie uruchamiać dla nich automatycznego jasnego wariantu. Logo nagłówka jest złotym SVG, bez maski CSS. Pozostałe strony nadal dobierają motyw automatycznie.
 
@@ -95,3 +97,7 @@
 - Kontakt: `/kontakt/`, PL 600 / EN 602 szkic, para Polylang; edytowalne bloki WTF Core, formularz demonstracyjny bez wysyłania. Dokumentacja `wtfDoc/przenoszenie/przeniesienie-kontaktu.md`.
 
 - Nota redaktorska Klanarchii przeniesiona: /klanarchia-nota/, PL 3264, Media 3263. Oryginalny adres, tekst i podpis zachowane; natywne bloki, wspólne menu/tło Klanarchii. Zajawka na głównej prowadzi lokalnie. Dokumentacja: wtfDoc/przenoszenie/przeniesienie-noty-klanarchii.md.
+
+- Opisy fabularne produktów wyróżniamy kursywą (klasa wtf-product-fiction), oddzielając je wizualnie od informacji użytkowych i zawartości. Stosować przy kolejnych korektach opisów.
+
+- Pojedyncze frakcje Tsukuyumi są pakowane w blistry, nie pudełka. Wyjątki: Chronomasters i Sunrise Kingdom. Stosować właściwe nazwy opakowań w opisach produktów.

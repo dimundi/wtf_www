@@ -1,5 +1,16 @@
 <?php
 if(!defined('ABSPATH')) exit;
+require_once __DIR__.'/shop-product-urls.php';
+
+add_filter('woocommerce_sale_flash',function($html,$post,$product){
+    if(!$product instanceof WC_Product)return $html;
+    $regular=(float)$product->get_regular_price();
+    $sale=$product->get_sale_price();
+    if($sale===''||$regular<=0||(float)$sale>=$regular)return $html;
+    $discount=(int)round(100*($regular-(float)$sale)/$regular);
+    if($discount<1)return $html;
+    return '<span class="onsale wtf-sale-badge" aria-label="'.esc_attr('Rabat '.$discount.'%').'">−'.esc_html($discount).'%</span>';
+},10,3);
 
 // Własny szablon wywołuje funkcje PHP WooCommerce; nie używa nowych bloków produktu.
 // Warstwa zgodności tych bloków usuwałaby potrzebne standardowemu widokowi hooki.
@@ -38,6 +49,7 @@ add_action('woocommerce_product_options_general_product_data',function(){
     global $product_object; if(!$product_object) return;
     echo '<div class="options_group">';
     wp_nonce_field('wtf_product_presentation','wtf_product_presentation_nonce');
+    woocommerce_wp_text_input(['id'=>'_wtf_product_description_heading','label'=>'Nagłówek opisu','value'=>$product_object->get_meta('_wtf_product_description_heading'),'placeholder'=>'Opis i zawartość','desc_tip'=>true,'description'=>'Własny nagłówek sekcji opisu. Puste pole oznacza: Opis i zawartość.']);
     woocommerce_wp_checkbox(['id'=>'_wtf_product_editorial','label'=>'Nowy szablon produktu','value'=>$product_object->get_meta('_wtf_product_editorial'),'description'=>'Włącz przygotowywany układ strony produktu.']);
     woocommerce_wp_textarea_input(['id'=>'_wtf_product_lead','label'=>'Krótka zajawka przy cenie','value'=>$product_object->get_meta('_wtf_product_lead'),'desc_tip'=>true,'description'=>'Jedno lub dwa zdania przy panelu zakupu. Pełne opisy pozostają w standardowych polach produktu.']);
     echo '</div>';
@@ -45,6 +57,7 @@ add_action('woocommerce_product_options_general_product_data',function(){
 add_action('woocommerce_process_product_meta',function($id){
     if(!current_user_can('edit_post',$id)||empty($_POST['wtf_product_presentation_nonce'])||!is_string($_POST['wtf_product_presentation_nonce'])||!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wtf_product_presentation_nonce'])),'wtf_product_presentation'))return;
     update_post_meta($id,'_wtf_product_editorial',isset($_POST['_wtf_product_editorial'])?'yes':'no');
+    if(isset($_POST['_wtf_product_description_heading'])&&is_string($_POST['_wtf_product_description_heading']))update_post_meta($id,'_wtf_product_description_heading',sanitize_text_field(wp_unslash($_POST['_wtf_product_description_heading'])));
     if(isset($_POST['_wtf_product_lead'])&&is_string($_POST['_wtf_product_lead']))update_post_meta($id,'_wtf_product_lead',sanitize_textarea_field(wp_unslash($_POST['_wtf_product_lead'])));
 });
 
@@ -67,6 +80,41 @@ function wtf_shop_product_trim_empty_paragraphs($html) {
     },$html);
 }
 
+function wtf_shop_product_description_heading() {
+    $title=trim((string)get_post_meta(get_queried_object_id(),'_wtf_product_description_heading',true));
+    return $title!==''?$title:'Opis i zawartość';
+}
+
+function wtf_shop_product_content_sections() {
+    $tabs=apply_filters('woocommerce_product_tabs',[]);
+    global $product;
+    if($product instanceof WC_Product&&$product->get_meta('_wtf_specs_in_intro')==='yes'&&!$product->has_attributes())unset($tabs['additional_information']);
+    $sections_count=count(array_filter($tabs,fn($tab)=>!empty($tab['callback'])&&is_callable($tab['callback'])));
+    $index=0;
+    foreach ($tabs as $key=>$tab) {
+        if (empty($tab['callback']) || !is_callable($tab['callback'])) continue;
+        $index++;
+        $id='product-details-'.sanitize_html_class($key);
+        $title=$key==='description'?wtf_shop_product_description_heading():wp_strip_all_tags($tab['title']??'');
+        $split=$key==='description'&&$product instanceof WC_Product&&$product->get_meta('_wtf_contents_image_layout')==='yes';
+        echo '<section class="wtf-product-content-section wtf-standard-content-section'.($split?' wtf-product-contents-image':'').'" id="'.esc_attr($id).'" aria-labelledby="'.esc_attr($id.'-title').'"><header>'.($sections_count>1?'<span class="wtf-product-section-number">'.esc_html(sprintf('%02d',$index)).'</span>':'').'<h2 id="'.esc_attr($id.'-title').'">'.esc_html($title).'</h2></header><div class="wtf-product-copy">';
+        // Domyślne szablony WooCommerce nie powtarzają nagłówka naszej sekcji.
+        add_filter('woocommerce_product_description_heading','__return_false');
+        add_filter('woocommerce_product_additional_information_heading','__return_false');
+        ob_start();
+        try { call_user_func($tab['callback'],$key,$tab); }
+        finally {
+            $body=ob_get_clean();
+            remove_filter('woocommerce_product_description_heading','__return_false');
+            remove_filter('woocommerce_product_additional_information_heading','__return_false');
+        }
+        $wide='';
+        if($key==='description')$body=preg_replace_callback('~<figure\b[^>]*class="[^"]*\bwtf-product-wide-image\b[^"]*"[^>]*>.*?</figure>~is',function($m)use(&$wide){$wide.=$m[0];return '';},$body);
+        if($split&&$wide!=='')$wide='<div class="wtf-product-illustrations">'.$wide.'</div>';
+        echo $body.'</div>'.$wide.'</section>';
+    }
+}
+
 function wtf_shop_product_render() {
     if(!function_exists('wc_get_product')) return '';
     global $product;
@@ -85,6 +133,11 @@ function wtf_shop_product_render() {
         // Na razie pokazujemy tylko automatyczne podobne produkty; przypisania up-sell zachowujemy.
         $upsell_priority=has_action('woocommerce_after_single_product_summary','woocommerce_upsell_display');
         if ($upsell_priority!==false) remove_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',$upsell_priority);
+        $tabs_priority=has_action('woocommerce_after_single_product_summary','woocommerce_output_product_data_tabs');
+        if ($tabs_priority!==false) {
+            remove_action('woocommerce_after_single_product_summary','woocommerce_output_product_data_tabs',$tabs_priority);
+            add_action('woocommerce_after_single_product_summary','wtf_shop_product_content_sections',$tabs_priority);
+        }
         if ($cart_priority!==false) {
             remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',$cart_priority);
             add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',15);
@@ -95,6 +148,10 @@ function wtf_shop_product_render() {
             remove_filter('woocommerce_short_description','wtf_shop_product_trim_empty_paragraphs',30);
             if ($meta_priority!==false) add_action('woocommerce_single_product_summary','woocommerce_template_single_meta',$meta_priority);
             if ($upsell_priority!==false) add_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',$upsell_priority);
+            if ($tabs_priority!==false) {
+                remove_action('woocommerce_after_single_product_summary','wtf_shop_product_content_sections',$tabs_priority);
+                add_action('woocommerce_after_single_product_summary','woocommerce_output_product_data_tabs',$tabs_priority);
+            }
             if ($cart_priority!==false) {
                 remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',15);
                 add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',$cart_priority);
@@ -134,14 +191,14 @@ function wtf_shop_product_render() {
               <?php if($priceNote): ?><p class="wtf-product-price-note"><?php echo esc_html($priceNote); ?></p><?php endif; ?>
               <?php woocommerce_template_single_add_to_cart(); ?>
             </div>
-            <div class="wtf-product-section-links"><?php if($short): ?><a href="#product-edition">Informacje o produkcie</a><?php endif; ?><?php if($product->get_description()): ?><a href="#product-description">Opis i zawartość</a><?php endif; ?><?php if($related): ?><a href="#product-expansions">Dobierz dodatki</a><?php endif; ?></div>
+            <div class="wtf-product-section-links"><?php if($short): ?><a href="#product-edition">Informacje o produkcie</a><?php endif; ?><?php if($product->get_description()): ?><a href="#product-description"><?php echo esc_html(wtf_shop_product_description_heading()); ?></a><?php endif; ?><?php if($related): ?><a href="#product-expansions">Dobierz dodatki</a><?php endif; ?></div>
           </div>
         </section>
         <?php if($short): ?>
         <section class="wtf-product-content-section wtf-product-edition" id="product-edition" aria-labelledby="product-edition-title"><header><span class="wtf-product-section-number">01</span><h2 id="product-edition-title">Informacje<br> o produkcie</h2></header><div class="wtf-product-copy"><?php echo $shortHtml; ?></div></section>
         <?php endif; ?>
         <?php if($product->get_description()): ?>
-        <section class="wtf-product-content-section" id="product-description" aria-labelledby="product-description-title"><header><span class="wtf-product-section-number">02</span><h2 id="product-description-title">Opis<br> i zawartość</h2><?php if($game==='elekt'): ?><a class="wtf-product-game-link" href="<?php echo esc_url(wtf_ele_local_game_link('https://whatthefrog.pl/elekt/')); ?>">Pełna prezentacja Elekta</a><?php endif; ?></header><div class="wtf-product-copy wtf-product-description"><?php echo $descriptionHtml; ?></div></section>
+        <section class="wtf-product-content-section" id="product-description" aria-labelledby="product-description-title"><header><span class="wtf-product-section-number">02</span><h2 id="product-description-title"><?php echo esc_html(wtf_shop_product_description_heading()); ?></h2><?php if($game==='elekt'): ?><a class="wtf-product-game-link" href="<?php echo esc_url(wtf_ele_local_game_link('https://whatthefrog.pl/elekt/')); ?>">Pełna prezentacja Elekta</a><?php endif; ?></header><div class="wtf-product-copy wtf-product-description"><?php echo $descriptionHtml; ?></div></section>
         <?php endif; ?>
         <?php if($product->has_attributes()): ?><section class="wtf-product-attributes"><h2>Dane produktu</h2><?php wc_display_product_attributes($product); ?></section><?php endif; ?>
         <?php if($related): ?>

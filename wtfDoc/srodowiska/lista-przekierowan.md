@@ -30,3 +30,5 @@ PDF-y i tapety zachowują oryginalne ścieżki. Zapewnić także obsługę waria
 - `/download/Klanarchia/assets/Tapeta_mobile.jpg`
 
 Podczas deployu dostarczyć wyłącznie PDF-y i tapety do pobrania, z zachowaniem ścieżek (w tym `assets/` dla dotychczasowych tapet). Nie wdrażać starej strony HTML ani `kpostaci`. Pliki są poza Gitem. Weryfikacja: nowa strona 200, stara strona dokładnie 301, pliki 200/206 i zgodne sumy SHA-256. Nie nadpisywać nowszych plików produkcyjnych starszą kopią lokalną.
+
+Zmiany adresów produktów nie otrzymują przekierowań — decyzja użytkownika. Dawne adresy mat zwracają 404, nowe /produkt/elekt/mata-1/ i /produkt/elekt/mata-2/ są aktywne.

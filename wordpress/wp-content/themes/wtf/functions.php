@@ -1,4 +1,11 @@
 <?php
+// Wspólna wektorowa ikona zakładki: łapka z logo WTF.
+function wtf_favicon() {
+    echo '<link rel="icon" type="image/svg+xml" href="'.esc_url(add_query_arg('v',filemtime(get_theme_file_path('assets/favicon.svg')),get_theme_file_uri('assets/favicon.svg'))).'">'."\n";
+}
+add_action('wp_head','wtf_favicon',100);
+add_action('admin_head','wtf_favicon',100);
+add_action('login_head','wtf_favicon',100);
 add_action('wp_enqueue_scripts', function () {
     if (!is_page() || get_page_template_slug() !== 'klanarchia') return;
     wp_enqueue_style('wtf-klanarchia', get_theme_file_uri('assets/klanarchia.css'), ['wtf-blocks','wtf-mobile-navigation'], filemtime(get_theme_file_path('assets/klanarchia.css')));

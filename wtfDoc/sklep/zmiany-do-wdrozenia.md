@@ -1,6 +1,19 @@
 # Zmiany produktów — stan wdrożenia
 
-Wdrożone na `whathefrog.pl` na polecenie użytkownika. Brak oczekujących zmian z poniższego zakresu.
+## Wdrożone 28.10.2026
+
+- Wszystkie 33 adresy /produkt/<gra>/<produkt>/, bez przekierowań ze starych adresów; zaktualizowane linki wewnętrzne.
+- Sekcje opisu zamiast zakładek i edytowalny nagłówek; Opis kart dla produktu 807.
+- Maty: nowe nazwy, zdjęcia główne i zdjęcia pod opisami na całą szerokość, wzajemne linki do drugiego wzoru.
+- Paczka: backups/product-release/batch-20261028/. Kopie kodu i zmienianych danych: .wtf-staging/batch-products-20261028/. Zachowane ceny, stany i powiązania; galerie bez zmian.
+- Sprawdzone na PROD: 33 nowe adresy i kanoniczne linki, stare adresy 404 bez przekierowań, linki sklepu/gier, zdjęcia mat przy 390/1440 px, HTTPS i zabezpieczenia.
+
+## Wdrożone wcześniej
+
+Poniższe zmiany były wdrożone na `whathefrog.pl` na polecenie użytkownika; późniejsze dopiski o zmianach lokalnych należą do kolejnej paczki.
+
+- Pozostała bieżąca oferta Elekta: skorygowane opisy dwóch mat (833, 830), pocztówek (828), czterech kart specjalnych (807), Echa Światów z Minstrelem (824) i albumu MP3 (825). Ujednolicone akapity, specyfikacje, nagłówki, listy i twarde spacje; poprawione linki albumu. Dłuższe opowieści i informacje znajdują się w pełnych opisach. Zachowano wymiary, zawartość, 17 nazw pocztówek, listę 14 utworów z próbkami, obrazy i film. Dane czasów pozostają zgodne z dotychczasowymi wersjami: zestaw z CD 72 minuty, osobny album MP3 1 godzina 18 minut. Niewidocznych w ofercie plakatów i sakiewki nie zmieniano.
+- Wdrożenie powyższych sześciu opisów: `local-scripts/one-off/release-pl/correct-remaining-elekt-products.php`, paczka `backups/product-release/remaining-elekt-20261028/`, kopie na serwerze `.wtf-staging/patch-remaining-elekt-copy-20261028/`. Import zmienił wyłącznie opisy; ceny, stany, podatki, powiązania i dane pobrań zachowane. Kontrola HTTP sześciu stron lokalnie i na PROD poprawna, fotografie i galeria bez zmian.
 
 - Standardowy produkt: proporcje galerii i opisu, panel zakupu nad opisem, kwadratowe zdjęcia i miniatury, tło zgodne z motywem sklepu. Breadcrumb gry prowadzi do tego samego filtra `game` co wybór gry. Kategoria pod opisem i sekcja up-sell ukryte; automatyczne podobne produkty pozostają.
 - Podstawka Elekta: rozbudowane opisy i parametry gry, zawartość pudełka, zmiany drugiego wydania, kolorystyka sklepu w obu trybach. Galeria z automatycznym slideshow co 3 s i znacznikami 6 px; wybór zdjęcia zatrzymuje automat. Bez etykiety i licznika zdjęć.
@@ -20,3 +33,96 @@ Galeria wszystkich produktów: znaczniki zastąpione miniaturami 64 × 64 px w j
 28.10.2026: Szklany Żar (834, /produkt/szklany-zar/) — zdjęcie główne zastąpione wskazanym Zar.png. Import przez Media WP, ALT i 8 plików wariantów zachowane. Zmieniono tylko zdjęcie główne; galeria, opis, ceny i stany bez zmian. Local i PROD zgodne, HTTP obrazu na PROD 200. Kopia przypisania .wtf-staging/patch-zar-image-20261028/; paczka backups/product-release/zar-20261028/.
 28.10.2026: ponowna aktualizacja grafiki Żaru po zmianie źródłowego Zar.png przez użytkownika. Nowy załącznik Zar-updated i warianty, nowy URL zapobiega użyciu starego obrazu z cache. Local i PROD zaktualizowane, sprawdzono HTML produktu. Backup .wtf-staging/patch-zar-image-20261028-v2/; ceny i pozostałe pola bez zmian.
 28.10.2026: korekta opisu Szklanego Żaru wdrożona local i PROD. Trzy czytelne akapity, poprawiona polszczyzna i twarde spacje; zachowane fakty: szkło, opalizujące bursztynowe znaczniki o srebrzystym połysku, zestaw 13 sztuk. Zmieniono tylko krótki opis, aktualne zdjęcie i pozostałe dane bez zmian. Kontrola HTTP poprawna, kopia .wtf-staging/patch-zar-description-20261028/.
+28.10.2026: wspólny załącznik 727 (11972-Elekt-promki-2023.jpg / .webp) zastąpiony plikiem Elekt-promki-2023.png wskazanym przez użytkownika. Zachowano ID, przypisania i dotychczasowe adresy JPG/WebP oraz miniaturek; nowe metadane odzwierciedlają obraz 543 × 543 px. Zaktualizowano 6 plików. Miniatury i WebP tworzy WordPress z Modern Image Formats; dla oryginalnego JPEG na czas zapisu pominięto automatyczną zmianę formatu przez wtyczkę. Faktyczne formaty JPEG/WebP, HTTP 200 i przypisanie produktu 807 potwierdzone na PROD. Kopie .wtf-staging/patch-promki-image-20261028/ i .wtf-staging/patch-promki-jpeg-fix-20261028/; paczki backups/product-release/promki-image-20261028/; skrypty local-scripts/one-off/product-media/promki/.
+28.10.2026: maty 833 i 830 otrzymały zdjęcia główne elekt_mata_1.png i elekt_mata_2.png. Galerie i pozostałe dane zachowane. Na wyraźne polecenie użytkownika nowe adresy /produkt/elekt/mata-1/ i /produkt/elekt/mata-2/; dokładne stare adresy przekierowują 301. shop-product-urls.php definiuje linki kanoniczne, routing i aliasy; ID i post_name nie zmieniano. Sprawdzone obrazy wizualnie lokalnie, HTTP 200 nowych stron, 301 starych i linki z listy sklepu na PROD. Kod i paczka wdrożone; kopie .wtf-staging/patch-maty-images-urls-20261028/; paczka backups/product-release/maty-20261028/.
+Na polecenie użytkownika wyłączono przekierowania dawnych adresów produktów. Maty działają pod nowymi adresami /produkt/elekt/mata-1/ i /produkt/elekt/mata-2/ (200); stare /produkt/mata-do-gry/ i /produkt/mata-do-gry-2/ zwracają 404, bez Location i bez automatycznego przekierowania kanonicznego WP. Sprawdzone local i PROD. Zasada na przyszłość zapisana w AGENTS.md.
+
+## Wdrożone — panorama mat (28.10.2026)
+
+- Panorama Rubieży i Nie jesteś tu sam: nagłówki, fabularne opisy kursywą, brak numeru przy jednej sekcji.
+- Zdjęcia pod opisami z powiększaniem PhotoSwipe; Upiory z poprawionym obrazem 3317 i nowym URL.
+- Ciemne powierzchnie produktów w granacie #273247; nazwa produktu 807: Karty specjalne - edycja 2023.
+- Paczka backups/product-release/panorama-20261028/, kopie serwera .wtf-staging/panorama-20261028/. Import trzech produktów; ceny, stany, zdjęcia główne i galerie zachowane.
+
+## Wdrożone — Memo Cube (28.10.2026)
+
+- Produkt 827: zdjęcie główne memo_1.png (3318), galeria zastąpiona memo_2.png (3319) i memo_3.png (3320), import przez Media z wariantami. Stare zdjęcia odłączone od produktu, pliki zachowane w bibliotece. Opisy, ceny i stany porównane bez zmian. Skrypt local-scripts/one-off/product-media/memo-cube/replace-images-local.php. Wdrożone na whathefrog.pl; trzy zdjęcia i kolejność sprawdzone HTTP. Paczka backups/product-release/memo-three-20261028/, kopie przypisań .wtf-staging/memo-three-20261028/. Ceny, stany i powiązania zachowane.
+
+## Wdrożone — etykieta promocji (28.10.2026)
+
+- Strony produktów i ich podobne produkty: zielona etykieta #90C11D z łapką wyodrębnioną z konturu litery G logo WTF, granatowy tekst. Kod product.css i assets/wtf-frog-foot.svg. PROD bez zmian.
+
+- Etykieta lokalna: procent liczony automatycznie z ceny regularnej i promocyjnej, zaokrąglony do liczby całkowitej. Łapka stanowi wysunięty lewy obrys zielonej etykiety zamiast ikony wewnątrz. Kod shop-product.php i product.css. PROD bez zmian.
+
+- Wdrożona końcowa wersja: automatyczny rabat procentowy, wysunięta łapka jako lewy obrys, obniżona góra prostokąta i zaokrąglony lewy dolny róg. Pliki shop-product.php, product.css, wtf-frog-foot.svg. Kopie .wtf-staging/sale-badge-20261028/backup/. Bez zmian bazy.
+
+## Favicon — wdrożone 28.10.2026
+
+- Local i whathefrog.pl: favicon SVG, zielona łapka logo WTF na granatowym zaokrąglonym tle. Motyw functions.php i assets/favicon.svg; wersjonowany URL. Sprawdzone HTML i HTTP obrazu w obu środowiskach. Kopia .wtf-staging/favicon-20261028/functions-before.php.
+
+- Favicon local i PROD: na polecenie użytkownika usunięte granatowe tło; sama zielona łapka na przezroczystości. HTTP SVG sprawdzone.
+
+- Favicon local/PROD: ciasny kwadratowy viewBox 245 144 44 44 zamiast 57 × 57, łapka większa o około 30%, bez tła.
+
+## Wdrożone — odstęp nad produktem (28.10.2026)
+
+- Mobile do 700 px: shop-single padding-top 10 px zamiast 35 px, bliższa ścieżka produktu pod głównym menu. Desktop bez zmian. Kod product.css. Wdrożono na whathefrog.pl i sprawdzono HTTP CSS. Kopia .wtf-staging/product-mobile-gap-20261028/product-before.css.
+
+## Wdrożone 28.10.2026 — jednostki sklepu i Tsukuyumi
+
+- Poprawione opcje WooCommerce woocommerce_weight_unit=kg, woocommerce_dimension_unit=m, zgodnie ze źródłową kopią 8082. Importowane wartości nie zostały przeliczone ani zmienione. Sunrise Kingdom ma wagę 3 kg i wymiary 0,32 × 0,32 × 0,07 m. Na PROD przenieść tylko te dwie opcje; nie zmieniać wartości produktów.
+
+- Lokalnie Sunrise Kingdom (813): poprawione i uporządkowane oba opisy; parametry, waga i wymiary 32 × 32 × 7 cm w pierwszej sekcji. Usunięte hashtagi, puste akapity i dawna zapowiedź premiery. Nagłówek O rozszerzeniu. Meta _wtf_specs_in_intro=yes wyłącza dublującą tabelę dodatkowych informacji, jeśli nie ma innych atrybutów; kod shop-product.php. Ceny, stany i grafiki bez zmian. Skrypt format-sunrise-local.php; PROD bez zmian.
+
+- Sunrise Kingdom (813): w krótkim opisie link Więcej o rozszerzeniu Sunrise Kingdom do /tsukuyumi/#tsu-sunrise (sekcja sprawdzona). Usunięty ogólny link z długiego opisu; lokalnie, PROD bez zmian.
+
+- Lokalnie produkt 813: nazwa Sunrise Kingdom zamiast Tsukuyumi: Sunrise Kingdom. Adres bez zmian; do wdrożenia wyłącznie tytuł wraz z oczekującymi opisami.
+
+- Lokalnie usunięto Tsukuyumi z nazw 10 produktów poza podstawką: 812, 814, 815, 817, 819–823, 826. Sunrise Kingdom 813 zmieniony wcześniej. Nazwa podstawki 816 i adresy zachowane. Skrypt rename-tsukuyumi-expansions-local.php; przy wdrożeniu przenieść wyłącznie nazwy, bez nadpisywania opisów pozostałych produktów. PROD bez zmian.
+
+- Lokalnie Kampfgruppe 03 (823): poprawione oba opisy, wymaganie podstawki i 10 podstawek przy zakupie, aktualne linki do frakcji /tsukuyumi/kg3/ i oferty podstawek 25 szt. Historia kursywą, pełna lista zawartości i zachowana ilustracja pod opisem. Usunięte stare shortcode animacji, tło zdublowanego obrazu, puste odstępy i literówka Kompfgruppe. Nagłówek Frakcja i zawartość. Ceny, stany, atrybuty, zdjęcie główne i galeria zachowane i porównane. Skrypt format-kampfgruppe-local.php; PROD bez zmian.
+
+- Kampfgruppe 03 lokalnie: ilustracja jest kompozycją dwóch plików. Przywrócone tło c57234de…KG3_Z11.webp pod przezroczystą warstwą napisów 6d76ffbd…KG3_Z11.webp, biała podstawa figury. Podczas wdrożenia zachować styl tła w opisie.
+
+## Wdrożone 28.10.2026 — pozostałe dodatki Tsukuyumi
+
+- Uporządkowane oba opisy produktów 812, 814, 815, 817–822: parametry i wymagania w pierwszej sekcji, listy zawartości w pełnym opisie, aktualne linki, twarde spacje. Chronomasters: zachowane ograniczenia kafelków, 33 × 24 × 3 cm i 0,4 kg w pierwszej sekcji, meta _wtf_specs_in_intro=yes.
+- Zachowane wszystkie osiem ilustracji, bez zmiany zdjęć głównych i galerii. Ceny, stany, atrybuty i nazwy porównane bez zmian. Usunięto stare hashtagi, puste odstępy, nieaktualną zapowiedź premiery i sztywny tekst historycznej ceny (aktualne komunikaty cenowe pozostają automatyczne). Bonus planszetek nr 4 oznaczony jako oferta przedsprzedażowa, bez obietnicy bieżącego bonusu.
+- Skrypt format-remaining-tsukuyumi-local.php; sprawdzono HTTP dziewięciu produktów oraz 59 linków/grafik. Komiks i podstawka poza zakresem. PROD bez zmian.
+
+- Planszetki nr 4 (812), lokalnie: usunięta cała informacja o przedsprzedaży, nagłówek Planszetki frakcji w zestawie. Usunięta duplikująca galeria (739), zachowane zdjęcie główne 738; pliki w bibliotece bez zmian. Przy wdrożeniu przenieść opis i pustą galerię. PROD bez zmian.
+
+- Lokalnie produkt 819: nazwa Zestaw planszetek nr 1. Adres i pozostałe dane bez zmian; do wdrożenia tytuł.
+
+- Lokalnie komiks Tsukuyumi (826): zajawka i dane wydania przy zakupie (autor, 70 stron komiksu + 24 strony artbooka, miękka oprawa, wydawca, 2020, ISBN). Nagłówek Smok powraca; poprawiona fabuła kursywą i czytelna zawartość. Nazwa, ceny, stany, zdjęcie i galeria zachowane i porównane. Skrypt format-tsukuyumi-comic-local.php; PROD bez zmian.
+
+- Lokalnie listy sklepu: wtf_shop_card pokazuje rabat przez wspólny filtr woocommerce_sale_flash, ta sama zielona łapka z procentem. Style w shop.css, grafika wtf-frog-foot.svg. Dotyczy kart gier i widoku Wszystkie. PROD bez zmian.
+
+## Potwierdzenie wdrożenia Tsukuyumi i etykiet — 28.10.2026
+
+Wszystkie powyższe zmiany Tsukuyumi i etykiet list przeniesione na whathefrog.pl, w tym nazwy 12 produktów, korekty planszetek nr 4 (jedno zdjęcie, bez przedsprzedaży), nazwa planszetek nr 1, komiks, kompletna dwuwarstwowa ilustracja Kampfgruppe, parametry w pierwszej sekcji i kg/m. Wcześniejsze dopiski PROD bez zmian przy tych pozycjach opisują stan przed tym wdrożeniem.
+
+Paczka backups/product-release/tsukuyumi-20261028/, kopie plików, produktów i jednostek .wtf-staging/tsukuyumi-20261028/. Ceny, stany, atrybuty, zdjęcia główne zachowane i porównane. Galerie bez zmian poza świadomym wyczyszczeniem galerii 812. Sprawdzono HTTP 12 produktów, 75 linków/grafik oraz zieloną zwartą etykietę z procentem na liście Elekta w Chrome. Bez podmiany bazy.
+
+## Wdrożone 28.10.2026 — opakowania i układy frakcji
+
+- Fireborn (822): nagłówek Zawartość, usunięty podnagłówek Zawartość pudełka. Sentinels (820), Władcy Utraconych Mórz (821), Kampfgruppe 03 (823): Zawartość blistra zamiast Zawartość pudełka. Chronomasters i Sunrise Kingdom zachowują pudełka. Reguła opakowań zapisana w AGENTS.md. Skrypt correct-faction-packaging-local.php; PROD bez zmian.
+
+- Korekta lokalna powyższego: nagłówki ZAWARTOŚĆ, bez określenia blistra. Fireborn: główny nagłówek ZAWARTOŚĆ; pozostałe trzy frakcje: podnagłówek ZAWARTOŚĆ. PROD bez zmian.
+
+- Sentinels (820) lokalnie: nagłówek Zawartość, lista i powtórzenie informacji o braku 12 podstawek po lewej, ilustracja po prawej; na telefonie ilustracja pod listą. Meta _wtf_contents_image_layout=yes, renderer shop-product.php i product.css. Źródło dostępne wyłącznie Sentinels_low (1000 × 728); bez sztucznego powiększania. PROD bez zmian.
+
+- Lokalnie link dokup podstawki osobno pod listą Sentinels wyraźnie podkreślony i lekko pogrubiony, style product.css. PROD bez zmian.
+
+- Chronomasters (814) lokalnie: usunięta wzmianka o osobno zakupionym woreczku lnianym. Zdanie kończy się na przechowywaniu w pudełku gry. PROD bez zmian.
+
+- Lokalnie Nowe Lądy (817) i Kampfgruppe 03 (823): układ jak Sentinels, nagłówek Zawartość, tekst/lista po lewej, ilustracja po prawej; mobilnie obraz pod tekstem. Pod listami kopia informacji o braku 10 podstawek z podkreślonym linkiem. Meta _wtf_contents_image_layout=yes. Kampfgruppe zachowuje obie warstwy grafiki. PROD bez zmian.
+
+- Fireborn (822) lokalnie: Zawartość, lista i kopia informacji o braku 7 podstawek po lewej; oba dotychczasowe obrazy po prawej w grupie wtf-product-illustrations. Wspólny renderer grupuje wiele obrazów, bez nakładania ich na siebie. Mobilnie obrazy pod tekstem.
+- Podstawka Tsukuyumi (816) lokalnie: poprawione oba opisy, parametry 2–4 / do 6 graczy z rozszerzeniami, 12+, 180 min, 32 × 32 × 10 cm, 3 kg, EAN w pierwszej sekcji. Fabuła kursywą, sekcje mechanik, zachowana pełna lista zawartości i ilustracja. Aktualne linki komiksu i planszetek, bez starego linku do nieoferowanych koszulek, hashtagów i pustych odstępów. Meta _wtf_specs_in_intro=yes i nagłówek O grze. Ceny, stany, nazwa i galeria zachowane i porównane. Skrypt fireborn-base-tsukuyumi-local.php; PROD bez zmian.
+
+- Gracz+ (x2), 815 lokalnie: nagłówek Zawartość, lista łącznej zawartości dwóch rozszerzeń po lewej i ilustracja po prawej; na mobile obraz pod listą. Pod zawartością powtórzenie informacji o braku 12 podstawek z podkreślonym linkiem. Meta _wtf_contents_image_layout=yes. PROD bez zmian.
+
+## Potwierdzenie wdrożenia układów Tsukuyumi — 28.10.2026
+
+Wszystkie powyższe korekty opakowań, nagłówków, Sentinels, Chronomasters, Nowych Lądów, Kampfgruppe 03, Fireborn, podstawki i Gracz+ wdrożone na whathefrog.pl. Wcześniejsze zapisy PROD bez zmian dla tych pozycji dotyczą stanu przed wdrożeniem. Przeniesiono wyłącznie wybrane opisy i metadane układu ośmiu produktów oraz shop-product.php i product.css. Galerie, nazwy, ceny, stany i atrybuty zachowane i porównane. Paczka backups/product-release/tsukuyumi-layout-20261028/, kopie .wtf-staging/tsukuyumi-layout-20261028/.

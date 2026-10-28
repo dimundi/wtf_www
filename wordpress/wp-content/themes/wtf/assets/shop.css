@@ -188,3 +188,9 @@
 
 .shop-section-select{display:none}
 @media(max-width:700px){.wtf-js .shop-page.has-section-select .shop-results-count,.wtf-js .shop-page.has-section-select .shop-game-nav{display:none}.wtf-js .shop-page.has-section-select .shop-results-toolbar{flex-wrap:nowrap;justify-content:space-between;gap:12px}.wtf-js .shop-page.has-section-select .shop-game-preview-title{min-width:0;font-size:clamp(22px,6vw,28px)}.wtf-js .shop-page.has-section-select .shop-section-select{display:block;min-width:0;max-width:52%;min-height:44px;padding:8px 24px 8px 10px;border:1px solid var(--line);border-radius:0;background-color:transparent;color:var(--muted);font:inherit;font-size:13px}.shop-section-select option{background:var(--bg);color:var(--text)}}
+
+/* Ta sama łapka i rabat procentowy na kartach oferty. */
+.shop-card-image { position:relative; }
+.shop-card .shop-card-image span.wtf-sale-badge { position:absolute; z-index:2; top:7px; right:4px; bottom:auto; left:auto; width:max-content; display:inline-flex; align-items:center; min-width:0; min-height:0; margin:0 0 0 21px; padding:4px 12px 5px 17px; border-radius:0 12px 12px 8px; background:#90C11D; color:#1C263C; font-size:15px; font-weight:700; line-height:1.2; }
+.shop-card .shop-card-image span.wtf-sale-badge::before { content:''; position:absolute; left:-26px; top:50%; transform:translateY(calc(-50% - 4.5px)) rotate(-24deg); width:40px; height:41px; background:#90C11D; mask:url('wtf-frog-foot.svg') center/contain no-repeat; }
+@media(max-width:700px) { .shop-card.shop-card--accessory .shop-card-image span.wtf-sale-badge { font-size:12px; padding-right:7px; } }

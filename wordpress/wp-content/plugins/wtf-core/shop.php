@@ -6,6 +6,14 @@ function wtf_shop_local_url($url) {
     $host=wp_parse_url($url,PHP_URL_HOST);
     if(!in_array($host,['whatthefrog.pl','www.whatthefrog.pl','localhost'],true)) return $url;
     $path=wp_parse_url($url,PHP_URL_PATH) ?: '/';
+    if (function_exists('wtf_product_path_replacements')) {
+        $paths=wtf_product_path_replacements();
+        $path=$paths[trailingslashit($path)]??$path;
+        if (in_array(trailingslashit($path),$paths,true)) {
+            $query=wp_parse_url($url,PHP_URL_QUERY); $fragment=wp_parse_url($url,PHP_URL_FRAGMENT);
+            return home_url($path).($query?'?'.$query:'').($fragment?'#'.$fragment:'');
+        }
+    }
     $map=get_option('wtf_shop_import_map',[]);
     if($path!=='/sklep/' && empty($map['paths'][$path])) return $url;
     $query=wp_parse_url($url,PHP_URL_QUERY); $fragment=wp_parse_url($url,PHP_URL_FRAGMENT);
@@ -29,7 +37,7 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     $labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatek','akcesorium'=>'Akcesorium'];
     ?>
     <article class="shop-card shop-card--<?php echo esc_attr($layout); ?>">
-      <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image('medium_large',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?></a>
+      <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image('medium_large',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?><?php if($product->is_on_sale())echo apply_filters('woocommerce_sale_flash','<span class="onsale">Promocja!</span>',get_post($product->get_id()),$product); ?></a>
       <div class="shop-card-copy"><span class="shop-kind"><?php echo esc_html($labels[$kind]??($games[$game]??'WTF')); ?></span>
         <h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3>
         <?php if($introduction): ?><p class="shop-base-intro"><?php echo esc_html($introduction); ?></p><?php endif; ?>

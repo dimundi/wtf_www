@@ -104,4 +104,16 @@
   }
   $(document).on('wc-product-gallery-after-init', selector, function () { init(this); });
   $(() => document.querySelectorAll(selector).forEach(init));
+  // Ilustracje w opisie korzystają z tego samego powiększania co galeria produktu.
+  $(document).on('click', '.wtf-product-image-zoom', function (event) {
+    const root = document.querySelector('.pswp');
+    if (!root || !window.PhotoSwipe || !window.PhotoSwipeUI_Default) return;
+    event.preventDefault();
+    const image = this.querySelector('img');
+    const viewer = new window.PhotoSwipe(root, window.PhotoSwipeUI_Default, [{
+      src: this.href, w: Number(this.dataset.width), h: Number(this.dataset.height),
+      title: image?.alt || ''
+    }], {history: false, shareEl: false, closeOnScroll: false});
+    viewer.init();
+  });
 })(jQuery);
