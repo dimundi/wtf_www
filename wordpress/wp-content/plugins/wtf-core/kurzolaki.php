@@ -48,8 +48,12 @@ add_action('init', function () {
     ]);
     register_block_type('wtf/kurz-video', $common + [
         'title'=>'Film Kurzołaków',
-        'attributes'=>['url'=>['type'=>'string','default'=>''], 'title'=>['type'=>'string','default'=>'Film Kurzołaków']],
+        'attributes'=>['url'=>['type'=>'string','default'=>''], 'title'=>['type'=>'string','default'=>'Film Kurzołaków'],'fileId'=>['type'=>'number','default'=>0],'poster'=>['type'=>'string','default'=>'']],
         'render_callback'=>function ($a) {
+            if(!empty($a['fileId'])&&get_post_mime_type($a['fileId'])==='video/mp4'){
+                $url=wp_get_attachment_url($a['fileId']);
+                return '<video class="dust-native-video" controls playsinline preload="none"'.(!empty($a['poster'])?' poster="'.esc_url($a['poster']).'"':'').' aria-label="'.esc_attr($a['title']).'"><source src="'.esc_url($url).'" type="video/mp4">Twoja przeglądarka nie obsługuje filmu. <a href="'.esc_url($url).'">Pobierz film</a>.</video>';
+            }
             if (!preg_match('~^https://www\.youtube-nocookie\.com/embed/[a-zA-Z0-9_-]+(?:\?.*)?$~', $a['url'])) { return ''; }
             return '<iframe src="'.esc_url($a['url']).'" title="'.esc_attr($a['title']).'" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         },

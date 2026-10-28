@@ -101,3 +101,11 @@
 - Opisy fabularne produktów wyróżniamy kursywą (klasa wtf-product-fiction), oddzielając je wizualnie od informacji użytkowych i zawartości. Stosować przy kolejnych korektach opisów.
 
 - Pojedyncze frakcje Tsukuyumi są pakowane w blistry, nie pudełka. Wyjątki: Chronomasters i Sunrise Kingdom. Stosować właściwe nazwy opakowań w opisach produktów.
+
+- Kurzołaki — kierunek odświeżenia: kolorowy, cukierkowy, radosny. Zachować nieregularne przyciski i kształty grafik. W kolejnym etapie więcej ilustracji/postaci i prezentacji elementów gry z materiałów użytkownika; teraz wyłącznie zmiana palety lokalnie. Poprzedni CSS zachowany w backups/kurzolaki-colors/20261028/kurzolaki-before.css.
+
+- Nowe assety Kurzołaków użytkownik udostępnia w D:\GoogleDrive - firmowy\Mój dysk\Gry\KurzołakiNew\www\. Korzystać z aktualnych wskazanych plików, import przez Media WP.
+
+- Kurzołaki lokalnie: odtwarzacz trailera pod hero, blok wtf/kurz-video z fileId/poster, bez autoplay i z preload=none. Film 3326 to roboczy oryginał 162 MB; przed wdrożeniem zoptymalizować wersję internetową. Assety źródłowe media/kurzolaki/ i folder użytkownika.
+
+- 28.10.2026: odświeżenie Kurzołaków PL wdrożone na whathefrog.pl. Beż #F2EDE3 z fakturą, nowe logo/pudełka, zwiastun, PL/EN, cztery plansze frakcji, recenzje, samouczki i mobilne menu. Film 3326 wskazuje zoptymalizowany Kurzolaki_trailer-web.mp4 (39,6 MB zamiast 161,7 MB), 1080p H.264/AAC, preload none, faststart/Range; oryginał zachowany. Poprzednie polecenie optymalizacji przed wdrożeniem wykonane. Paczka backups/kurzolaki-release/20261028/, kopie .wtf-staging/kurzolaki-page-20261028/. Testy PROD poprawne.

@@ -126,3 +126,136 @@ Paczka backups/product-release/tsukuyumi-20261028/, kopie plików, produktów i 
 ## Potwierdzenie wdrożenia układów Tsukuyumi — 28.10.2026
 
 Wszystkie powyższe korekty opakowań, nagłówków, Sentinels, Chronomasters, Nowych Lądów, Kampfgruppe 03, Fireborn, podstawki i Gracz+ wdrożone na whathefrog.pl. Wcześniejsze zapisy PROD bez zmian dla tych pozycji dotyczą stanu przed wdrożeniem. Przeniesiono wyłącznie wybrane opisy i metadane układu ośmiu produktów oraz shop-product.php i product.css. Galerie, nazwy, ceny, stany i atrybuty zachowane i porównane. Paczka backups/product-release/tsukuyumi-layout-20261028/, kopie .wtf-staging/tsukuyumi-layout-20261028/.
+
+## Kurzołaki — próby kolorów i stan wdrożenia
+
+- Tylko paleta strony gry: wanilia #FFF6DF, brzoskwinia #FFD5B5, róż #FFCEE5, turkus #75DDD3, malina #DB3978, śliwkowy tekst #452650. Jaśniejsze pola ilustracji i karty frakcji, delikatniejsza faktura. Układ i nieregularne kształty zachowane. Kod assets/kurzolaki.css; poprzednia wersja backups/kurzolaki-colors/20261028/kurzolaki-before.css. PROD bez zmian.
+
+- Na polecenie użytkownika cofnięto lokalną paletę cukierkową Kurzołaków. Przywrócony dokładnie poprzedni kurzolaki.css z kopii, zgodność SHA-256 sprawdzona. Zmiana kolorów nie oczekuje na wdrożenie; PROD nie był zmieniany. Kierunek dalszej pracy do ponownej oceny.
+
+- Nowa próba lokalna Kurzołaków: tylko tło ciepłobiałe #FFFEFA bez papierowej faktury; dopasowane tło menu sekcji i dropdownu. Dotychczasowe kolory akcentów, tekst i kształty bez zmian. assets/kurzolaki.css; PROD bez zmian.
+
+- Kurzołaki lokalnie: białe tło odrzucone; aktualna próba to przygaszona mięta #E5EEE8 bez faktury, wraz z tłem menu. Reszta palety i kształty zachowane. PROD bez zmian.
+
+- Kurzołaki lokalnie: na aktualnym miętowym tle dodany bardzo delikatny splot tkaniny z dwóch półprzezroczystych kierunków CSS. Bez nowych plików i zmian pozostałych kolorów. PROD bez zmian.
+
+- Kurzołaki lokalnie: aktualne tło stonowany beż #E9E2D5 zamiast mięty, z zachowaniem subtelnego splotu tkaniny. Menu dopasowane do beżu; pozostałe kolory i kształty bez zmian. PROD bez zmian.
+
+- Kurzołaki lokalnie: beż rozjaśniony do #F2EDE3; faktura bez zmian. PROD bez zmian.
+
+- Kurzołaki PL (566) lokalnie: blok dust-logo podmieniony na ostrzejszy Kurzolaki_logo_1.png z folderu nowych assetów użytkownika. Import przez Media WP z WebP i wariantami, ALT i grupa Kurzołaki. Bez zmian treści, wymiaru CSS i innych obrazów. Skrypt local-scripts/one-off/kurzolaki-assets/replace-logo-local.php; PROD bez zmian.
+
+- Naprawiony lokalny zapis bloku po podmianie logo: przywrócona oryginalna treść z kopii i ponownie przypisane medium 3321, z wp_slash przy wp_update_post. Naprawione znaczniki HTML i pozostałe escapowane atrybuty. Sprawdzono lokalny HTML i wygląd 390/1440 px; PROD bez zmian.
+
+- Kurzołaki lokalnie: obraz pudełka w hero bez mix-blend-mode multiply (oryginalne kolory); nagłówek hero mocny bezszeryfowy Trebuchet/Verdana, malinowe hasło bez kursywy z lekkim przechyleniem. Tło, układ i nieregularne kształty zachowane. PROD bez zmian.
+
+- Kurzołaki PL (566), lokalnie: nowe pudełko Pudlo_Kurzołaki.png z folderu użytkownika, medium 3324 i warianty WebP. W hero zachowana naturalna orientacja (bok po prawej), przechylenie obrazu +3 stopnie zamiast -8. Bez odbijania napisów. Zmieniony tylko właściwy blok obrazu; poprawny zapis wp_slash. PROD bez zmian.
+
+- Kurzołaki lokalnie: logo w hero powiększone z 290 do 360 px (około 24%), maksymalnie 90% kolumny na telefonach. PROD bez zmian.
+
+- Kurzołaki lokalnie: zwiastun Kurzolaki_trailer.mp4 (162 MB, 90 s, 1920 × 1080) w sekcji pod hero i menu lokalnym, przed opisem gry. Film Media 3326, miniatura kadru 3327. Native video controls/playsinline/preload=none, bez autoplay i pobierania MP4 przy wejściu. Blok wtf/kurz-video obsługuje fileId i poster oraz wybór MP4/miniatury w edytorze; YouTube zachowany. Kod kurzolaki.php, kurzolaki-editor.js, kurzolaki.css; skrypt add-trailer-local.php, źródło media/kurzolaki/. Oryginalny film nie jest jeszcze skompresowany; przed publikacją przygotować lżejszą wersję. PROD bez zmian.
+
+- Zwiastun Kurzołaków lokalnie: wyróżniona żółta informacja Koniecznie oglądaj z dźwiękiem! w sekcji filmu. PROD bez zmian.
+
+- Lokalnie informacja o dźwięku przeniesiona pod nagłówek zwiastuna, w osobnym wyśrodkowanym wierszu tuż nad filmem. PROD bez zmian.
+
+- Plakietka dźwięku zwiastuna lokalnie: mniejsza (12 px, padding 6 × 12 px), nieregularna, przechylona o -4 stopnie z delikatnym cieniem. PROD bez zmian.
+
+- Plakietka dźwięku lokalnie przesunięta 22 px w górę, nad nagłówkiem w warstwie, z możliwością lekkiego nachodzenia. PROD bez zmian.
+
+- Kurzołaki PL (566) lokalnie: cztery ilustrowane frakcje w sekcji Po czyjej jesteś stronie. Gałgan (3331), Kichacz (3332), Puca (3333) i Landrynka (3334). Puca/Landrynka z obecnymi tłami na akceptację, do ewentualnej podmiany przez użytkownika; czwarta frakcja oznaczona jako dodatek Sweet Revenge. Cztery karty na desktopie, dwie na tabletach, jedna na telefonach, nieregularne kształty zachowane. Wszystkie bloki edytowalne, media z WebP i grupą Kurzołaki. Test 390/1440 px: obrazy, nazwy, brak poziomego przepełnienia poprawne. Skrypt illustrate-factions-local.php; PROD bez zmian.
+
+- Kurzołaki lokalnie: sekcja frakcji używa trzech kompletnych plansz board-na stronę-frakcje_PL_2/3/4.png z www użytkownika, media 3336–3338 (warianty WebP). Pliki zawierają teksty; zachowane bez kadrowania, max szerokość 1050 px, kolejno Flejtuchy/Robale/Puca; dostępne tekstowe opisy dla czytników. Na telefonie plansze na pełną szerokość i link do pełnej grafiki umożliwiający powiększenie. Landrynka zachowana osobno jako czwarta frakcja z dodatku. Zastępuje poprzedni lokalny układ czterech kart. Testy 390/1440: obrazy, proporcje, linki, brak overflow. Skrypt faction-boards-local.php; PROD bez zmian.
+
+- Plansze frakcji Kurzołaków lokalnie po dwie w rzędzie na desktopie/tablecie, na telefonie jedna. Obecna karta Landrynki w czwartym miejscu czeka na nową planszę użytkownika. PROD bez zmian.
+
+- Lokalnie czwarta plansza frakcji: board-na stronę-frakcje_PL_5.png (Landryna/Sweet Revenge) zastępuje tymczasową kartę Landrynki. Wszystkie cztery są jednakowymi blokami plansz, po dwie w rzędzie desktop/tablet i pojedynczo mobile, z linkami do pełnych grafik. Import z WebP i grupą Kurzołaki; skrypt landrynka-board-local.php. PROD bez zmian.
+
+- Kurzołaki lokalnie: usunięty nagłówek Po czyjej jesteś stronie. Cztery plansze włączone do sekcji dust-game (Małe stwory), bez osobnej sekcji; zachowany anchor dust-factions na wewnętrznym kontenerze dla menu. Sekcja rozszerzona do szerokości kontenera, tekst wstępu zachował węższą miarę, plansze 2 × 2 / jedna mobilnie. PROD bez zmian.
+
+- Sweet Revenge na stronie Kurzołaków lokalnie: usunięty różowy podkład i padding wokół pudełka, grafika bez multiply, oryginalne kolory. Układ i tekst bez zmian. PROD bez zmian.
+
+- Sweet Revenge lokalnie: tekstowy nagłówek zastąpiony oryginalnym logo z folderu Sweet Revenge/logo/logo sweet revenge.png. Import przez Media WP, grupa Kurzołaki, alt Sweet Revenge w semantycznym h2. Logo 380 px desktop / 300 px mobile, oryginalne proporcje i kolory. PROD bez zmian.
+
+- Sweet Revenge lokalnie: nowy Box_SweetRevenge.png z www użytkownika, naturalna orientacja bez odbicia; przechylenie oprawy +2 stopnie zamiast -3. Podmieniony tylko blok grafiki w dust-expansion-art, Media z WebP i grupą Kurzołaki. PROD bez zmian.
+
+- Sweet Revenge lokalnie: różowa nieregularna chmurka za pudełkiem, jak w hero; pseudoelement powiązany z rozmiarem grafiki, bez rozciągania do wysokości kolumny tekstu. PROD bez zmian.
+
+- Kurzołaki lokalnie: pod wstępem Małe stwory, przed infografikami, dodany edytowalny akapit o dwujęzycznym wydaniu z komponentami PL i EN. Twarde spacje zachowane. PROD bez zmian.
+
+- Kurzołaki lokalnie: ilustracja w sekcji dust-play (Spróbuj to rozgryźć) podmieniona na Kurzolaki_plansza.png z www użytkownika. Pod ilustracją przycisk Pokaż pełny wymiar, link do oryginalnego rozmiaru w nowej karcie. Media WP z wariantami i grupą Kurzołaki; skrypt replace-play-board-local.php. PROD bez zmian.
+
+- Plansza Kurzołaków lokalnie: przycisk Pokaż planszę zamiast Pokaż pełny wymiar, podpis Plansza i elementy gry Kurzołaki. — bez określenia prototyp. PROD bez zmian.
+
+- Dwujęzyczność Kurzołaków lokalnie: osobny wyróżniony blok zamiast zwykłego akapitu, nagłówek Jedna gra. Dwa języki., żółta przekrzywiona plakietka PL / EN i informacja o komponentach w obu językach. Nieregularna miętowa oprawa, responsywny układ, edytowalne bloki. PROD bez zmian.
+
+- Kurzołaki lokalnie: dwa samouczki YouTube pkbfRJCQ3O8 i Sa4Fuo40yAc dodane na początku dust-video-grid w podanej kolejności, stare dwa filmy zachowane. Osadzenia youtube-nocookie z lazy loading, edytowalne bloki. Skrypt prepend-tutorials-local.php; PROD bez zmian.
+
+- Lokalnie tytuły nowych samouczków: Przygotowanie do gry oraz Przykładowa runda. Pod każdym podtytuł Film przygotowany na bazie prototypu gry. PROD bez zmian.
+
+## Recenzje Kurzołaków — wdrożone 28.10.2026
+
+- Z dostarczonego przez użytkownika HTML kampanii Gamefound, sekcja 84874, przeniesiono komplet sześciu źródeł: Tabletoppping (Instagram EN, polski przekład ze źródłowej grafiki), Planszówki we dwoje (Wiktor/Kasia i zdjęcie), Boardgamerka (cytat i zdjęcie), trzy filmy: Planszówki Online RqpcjUisRN4, Planszowe Newsy hSMnF-lVlhQ, OnTable Z7XQtbFY6PM.
+- Układ: wyróżniona opinia, dwie karty recenzji pisanych, osobna siatka wideo. Wszystkie źródła z linkami, cztery cytaty z podpisami, iframe lazy youtube-nocookie. Dotychczasowe samouczki i pozostałe filmy zachowane. Media 3354/3355 przez WP z WebP; źródło i skrypt local-scripts/one-off/kurzolaki-reviews/. HTML zawiera dane sesji — nie publikować całego pliku źródłowego, do strony przeniesiono tylko treść recenzji. PROD bez zmian.
+
+- Lokalnie przy zdjęciach recenzji Planszówek we dwoje i Boardgamerki podpis Zdjęcie prototypu gry. Dwa podpisy sprawdzone w HTML. PROD bez zmian.
+
+- Lokalnie usunięty dopisek Polski przekład opinii zamieszczony na stronie kampanii spod opinii Tabletoppping. Cytat i link zachowane; PROD bez zmian.
+
+- Kurzołaki lokalnie: Kurzolaczki.png z www użytkownika na samym końcu treści strony przed stopką, w pełnych proporcjach, max szerokość 1200 px. Media WP z WebP, opis alternatywny oddaje dialog mema, grupa Kurzołaki. Skrypt append-meme-local.php; PROD bez zmian.
+
+- Kurzołaki lokalnie: podmenu Opinie → Recenzje. Do 700 px układ jak w innych grach: strzałka powrotu na górę po lewej i details z listą sekcji po prawej. Zamykanie po wyborze, Escape i kliknięciu poza; sticky, reduced-motion, ukrycie przy otwartym głównym menu. Desktop zachowuje poziome menu. Kod kurzolaki.js/css i functions.php; PROD bez zmian.
+
+## Kurzołaki — komplet wdrożony 28.10.2026
+
+Wszystkie zgromadzone poprawki Kurzołaków są na whathefrog.pl. Wcześniejsze dopiski lokalnie / PROD bez zmian przy tych pozycjach opisują stan sprzed tego wdrożenia. Aktualnie: jasny beż #F2EDE3 z fakturą tkaniny, nowa typografia hero, większe logo i nowe pudełko; zwiastun z informacją o dźwięku; blok dwujęzyczności PL/EN; cztery infografiki w sekcji Małe stwory (2 × 2 desktop, jedna mobile); logo i pudełko Sweet Revenge z różową chmurką; nowa plansza z przyciskiem Pokaż planszę; cztery filmy instruktażowe z opisami; komplet sześciu źródeł recenzji, podpisy zdjęć prototypu; grafika Kurzolaczki na końcu; menu Recenzje i mobilna lista ze strzałką do góry.
+
+Film zoptymalizowany z 161711711 do 39616107 bajtów (około 75% mniej), MP4 H.264 Full HD, 90 sekund, dźwięk AAC stereo, faststart. Oryginał zachowany lokalnie. Preload none i odtwarzanie po kliknięciu; test PROD potwierdza HTTP Range 206 i brak pobierania filmu przy wejściu.
+
+Zmieniona wyłącznie strona PL 566 (docelowe ID rozwiązane ze sluga) oraz 14 mediów / 126 plików i pliki motywu/wtyczki. Mapowanie imageId/mobileId/fileId i domen wykonane przy imporcie. Sklep, klienci, zamówienia i EN bez zmian. Kopie strony i plików prywatnie .wtf-staging/kurzolaki-page-20261028/. Paczka końcowa backups/kurzolaki-release/20261028/page.tar.gz i manifest.json. Skrypty eksportu/importu local-scripts/one-off/kurzolaki-assets/.
+
+Kontrola PROD: 390/1440 px, menu i powrót do góry, cztery plansze, dwujęzyczność, sześć źródeł recenzji, podpisy, samouczki, wszystkie obrazy, odtwarzanie Full HD, zakresy MP4 i zabezpieczenia HTTP/HTTPS/noindex/Basic Auth — poprawne.
+
+## Oczekujące lokalnie — uproszczenie Kurzołaków
+
+- Usunięty przycisk Zajrzyj do Zakamarka w hero. Cztery infografiki frakcji bez linków powiększania i bez podpowiedzi Dotknij planszy; grafiki i układ zachowane. Przycisk Pokaż planszę w sekcji rozgrywki bez zmian. Skrypt simplify-hero-boards-local.php; PROD bez zmian.
+
+- Kurzołaki lokalnie: SVG plamy odtworzone z pokazanego przez użytkownika obrysu, przygaszony róż bez konturu za nagłówkiem hero. Subtelny ruch 17 s, tekst i logo nieruchome, reduced-motion wyłącza animację. Pliki assets/kurzolaki-stain.svg i kurzolaki.css. PROD bez zmian.
+
+- Lokalnie ruch plamy hero wzmocniony: cykl 8 s, przesunięcie około 30 px, obrót od -10 do +9 stopni i większa zmiana skali. Reduced-motion zachowane. PROD bez zmian.
+
+- Kurzołaki lokalnie: osobny wyróżniony blok Słodkie stwory. Niesłodkie zagrania. z akapitem o taktycznej rozgrywce mimo słodkich ilustracji. Różowy wariant oprawy bloku dwujęzyczności, plakietka GRA TAKTYCZNA. Umieszczony przed blokiem PL/EN w sekcji Małe stwory. PROD bez zmian.
+
+- Lokalnie blok PL/EN przeniesiony z sekcji Małe stwory przed opis dodatku Sweet Revenge. Blok taktyczny pozostał przy wstępie; oprawa PL/EN zachowana po przeniesieniu. PROD bez zmian.
+
+- Lokalnie blok taktyczny: zaakceptowany nowy opis o prostych zasadach, zagadce każdej tury i rewanżu. Nowy podobny blok Wspólna gra. Równe szanse. (FAMILY+) przed sekcją Zobacz, jak to działa, o graniu w parze/trójkę i handicapach przy młodszym dziecku, na podstawie ulotki UVP. PROD bez zmian.
+
+- Lokalnie przed filmami nowy blok 2 GRACZY / We dwoje? W sam raz. podkreślający dobry tryb dwuosobowy. Dotychczasowy FAMILY+ zachowany, przeniesiony niżej przed recenzje. PROD bez zmian.
+
+- Lokalnie hero Kurzołaków: metryka 2–3 graczy, około 30 min, wiek 10+ (ulotka UVP) oraz dopisek o rozgrywce także w 4 osoby z dodatkiem Sweet Revenge. Edytowalne bloki. PROD bez zmian.
+
+- Kurzołaki, podstawka (806): lokalnie włączony rozbudowany widok produktu. Własna treść o taktyce, trzech frakcjach, grze we dwoje, PL/EN oraz zawartości zestawu; ilustracja planszy. Zachowane ceny, stany i galeria. Sprawdzone 390/1440 px, jasny/ciemny motyw, galeria i brak poziomego przewijania. Do wdrożenia razem z pozostałymi poprawkami Kurzołaków.
+
+- Fanpack (804): opis i lista zawartości tylko przy cenie, niżej wyłącznie ilustracja zestawu; usunięty dopisek o ograniczonej ilości oraz dawny ręczny tekst o najniższej cenie. Kolejność Sweet Revenge (805) = 3, Fanpack = 4. Lokalny odbiór strony i kolejności sklepu poprawny.
+
+- Fanpack (804): usunięta cała dolna sekcja z powtórzonym zdjęciem. Sweet Revenge (805): korekta i formatowanie opisów, nagłówek Słodki rewanż, zachowana ilustracja planszetki; usunięta nieaktualna przedsprzedaż i ręczna historyczna cena. Ceny, stany, galeria i kolejność zachowane. Odbiór HTTP obu produktów poprawny, zmiany lokalne.
+
+- Próba wdrożenia aktualizacji Kurzołaków 28.10: paczka backups/kurzolaki-release/20261028/update gotowa. SSH cluster131:22 wielokrotnie przekroczył czas połączenia, przed uruchomieniem importu i zmianą plików serwera. HTTPS strony odpowiada 200. Zmiany nadal oczekują na wdrożenie.
+
+## Kurzołaki — aktualizacja wdrożona 28.10.2026
+
+Wdrożone wszystkie powyższe oczekujące poprawki strony Kurzołaków oraz produktów: podstawka, Fanpack i Sweet Revenge. Fanpack bez dolnej sekcji i powtórzeń, za Sweet Revenge. Sweet Revenge bez przedsprzedaży. Podstawka z rozbudowanym opisem i wspólną galerią. Plama SVG, ruch i bloki taktyka/PL-EN/duet/Family+ oraz metryka są na PROD. Ceny, stany, powiązania i galerie produktów zachowane — importer potwierdził zgodność.
+
+Paczka lokalna backups/kurzolaki-release/20261028/update; kopie treści i kodu oraz receipt na OVH w .wtf-staging/kurzolaki-update-20261028. Odbiór PROD: produkt podstawowy 390/1440 px, jasny/ciemny; strona gry 390/1440 px, menu, grafiki i materiały; treść Fanpack/Sweet Revenge i kolejność sklepu poprawne. Początkowe problemy SSH ustąpiły; wdrożenie zakończone.
+
+- 28.10.2026: zdjęcia produktów Kurzołaki i Sweet Revenge zsynchronizowane z lokalnej biblioteki na PROD. Kurzołaki: główne 3282, galeria 3368/3369/725; Sweet Revenge: główne 3283, galeria 718/3370 (lokalne ID, na serwerze mapowane). Wyłącznie zdjęcia i ich kolejność, bez zmiany opisów/cen/stanów. Odbiór stron i wszystkich zdjęć HTTP 200 poprawny. Paczka backups/kurzolaki-release/20261028/photos, kopie i receipt .wtf-staging/kurzolaki-photos-20261028.
+
+- Lokalnie: animacja plamy hero Kurzołaków usunięta, plama nieruchoma. Do 650 px pudełko przed logo i tekstem (CSS order); desktop zachowuje układ. Kontrola szerokości, kolejności i braku animacji: 360/390/650/768/1440 px. PROD bez zmian.
+
+- Lokalnie zaakceptowane hasło hero Kurzołaków: Słodki cel. Brudne zagrania. Logo z podtytułem bez zmian. Odbiór HTML poprawny; PROD bez zmian.
+
+- Wdrożono na PROD 28.10.2026: hasło Słodki cel. Brudne zagrania.; plama bez animacji; do 650 px pudełko przed logo. Desktop bez zmiany układu. Sprawdzenie 360/390/650/768/1440 px: brak poziomego przewijania i animacji, poprawna kolejność. Kopie strony i CSS: .wtf-staging/kurzolaki-static-hero-20261028. Produkty i galerie bez zmian.
+
+- Lokalnie Plamy (803): opis bez powtórzeń, lista 9 plam według kolorów/frakcji, dolna sekcja Plamy na planszy z dotychczasową ilustracją i podpisem. Usunięty ręczny tekst historycznej ceny. Nazwa, ceny, stan, galeria i kolejność zachowane. Odbiór HTML poprawny; PROD bez zmian.
+
+- Plamy (803): opis i formatowanie wdrożone na PROD 28.10.2026. Odbiór HTML potwierdził pojedynczy opis, listę i ilustrację w sekcji Plamy na planszy. Ceny, stany i zdjęcia zachowane. Kopia i receipt na OVH .wtf-staging/plamy-description-20261028; manifest lokalny backups/kurzolaki-release/20261028/plamy.

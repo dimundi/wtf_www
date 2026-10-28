@@ -176,7 +176,7 @@ function wtf_shop_product_render() {
         if(count($related)===3)break;
     }
     ob_start(); ?>
-    <div class="woocommerce wtf-product <?php echo $game==='elekt'?'wtf-product--elekt':''; ?>">
+    <div class="woocommerce wtf-product <?php echo $game?'wtf-product--'.esc_attr(sanitize_html_class($game)):''; ?>">
       <?php echo $GLOBALS['wtf_product_notices_html']??''; do_action('woocommerce_before_single_product'); ?>
       <nav class="wtf-product-breadcrumb" aria-label="Ścieżka produktu"><a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Sklep</a><span>/</span><?php if(isset($games[$game])): ?><a href="<?php echo esc_url($shopUrl); ?>"><?php echo esc_html($games[$game]); ?></a><span>/</span><?php endif; ?><span aria-current="page"><?php echo esc_html($kindLabel?:$product->get_name()); ?></span></nav>
       <div id="product-<?php echo absint($product->get_id()); ?>" <?php wc_product_class('wtf-product-frame',$product); ?>>
@@ -202,7 +202,7 @@ function wtf_shop_product_render() {
         <?php endif; ?>
         <?php if($product->has_attributes()): ?><section class="wtf-product-attributes"><h2>Dane produktu</h2><?php wc_display_product_attributes($product); ?></section><?php endif; ?>
         <?php if($related): ?>
-        <section class="wtf-product-expansions" id="product-expansions" aria-labelledby="product-expansions-title"><header><div><span class="wtf-product-section-number">ROZBUDUJ SWOJĄ GRĘ</span><h2 id="product-expansions-title">Kolejny ruch należy do Ciebie.</h2></div><a href="<?php echo esc_url($shopUrl.'#elekt-dodatek'); ?>">Zobacz wszystkie dodatki</a></header><div class="shop-products"><?php foreach($related as $item)wtf_shop_card($item); ?></div></section>
+        <section class="wtf-product-expansions" id="product-expansions" aria-labelledby="product-expansions-title"><header><div><span class="wtf-product-section-number">ROZBUDUJ SWOJĄ GRĘ</span><h2 id="product-expansions-title">Kolejny ruch należy do Ciebie.</h2></div><a href="<?php echo esc_url($shopUrl.'#'.$game.'-dodatek'); ?>">Zobacz wszystkie dodatki</a></header><div class="shop-products"><?php foreach($related as $item)wtf_shop_card($item); ?></div></section>
         <?php endif; ?>
         <?php if(comments_open($product->get_id())): ?><section class="wtf-product-reviews"><?php comments_template(); ?></section><?php endif; ?>
       </div>

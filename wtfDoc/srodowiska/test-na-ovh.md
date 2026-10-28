@@ -67,3 +67,5 @@ Aktualizacja produktów wdrożona na wyraźne polecenie użytkownika: standardow
 Na mobilnej stronie podstawki Elekta do 700 px usunięto zewnętrzną ramkę i boczny padding całego widoku produktu; zawartość wykorzystuje szerokość kontenera sklepu. Desktop bez zmiany. product.css wdrożony od razu zgodnie z nową dyspozycją użytkownika, SHA-256 potwierdzony. Kopia .wtf-staging/patch-product-mobile-frame/.
 
 28.10.2026: wdrożono zbiorczą paczkę produktów batch-products-20261028: 33 nowe adresy bez przekierowań, sekcje opisów, nagłówek Opis kart, nazwy i cztery obrazy mat oraz wzajemne linki. Bez podmiany bazy, ceny/stany/powiązania zachowane. Testy HTTP 33 adresów i linków, maty 390/1440 px oraz kontrola zabezpieczeń poprawne. Kopie prywatnie .wtf-staging/batch-products-20261028/.
+
+28.10.2026: pełna paczka Kurzołaków wdrożona: strona PL, 14 mapowanych mediów / 126 plików, motyw i bloki. Zwiastun 39,6 MB Full HD z dźwiękiem, faststart i Range 206. Testy strony 390/1440, menu, recenzje, obrazy, wideo i zabezpieczenia poprawne. Sklep/baza poza treścią strony i mediami bez zmian; kopie .wtf-staging/kurzolaki-page-20261028/.

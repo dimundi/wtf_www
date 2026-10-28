@@ -167,3 +167,10 @@
 .shop-single .wtf-product-contents-image > .wtf-product-illustrations { grid-column:2; grid-row:1 / span 2; align-self:center; min-width:0; display:grid; gap:20px; }
 .shop-single .wtf-product-illustrations > .wtf-product-wide-image { margin:0; }
 @media(max-width:700px) { .shop-single .wtf-product-contents-image > .wtf-product-illustrations { grid-column:1; grid-row:3; } }
+
+/* Rozbudowana prezentacja Kurzołaków w kolorach sklepu. */
+.wtf-product--kurzolaki { background:var(--bg); color:var(--text); }
+.wtf-kurz-product-board { margin:30px 0; }
+.wtf-kurz-product-board img { width:100%; height:auto; }
+.wtf-kurz-product-board figcaption { text-align:center; font-size:12px; color:var(--muted); }
+.wtf-product--kurzolaki .wtf-product-description h3 { margin:32px 0 14px; font-size:23px; line-height:1.3; }

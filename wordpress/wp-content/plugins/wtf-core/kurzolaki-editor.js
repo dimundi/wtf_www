@@ -21,7 +21,14 @@
       mediaField(a,setAttributes),a.mobileId?mediaField(a,setAttributes,true):null,
       h(TextControl,{label:'Opis alternatywny',value:a.alt,onChange:alt=>setAttributes({alt})})),save:()=>null,
   });
-  wp.blocks.registerBlockType('wtf/kurz-video',{...base,title:'Film Kurzołaków',icon:'video-alt3',attributes:{url:string(''),title:string('Film Kurzołaków')},
-    edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),h(TextControl,{label:'Tytuł filmu',value:a.title,onChange:title=>setAttributes({title})}),h(TextControl,{label:'Adres osadzenia YouTube',help:'https://www.youtube-nocookie.com/embed/IDENTYFIKATOR',value:a.url,onChange:url=>setAttributes({url})})),save:()=>null,
+  wp.blocks.registerBlockType('wtf/kurz-video',{...base,title:'Film Kurzołaków',icon:'video-alt3',attributes:{url:string(''),title:string('Film Kurzołaków'),fileId:{type:'number',default:0},poster:string('')},
+    edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),
+      h(TextControl,{label:'Tytuł filmu',value:a.title,onChange:title=>setAttributes({title})}),
+      h('p',{},'Film MP4: zalecane proporcje 16:9 i rozdzielczość 1920 × 1080 px. Odtwarzanie po kliknięciu, bez automatycznego pobierania.'),
+      h(MediaUploadCheck,{},h(MediaUpload,{allowedTypes:['video'],value:a.fileId,onSelect:m=>setAttributes({fileId:m.id}),render:({open})=>h(Button,{variant:'secondary',onClick:open},a.fileId?'Zmień film MP4':'Wybierz film MP4')})),
+      a.fileId?h(Button,{variant:'tertiary',onClick:()=>setAttributes({fileId:0})},'Usuń MP4 i użyj YouTube'):null,
+      h(MediaUploadCheck,{},h(MediaUpload,{allowedTypes:['image'],onSelect:m=>setAttributes({poster:m.url}),render:({open})=>h(Button,{variant:'secondary',onClick:open},'Miniatura filmu (16:9)')})),
+      a.poster?h('img',{src:a.poster,alt:'Miniatura filmu',style:{maxWidth:'100%',maxHeight:220}}):null,
+      h(TextControl,{label:'Adres osadzenia YouTube (gdy nie wybrano MP4)',help:'https://www.youtube-nocookie.com/embed/IDENTYFIKATOR',value:a.url,onChange:url=>setAttributes({url})})),save:()=>null,
   });
 })();

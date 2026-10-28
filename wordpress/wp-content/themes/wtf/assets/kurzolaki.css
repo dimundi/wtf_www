@@ -20,3 +20,169 @@ body.kurzolaki-theme{--bg:#f4eddc;--surface:#e5ddc7;--text:#283d39;--muted:#5763
 .dust-opening-art>img{height:auto}
 .kurzolaki-theme .header nav,.kurzolaki-theme .header .tools{color:var(--text)}
 @media(max-width:700px){.kurzolaki-theme .header nav.mobile-navigation{background:var(--bg);color:var(--text)}}
+
+/* Stonowany beż, faktura tkaniny poniżej. */
+body.kurzolaki-theme, :root[data-theme=dark] body.kurzolaki-theme { --bg:#F2EDE3; background-color:#F2EDE3; background-image:none; }
+.kurzolaki-theme .games-dropdown { background:#F2EDE3; }
+.kurzolaki-theme .dust-local-menu { background:#F2EDE3F5; }
+
+/* Delikatny splot tkaniny na beżowym tle. */
+body.kurzolaki-theme, :root[data-theme=dark] body.kurzolaki-theme { background-image:repeating-linear-gradient(0deg,rgba(40,61,57,.025) 0,rgba(40,61,57,.025) 1px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(255,255,255,.15) 0,rgba(255,255,255,.15) 1px,transparent 1px,transparent 5px); background-size:4px 4px,5px 5px; }
+
+/* Hero: oryginalne barwy pudełka i bardziej energiczny nagłówek. */
+.dust-opening-art > img { mix-blend-mode:normal; }
+.dust-opening h1 { font-family:'Trebuchet MS',Verdana,sans-serif; font-weight:900; font-size:clamp(44px,5vw,74px); line-height:1.03; letter-spacing:-2.5px; }
+.dust-opening h1 em { display:inline-block; font-style:normal; transform:rotate(-2deg); }
+@media(max-width:650px) { .dust-opening h1 { font-size:44px; letter-spacing:-1.8px; } }
+
+/* Nowy kadr pudełka: bok po prawej, naturalna orientacja bez odbijania. */
+.dust-opening-art > img { transform:rotate(3deg); }
+
+/* Większe logo gry w hero. */
+.dust-logo { width:360px; max-width:90%; }
+
+/* Zwiastun: duży kadr w nieregularnej oprawie Kurzołaków. */
+.dust-trailer { max-width:1100px; padding-top:65px; padding-bottom:10px; text-align:center; }
+.dust-trailer h2 { max-width:850px; margin:18px auto 32px; }
+.dust-native-video { display:block; width:100%; aspect-ratio:16/9; background:#283d39; object-fit:contain; border-radius:2% 1% 2% 1% / 1% 2% 1% 2%; box-shadow:7px 9px 0 #283d3918; }
+@media(max-width:650px) { .dust-trailer { padding-top:35px; } .dust-trailer h2 { font-size:32px; margin-bottom:24px; } }
+
+.dust-trailer-sound { display:inline-block; margin:0 0 18px; padding:9px 18px; background:#edcf6a; color:#283d39; font-size:15px; font-weight:700; border-radius:7% 3% 6% 2%; }
+
+.dust-trailer-sound { display:table; margin:0 auto 24px; }
+
+/* Drobna, przekrzywiona karteczka przy zwiastunie. */
+.dust-trailer-sound { padding:6px 12px; font-size:12px; line-height:1.4; border-radius:9% 3% 7% 2% / 15% 8% 12% 5%; transform:rotate(-4deg); box-shadow:2px 3px 0 #283d3918; }
+
+.dust-trailer-sound { position:relative; z-index:1; margin-top:-22px; }
+
+/* Cztery frakcje z ilustracjami postaci. */
+.dust-faction-list { grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; margin-top:80px; }
+.dust-faction { padding:0 24px 28px; display:flex; flex-direction:column; }
+.dust-faction-art { display:block; width:calc(100% + 24px); max-width:none!important; height:245px; object-fit:contain; margin:-38px -12px 18px; }
+.dust-faction h3 { font-size:32px; margin:14px 0 18px; }
+.dust-faction p { margin:0 0 24px; }
+.dust-faction .dust-goal { margin-top:auto; }
+.dust-candy { background:#eed0d9; transform:rotate(2deg); }
+@media(max-width:1100px) { .dust-faction-list { grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:70px; } .dust-faction-art { height:280px; } }
+@media(max-width:650px) { .dust-faction-list { grid-template-columns:minmax(0,1fr); gap:65px; } .dust-faction-art { height:260px; } }
+
+/* Ilustrowane plansze frakcji z materiałów użytkownika. */
+.dust-faction-boards > h2 { margin-bottom:30px; }
+.dust-faction-board { max-width:1050px; margin:0 auto 28px; position:relative; }
+.dust-board-link { display:block; cursor:zoom-in; }
+.dust-board-art { display:block; width:100%; height:auto; }
+.dust-board-accessible { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.dust-board-hint { display:none; }
+.dust-landrynka-preview { max-width:1050px; margin:70px auto 0; }
+.dust-landrynka-preview .dust-candy { transform:none; display:grid; grid-template-columns:200px minmax(0,1fr); gap:12px 28px; padding:28px; }
+.dust-landrynka-preview .dust-faction-art { grid-column:1; grid-row:1 / span 4; width:100%; height:230px; margin:0; align-self:center; }
+.dust-landrynka-preview .dust-faction-no,.dust-landrynka-preview h3,.dust-landrynka-preview p,.dust-landrynka-preview .dust-goal { grid-column:2; margin:0; }
+@media(max-width:650px) { .dust-faction-boards { width:100%; } .dust-faction-boards > h2,.dust-board-hint { margin-left:20px; margin-right:20px; } .dust-board-hint { display:block; font-size:12px; color:var(--muted); margin-bottom:24px; } .dust-faction-board { margin-bottom:16px; } .dust-landrynka-preview { margin:55px 20px 0; } .dust-landrynka-preview .dust-candy { display:flex; padding:24px; gap:12px; } .dust-landrynka-preview .dust-faction-art { height:220px; } }
+
+/* Dwie plansze w rzędzie; czwarta grafika Landrynki do podmiany. */
+.dust-faction-boards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; align-items:start; }
+.dust-faction-boards > h2,.dust-faction-boards > .dust-board-hint { grid-column:1 / -1; }
+.dust-faction-boards > h2 { margin-bottom:4px; }
+.dust-faction-boards .dust-faction-board { width:100%; max-width:none; margin:0; }
+.dust-faction-boards .dust-landrynka-preview { width:100%; max-width:none; margin:0; }
+.dust-faction-boards .dust-landrynka-preview .dust-candy { display:flex; min-height:100%; }
+@media(max-width:650px) { .dust-faction-boards { grid-template-columns:minmax(0,1fr); gap:20px; } .dust-faction-boards > h2 { margin-bottom:0; } .dust-faction-boards .dust-landrynka-preview { width:auto; margin:20px; } }
+
+/* Opowieść i plansze tworzą jedną sekcję. */
+.dust-intro-with-boards { max-width:1400px; }
+.dust-intro-with-boards > h2 { max-width:900px; margin-left:auto; margin-right:auto; }
+.dust-intro-boards { margin-top:42px; text-align:left; }
+.dust-intro-with-boards .dust-board-accessible { margin:-1px; }
+@media(max-width:650px) { .dust-intro-with-boards { width:100%; } .dust-intro-with-boards > .dust-label,.dust-intro-with-boards > h2,.dust-intro-with-boards > p { padding-left:20px; padding-right:20px; } .dust-intro-boards { margin-top:28px; } }
+
+/* Sweet Revenge: pudełko bez dominującego różowego podkładu. */
+.dust-expansion-art { background:transparent; padding:0; border-radius:0; }
+.dust-expansion-art img { mix-blend-mode:normal; }
+
+.dust-expansion-logo-heading { line-height:0; margin:18px 0 24px; }
+.dust-expansion-logo { display:block; width:380px; max-width:100%; height:auto; mix-blend-mode:normal; }
+@media(max-width:650px) { .dust-expansion-logo { width:300px; } }
+
+/* Nowy render Sweet Revenge: naturalna perspektywa, łagodny przechył. */
+.dust-expansion-art { transform:rotate(2deg); }
+
+/* Różowa chmurka za pudełkiem dodatku, bez rozciągania do wysokości tekstu. */
+.dust-expansion-art { position:relative; isolation:isolate; align-self:center; }
+.dust-expansion-art::before { content:''; position:absolute; z-index:-1; inset:14% 2% 12%; background:#eed0d9; border-radius:46% 54% 33% 67% / 36% 40% 60% 64%; transform:rotate(-5deg); }
+
+.dust-play .dust-board-full { display:table; margin:18px auto 4px; text-align:center; }
+
+/* Dwujęzyczność jako wyraźna zaleta wydania. */
+.dust-bilingual-feature { display:flex; align-items:center; gap:30px; max-width:980px; margin:42px auto 48px; padding:30px 36px; background:#d3ded3; border-radius:4% 2% 3% 1% / 8% 5% 7% 4%; text-align:left; box-shadow:4px 5px 0 #283d3912; }
+.dust-bilingual-badge { flex-shrink:0; display:block; padding:18px 20px; background:#edcf6a; color:#283d39; font-size:24px; font-weight:900; white-space:nowrap; border-radius:10% 4% 8% 3%; transform:rotate(-5deg); }
+.dust-bilingual-copy h3 { margin:0 0 12px; font-family:'Trebuchet MS',Verdana,sans-serif; font-size:30px; letter-spacing:-1px; }
+.dust-intro .dust-bilingual-copy p { max-width:none; margin:0; font-size:17px; line-height:1.7; }
+@media(max-width:650px) { .dust-bilingual-feature { margin:32px 20px; padding:24px; flex-direction:column; align-items:flex-start; gap:20px; } .dust-bilingual-badge { font-size:20px; padding:12px 18px; } .dust-bilingual-copy h3 { font-size:27px; } .dust-intro .dust-bilingual-copy p { font-size:16px; } }
+
+.dust-video-grid .dust-tutorial-note { margin:-8px 0 16px; color:var(--muted); font-size:13px; line-height:1.5; }
+
+/* Recenzje: pełny zestaw źródeł kampanii, wideo i recenzje pisane. */
+.dust-reviews-expanded > h2 { max-width:1000px; }
+.dust-reviews-lead { max-width:720px; font-size:18px; color:var(--muted); margin:24px 0 36px; }
+.dust-review-highlight { padding:32px 38px; background:#edcf6a70; border-radius:3% 1% 2% 1% / 7% 4% 6% 3%; margin-bottom:34px; }
+.dust-review-highlight h3 { margin:12px 0 20px; font-size:30px; }
+.dust-review-quotation { margin:0 0 22px; }
+.dust-review-quotation blockquote { margin:0 0 12px; }
+.dust-review-quotation blockquote p { margin:0; font-size:20px; line-height:1.65; }
+.dust-review-highlight blockquote p { font-family:Georgia,serif; font-size:27px; }
+.dust-review-quotation figcaption { font-size:12px; color:var(--muted); }
+.dust-written-reviews { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; }
+.dust-review-card { min-width:0; background:#ffffff70; border:1px solid var(--line); border-radius:2% 1% 3% 1%; overflow:hidden; display:flex; flex-direction:column; }
+.dust-review-photo { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
+.dust-review-card-copy { padding:28px; display:flex; flex-direction:column; flex:1; }
+.dust-review-card h3 { margin:14px 0 24px; font-size:30px; }
+.dust-review-card .dust-review-source { margin-top:auto; align-self:flex-start; }
+.dust-review-source { font-weight:700; color:var(--accent); text-decoration:underline; text-underline-offset:4px; line-height:1.6; }
+.dust-review-videos-heading { margin:50px 0 26px; font-size:34px; }
+.dust-review-videos { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.dust-review-video { min-width:0; }
+.dust-review-video h4 { font-size:21px; margin:0 0 16px; }
+.dust-review-video iframe { display:block; width:100%; height:auto; aspect-ratio:16/9; border:0; border-radius:5px; background:#283d39; }
+.dust-review-video .dust-review-source { font-size:12px; margin-top:14px; }
+@media(max-width:900px) { .dust-review-videos { grid-template-columns:minmax(0,1fr); gap:32px; } }
+@media(max-width:650px) { .dust-written-reviews { grid-template-columns:minmax(0,1fr); gap:24px; } .dust-review-highlight { padding:24px; } .dust-review-highlight blockquote p { font-size:22px; } .dust-review-card-copy { padding:22px; } .dust-review-quotation blockquote p { font-size:18px; } .dust-review-videos-heading { font-size:29px; } }
+
+.dust-review-prototype-caption { margin:10px 20px 0; font-size:12px; line-height:1.5; color:var(--muted); }
+
+.dust-meme { max-width:1200px; margin:0 auto 55px; }
+.dust-meme-art { display:block; width:100%; height:auto; }
+@media(max-width:650px) { .dust-meme { width:calc(100% - 24px); margin-bottom:32px; } }
+
+/* Menu sekcji jak w pozostałych grach: strzałka i rozwijana lista. */
+.dust-local-menu-shell { position:sticky; top:0; z-index:35; background:var(--bg); }
+.dust-section-menu > summary,.dust-back-to-top { display:none; }
+.dust-local-menu-shell .dust-local-menu { position:static; }
+@media(max-width:700px) { .dust-local-menu-shell { display:flex; align-items:flex-start; gap:10px; padding:10px 16px; border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); } .dust-back-to-top { display:flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; border:1px solid var(--line); border-radius:3px; background:transparent; color:var(--text); cursor:pointer; } .dust-section-menu { flex:1; min-width:0; } .dust-section-menu > summary { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:44px; padding:0 14px; border:1px solid var(--line); border-radius:3px; cursor:pointer; font-size:14px; font-weight:700; list-style:none; } .dust-section-menu > summary::-webkit-details-marker { display:none; } .dust-section-menu > summary::after { content:'⌄'; font-size:20px; } .dust-section-menu[open] > summary::after { content:'⌃'; } .dust-section-menu .dust-local-menu { display:flex; flex-direction:column; gap:0; padding:8px 0; overflow:visible; border:0; background:transparent; } .dust-section-menu:not([open]) .dust-local-menu { display:none; } .dust-section-menu .dust-local-menu a { padding:12px 14px; min-height:44px; white-space:normal; } .dust-section-menu a[aria-current] { color:var(--accent); } body:has(.header.menu-open) .dust-local-menu-shell { visibility:hidden; } }
+
+/* Nieruchoma plama za nagłówkiem. */
+.dust-opening h1 { position:relative; isolation:isolate; }
+.dust-opening h1::before { content:''; position:absolute; z-index:-1; pointer-events:none; inset:-36% -5% -42% -5%; background:#e6c0ca; opacity:.65; mask:url('kurzolaki-stain.svg') center/100% 100% no-repeat; }
+@media(max-width:650px) {
+ .dust-opening h1::before { inset:-20% -2% -24%; opacity:.55; }
+ .dust-opening-art { order:-1; }
+}
+/* Taktyczna rozgrywka w cukierkowej oprawie. */
+.dust-tactical-feature { background:#eed0d9; }
+.dust-tactical-badge { max-width:150px; white-space:normal; font-size:17px; line-height:1.2; text-align:center; }
+
+.dust-bilingual-before-expansion .dust-bilingual-copy p { margin:0; font-size:17px; line-height:1.7; }
+@media(max-width:650px) { .dust-bilingual-before-expansion { width:calc(100% - 40px); margin-left:auto; margin-right:auto; } .dust-bilingual-before-expansion .dust-bilingual-copy p { font-size:16px; } }
+
+.dust-family-feature { background:#edcf6a55; }
+.dust-family-feature .dust-bilingual-copy p { margin:0; font-size:17px; line-height:1.7; }
+@media(max-width:650px) { .dust-family-feature { width:calc(100% - 40px); margin-left:auto; margin-right:auto; } .dust-family-feature .dust-bilingual-copy p { font-size:16px; } }
+
+.dust-duo-feature { background:#d3ded3; }
+.dust-duo-feature .dust-bilingual-copy p { margin:0; font-size:17px; line-height:1.7; }
+@media(max-width:650px) { .dust-duo-feature { width:calc(100% - 40px); margin-left:auto; margin-right:auto; } .dust-duo-feature .dust-bilingual-copy p { font-size:16px; } }
+
+.dust-game-facts { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:28px; padding-top:18px; border-top:1px dashed var(--line); font-size:15px; }
+.dust-game-facts > span { white-space:nowrap; }
+.dust-game-facts strong { font-size:20px; }
+.dust-opening-copy > .dust-game-facts-note { margin:12px 0 0; font-size:13px; color:var(--muted); }
