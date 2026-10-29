@@ -1,0 +1,14 @@
+# BEGIN WTF KLANARCHIA ARCHETYPES
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^archetyp-egzorcysta/?$ /klanarchia/archetyp-egzorcysta/ [R=301,L,NE]
+RewriteRule ^archetyp-inkwizytor/?$ /klanarchia/archetyp-inkwizytor/ [R=301,L,NE]
+RewriteRule ^archetyp-kronikarz/?$ /klanarchia/archetyp-kronikarz/ [R=301,L,NE]
+RewriteRule ^archetyp-rzecznik/?$ /klanarchia/archetyp-rzecznik/ [R=301,L,NE]
+RewriteRule ^archetyp-siepacz/?$ /klanarchia/archetyp-siepacz/ [R=301,L,NE]
+RewriteRule ^archetyp-szabrownik/?$ /klanarchia/archetyp-szabrownik/ [R=301,L,NE]
+RewriteRule ^archetyp-wiedzmiarz/?$ /klanarchia/archetyp-wiedzmiarz/ [R=301,L,NE]
+RewriteRule ^archetyp-zarmistrz/?$ /klanarchia/archetyp-zarmistrz/ [R=301,L,NE]
+RewriteRule ^archetyp-zerca/?$ /klanarchia/archetyp-zerca/ [R=301,L,NE]
+</IfModule>
+# END WTF KLANARCHIA ARCHETYPES

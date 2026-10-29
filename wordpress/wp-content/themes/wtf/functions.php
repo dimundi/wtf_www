@@ -1,5 +1,9 @@
 <?php
 add_action('wp_enqueue_scripts', function () {
+    if (!function_exists('is_wc_endpoint_url') || !is_wc_endpoint_url('order-received')) return;
+    wp_enqueue_style('wtf-order-confirmation', get_theme_file_uri('assets/order-confirmation.css'), ['wtf-shop'], filemtime(get_theme_file_path('assets/order-confirmation.css')));
+});
+add_action('wp_enqueue_scripts', function () {
     if (!is_page(['sklep-regulamin', 'polityka-prywatnosci', 'polityka-cookies'])) return;
     wp_enqueue_style('wtf-legal', get_theme_file_uri('assets/legal.css'), ['wtf-blocks'], filemtime(get_theme_file_path('assets/legal.css')));
 });

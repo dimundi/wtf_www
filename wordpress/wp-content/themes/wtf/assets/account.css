@@ -1,4 +1,25 @@
 .woocommerce-account{--account-surface:#273247}
+.wtf-download-library>h2{font-size:28px;line-height:1.2;margin:0 0 24px}
+.wtf-download-album{border:1px solid var(--line);background:var(--account-surface);margin:0 0 28px;overflow:hidden}
+.wtf-download-album-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px;border-bottom:1px solid var(--line)}
+.wtf-download-album-heading h3{font-size:21px;line-height:1.4;margin:0 0 6px;letter-spacing:-.3px}
+.wtf-download-album-heading p{font-size:13px;color:var(--muted);margin:0}
+.woocommerce .wtf-download-album .wtf-download-all{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;padding:13px 18px;min-height:46px;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;text-align:center}
+.wtf-download-all span{font-weight:400}
+.wtf-download-tracks{list-style:none;margin:0!important;padding:0!important}
+.wtf-download-tracks>li{display:flex;align-items:center;gap:18px;margin:0;padding:16px 24px;min-height:76px;box-sizing:border-box}
+.wtf-download-tracks>li+li{border-top:1px solid var(--line)}
+.wtf-download-track-number{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wtf-download-track-info{flex:1;min-width:0}
+.wtf-download-track-info h4{font-size:16px;font-weight:600;line-height:1.4;margin:0 0 4px;overflow-wrap:anywhere}
+.wtf-download-track-info p{font-size:12px;line-height:1.5;margin:0;color:var(--muted)}
+.wtf-download-audio{display:block;width:min(100%,420px);height:40px;margin-top:12px;color-scheme:dark}
+:root[data-theme=light] .wtf-download-audio{color-scheme:light}
+.wtf-download-audio-error{margin-top:8px!important}
+.wtf-download-track-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;border:1px solid var(--accent);border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;flex-shrink:0;box-sizing:border-box}
+.wtf-download-track-link:hover{background:var(--accent);color:#1c263c}
+.wtf-download-album a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:650px){.wtf-download-album-heading{align-items:stretch;flex-direction:column;padding:20px;gap:16px}.wtf-download-tracks>li{gap:12px;padding:16px}.wtf-download-track-number{display:none}.wtf-download-track-info h4{font-size:15px}.wtf-download-track-link{padding:8px 12px}}
 .wtf-login-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:64px;max-width:1040px;margin:48px auto 72px}
 .wtf-login-art{min-width:0;overflow:hidden;margin:0}
 .wtf-login-art img{display:block;width:100%;height:auto}

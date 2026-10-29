@@ -18,7 +18,7 @@ Próba klientów, zamówień i pobrań wykonana 22.10.2026 na kopiach 8082 → 8
 
 ## Kupony
 
-- Przenosimy wszystkie kupony, zachowując ciągłość: kody, statusy, zasady rabatu, terminy, limity i dotychczasowe wykorzystanie. Żadnych kuponów nie kasujemy; zachowujemy również kupony wygasłe i wykorzystane wraz z ich dotychczasowymi ograniczeniami.
+- Zakres zatwierdzony i wykonany 29.10.2026 na PROD: wszystkie 701 kuponów na MP3, KLANARCHIA (17 zł na Elekta) i najnowszy kurzolaki-50 (50 zł na Kurzołaki). Łącznie 703; pozostałych 16 źródłowych kuponów nie przenosimy zgodnie z poleceniem użytkownika. Zachowujemy kody, statusy, zasady rabatu, terminy, limity i dotychczasowe wykorzystanie, również dla kuponów wygasłych i wykorzystanych w wybranym zakresie. Szczegóły: [migracja kuponów](migracja-kuponow.md).
 - Kupony powiązane z produktami, wariantami lub kategoriami przypisujemy do odpowiedników w nowej ofercie. Dotyczy to także produktów fizycznych; jest to powiązanie kuponu, niezależne od historycznych pozycji zamówień.
 - Kupony przenosimy pod koniec przygotowania sklepu, po utworzeniu produktów, wariantów i kategorii. Przy końcowej synchronizacji uwzględniamy najnowsze wykorzystanie kuponów.
 - Przygotujemy wtyczkę albo funkcję do hurtowego tworzenia unikalnych kodów kuponów przeznaczonych dla pojedynczego produktu. Szczegóły — rodzaj rabatu, liczba kodów, format, ważność, limity wykorzystania i eksport — ustalimy później. „Unikalny” oznacza różne kody; jednorazowość wymaga osobnego ustalenia.

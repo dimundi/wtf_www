@@ -1,6 +1,15 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Własny formularz korzysta z mapy również bez modułu tworzenia etykiet InPost.
+add_action('wp_enqueue_scripts', function () {
+    if (!function_exists('is_checkout') || !is_checkout() || is_wc_endpoint_url()) return;
+    $host = get_option('easypack_api_environment') === 'sandbox'
+        ? 'https://sandbox-easy-geowidget-sdk.easypack24.net' : 'https://geowidget.inpost.pl';
+    if (!wp_script_is('geowidget-inpost', 'enqueued')) wp_enqueue_script('geowidget-inpost', $host . '/inpost-geowidget.js', [], null, true);
+    if (!wp_style_is('geowidget-css', 'enqueued')) wp_enqueue_style('geowidget-css', $host . '/inpost-geowidget.css', [], null);
+}, 80);
+
 // A classic WooCommerce checkout: native sessions, rates, coupons and order processing.
 function wtf_checkout_input() {
     $data=[];

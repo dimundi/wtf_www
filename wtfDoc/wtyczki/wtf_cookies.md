@@ -1,6 +1,6 @@
 # wtf_cookies
 
-Samodzielna wtyczka lokalna, wersja 0.1.0. Bez uruchamiania Analytics i Meta Pixel. Start DEV aktywuje ją automatycznie; PROD nie zmieniono.
+Samodzielna wtyczka, wersja 0.1.0. Bez uruchamiania Analytics i Meta Pixel. Start DEV aktywuje ją automatycznie. Wdrożona na whathefrog.pl na polecenie użytkownika 28.10.2026 razem z polityką cookies; kopie i testy w `wtfDoc/srodowiska/test-na-ovh.md`.
 
 - Baner: „Akceptuję wszystkie”, „Tylko niezbędne”, „Ustawienia”. Równorzędne przyciski akceptacji i odmowy, checkboxy domyślnie wyłączone.
 - Ustawienia cookies w stopce; dialog obsługuje klawiaturę i powrót fokusu. Zgoda na YouTube może być udzielona również przy filmie, bez włączania innych kategorii.

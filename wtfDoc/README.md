@@ -13,6 +13,7 @@
 - [wersja testowa na OVH](srodowiska/test-na-ovh.md)
 - [lokalne środowisko pod OVH](srodowiska/lokalne-ovh.md)
 - [plan uruchomienia i późniejszych aktualizacji](srodowiska/plan-uruchomienia.md)
+- [przygotowanie Paynow, kolejki WooCommerce i przełączenia domeny](srodowiska/przelaczenie-domeny-20261028.md)
 - [lista-przekierowan](srodowiska/lista-przekierowan.md)
 - [aktualizacje](srodowiska/aktualizacje.md)
 - [backup-starej-strony](srodowiska/backup-starej-strony.md)
@@ -32,6 +33,7 @@
 - [Projekty regulaminu, polityki prywatności i cookies](sklep/dokumenty/do-publikacji.md)
 
 - [próbna migracja klientów, zamówień i pobrań](sklep/probna-migracja-klientow-zamowien.md)
+- [migracja wybranych kuponów na PROD](sklep/migracja-kuponow.md)
 
 - [szablon-produktu](sklep/szablon-produktu.md)
 - [wyglad-sklepu](sklep/wyglad-sklepu.md)

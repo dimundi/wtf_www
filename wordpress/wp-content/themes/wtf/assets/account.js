@@ -1,4 +1,14 @@
 (() => {
+    const players = [...document.querySelectorAll('.wtf-download-audio')];
+    players.forEach(player => {
+        player.addEventListener('play', () => {
+            players.forEach(other => { if (other !== player) other.pause(); });
+        });
+        player.addEventListener('error', () => {
+            const message = player.parentElement.querySelector('.wtf-download-audio-error');
+            if (message) message.hidden = false;
+        });
+    });
     const invoice = document.getElementById('billing_vat_invoice');
     if (!invoice) return;
     const update = () => {

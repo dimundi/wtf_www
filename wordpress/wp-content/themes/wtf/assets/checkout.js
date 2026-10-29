@@ -20,6 +20,9 @@
             lockerDialog.close();
             $(document.body).trigger('update_checkout');
         };
+        document.addEventListener('wtfLockerPicked', event => {
+            window.wtfLockerPicked(event.detail || event.details);
+        });
         lockerButton.addEventListener('click', () => {
             lockerDialog.showModal();
             if (widget) return;
@@ -35,8 +38,6 @@
             widget.addEventListener('inpost.geowidget.init', event => {
                 clearTimeout(mapTimer);
                 lockerStatus.hidden = true;
-                event.detail.api.changePointsType('PARCEL_LOCKER');
-                event.detail.api.changeLanguage('pl');
             });
             form.querySelector('#wtf-locker-map').append(widget);
             mapTimer = setTimeout(() => {

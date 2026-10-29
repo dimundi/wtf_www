@@ -1,6 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Nie zgadujemy innej strony ani produktu dla nieistniejącego adresu.
+add_filter('do_redirect_guess_404_permalink', '__return_false');
+
 // EN zachowujemy w panelu; uruchomienie wymaga świadomej zmiany konfiguracji.
 function wtf_core_english_enabled() {
     return defined('WTF_ENABLE_ENGLISH') && WTF_ENABLE_ENGLISH;

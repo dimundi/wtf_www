@@ -1,5 +1,9 @@
 # Dokumenty — przygotowanie do publikacji
 
+Najnowsza decyzja użytkownika: w polityce prywatności przyjęto 6 miesięcy przechowywania logów bezpieczeństwa od zapisania. Okres wpisano na jego polecenie; faktyczny czas przechowywania na OVH nie został jeszcze potwierdzony. Sprawdzić rotację i uzgodnić ją z deklaracją; nie oznaczać tej konfiguracji jako wykonanej ani zweryfikowanej.
+
+28.10.2026: na polecenie użytkownika na PROD wdrożono wszystkie trzy dokumenty: politykę cookies (PL 3338), regulamin (PL 3340) i politykę prywatności (PL 3341). Linki w stopce oraz opcje `woocommerce_terms_page_id` i `wp_page_for_privacy_policy` wskazują właściwe strony. Treści są natywnymi blokami WordPressa. Okres logów 6 miesięcy wpisany na polecenie użytkownika, nadal wymaga sprawdzenia konfiguracji OVH. Prywatna kopia bazy, poprzednich stron, stopki i ustawień: `.wtf-staging/legal-pages-release-20261028/`; lokalna paczka i receipt: `backups/legal-pages-release/20261028/`. Nie zmieniano klientów, zamówień ani blokad środowiska. Mechanizmy przyjęcia zamówienia, terminów płatności i zgód na pliki pozostają zadaniami implementacyjnymi — publikacja dokumentów ich nie uruchamia.
+
 Polityka cookies: lokalna strona PL 3379 opisuje aktywną wtyczkę `wtf_cookies`: zapis wyboru na 180 dni, blokowanie YouTube przed zgodą i usuwanie odtwarzaczy po jej cofnięciu, mapa InPost wczytywana na żądanie. Nie uruchomiono Analytics. Cookie języka jest wygaszane dla wersji tylko PL. Szczegóły i testy: `wtfDoc/wtyczki/wtf_cookies.md`.
 
 Przed PROD: wdrożyć lokalnie sprawdzoną wtyczkę na polecenie użytkownika. Przed przyszłym uruchomieniem Analytics podłączyć je do API zgód i uzupełnić faktyczne cookies w polityce. InPost sprawdzono z atrapą SDK; rzeczywisty wybór punktu pozostaje osobnym testem integracji. Nie traktować mechanizmu zgód jako automatycznej blokady dowolnej przyszłej wtyczki śledzącej.

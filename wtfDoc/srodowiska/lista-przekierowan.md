@@ -1,10 +1,15 @@
 # Lista przekierowań na deploy
 
-Do wprowadzenia podczas wdrożenia w proxy nginx, jako dokładne wpisy `map`. Nie są jeszcze aktywne.
+Na obecnym hostingu OVH przekierowania wdrażamy w `.htaccess`, przed regułami WordPressa. Katalog `/download/Klanarchia/` wdrożony na PROD 28.10.2026 jako dokładne 301 do `/klanarchia/download/`, także bez końcowego ukośnika i dla małych liter, z zachowaniem parametrów. Pliki wewnątrz katalogu nie są objęte regułą.
+
+29.10.2026: na polecenie użytkownika wdrożono na PROD dziewięć przekierowań archetypów oraz `/wum`. Fragmenty w Git: `deploy/redirects/klanarchia-archetypes.htaccess` i `deploy/redirects/tsukuyumi-wum.htaccess`. Reguły przed blokiem WordPressa, dotychczasowe reguły domeny i materiałów zachowane. Cele na PROD wskazują bezpośrednio kanoniczne HTTPS.
+
+Sprawdzono 40 wariantów 301 (ukośnik/brak ukośnika, z parametrami/bez), 10 stron docelowych 200 i nieznane podścieżki 404. Dotychczasowe przekierowanie katalogu Klanarchii, PDF i alias domeny nadal działają. Raport: `backups/launch-20261028/pending-redirects-prod-verification.json`. Kopia reguł: `.wtf-staging/launch-20261028/redirects-release-20261029/htaccess-before`.
 
 | Stary adres | Docelowy adres | Typ |
 | --- | --- | --- |
 | `/download/Klanarchia/` | `/klanarchia/download/` | 301 |
+| `/wum` i `/wum/` | `/tsukuyumi/wum/` | 301 |
 | `/archetyp-egzorcysta/` | `/klanarchia/archetyp-egzorcysta/` | 301 |
 | `/archetyp-inkwizytor/` | `/klanarchia/archetyp-inkwizytor/` | 301 |
 | `/archetyp-kronikarz/` | `/klanarchia/archetyp-kronikarz/` | 301 |
@@ -17,7 +22,9 @@ Do wprowadzenia podczas wdrożenia w proxy nginx, jako dokładne wpisy `map`. Ni
 
 Uwzględnić również wariant bez końcowego ukośnika `/download/Klanarchia`. Zachować parametry zapytania, jeśli występują.
 
-Archetypy: również dokładne wpisy dla wariantów bez końcowego ukośnika. Zachować parametry, w szczególności `?wynik=quiz`. Nowe adresy wynikają z rodzica strony Klanarchia; ID stron i identyfikatory wyników quizu pozostają bez zmian. Linki wewnętrzne i adresy wyników quizu wskazują nowe ścieżki. Reguły proxy wdrażamy podczas deployu.
+Przekierowanie `/wum` działa lokalnie i na PROD; zachowuje parametry i obejmuje tylko dokładną ścieżkę z ukośnikiem lub bez. Wskazanie `whatthefro.pl` potraktowano jako literówkę w nazwie domeny sklepu; nie konfigurowano nowej domeny.
+
+Archetypy: również dokładne wpisy dla wariantów bez końcowego ukośnika. Zachować parametry, w szczególności `?wynik=quiz`. Nowe adresy wynikają z rodzica strony Klanarchia; ID stron i identyfikatory wyników quizu pozostają bez zmian. Linki wewnętrzne i adresy wyników quizu wskazują nowe ścieżki. Reguły `.htaccess` wdrażamy podczas deployu.
 
 **Przekierowanie dotyczy wyłącznie strony katalogu. Nie stosować reguły dla całego prefiksu `/download/Klanarchia/`.**
 

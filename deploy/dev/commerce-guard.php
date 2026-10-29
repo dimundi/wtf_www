@@ -42,6 +42,8 @@ add_filter('action_scheduler_allow_async_request_runner','__return_false',PHP_IN
 add_filter('action_scheduler_queue_runner_concurrent_batches','__return_zero',PHP_INT_MAX);
 add_filter('pre_http_request',function ($pre,$args,$url) {
     $host=wp_parse_url($url,PHP_URL_HOST);
+    // Wyłącznie oficjalny endpoint CAPTCHA z publicznym kluczem testowym.
+    if ($url==='https://challenges.cloudflare.com/turnstile/v0/siteverify' && ($args['body']['secret']??'')==='1x0000000000000000000000000000000AA') return $pre;
     // A fresh dev environment still needs official plugin/language packages.
     if (defined('WP_CLI') && WP_CLI && in_array($host,['api.wordpress.org','downloads.wordpress.org','translate.wordpress.org'],true)) return $pre;
     return in_array($host,['localhost','127.0.0.1','::1'],true)?$pre:new WP_Error('wtf_local_http_blocked','Środowisko lokalne: połączenia zewnętrzne wyłączone.');

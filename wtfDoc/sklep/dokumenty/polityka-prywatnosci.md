@@ -1,6 +1,6 @@
 # Polityka prywatności
 
-Wersja przygotowana 28.10.2026.
+Wersja przygotowana 29.10.2026.
 
 Administratorem Twoich danych jest Dimundi sp. z o.o., ul. Wały Piastowskie 1/1508, 80-855 Gdańsk, KRS 0000638305. W sprawach danych napisz na biuro@whatthefrog.pl lub na powyższy adres.
 
@@ -12,13 +12,15 @@ Polityka dotyczy serwisu whatthefrog.pl, dostępnego również pod aliasem whath
 | --- | --- | --- |
 | Zamówienia, dostawa towarów i plików, obsługa konta | Art. 6 ust. 1 lit. b — wykonanie umowy | Przez realizację umowy; dane konta do jego usunięcia, z zastrzeżeniem obowiązków i roszczeń poniżej |
 | Dokumentacja podatkowa i księgowa, obowiązki przy reklamacjach | Art. 6 ust. 1 lit. c — obowiązek prawny | Przez okres wymagany przepisami; dokumenty podatkowe co do zasady 5 lat od końca roku, w którym upłynął termin płatności podatku |
-| Korespondencja, bezpieczeństwo strony, dochodzenie i obrona roszczeń | Art. 6 ust. 1 lit. f — uzasadniony interes: obsługa kontaktu, zapobieganie nadużyciom i ochrona praw | Korespondencja do załatwienia sprawy, następnie do przedawnienia związanych z nią roszczeń; logi bezpieczeństwa [okres] |
+| Korespondencja, bezpieczeństwo strony, dochodzenie i obrona roszczeń | Art. 6 ust. 1 lit. f — uzasadniony interes: obsługa kontaktu, zapobieganie nadużyciom i ochrona praw | Korespondencja do załatwienia sprawy, następnie do przedawnienia związanych z nią roszczeń; logi bezpieczeństwa przez 6 miesięcy od zapisania |
 | Newsletter, jeśli się zapiszesz | Art. 6 ust. 1 lit. a — zgoda; zgoda na wysyłkę informacji handlowych | Do cofnięcia zgody; dowód zgody i wypisania do przedawnienia związanych z nimi roszczeń |
 | Statystyki odwiedzin — Google Analytics, po wyrażeniu zgody | Art. 6 ust. 1 lit. a — zgoda | Szczegółowe dane użytkowników i zdarzeń: 14 miesięcy; raporty zbiorcze przez okres korzystania z usługi |
 
 Przetwarzamy dane podane przy zakupie, rejestracji lub kontakcie, m.in. imię, nazwisko, adres, e-mail, telefon, dane do faktury oraz historię zakupów i pobrań. Serwer zapisuje dane techniczne, m.in. adres IP, czas żądania i informacje o przeglądarce. Podanie danych jest dobrowolne, ale dane oznaczone jako wymagane są potrzebne do realizacji zamówienia, prowadzenia konta lub odpowiedzi. Dane fakturowe mogą wynikać z obowiązku prawnego. Newsletter jest dobrowolny i nie warunkuje zakupów.
 
 ## Kto otrzymuje dane
+
+Formularz kontaktowy chroni Cloudflare Turnstile, dostarczany przez Cloudflare, Inc. W celu ochrony przed botami Cloudflare przetwarza m.in. adres IP, dane przeglądarki i połączenia oraz adres strony. Do serwerowej weryfikacji nie przesyłamy treści wiadomości ani danych wpisanych w formularzu. Cloudflare działa na nasze zlecenie przy ochronie strony, a jako odrębny administrator przy doskonaleniu wykrywania botów. Przetwarzanie może odbywać się poza EOG, w tym w USA; Cloudflare wskazuje EU–US Data Privacy Framework oraz standardowe klauzule umowne jako zabezpieczenia transferów. Szczegóły: https://www.cloudflare.com/turnstile-privacy-policy/ oraz https://www.cloudflare.com/privacypolicy/. O kopię informacji o zabezpieczeniach możesz poprosić również nas.
 
 W niezbędnym zakresie dane przetwarzają na nasze zlecenie dostawcy infrastruktury serwerowej, obsługi informatycznej i księgowości. Płatności online obsługuje Paynow — mElements S.A., współpracujący z mBankiem S.A. Dane dostawy przekazujemy wybranemu przewoźnikowi, w tym InPost. Operator płatności i przewoźnicy mogą działać jako odrębni administratorzy. Dane mogą otrzymać także uprawnione organy.
 

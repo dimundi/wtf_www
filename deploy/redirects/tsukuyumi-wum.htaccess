@@ -1,0 +1,6 @@
+# BEGIN WTF TSUKUYUMI WUM
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^wum/?$ /tsukuyumi/wum/ [R=301,L,NE]
+</IfModule>
+# END WTF TSUKUYUMI WUM

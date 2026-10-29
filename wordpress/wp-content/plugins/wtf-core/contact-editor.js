@@ -14,6 +14,6 @@
     edit:({attributes:a,setAttributes})=>h(Fragment,{},linkPanel(a,setAttributes),h(RichText,{...useBlockProps({className:a.attributes.class}),tagName:a.tag==='a'?'p':a.tag,value:a.content,onChange:content=>setAttributes({content}),placeholder:'Wpisz tekst…'})),save:()=>null,
   });
   const fields={nameLabel:'Etykieta imienia',emailLabel:'Etykieta e-maila',subjectLabel:'Etykieta tematu',messageLabel:'Etykieta wiadomości',buttonLabel:'Napis przycisku'};
-  wp.blocks.registerBlockType('wtf/contact-form',{...base,title:'Formularz kontaktowy — podgląd',icon:'email',attributes:Object.fromEntries(Object.keys(fields).map(k=>[k,string('')])),
-    edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),h('p',{},'Formularz demonstracyjny. Pola i wysyłanie są wyłączone; kontakt przez e-mail.'),...Object.entries(fields).map(([key,label])=>h(TextControl,{key,label,value:a[key],onChange:value=>setAttributes({[key]:value})}))),save:()=>null});
+  wp.blocks.registerBlockType('wtf/contact-form',{...base,title:'Formularz kontaktowy',icon:'email',attributes:Object.fromEntries(Object.keys(fields).map(k=>[k,string('')])),
+    edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),h('p',{},'Formularz wysyła wiadomości na adres ustawiony w Ustawienia → Ogólne → Odbiorca formularza kontaktowego.'),...Object.entries(fields).map(([key,label])=>h(TextControl,{key,label,value:a[key],onChange:value=>setAttributes({[key]:value})}))),save:()=>null});
 })();

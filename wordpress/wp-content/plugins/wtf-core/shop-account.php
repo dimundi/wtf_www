@@ -1,6 +1,43 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Zwykłe wejście na ekran logowania prowadzi do wspólnego formularza sklepu.
+// Specjalne działania WordPressa oraz POST pozostają obsługiwane przez rdzeń.
+add_action('login_init', static function () {
+    if (!in_array($_SERVER['REQUEST_METHOD'] ?? '', ['GET', 'HEAD'], true) || !function_exists('wc_get_page_permalink')) return;
+    $action = $_GET['action'] ?? 'login';
+    if (!is_string($action) || !in_array($action, ['', 'login'], true)) return;
+    foreach (['interim-login', 'checkemail'] as $key) if (!empty($_GET[$key])) return;
+    if (!empty($_GET['reauth']) && is_user_logged_in()) return;
+    $account = wc_get_page_permalink('myaccount');
+    if (!$account || wc_get_page_id('myaccount') <= 0) return;
+    if (isset($_GET['redirect_to']) && is_string($_GET['redirect_to'])) {
+        $destination = wtf_account_login_redirect_target(wp_unslash($_GET['redirect_to']));
+        if ($destination) $account = add_query_arg('wtf_login_redirect', $destination, $account);
+    }
+    nocache_headers();
+    wp_safe_redirect($account, 302);
+    exit;
+});
+
+function wtf_account_login_redirect_target($url) {
+    if (!is_string($url) || $url === '') return '';
+    $url = wp_validate_redirect($url, '');
+    if (!$url) return '';
+    $host = wp_parse_url($url, PHP_URL_HOST);
+    if ($host && strtolower($host) !== strtolower((string)wp_parse_url(home_url(), PHP_URL_HOST))) return '';
+    $path = wp_parse_url($url, PHP_URL_PATH);
+    if ($path && str_ends_with($path, '/wp-login.php')) return '';
+    return $url;
+}
+
+// WooCommerce waliduje pole redirect również przy obsłudze logowania.
+add_action('woocommerce_login_form_end', static function () {
+    if (!isset($_GET['wtf_login_redirect']) || !is_string($_GET['wtf_login_redirect'])) return;
+    $target = wtf_account_login_redirect_target(wp_unslash($_GET['wtf_login_redirect']));
+    if ($target) echo '<input type="hidden" name="redirect" value="'.esc_attr($target).'">';
+});
+
 // Keep WooCommerce's login fields, hooks and validation inside our visual layout.
 add_action('woocommerce_before_customer_login_form',function () {
     if (!is_account_page()) return;

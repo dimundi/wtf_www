@@ -1,5 +1,17 @@
 # Próbna migracja klientów, zamówień i pobrań
 
+## Synchronizacja ze sklepem live — 28.10.2026
+
+Na polecenie użytkownika odświeżono bazę kontenera starej kopii ze świeżego eksportu `whatthefrog.pl`, następnie zsynchronizowano DEV i whathefrog.pl (PROD według nazewnictwa użytkownika). Nie podmieniano całej bazy DEV ani PROD. Na czas końcowego przełączenia użytkownik zezwolił na przerwę starego sklepu: MU-plugin `wtf-cutover-freeze.php` blokuje nowe zakupy i rejestracje, pozostawia obsługę istniejących płatności. Plik jest wyłącznie w starej stronie, katalog `wp-content/mu-plugins/`; jego usunięcie przywraca nowe zakupy, jeśli trzeba cofnąć przerwę.
+
+- Dodano 2 klientów i 2 zamówienia; zaktualizowano dane 2 mapowanych klientów. Indeksy: 2 nowe wpisy klientów i 2 statystyki zamówień. Historycznych zamówień i 2100 uprawnień MP3 nie zmieniano.
+- Aktualny pakiet źródła: 767 klientów, 2101 zamówień + 1 zwrot, 5972 pozycje, 11964 notatki, 2100 uprawnień. Na PROD jest 768 kont `customer`: 767 z migracji i jedno zachowane konto poza migracją.
+- DEV i PROD: 366720 porównań danych oraz 43684 porównania indeksów, zero różnic. Powtórny import: zero nowych i zmienionych rekordów. Oferta, ceny, stany, treści stron, stopka i ustawienia dokumentów zachowane.
+- Ponowny eksport live w transakcji tylko do odczytu porównano ze sprawdzonym pakietem po normalizacji domen: wszystkie sekcje zgodne. Konto najnowszego mapowanego klienta pokazuje jego zamówienie, cudze jest niedostępne; Chrome 390/1440 px. Sesja testowa unieważniona.
+- Kopie lokalne: `backups/customer-migration/live-refresh-20261028/` (świeża baza źródła i poprzednia baza kontenera backup), `20261028-212736/` (preflight), `20261028-212838/` (sprawdzony sync DEV), `prod-sync-20261028/` (pakiet i raporty PROD). Wszystko prywatnie, poza Git.
+- Zdalne kopie, pakiet i raporty: `.wtf-staging/commerce-sync-20261028/`, w tym pełne bazy `old-live-before.sql` i `target-before.sql`. Import PROD dopuszcza wyłącznie host `whathefrog.pl`, środowisko staging, istniejący guard i konkretny SHA256 sprawdzonego pakietu; nie wyłączono walidacji mapowań ani schematu. Strażnik CLI blokuje maile, HTTP, płatności i automatyczne akcje podczas migracji.
+- Blokady PROD (Basic Auth/noindex, maile, płatności, cron, webhooki, integracje) nadal aktywne. Synchronizacja nie uruchamia sprzedaży. Kupony, newsletter, konfiguracja płatności/dostaw oraz końcowe przepięcie domen pozostają odrębnymi pracami przed premierą. Jeśli istniejąca płatność zmieni źródłowe zamówienie po ostatnim porównaniu, przed przepięciem ruchu ponownie sprawdzić źródło i wykonać jawny sync różnic.
+
 ## Stan po próbie — 22.10.2026
 
 Źródło: lokalna kopia starego sklepu `whatthefrogpl-backup-wordpress-1`, port 8082, prefiks `wor4480_`, zamówienia CPT. Cel: `wtf-www-dev-wordpress-1`, port 8081, zamówienia HPOS, bez synchronizacji CPT. Obie kopie WooCommerce 10.3.8. Produkcyjnego serwera nie modyfikowano.

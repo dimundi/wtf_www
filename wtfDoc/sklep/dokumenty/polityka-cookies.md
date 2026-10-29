@@ -1,6 +1,6 @@
 # Polityka cookies
 
-Wersja przygotowana 28.10.2026.
+Wersja przygotowana 29.10.2026.
 
 Serwis whatthefrog.pl, dostępny również pod aliasem whathefrog.pl, prowadzi Dimundi sp. z o.o. Kontakt: biuro@whatthefrog.pl.
 
@@ -25,6 +25,8 @@ Gwiazdka oznacza zmienny fragment nazwy. Cookies koszyka pojawiają się przy ko
 Filmy YouTube, w tym ich zewnętrzne miniatury, nie są wczytywane przed zgodą. Możesz zezwolić na ich wczytywanie w banerze, ustawieniach lub przy filmie. Wczytanie odtwarzacza powoduje połączenie z Google/YouTube i przekazanie m.in. adresu IP oraz informacji o przeglądarce. Tryb zwiększonej prywatności (youtube-nocookie.com) nie oznacza braku przetwarzania danych. Google może stosować własne technologie zapisu i odczytu informacji podczas korzystania z odtwarzacza.
 
 Mapa InPost jest wczytywana dopiero na Twoje żądanie, po kliknięciu wyboru punktu dostawy. Służy realizacji wybranego sposobu dostawy.
+
+Na stronie kontaktu korzystamy z Cloudflare Turnstile w celu ochrony formularza przed botami i spamem. Zabezpieczenie łączy się z Cloudflare i analizuje dane techniczne przeglądarki oraz połączenia. Nie używamy go do reklam ani statystyk odwiedzin. Szczegóły przetwarzania danych opisują nasza polityka prywatności i https://www.cloudflare.com/turnstile-privacy-policy/.
 
 Zasady dostawców: https://policies.google.com/privacy?hl=pl oraz https://inpost.pl/polityka-prywatnosci. Szczegóły przetwarzania danych przez nas opisuje Polityka prywatności.
 

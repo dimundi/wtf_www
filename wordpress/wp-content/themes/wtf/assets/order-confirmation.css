@@ -1,0 +1,187 @@
+/* Potwierdzenie płatności — wspólna oprawa z koszykiem i sklepem. */
+.woocommerce-order-received main.wp-block-group {
+    --confirmation-surface: color-mix(in srgb, var(--bg) 96%, var(--text));
+    width: calc(100% - 48px);
+    max-width: 1120px;
+    margin: 40px auto 72px;
+    padding: 0;
+    min-height: 45vh;
+}
+.woocommerce-order-received main > .alignwide,
+.woocommerce-order-received main > .wc-block-order-confirmation-status-description {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+}
+.woocommerce-order-received .wc-block-order-confirmation-status h1 {
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+    margin: 0 0 16px;
+}
+.woocommerce-order-received .wc-block-order-confirmation-status p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 65ch;
+}
+.woocommerce-order-received .wc-block-order-confirmation-summary {
+    margin-block: 28px;
+}
+.woocommerce-order-received .wc-block-order-confirmation-summary-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    padding: 24px;
+    margin: 0;
+    list-style: none;
+    background: var(--confirmation-surface);
+    border: 1px solid var(--line);
+}
+.woocommerce-order-received .wc-block-order-confirmation-summary-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    float: none;
+    border: 0;
+}
+.woocommerce-order-received .wc-block-order-confirmation-summary-list-item__key {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    font-weight: 400;
+}
+.woocommerce-order-received .wc-block-order-confirmation-summary-list-item__value {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals-wrapper h2,
+.woocommerce-order-received .wc-block-order-confirmation-address-wrapper h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: -.4px;
+    margin: 0 0 20px;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-top: 2px solid var(--line);
+    font-size: 14px;
+    line-height: 1.6;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table th,
+.woocommerce-order-received .wc-block-order-confirmation-totals__table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    overflow-wrap: anywhere;
+    vertical-align: top;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table thead {
+    background: var(--confirmation-surface);
+    color: var(--muted);
+    font-size: 12px;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table .wc-block-order-confirmation-totals__total {
+    width: 28%;
+    text-align: right;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table tfoot th {
+    font-weight: 400;
+}
+.woocommerce-order-received .wc-block-order-confirmation-totals__table tfoot tr:last-child > * {
+    font-weight: 700;
+    font-size: 16px;
+    border-top: 2px solid var(--line);
+}
+.woocommerce-order-received main > .wc-block-order-confirmation-status-description {
+    max-width: 640px;
+    margin-inline: 0 !important;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 24px;
+}
+.woocommerce-order-received .wc-block-order-confirmation-status-description > p {
+    margin: 0 0 20px;
+    line-height: 1.75;
+}
+.woocommerce-order-received .wc-block-order-confirmation-status-description a.button,
+.woocommerce-order-received .wc-block-order-confirmation-status-description a.button:hover {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+    transform: none;
+}
+.woocommerce-order-received .woocommerce-verify-email {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 24px;
+}
+.woocommerce-order-received .woocommerce-verify-email .form-row {
+    float: none;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0 0 18px;
+}
+.woocommerce-order-received .woocommerce-verify-email label {
+    display: block;
+    margin-bottom: 8px;
+}
+.woocommerce-order-received .woocommerce-verify-email input#verify-email {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    min-height: 46px;
+    padding: 12px;
+    font-size: 16px;
+}
+.woocommerce-order-received .woocommerce-verify-email input[type=submit] {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0;
+    padding: 14px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: normal;
+}
+@media (max-width: 1000px) {
+    .woocommerce-order-received .wc-block-order-confirmation-summary-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 650px) {
+    .woocommerce-order-received main.wp-block-group {
+        width: calc(100% - 40px);
+        margin-block: 24px 48px;
+    }
+    .woocommerce-order-received .wc-block-order-confirmation-status p {
+        font-size: 16px;
+    }
+    .woocommerce-order-received .wc-block-order-confirmation-summary-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 16px;
+        padding: 18px;
+    }
+    .woocommerce-order-received .wc-block-order-confirmation-summary-list-item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+    .woocommerce-order-received .wc-block-order-confirmation-totals__table th,
+    .woocommerce-order-received .wc-block-order-confirmation-totals__table td {
+        padding: 12px 10px;
+    }
+}
