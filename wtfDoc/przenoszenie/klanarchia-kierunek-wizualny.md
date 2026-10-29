@@ -30,3 +30,6 @@ Edytor talentów: /klanarchia/edytor-talentow/, PL 3275. Wyłącznie zapowiedź 
 Pozycja menu: Edytor. Zapowiedź PL 3275 obejmuje edytor talentów i edytor kart postaci, oba odblokowane podczas zbiórki. Nagłówek: Edytory Klanarchii. Adres na razie bez zmiany: /klanarchia/edytor-talentow/.
 
 Docelowa zapowiedź edytorów: /klanarchia/edytor/ (PL 3275, ID bez zmian), link menu Edytor. Osobne kolumny Edytor postaci i Edytor talentów z informacją o odblokowaniu podczas zbiórki; na telefonie układ pionowy. Treści w natywnych blokach WP. Dawny adres edytor-talentow był roboczy i nie trafił na produkcję.
+
+29.10.2026, lokalnie: dodatkowe menu ma wspólną pozycję „Archetypy i quiz” do #klan-archetypy. Osobny link Quiz usunięty; wszystkie pozycje prowadzą do sekcji tej samej strony. Sprawdzone przy 390/1440 px. Bez wdrożenia na PROD.
+29.10.2026: pozycja menu Archetypy i quiz wdrożona na PROD wraz z poprawkami quizu, na polecenie użytkownika. Sprawdzone przejście do sekcji na telefonie i komputerze. Kopie: .wtf-staging/quiz-release-20261029/before/.

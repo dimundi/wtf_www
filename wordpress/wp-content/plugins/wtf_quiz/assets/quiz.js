@@ -24,7 +24,8 @@
     const app=root.querySelector('.wtfq-app');const form=root.querySelector('form');
     const fields=[...form.querySelectorAll('fieldset')];const progress=root.querySelector('.wtfq-progress');
     const error=root.querySelector('.wtfq-error');const previous=root.querySelector('[data-prev]');const next=root.querySelector('[data-next]');
-    const result=root.querySelector('.wtfq-result');let index=0;
+    const result=root.querySelector('.wtfq-result');let index=0,started=false;
+    const signal=name=>document.dispatchEvent(new CustomEvent(name,{detail:{quizId:data.quizId}}));
     const show=(focus=true)=>{
       fields.forEach((field,n)=>field.hidden=n!==index);
       progress.textContent=`Pytanie ${index+1} z ${fields.length}`;
@@ -32,7 +33,7 @@
       if(focus)fields[index].querySelector('legend').focus();
     };
     previous.addEventListener('click',()=>{index=Math.max(0,index-1);show();});
-    form.addEventListener('change',()=>error.textContent='');
+    form.addEventListener('change',()=>{error.textContent='';if(!started){started=true;signal('wtf:quiz-start');}});
     form.addEventListener('submit',event=>{
       event.preventDefault();
       const selected=fields[index].querySelector('input:checked');
@@ -40,6 +41,7 @@
       if(index<fields.length-1){index++;show();return;}
       const answers=fields.map(field=>Number(field.querySelector('input:checked')?.value));
       const outcome=scoreQuiz(data,answers);
+      signal('wtf:quiz-complete');
       if(data.urls?.[outcome]){
         const destination=new URL(data.urls[outcome],location.href);
         if(destination.origin===location.origin){destination.searchParams.set('wynik','quiz');location.assign(destination.href);return;}
@@ -49,7 +51,7 @@
       result.querySelectorAll('[data-outcome]').forEach(el=>el.hidden=el!==article);
       article.querySelector('h2').focus();
     });
-    root.querySelector('[data-restart]').addEventListener('click',()=>{form.reset();result.hidden=true;app.hidden=false;root.querySelector('.wtfq-heading').hidden=false;root.classList.remove('wtfq--complete');index=0;show();});
+    root.querySelector('[data-restart]').addEventListener('click',()=>{form.reset();started=false;result.hidden=true;app.hidden=false;root.querySelector('.wtfq-heading').hidden=false;root.classList.remove('wtfq--complete');index=0;show();});
     app.hidden=false;show(false);
   });
 })();

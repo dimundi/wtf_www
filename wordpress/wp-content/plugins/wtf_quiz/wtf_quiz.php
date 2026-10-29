@@ -23,6 +23,13 @@ function wtfq_register() {
 add_action('init','wtfq_register');
 add_action('wp_enqueue_scripts',function(){
     if(is_page() && get_post_meta(get_queried_object_id(),'_wtfq_page',true))wp_enqueue_style('wtf_quiz');
+    $content=(string)get_post_field('post_content',get_queried_object_id());
+    if(shortcode_exists('wtf_gamefound') && preg_match_all('/'.get_shortcode_regex(['wtf_quiz']).'/s',$content,$matches,PREG_SET_ORDER)){
+        foreach($matches as $match){
+            $attrs=shortcode_parse_atts($match[3]);
+            if(!empty($attrs['campaign'])){wp_enqueue_style('wtf_gamefound');wp_enqueue_script('wtf_gamefound');break;}
+        }
+    }
 });
 
 function wtfq_questions($quiz, $status='publish') {
@@ -42,7 +49,7 @@ function wtfq_clean_answers($answers, $outcomes) {
 }
 
 add_shortcode('wtf_quiz',function ($attributes) {
-    $a=shortcode_atts(['id'=>0],$attributes,'wtf_quiz');$id=absint($a['id']);$quiz=get_post($id);
+    $a=shortcode_atts(['id'=>0,'campaign'=>0,'game_url'=>'','game_logo'=>''],$attributes,'wtf_quiz');$id=absint($a['id']);$quiz=get_post($id);
     if (!$quiz || $quiz->post_type!=='wtfq_quiz' || $quiz->post_status!=='publish') return '';
     $outcomes=get_post_meta($id,'_wtfq_outcomes',true)?:[];
     $questions=wtfq_questions($id);
@@ -59,7 +66,10 @@ add_shortcode('wtf_quiz',function ($attributes) {
     <div class="wtfq" data-wtfq>
         <header class="wtfq-heading">
         <p class="wtfq-eyebrow">Quiz osobowościowy</p>
+        <div class="wtfq-title-row">
+        <?php if($a['game_url'] && $a['game_logo']): ?><a class="wtfq-game-link" href="<?php echo esc_url($a['game_url']); ?>" aria-label="Przejdź do strony Klanarchii"><img src="<?php echo esc_url($a['game_logo']); ?>" alt="Klanarchia" width="450" height="281" decoding="async"></a><?php endif; ?>
         <h1><?php echo esc_html($quiz->post_title); ?></h1>
+        </div>
         <div class="wtfq-intro"><?php echo wp_kses_post(wpautop(get_post_meta($id,'_wtfq_intro',true))); ?></div>
         </header>
         <noscript><p>Włącz JavaScript, aby rozwiązać quiz.</p></noscript>
@@ -78,6 +88,7 @@ add_shortcode('wtf_quiz',function ($attributes) {
             <p class="wtfq-error" role="alert"></p>
             <div class="wtfq-controls"><button type="button" data-prev>Poprzednie</button><button type="submit" data-next>Dalej</button></div>
             </form>
+            <?php if(absint($a['campaign']) && shortcode_exists('wtf_gamefound')): ?><div class="wtfq-campaign"><?php echo do_shortcode('[wtf_gamefound id="'.absint($a['campaign']).'"]'); ?></div><?php endif; ?>
         </div>
         <section class="wtfq-result" aria-label="Wynik quizu" hidden>
             <?php foreach ($outcomes as $outcome): ?>
@@ -92,7 +103,7 @@ add_shortcode('wtf_quiz',function ($attributes) {
             <?php endforeach; ?>
             <button type="button" data-restart>Rozwiąż ponownie</button>
         </section>
-        <script type="application/json" class="wtfq-data"><?php echo wp_json_encode(['outcomes'=>array_column($outcomes,'id'),'urls'=>array_column($outcomes,'url','id'),'questions'=>array_map(fn($q)=>array_column($q['answers'],'outcomes'),$data)],JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT); ?></script>
+        <script type="application/json" class="wtfq-data"><?php echo wp_json_encode(['quizId'=>$id,'outcomes'=>array_column($outcomes,'id'),'urls'=>array_column($outcomes,'url','id'),'questions'=>array_map(fn($q)=>array_column($q['answers'],'outcomes'),$data)],JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT); ?></script>
     </div>
     <?php return ob_get_clean();
 });

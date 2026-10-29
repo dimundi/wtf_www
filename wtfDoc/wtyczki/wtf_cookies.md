@@ -1,6 +1,6 @@
 # wtf_cookies
 
-Samodzielna wtyczka, wersja 0.1.0. Bez uruchamiania Analytics i Meta Pixel. Start DEV aktywuje ją automatycznie. Wdrożona na whathefrog.pl na polecenie użytkownika 28.10.2026 razem z polityką cookies; kopie i testy w `wtfDoc/srodowiska/test-na-ovh.md`.
+Samodzielna wtyczka, wersja 0.1.0. Start DEV aktywuje ją automatycznie. Wdrożona na whathefrog.pl na polecenie użytkownika 28.10.2026 razem z polityką cookies; kopie i testy w `wtfDoc/srodowiska/test-na-ovh.md`. 29.10.2026 wdrożono na PROD kategorię analityki i integrację GA4 po zgodzie (wersja zgód 2), na polecenie użytkownika. Szczegóły: [Analityka i mapa strony](analityka-i-mapa-strony.md). Meta Pixel nie jest uruchamiany.
 
 - Baner: „Akceptuję wszystkie”, „Tylko niezbędne”, „Ustawienia”. Równorzędne przyciski akceptacji i odmowy, checkboxy domyślnie wyłączone.
 - Ustawienia cookies w stopce; dialog obsługuje klawiaturę i powrót fokusu. Zgoda na YouTube może być udzielona również przy filmie, bez włączania innych kategorii.

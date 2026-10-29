@@ -62,6 +62,8 @@
 - [wtf_quiz](wtyczki/wtf_quiz.md)
 - [wtf_gamefound](wtyczki/wtf_gamefound.md)
 - [wtf_cookies](wtyczki/wtf_cookies.md)
+- [Analityka i mapa strony](wtyczki/analityka-i-mapa-strony.md)
+- [Podstawowe SEO PL](wtyczki/seo-pl.md)
 - [wtf-core](wtyczki/wtf-core.md)
 
 Dokumentacja prototypów i archiwum pozostają w [wtf_web_page](../../wtf_web_page/wtfDoc/README.md).

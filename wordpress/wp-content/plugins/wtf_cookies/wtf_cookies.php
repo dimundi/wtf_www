@@ -8,7 +8,8 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('WTF_COOKIES_REVISION', 1);
+define('WTF_COOKIES_REVISION', 2);
+require_once __DIR__.'/analytics.php';
 
 function wtf_cookies_categories() {
     return apply_filters('wtf_cookies_categories', [
@@ -29,7 +30,7 @@ add_action('wp_footer', function () {
     ?>
     <section id="wtfc-banner" class="wtfc-panel" aria-labelledby="wtfc-banner-title" hidden>
         <h2 id="wtfc-banner-title">Twoja prywatność</h2>
-        <p>Niezbędne cookies obsługują koszyk i logowanie. Ty decydujesz, czy zezwolić na opcjonalne technologie, np. filmy YouTube. Odmowa nie blokuje zakupów.</p>
+        <p>Niezbędne cookies obsługują koszyk i logowanie. Ty decydujesz, czy zezwolić na statystyki Google Analytics i filmy YouTube. Odmowa nie blokuje zakupów.</p>
         <a class="wtfc-policy" href="<?php echo esc_url(home_url('/polityka-cookies/')); ?>">Polityka cookies</a>
         <div class="wtfc-actions">
             <button type="button" data-wtfc-accept>Akceptuję wszystkie</button>
@@ -109,6 +110,6 @@ add_filter('style_loader_tag', function ($tag, $handle, $href) {
 add_action('admin_menu', function () {
     add_options_page('WTF Cookies', 'WTF Cookies', 'manage_options', 'wtf-cookies', function () {
         if (!current_user_can('manage_options')) return;
-        echo '<div class="wrap"><h1>WTF Cookies</h1><p>Baner zgód, blokowanie YouTube przed zgodą i wczytywanie mapy InPost na żądanie klienta.</p><p>Wybór jest zapamiętywany na 180 dni. Wtyczka nie uruchamia Google Analytics ani Meta Pixel.</p><p>Treść polityki edytujesz w Strony → Polityka cookies.</p></div>';
+        echo '<div class="wrap"><h1>WTF Cookies</h1><p>Baner zgód, Google Analytics po zgodzie, blokowanie YouTube przed zgodą i wczytywanie mapy InPost na żądanie klienta.</p><p>Wybór jest zapamiętywany na 180 dni. Meta Pixel nie jest uruchamiany.</p><p>Treść polityki edytujesz w Strony → Polityka cookies.</p></div>';
     });
 });

@@ -1,5 +1,7 @@
 # WTF — wersja docelowa
 
+- SEO i komunikacja: licencja/reprezentacja Tsukuyumi zakończona. Produkty mogą pozostać w sprzedaży, a gra w obecnym menu. Nie promować jej w SEO głównej/katalogu, nie określać jako „nasza gra” i nie sugerować aktualnej reprezentacji. Strony gry i produktów opisują rzeczowo zasady, frakcje, materiały i ofertę. W promocji PL koncentrować się na Elekcie, Kurzołakach i Klanarchii.
+
 - Najnowsze ustalenie: zbieramy i sprawdzamy zmiany lokalnie, a na `whathefrog.pl` (nazywane przez użytkownika PROD) wdrażamy hurtowo dopiero na jego polecenie. Bez automatycznego wdrażania każdej poprawki i bez podsyłania linków do localhost.
 
 - Typografia PL: przy pisaniu i poprawianiu treści stosować twardą spację po jednoliterowych słowach „a”, „i”, „o”, „u”, „w”, „z” (również wielkich literach), łącząc je z następnym wyrazem. W HTML używać `&nbsp;`, w zwykłym tekście U+00A0. Dotyczy nagłówków, akapitów i podpisów, także na telefonach. Nie zmieniać w ten sposób kodu, adresów URL ani atrybutów HTML.

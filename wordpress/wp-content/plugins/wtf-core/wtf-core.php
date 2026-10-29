@@ -7,6 +7,7 @@
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__.'/release.php';
+require_once __DIR__.'/seo.php';
 require_once __DIR__.'/tsukuyumi.php';
 require_once __DIR__.'/elekt.php';
 require_once __DIR__.'/echo.php';

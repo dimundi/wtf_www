@@ -12,7 +12,8 @@ add_action('after_setup_theme', function () {
 });
 // Wspólna wektorowa ikona zakładki: łapka z logo WTF.
 function wtf_favicon() {
-    echo '<link rel="icon" type="image/svg+xml" href="'.esc_url(add_query_arg('v',filemtime(get_theme_file_path('assets/favicon.svg')),get_theme_file_uri('assets/favicon.svg'))).'">'."\n";
+    echo '<link rel="icon" type="image/png" sizes="96x96" href="'.esc_url(get_theme_file_uri('assets/favicon-96.png')).'">'."\n";
+    echo '<link rel="icon" type="image/svg+xml" href="'.esc_url(get_theme_file_uri('assets/favicon.svg')).'">'."\n";
 }
 add_action('wp_head','wtf_favicon',100);
 add_action('admin_head','wtf_favicon',100);
