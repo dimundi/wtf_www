@@ -52,6 +52,8 @@
 - [przeniesienie-katalogu](przenoszenie/przeniesienie-katalogu.md)
 - [przeniesienie-kontaktu](przenoszenie/przeniesienie-kontaktu.md)
 - [przeniesienie-kurzolakow](przenoszenie/przeniesienie-kurzolakow.md)
+- [Sweet Revenge — podstrona dodatku](przenoszenie/sweet-revenge.md)
+- [Historyjki Kurzołaków — projekt lokalny](przenoszenie/kurzolaki-historyjki.md)
 - [przeniesienie-tsukuyumi](przenoszenie/przeniesienie-tsukuyumi.md)
 
 ## wtyczki

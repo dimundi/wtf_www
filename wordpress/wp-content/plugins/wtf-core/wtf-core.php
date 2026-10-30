@@ -12,6 +12,7 @@ require_once __DIR__.'/tsukuyumi.php';
 require_once __DIR__.'/elekt.php';
 require_once __DIR__.'/echo.php';
 require_once __DIR__.'/kurzolaki.php';
+require_once __DIR__.'/kurzolaki-game.php';
 require_once __DIR__.'/catalog.php';
 require_once __DIR__.'/contact.php';
 require_once __DIR__.'/klanarchia.php';

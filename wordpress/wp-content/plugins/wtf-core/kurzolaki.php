@@ -35,6 +35,23 @@ add_action('init', function () {
         'attributes'=>['image'=>['type'=>'string','default'=>''], 'imageId'=>['type'=>'number','default'=>0], 'mobileId'=>['type'=>'number','default'=>0], 'alt'=>['type'=>'string','default'=>''], 'attributes'=>['type'=>'object','default'=>[]]],
         'render_callback'=>function ($a) {
             $attrs = array_merge($a['attributes'], ['alt'=>$a['alt'], 'sizes'=>'(max-width: 650px) 100vw, 1200px']);
+            $class = $a['attributes']['class'] ?? '';
+            if (str_contains($class, 'story-faction-logo') || str_contains($class, 'story-card-faction-logo')) {
+                $attrs['sizes'] = str_contains($class, 'story-card-faction-logo') ? '32px' : '65px';
+                $attrs['loading'] = 'lazy';
+            } elseif (str_contains($class, 'story-intro-farfocel') || str_contains($class, 'story-intro-trutka')) {
+                $attrs['sizes'] = '(max-width: 600px) 45vw, 350px';
+                $attrs['loading'] = 'lazy';
+            } elseif (str_contains($class, 'story-card-art')) {
+                $attrs['sizes'] = '(max-width: 600px) calc((100vw - 74px) / 2), (max-width: 800px) 210px, (max-width: 1100px) 230px, 180px';
+                $attrs['loading'] = 'lazy';
+            } elseif (str_contains($class, 'story-character') || str_contains($class, 'story-scene')) {
+                $attrs['sizes'] = '(max-width: 600px) calc(100vw - 40px), 600px';
+                if (get_post_meta(get_queried_object_id(), '_wtf_kurz_kind', true) === 'stories' && str_contains($class, 'story-character') && str_contains($a['image'] ?? '', '/landrynka.')) {
+                    $attrs['sizes'] = '(max-width: 600px) calc(100vw - 72px), 1180px';
+                }
+                $attrs['loading'] = 'lazy';
+            }
             $html = wtf_core_image($a, 'full', $attrs);
             if ($a['mobileId']) {
                 $src = wp_get_attachment_image_src($a['mobileId'], 'full');
@@ -64,7 +81,7 @@ function wtf_kurz_attributes($attrs) {
     $html = '';
     foreach ($attrs as $key=>$value) {
         if ($key==='style' && preg_match('/^--expansion-color:#[a-fA-F0-9]{6}$/',trim($value))) { $html.=' style="'.esc_attr(trim($value)).'"'; continue; }
-        if (!in_array($key, ['class','id','lang','href','target','rel','title','role','open','aria-label','aria-current','aria-controls','aria-expanded'], true)) { continue; }
+        if (!in_array($key, ['class','id','lang','href','target','rel','title','role','open','download','aria-label','aria-current','aria-controls','aria-expanded'], true)) { continue; }
         if ($key === 'href') { $value = esc_url($value); }
         $html .= ' '.esc_attr($key).'="'.esc_attr($value).'"';
     }

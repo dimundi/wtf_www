@@ -1,0 +1,160 @@
+/* Ilustrowane historyjki: wyłącznie podstrona oznaczona metadanymi stories. */
+@media(max-width:800px){.dust-stories section.story-hero{padding-top:8px}.dust-stories .story-hero-art{order:-1}.dust-stories .story-hero-art:before{top:12px}.dust-stories .story-hero-art .story-hero-kudlacz{top:6%}}
+.dust-stories .story-shop-link{margin-inline-start:16px}@media(max-width:600px){.dust-stories .story-shop-link{margin-inline:8px}}
+.dust-stories{--story-ink:#283d39;--story-pink:#a3345e;color:var(--story-ink);overflow:clip}
+.dust-stories{--faction-robale:#658346;--faction-flejtuchy:#b96736;--faction-puca:#39a4b0;--faction-sweet:#e47fad;--faction-text-robale:#506b36;--faction-text-flejtuchy:#9b4e25;--faction-text-puca:#23747e;--faction-text-sweet:#a34276}
+.dust-stories .story-name{font-weight:800}
+.dust-stories .story-name-robale,.dust-stories .story-faction-robale{color:var(--faction-text-robale)}
+.dust-stories .story-name-flejtuchy,.dust-stories .story-faction-flejtuchy{color:var(--faction-text-flejtuchy)}
+.dust-stories .story-name-puca,.dust-stories .story-faction-puca{color:var(--faction-text-puca)}
+.dust-stories .story-name-sweet,.dust-stories .story-faction-sweet{color:var(--faction-text-sweet)}
+.dust-stories .story-name-world{color:inherit}
+.dust-stories .story-intro{position:relative;isolation:isolate;overflow:hidden;padding:55px 38px 45px;margin:45px -38px 65px;border-radius:3% 1% 2% 1% / 1% 2% 1% 2%;scroll-margin-top:90px;background:#f2ede3}
+.dust-stories .story-intro>.story-intro-background{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.dust-stories .story-intro:before{content:'';position:absolute;inset:0;z-index:-1;background:#f2ede3c9}
+.dust-stories .story-intro-copy{max-width:none;margin:30px 0 0;padding:0;background:none;border-radius:0;font-size:18px;line-height:1.85;columns:2;column-gap:48px}
+.dust-stories .story-intro-copy p{margin:0 0 20px}.dust-stories .story-intro-copy p:last-child{margin-bottom:0}
+.dust-stories .story-intro-copy p{break-inside:avoid}
+.dust-stories .story-character-link,.dust-stories .story-place-link{color:inherit;text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:3px}
+.dust-stories .story-character-link:hover,.dust-stories .story-place-link:hover{text-decoration-thickness:2px}
+.dust-stories .story-family-badge{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.dust-stories .story-family-badge .story-faction-logo{display:block;width:44px;height:44px;object-fit:contain}
+.dust-stories .story-card{position:relative}
+.dust-stories .story-card .story-card-faction-logo{position:absolute;top:8px;right:7px;width:32px;height:32px;margin:0;object-fit:contain;z-index:1}
+@media(max-width:1100px){.dust-stories .story-intro{margin-inline:0;padding-inline:25px}}
+@media(max-width:800px){.dust-stories .story-intro-copy{columns:1}}
+@media(max-width:600px){.dust-stories .story-intro{padding:30px 16px;margin:20px 0 40px}.dust-stories .story-intro .story-chapter-heading{gap:10px}.dust-stories .story-intro .story-chapter-heading h2{font-size:29px}.dust-stories .story-intro-copy{padding:0;font-size:17px}.dust-stories .story-family-badge{font-size:11px;gap:10px}.dust-stories .story-card .story-card-faction-logo{width:27px;height:27px}}
+.dust-stories .story-wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.dust-stories a:focus-visible{outline:3px solid var(--story-pink);outline-offset:7px}
+.dust-stories .story-back{display:inline-block;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:5px;margin-top:30px}
+.dust-stories .story-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;min-height:640px;padding-block:35px 55px}
+.dust-stories .story-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--story-pink)}
+.dust-stories h1,.dust-stories h2,.dust-stories h3{font-family:'Trebuchet MS',Verdana,sans-serif;font-weight:900;letter-spacing:-1.8px;line-height:1.06}
+.dust-stories h1{font-size:clamp(48px,6.5vw,84px);margin:18px 0 24px}
+.dust-stories h1 em{display:inline-block;color:var(--story-pink);font-style:normal;transform:rotate(-3deg)}
+.dust-stories .story-hero-copy>p:not(.story-label){max-width:450px;font-size:18px;line-height:1.8}
+.dust-stories .story-hero-art{position:relative;min-height:500px;isolation:isolate}
+.dust-stories .story-hero-art:before{content:'';position:absolute;inset:35px 10px 25px;background:#ead0dc;border-radius:46% 54% 38% 62% / 55% 40% 60% 45%;transform:rotate(-8deg);z-index:-1}
+.dust-stories .story-hero-art img{position:absolute;height:auto;object-fit:contain;filter:drop-shadow(0 15px 9px #283d391a)}
+.dust-stories .story-hero-kudlacz{width:66%;right:-3%;top:14%}
+.dust-stories .story-hero-szczypawka{width:43%;left:0;bottom:0;transform:rotate(-9deg)}
+.dust-stories .story-hero-szczypawka,.dust-stories #szczypawka .story-character,.dust-stories .story-card[href="#szczypawka"] .story-card-art{filter:brightness(1.25) contrast(.94) saturate(1.16)}
+.dust-stories .story-sticker{position:absolute;right:0;bottom:15px;background:#edcf6a;padding:12px 19px;transform:rotate(7deg);font-size:13px;font-weight:800;box-shadow:3px 4px 0 #283d391c;border-radius:7% 3% 8% 4%}
+.dust-stories .story-picker{display:block;padding-block:55px 70px;text-align:center;border-top:1px dashed #283d3940;scroll-margin-top:30px}
+.dust-stories h2{font-size:clamp(34px,4vw,52px);margin:13px 0 18px}
+.dust-stories .story-picker>p{line-height:1.7}
+.dust-stories .story-cards{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:760px;margin:45px auto 0}
+.dust-stories .story-card{display:flex;flex-direction:column;align-items:center;padding:18px 22px 28px;background:#dce4bb;border-radius:10% 6% 8% 4% / 5% 8% 4% 7%;text-decoration:none;transition:transform .2s;transform:rotate(-2deg)}
+.dust-stories .story-card:nth-child(2){background:#ecd3c8;transform:rotate(2deg)}
+.dust-stories .story-card:hover{transform:translateY(-7px) rotate(0)}
+.dust-stories .story-card img{height:230px;width:100%;object-fit:contain;margin:-8px 0 18px}
+.dust-stories .story-card h3{font-size:25px;letter-spacing:-.7px;margin:0 0 12px}
+.dust-stories .story-card span{font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.dust-stories .story-chapter{padding:85px 0 65px;border-top:1px dashed #283d3940;scroll-margin-top:30px}
+.dust-stories .story-chapter-heading{display:flex;align-items:baseline;gap:22px;margin-bottom:25px}
+.dust-stories .story-number{font-family:Georgia,serif;font-style:italic;font-size:42px;color:#a3345e80}
+.dust-stories .story-chapter-heading h2{margin:0}
+.dust-stories .story-chapter-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.dust-stories .story-art{position:relative;min-width:0;isolation:isolate;margin:0}
+.dust-stories .story-art:before{content:'';position:absolute;inset:12% -3% 18%;z-index:-1;background:#dce4bb;border-radius:48% 52% 30% 70% / 40% 45% 55% 60%;transform:rotate(-6deg)}
+.dust-stories .story-art img{display:block;width:100%;height:auto;max-height:660px;object-fit:contain}
+.dust-stories .story-aside{position:absolute;right:-10px;top:24%;max-width:145px;transform:rotate(8deg);font-family:Georgia,serif;font-style:italic;font-size:19px;line-height:1.25;background:#edcf6a;padding:12px 15px;border-radius:6% 3% 9% 4%;box-shadow:3px 4px 0 #283d3912}
+.dust-stories .story-aside-low{top:auto;bottom:7%;left:0;right:auto;transform:rotate(-6deg);background:#fff9ec}
+.dust-stories .story-copy{font-size:17px;line-height:1.85}
+.dust-stories .story-copy p{margin:0 0 20px}
+.dust-stories .story-copy p:last-of-type{margin-bottom:28px}
+.dust-stories .story-family{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--story-pink);margin-bottom:18px}
+.dust-stories .story-return{position:relative;padding-left:16px;font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.dust-stories .story-return:before{content:'';position:absolute;left:2px;top:50%;width:6px;height:6px;border-left:1.5px solid currentColor;border-top:1.5px solid currentColor;transform:translateY(-4px) rotate(45deg)}
+.dust-stories .story-return:after{content:'';position:absolute;left:5px;top:50%;width:1.5px;height:9px;background:currentColor;transform:translateY(-4px)}
+.dust-stories .story-chapter-alt .story-art:before{background:#ecd3c8;transform:rotate(6deg)}
+.dust-stories .story-chapter-alt .story-art{grid-column:2;grid-row:1}
+.dust-stories .story-chapter-alt .story-copy{grid-column:1;grid-row:1}
+.dust-stories .story-end{text-align:center;padding:65px 24px 85px;max-width:750px;margin:auto}
+.dust-stories .story-end p{font-size:18px;line-height:1.8}
+@media(max-width:800px){.dust-stories .story-hero{grid-template-columns:1fr;gap:10px;padding-top:40px}.dust-stories .story-hero-copy{max-width:600px}.dust-stories .story-hero-art{width:min(500px,100%);margin:auto;min-height:440px}.dust-stories .story-chapter-grid{gap:30px}.dust-stories .story-aside{font-size:16px;max-width:115px;right:-5px}.dust-stories .story-copy{font-size:16px}.dust-stories .story-chapter-heading{gap:15px}}
+@media(max-width:600px){.dust-stories .story-wrap{width:calc(100% - 40px)}.dust-stories .story-back{font-size:12px}.dust-stories h1{font-size:49px}.dust-stories .story-hero-art{min-height:360px}.dust-stories .story-sticker{font-size:11px;bottom:0}.dust-stories .story-hero-copy>p:not(.story-label){font-size:17px}.dust-stories .story-picker{padding-block:40px 55px}.dust-stories .story-cards{gap:14px;margin-top:32px}.dust-stories .story-card{padding:12px 9px 21px}.dust-stories .story-card img{height:160px;margin-bottom:12px}.dust-stories .story-card h3{font-size:19px;letter-spacing:-.5px}.dust-stories .story-card span{font-size:11px}.dust-stories .story-chapter{padding-block:45px}.dust-stories .story-chapter-heading h2{font-size:33px}.dust-stories .story-number{font-size:31px}.dust-stories .story-chapter-grid{grid-template-columns:minmax(0,1fr);gap:25px}.dust-stories .story-art,.dust-stories .story-chapter-alt .story-art{grid-column:auto;grid-row:auto;max-width:400px;width:100%;margin:auto}.dust-stories .story-chapter-alt .story-copy{grid-column:auto;grid-row:auto}.dust-stories .story-art img{max-height:490px}.dust-stories .story-aside{right:0;top:23%;font-size:17px;max-width:125px}.dust-stories .story-aside-low{top:auto;bottom:8%}.dust-stories .story-copy{font-size:17px}.dust-stories .story-end{padding:35px 20px 65px}}
+@media(prefers-reduced-motion:reduce){.dust-stories .story-card{transition:none}}
+
+/* Pełny atlas mieszkańców: zwarta galeria i wyróżnione rozdziały finałowe. */
+.dust-stories{overflow:visible}
+.dust-stories .story-cards{grid-template-columns:repeat(6,minmax(0,1fr));max-width:none;gap:26px 20px}
+.dust-stories .story-card{padding:12px 10px 22px;min-width:0;transform:rotate(-1.5deg)}
+.dust-stories .story-card:nth-child(even){transform:rotate(1.5deg)}
+.dust-stories .story-card img{height:145px;margin:0 0 14px}
+.dust-stories .story-card-portrait{--portrait-scale:1;--portrait-y:0%;position:relative;width:100%;height:145px;flex:none;overflow:hidden;margin:0 0 14px}
+.dust-stories .story-card .story-card-portrait .story-card-art{display:block;width:100%;height:100%;margin:0;object-fit:contain;object-position:center;transform:translateY(var(--portrait-y)) scale(var(--portrait-scale));transform-origin:center}
+.dust-stories .story-portrait-szczypawka{--portrait-scale:1.32;--portrait-y:18%}
+.dust-stories .story-portrait-lajnosnur{--portrait-scale:1.3;--portrait-y:14%}
+.dust-stories .story-portrait-galganek{--portrait-scale:1.37;--portrait-y:23%}
+.dust-stories .story-portrait-mieczak{--portrait-scale:1.35;--portrait-y:28%}
+.dust-stories .story-portrait-soczek{--portrait-scale:1.35;--portrait-y:23%}
+.dust-stories .story-portrait-mazia{--portrait-scale:1.05;--portrait-y:2%}
+.dust-stories .story-portrait-glodomor{--portrait-scale:1.15;--portrait-y:8%}
+.dust-stories .story-portrait-guma{--portrait-scale:1.05;--portrait-y:3%}
+.dust-stories .story-portrait-farfocel{--portrait-scale:1.05;--portrait-y:2%}
+.dust-stories .story-portrait-mol{--portrait-scale:1.05;--portrait-y:5%}
+.dust-stories .story-portrait-landrynka{--portrait-scale:1.12}
+@media(max-width:600px){.dust-stories .story-card-portrait{height:150px}}
+.dust-stories .story-card h3{font-size:19px;letter-spacing:-.5px;line-height:1.16;margin-bottom:12px}
+.dust-stories .story-card span{margin-top:auto;font-size:11px}
+.dust-stories .story-card-grubby{background:#ecd3c8}
+.dust-stories .story-card-bugs{background:#dce4bb}
+.dust-stories .story-card-puca{background:#c2e3df}
+.dust-stories .story-card-landrynka{background:#ead0dc}
+.dust-stories .story-card:hover{transform:translateY(-7px) rotate(0)}
+.dust-stories .story-jump{position:sticky;top:0;z-index:30;display:flex;justify-content:center;gap:28px;padding:18px 12px;background:#f2ede3f5;border-block:1px dashed #283d3940;backdrop-filter:blur(8px)}
+.dust-stories .story-jump a{font-size:12px;font-weight:700;white-space:nowrap;padding:5px 0;text-underline-offset:5px}
+.dust-stories .story-jump a:hover{text-decoration:underline}
+.dust-stories .story-picker,.dust-stories .story-chapter,.dust-stories .story-download{scroll-margin-top:90px}
+.dust-stories .story-picker{border-top:0}
+.dust-stories .story-chapter-heading{min-width:0}
+.dust-stories .story-chapter-heading h2{overflow-wrap:anywhere}
+.dust-stories .story-number{flex-shrink:0}
+.dust-stories .story-special{padding:55px 38px;margin:45px -38px 65px;background:#dceee9;border:0;border-radius:3% 1% 2% 1% / 1% 2% 1% 2%}
+.dust-stories .story-special .story-art:before{background:#b8dcd8}
+.dust-stories .story-soap-scene{max-width:500px;margin:35px auto 0;text-align:center}
+.dust-stories .story-soap-scene img{width:100%;height:auto;max-height:340px;object-fit:contain}
+.dust-stories .story-soap-scene figcaption{font-family:Georgia,serif;font-style:italic;font-size:17px;line-height:1.6;margin-top:16px}
+.dust-stories .story-special-landrynka{--landrynka-inset:38px;background:#f0d9e5;padding-bottom:0;overflow:hidden}
+.dust-stories .story-special-landrynka .story-chapter-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+.dust-stories .story-special-landrynka .story-chapter-heading{margin-bottom:16px}
+.dust-stories .story-special-landrynka .story-family-badge{margin-bottom:12px}
+.dust-stories .story-special-landrynka .story-copy p{margin-bottom:14px}
+.dust-stories .story-special-landrynka .story-copy p:last-of-type{margin-bottom:16px}
+.dust-stories .story-special-landrynka .story-art,.dust-stories .story-special-landrynka .story-copy{grid-column:auto;grid-row:auto;width:100%;max-width:none}
+.dust-stories .story-special-landrynka .story-art:before{display:none}
+.dust-stories .story-special-landrynka .story-art{width:calc(100% + 2 * var(--landrynka-inset));margin-inline:calc(-1 * var(--landrynka-inset))}
+.dust-stories .story-special-landrynka .story-art img{max-height:none}
+.dust-stories .story-special-landrynka .story-aside{right:1%;top:7%;max-width:170px}
+.dust-stories .story-special-landrynka .story-aside-low{left:2%;right:auto;top:auto;bottom:4%;max-width:180px}
+.dust-stories .story-special-landrynka .story-copy{max-width:none;margin:0;font-size:20px;line-height:1.7}
+.dust-stories .story-download{text-align:center;padding:35px 20px 65px;border-bottom:1px dashed #283d3940}
+.dust-stories .story-download>p{line-height:1.7}
+.dust-stories .story-download .story-download-info{font-size:12px;margin-top:20px;color:#57635a}
+@media(max-width:600px){.dust-stories .story-art:before{inset-inline:6%}}
+@media(max-width:1100px){.dust-stories .story-cards{grid-template-columns:repeat(4,minmax(0,1fr))}.dust-stories .story-special{margin-inline:0;padding-inline:25px}}
+@media(max-width:800px){.dust-stories .story-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.dust-stories .story-jump{gap:20px}.dust-stories .story-special .story-chapter-grid{gap:30px}}
+@media(max-width:600px){.dust-stories .story-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}.dust-stories .story-card img{height:150px}.dust-stories .story-card h3{font-size:18px}.dust-stories .story-jump{gap:0;justify-content:space-between;padding:12px 0}.dust-stories .story-jump a{font-size:10px;padding:10px 3px}.dust-stories .story-special{padding:30px 16px 40px;margin:20px 0 40px}.dust-stories .story-special .story-chapter-heading{gap:10px}.dust-stories .story-special .story-chapter-heading h2{font-size:29px}.dust-stories .story-special-landrynka .story-aside{font-size:12px;max-width:100px;padding:8px}.dust-stories .story-special-landrynka .story-aside-low{max-width:100px;font-size:12px;bottom:0}.dust-stories .story-special-landrynka .story-copy{font-size:18px}.dust-stories .story-soap-scene figcaption{font-size:15px}.dust-stories .story-chapter-grid{gap:20px}}
+@media(max-width:1100px){.dust-stories .story-special-landrynka{--landrynka-inset:25px}}
+@media(max-width:600px){.dust-stories .story-special-landrynka{--landrynka-inset:16px;padding-bottom:0}}
+
+/* Dymki poza sylwetką; tylko detale rysunku mają linie wskazujące. */
+.dust-stories .story-art{--note-first-column:1;--note-second-column:2;--story-art-color:#dce4bb;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;align-items:start}
+.dust-stories .story-art:before{display:none}
+.dust-stories .story-chapter-alt .story-art{--story-art-color:#ecd3c8}
+.dust-stories .story-special-puca .story-art{--story-art-color:#b8dcd8}
+.dust-stories .story-illustration{position:relative;grid-column:1 / -1;grid-row:2;min-width:0;isolation:isolate}
+.dust-stories .story-illustration:before{content:'';position:absolute;inset:12% 5% 18%;z-index:-1;background:var(--story-art-color);border-radius:48% 52% 30% 70% / 40% 45% 55% 60%;transform:rotate(-6deg)}
+.dust-stories .story-art>.story-aside{position:relative;inset:auto;grid-column:var(--note-first-column);grid-row:1;justify-self:center;align-self:start;width:fit-content;max-width:min(100%,185px);margin:8px 0 0;padding:10px 13px;font-size:17px;line-height:1.3;transform:rotate(-3deg);z-index:3;box-sizing:border-box}
+.dust-stories .story-art>.story-aside-low{grid-column:var(--note-second-column);transform:rotate(3deg)}
+.dust-stories #szczypawka .story-art,.dust-stories #lajnosnur .story-art,.dust-stories #plesniak .story-art,.dust-stories #kichacz .story-art{--note-first-column:2;--note-second-column:1}
+.dust-stories .story-callout-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:2;pointer-events:none}
+.dust-stories .story-special-landrynka .story-illustration:before{display:none}
+.dust-stories .story-special-landrynka .story-art>.story-aside{max-width:210px;margin-inline:16px}
+@media(max-width:600px){.dust-stories .story-art{gap:16px 14px}.dust-stories .story-art>.story-aside{font-size:15px;padding:9px 10px;max-width:100%;margin-top:5px}.dust-stories .story-special-landrynka .story-art>.story-aside{margin-inline:12px;font-size:14px}}
+@media(min-width:1101px){
+  .dust-stories .story-special-landrynka .story-art{display:block}
+  .dust-stories .story-special-landrynka .story-art>.story-aside{position:absolute;inset:auto;right:3%;top:4%;max-width:300px;margin:0;transform:rotate(-3deg)}
+  .dust-stories .story-special-landrynka .story-art>.story-aside-low{top:25%;right:3%;max-width:210px;transform:rotate(3deg)}
+}

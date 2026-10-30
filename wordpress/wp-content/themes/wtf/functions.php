@@ -112,6 +112,13 @@ add_filter('body_class',function($classes){if(is_page()&&get_post_meta(get_queri
 add_action('wp_enqueue_scripts',function(){
     if(!is_page()||!get_post_meta(get_queried_object_id(),'_wtf_kurz_kind',true))return;
     wp_enqueue_style('wtf-kurzolaki',get_theme_file_uri('assets/kurzolaki.css'),['wtf-blocks','wtf-mobile-navigation'],filemtime(get_theme_file_path('assets/kurzolaki.css')));
+    if(get_post_meta(get_queried_object_id(),'_wtf_kurz_kind',true)==='sweet-revenge') {
+        wp_enqueue_style('wtf-sweet-revenge',get_theme_file_uri('assets/sweet-revenge.css'),['wtf-kurzolaki'],filemtime(get_theme_file_path('assets/sweet-revenge.css')));
+    }
+    if(get_post_meta(get_queried_object_id(),'_wtf_kurz_kind',true)==='stories') {
+        wp_enqueue_style('wtf-kurzolaki-stories',get_theme_file_uri('assets/kurzolaki-stories.css'),['wtf-kurzolaki'],filemtime(get_theme_file_path('assets/kurzolaki-stories.css')));
+        wp_enqueue_script('wtf-kurzolaki-stories',get_theme_file_uri('assets/kurzolaki-stories.js'),[],filemtime(get_theme_file_path('assets/kurzolaki-stories.js')),true);
+    }
     wp_enqueue_script('wtf-kurzolaki',get_theme_file_uri('assets/kurzolaki.js'),['wtf-site'],filemtime(get_theme_file_path('assets/kurzolaki.js')),true);
 });
 

@@ -1,5 +1,7 @@
 # WTF — wersja docelowa
 
+- 30.10.2026: minigra pozostaje wyłącznie lokalnie. Wykluczać jej kod, zasoby, treści i odnośniki ze wszystkich paczek oraz wdrożeń na PROD (`whathefrog.pl`), również przy zbiorczym wdrażaniu promocji Kurzołaków. Wdrożenie minigry wymaga osobnego, wyraźnego polecenia użytkownika.
+
 - SEO i komunikacja: licencja/reprezentacja Tsukuyumi zakończona. Produkty mogą pozostać w sprzedaży, a gra w obecnym menu. Nie promować jej w SEO głównej/katalogu, nie określać jako „nasza gra” i nie sugerować aktualnej reprezentacji. Strony gry i produktów opisują rzeczowo zasady, frakcje, materiały i ofertę. W promocji PL koncentrować się na Elekcie, Kurzołakach i Klanarchii.
 
 - Najnowsze ustalenie: zbieramy i sprawdzamy zmiany lokalnie, a na `whathefrog.pl` (nazywane przez użytkownika PROD) wdrażamy hurtowo dopiero na jego polecenie. Bez automatycznego wdrażania każdej poprawki i bez podsyłania linków do localhost.

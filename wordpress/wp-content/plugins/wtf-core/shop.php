@@ -41,6 +41,7 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
       <div class="shop-card-copy"><span class="shop-kind"><?php echo esc_html($labels[$kind]??($games[$game]??'WTF')); ?></span>
         <h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3>
         <?php if($introduction): ?><p class="shop-base-intro"><?php echo esc_html($introduction); ?></p><?php endif; ?>
+        <?php $presentation_id=(int)$product->get_meta('_wtf_presentation_page_id'); if($presentation_id && get_post_type($presentation_id)==='page' && get_post_status($presentation_id)==='publish'): ?><p class="shop-presentation"><a href="<?php echo esc_url(get_permalink($presentation_id)); ?>">Poznaj <?php echo esc_html($product->get_name()); ?></a></p><?php endif; ?>
         <div class="shop-card-bottom"><span class="shop-price"><?php echo wp_kses_post($product->get_price_html()); ?></span><a class="shop-add" href="<?php echo esc_url($product->add_to_cart_url()); ?>" rel="nofollow" aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>"><?php echo esc_html($product->add_to_cart_text()); ?></a></div>
       </div>
     </article>
