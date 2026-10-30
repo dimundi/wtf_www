@@ -1,0 +1,9 @@
+.wtf-bundle-config{margin:18px 12px;padding:14px;border:1px solid #c3c4c7;background:#fff}
+.wtf-bundle-config[hidden]{display:none}
+.wtf-bundle-config h4{margin:0 0 12px}
+#woocommerce-product-data .wtf-bundle-config select{float:none;width:100%;max-width:100%}
+#woocommerce-product-data .wtf-bundle-config input[type=number]{float:none;width:70px}
+#woocommerce-product-data .wtf-bundle-config input[type=checkbox]{float:none;margin:7px 0}
+.wtf-bundle-config td{vertical-align:middle}
+.wtf-bundle-config>[data-bundle-add]{margin-top:12px}
+.wtf-bundle-config .description{margin-top:12px;font-size:12px;line-height:1.5}

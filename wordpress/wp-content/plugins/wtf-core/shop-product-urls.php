@@ -19,6 +19,7 @@ function wtf_product_custom_paths() {
         'mata-do-gry'=>'elekt/mata-rubiez',
         'szklany-zar'=>'elekt/szklany-zar',
         'kurzolaki'=>'kurzolaki/podstawka',
+        'kurzolaki-zestaw'=>'kurzolaki/zestaw',
         'kurzolaki-akrylowe-plamy'=>'kurzolaki/akrylowe-plamy',
         'kurzolaki-fanpack'=>'kurzolaki/fanpack',
         'sweet-revenge'=>'kurzolaki/sweet-revenge',

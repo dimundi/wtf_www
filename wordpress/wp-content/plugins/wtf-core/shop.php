@@ -34,10 +34,26 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     $game=wtf_shop_product_term($product,'wtf_product_game');
     $games=wtf_shop_games();
     $kind=wtf_shop_product_term($product,'wtf_product_kind');
-    $labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatek','akcesorium'=>'Akcesorium'];
+    $gifts=[];
+    if($kind==='zestaw')foreach(wtf_bundle_items($product) as $item){
+        $gift_id=(int)($item['product_id']??0);
+        if(empty($item['is_gift'])||!$gift_id||$gift_id===$product->get_id())continue;
+        $gift=wc_get_product($gift_id);
+        if($gift&&$gift->get_status()==='publish')$gifts[]=['product'=>$gift,'quantity'=>max(1,(int)($item['quantity']??1))];
+    }
+    $has_gift=!empty($gifts);
+    $labels=['zestaw'=>'Kup w zestawie','podstawka'=>'Podstawka','dodatek'=>'Dodatek','akcesorium'=>'Akcesorium'];
     ?>
-    <article class="shop-card shop-card--<?php echo esc_attr($layout); ?>">
+    <article class="shop-card shop-card--<?php echo esc_attr($layout); ?><?php echo $layout==='bundle'?' shop-card--base':''; ?>">
+      <?php if($has_gift): ?><div class="shop-bundle-visual"><?php endif; ?>
       <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image('medium_large',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?><?php if($product->is_on_sale())echo apply_filters('woocommerce_sale_flash','<span class="onsale">Promocja!</span>',get_post($product->get_id()),$product); ?></a>
+        <?php if($has_gift): ?>
+        <a class="shop-bundle-gift" href="<?php echo esc_url($product->get_permalink().($product->get_meta('_wtf_product_editorial')==='yes'?'#product-description':'#product-details-description')); ?>">
+          <strong class="shop-bundle-gift-badge">GRATIS</strong>
+          <span class="shop-bundle-gift-art<?php echo count($gifts)>1?' has-multiple':''; ?>"><?php foreach($gifts as $entry): $gift=$entry['product']; ?><span class="shop-bundle-gift-item"><?php echo $gift->get_image('woocommerce_thumbnail',['loading'=>'lazy','alt'=>$gift->get_name(),'sizes'=>'140px']); ?><?php if($entry['quantity']>1): ?><span class="shop-gift-quantity"><?php echo esc_html($entry['quantity']); ?> szt.</span><?php endif; ?></span><?php endforeach; ?></span>
+        </a>
+        </div>
+        <?php endif; ?>
       <div class="shop-card-copy"><span class="shop-kind"><?php echo esc_html($labels[$kind]??($games[$game]??'WTF')); ?></span>
         <h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3>
         <?php if($introduction): ?><p class="shop-base-intro"><?php echo esc_html($introduction); ?></p><?php endif; ?>
@@ -49,18 +65,20 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
 }
 
 function wtf_shop_game($products,$a,$game) {
-    $groups=['podstawka'=>[],'dodatek'=>[],'akcesorium'=>[],'pozostale'=>[]];
+    $groups=['podstawka'=>[],'zestaw'=>[],'dodatek'=>[],'akcesorium'=>[],'pozostale'=>[]];
     foreach($products as $product) { $kind=wtf_shop_product_term($product,'wtf_product_kind'); $groups[isset($groups[$kind])?$kind:'pozostale'][]=$product; }
-    $labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
+    $labels=['zestaw'=>'Kup w zestawie','podstawka'=>'Podstawka','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
     ?>
     <section class="shop-game" aria-label="Oferta gry">
       <nav class="shop-game-nav" aria-label="Sekcje oferty"><?php foreach($groups as $key=>$items): if(!$items)continue; ?><a href="#<?php echo esc_attr($game.'-'.$key); ?>"><?php echo esc_html($labels[$key]); ?><span><?php echo count($items); ?></span></a><?php endforeach; ?></nav>
-      <div class="shop-game-offer">
+      <div class="shop-game-offer<?php echo !empty($groups['zestaw'])&&!empty($groups['podstawka'])?' has-bundle-comparison':''; ?>">
         <?php foreach($groups as $key=>$items): if(!$items)continue; ?>
-        <section class="shop-game-section shop-section--<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($game.'-'.$key); ?>" aria-labelledby="<?php echo esc_attr($game.'-title-'.$key); ?>">
-          <header class="shop-game-section-heading"><span><?php echo $key==='podstawka'?'01':($key==='dodatek'?'02':($key==='akcesorium'?'03':'04')); ?></span><h2 id="<?php echo esc_attr($game.'-title-'.$key); ?>"><?php echo esc_html($labels[$key]); ?></h2></header>
+        <section class="shop-game-section shop-section--<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($game.'-'.$key); ?>" <?php if($key==='zestaw'): ?>aria-label="Zestawy"<?php else: ?>aria-labelledby="<?php echo esc_attr($game.'-title-'.$key); ?>"<?php endif; ?>>
+          <?php if($key!=='zestaw'): ?>
+          <header class="shop-game-section-heading"><span><?php echo $key==='zestaw'?'ZESTAW':($key==='podstawka'?'01':($key==='dodatek'?'02':($key==='akcesorium'?'03':'04'))); ?></span><h2 id="<?php echo esc_attr($game.'-title-'.$key); ?>"><?php echo esc_html($labels[$key]); ?></h2></header>
+          <?php endif; ?>
           <div class="<?php echo $key==='podstawka'?'shop-base-products':($key==='akcesorium'?'shop-accessories':'shop-products'); ?>">
-          <?php foreach($items as $product) wtf_shop_card($product,$key==='podstawka'?'base':($key==='akcesorium'?'accessory':'card'),$key==='podstawka'&&$game==='elekt'?$a['elektBaseDescription']:''); ?>
+          <?php foreach($items as $product) wtf_shop_card($product,$key==='zestaw'?'bundle':($key==='podstawka'?'base':($key==='akcesorium'?'accessory':'card')),$key==='zestaw'?wp_strip_all_tags($product->get_short_description()):($key==='podstawka'&&$game==='elekt'?$a['elektBaseDescription']:'')); ?>
           </div>
         </section>
         <?php endforeach; ?>
@@ -86,12 +104,12 @@ function wtf_shop_render($a=[]) {
     if(is_product_tag()) $args['tag']=[get_queried_object()->slug];
     $products=wc_get_products($args);
     $games=wtf_shop_games();
-    $products=array_values(array_filter($products,fn($p)=>(!$selected||wtf_shop_product_term($p,'wtf_product_game')===$selected)&&(!$search||mb_stripos($p->get_name().' '.wp_strip_all_tags($p->get_short_description()),$search)!==false)));
+    $products=array_values(array_filter($products,fn($p)=>(!$selected||wtf_shop_product_term($p,'wtf_product_game')===$selected)&&($selected||wtf_shop_product_term($p,'wtf_product_kind')!=='zestaw')&&(!$search||mb_stripos($p->get_name().' '.wp_strip_all_tags($p->get_short_description()),$search)!==false)));
     if($order!=='menu_order') usort($products,function($a,$b)use($order){
         if($order==='title') return strnatcasecmp($a->get_name(),$b->get_name());
         $result=(float)$a->get_price()<=>(float)$b->get_price(); return $order==='price-desc'?-$result:$result;
     });
-    $section_labels=['podstawka'=>'Podstawka','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
+    $section_labels=['podstawka'=>'Podstawka','zestaw'=>'Kup w zestawie','dodatek'=>'Dodatki','akcesorium'=>'Akcesoria','pozostale'=>'Pozostałe'];
     $section_keys=[];
     if(in_array($selected,['elekt','kurzolaki','tsukuyumi'],true)) {
         foreach($products as $product) {

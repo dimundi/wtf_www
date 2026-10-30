@@ -1,5 +1,9 @@
 # Wygląd sklepu
 
+31.10.2026: na polecenie użytkownika wdrożono na PROD cały opisany niżej mechanizm zestawów, konfigurację składu, widok gratisów, porównanie podstawki/zestawu i wyłączenie opinii. Wcześniejsze oznaczenia tych zmian jako „lokalne / PROD bez zmian” są historyczne. Nowy produkt PROD 4130: „Kurzołaki + Sweet Revenge”, 250 zł, `/produkt/kurzolaki/zestaw/`; skład mapowany po slugach na istniejące produkty PROD, plamy ×1 gratis. Osobne plamy bez promocji, 35 zł. Zakres: 10 plików kodu/stylów, nowy produkt, jeden obraz/9 plików, wyłącznie usunięcie promocji w istniejącym produkcie plam. Pozostałe dane istniejących produktów porównane i zachowane; bez importu bazy, zmian zamówień/klientów i minigry. Kopie kodu, danych produktów i potwierdzenie: `.wtf-staging/bundle-release-20261031/`; lokalna paczka w `local-scripts/one-off/bundle-release-20261031/`. Po wdrożeniu odświeżono routing w nowym procesie WP-CLI. Testy PROD 320/390/1440 px: widoczność zestawu tylko przy Kurzołakach, ceny, grafika gratisu i link do opisu, trzy opisy składników w ramkach, ilustracje wewnątrz ramek, mobilne skracanie bez migania, brak opinii i poziomego przepełnienia. Minigra nadal 404.
+
+30.10.2026, lokalnie: rodzaj produktu „Zestaw” (`zestaw`) tworzy wyróżnioną sekcję „Kup w zestawie” przed podstawką w ofercie wybranej gry. Zestawy nie pojawiają się we „Wszystkich”, również przy wyszukiwaniu; pola Gra/Rodzaj produktu pozwalają użyć mechanizmu przy innych grach. Kurzołaki + Sweet Revenge: produkt 4205, 250 zł, `/produkt/kurzolaki/zestaw/`, grafika użytkownika z `Pudelko/Render/wer8/Pudlo_Kurzołaki-zestaw.png` zarejestrowana w Mediach jako zoptymalizowany WebP. Osobny produkt prosty, dostępny bez liczbowego zarządzania magazynem; brak synchronizacji stanów składników, do osobnego ustalenia. Skrypt jednorazowy: `local-scripts/one-off/sweet-revenge/create-bundle-local.php`. Bez wdrożenia na PROD.
+
 Wspólny wzorzec oferty dla Elekta, Kurzołaków i Tsukuyumi. Hasło „PROSTO OD WYDAWNICTWA / Zabierz grę do domu.” pozostaje bez zmian.
 
 - Wybór gry otwiera ofertę w kolorach sklepu (jasny/ciemny), bez banera gry: podstawka wyróżniona, dodatki w kartach z tłem, akcesoria w lżejszych kartach z ramką.
@@ -8,6 +12,34 @@ Wspólny wzorzec oferty dla Elekta, Kurzołaków i Tsukuyumi. Hasło „PROSTO O
 - Przełączenie gry stosuje wybór od razu; wyszukiwanie działa w wybranej ofercie. Zdjęcia mają kwadratowe pola bez przycinania, liczba kolumn zależy od szerokości sekcji; niepełne rzędy nie rozciągają kart.
 
 ## Przypisanie produktów
+
+Rozdzielone teksty zestawu: karta na liście sklepu pokazuje edytowalny „Krótki opis produktu” (obecnie „Podstawka + Sweet Revenge + akrylowe plamy gratis.”). Podsumowanie na stronie produktu jest listą składników z konfiguracji, niezależną od zajawki. Mobilna strona produktu ukrywa listę przy cenie; pozostawia duże boksy z opisami i przyciskiem Rozwiń/Zwiń. Mechanizm skracania ustabilizowany, bez zapętlenia pomiarów. Zmiany lokalne.
+
+Opis zestawu lokalnie: pod boksami pozostają teraz pełne, stale widoczne opisy składników, pobierane z ich produktów według kolejności konfiguracji. Nagłówki zawierają nazwę, ilość i Gratis. Zachowane formatowanie i grafiki opisów; lista przy cenie i boksy bez zmian. Sprawdzone trzy sekcje i trzy boksy przy 390/1440 px, bez poziomego przepełnienia. Opis plam składa się obecnie z grafiki. PROD bez zmian.
+
+Aktualny opis zestawu lokalnie: skrócona lista produktów, ilości i gratisów pod ceną; w sekcji „Zawartość zestawu” karty składników ze zdjęciem, nazwą, ilością, krótkim opisem i linkiem. Oba widoki odczytują ten sam zapis konfiguracji, bez ręcznego powielania zawartości. Karty gratisów wyróżnione; układ 3/2/1 kolumn zależnie od szerokości. Zestaw Kurzołaków sprawdzony przy 390/1440 px: trzy pozycje pod ceną, trzy karty, jeden gratis, bez przepełnienia. PROD bez zmian.
+
+Opis produktu rodzaju „Zestaw” jest renderowany z konfiguracji jako „Zawartość zestawu”: wszystkie składniki, ilości i oznaczenia Gratis, z linkami do opublikowanych produktów. Dotyczy standardowego i nowego szablonu produktu; zapisany wcześniej opis pozostaje w bazie, ale nie jest pokazywany zamiast listy składu. Sekcja Opinie usunięta ze wszystkich produktów, bez usuwania zapisanych opinii z bazy. Zmiany lokalne; zweryfikowano zestaw i obie wersje szablonu produktu.
+
+### Konfiguracja zestawu — aktualnie lokalnie
+
+Produkty → edytuj → Dane produktu → Ogólne: wybierz Grę oraz rodzaj „Zestaw”. W sekcji „Zawartość zestawu” przyciskiem „Dodaj produkt” tworzysz wiersze: produkt, liczba sztuk, checkbox „Gratis”. „Usuń” usuwa pozycję. Cena i obraz zestawu pozostają standardowymi polami WooCommerce. Lista zastępuje wcześniejsze pole pojedynczego gratisu; pozwala wskazać wiele gratisów, ich grafiki i ilości pojawiają się na karcie zestawu.
+
+Skład zapisany w `_wtf_bundle_items`: `product_id`, `quantity`, `is_gift`. Tylko opublikowane produkty proste, bez powtórzeń, zagnieżdżonych zestawów i samego zestawu; ilość całkowita 1–9999. Błędny skład nie zastępuje poprzedniego, edytor pokazuje komunikat. Stare pole `_wtf_bundle_gift_id` odczytywane do pierwszego zapisu nowej listy. Nie ma automatycznej zmiany ceny, stanów składników ani pozycji koszyka/zamówienia.
+
+Zestaw Kurzołaków 4205: podstawka 806 ×1, Sweet Revenge 805 ×1, plamy 803 ×1 jako gratis; cena 250 zł. Konfiguracja wykonana przez `configure-bundle-items-local.php`. Kod: `shop-bundles.php/js/css`, integracja `shop-classification.php` i `shop.php`. Testy: zapis/wyczyszczenie listy, ilości, dwa gratisy z różnymi ilościami, nonce, błędne dane, dodawanie/usuwanie wierszy i przełączanie rodzaju produktu. Widok sklepu 320/390/1440 px w obu motywach poprawny. Narzędzia w `local-scripts/one-off/sweet-revenge/`. PROD bez zmian.
+
+Lokalnie: przy ofercie z zestawem od 1001 px podstawka i zestaw stoją obok siebie, grafiki nad opisem, ceny i przyciski na wspólnej linii. Węższe ekrany zachowują kolejność pionową podstawka → zestaw. Wspólny mechanizm dla gier z oboma rodzajami produktów; pozostałe sekcje pod spodem na pełną szerokość.
+
+Plakietka gratisu lokalnie: prowadzi do opisu zestawu (kotwica zależna od szablonu produktu), bez podpisu „Do tego zestawu”. Grafika plam zachowuje oryginalną przezroczystość, usunięto białe tło CSS. Etykieta GRATIS używa kształtu i łapki jak oznaczenia rabatu. Sprawdzone 320/390/1440 px, jasny/ciemny motyw; PROD bez zmian.
+
+31.10.2026, lokalnie: Dane produktu → Ogólne → „Produkt gratisowy w zestawie” (`_wtf_bundle_gift_id`). Wybrany opublikowany produkt dostarcza grafikę, nazwę i link do plakietki GRATIS na karcie zestawu. Wybór pusty wyłącza plakietkę; produkt nie może być własnym gratisem. Mechanizm wspólny, bez identyfikatorów wpisanych w kodzie renderowania i bez synchronizacji stanów składników. Dla zestawu Kurzołaków wskazano plamy 803; cena zestawu nadal 250 zł. Krótki dopisek o gratisie zastąpiono grafiką, pełny opis nadal zawiera plamy. PHP sprawdzony; testy panelu wyboru/wyłączenia/własnego gratisu oraz widoku 320/390/1440 px w obu motywach przeszły. Narzędzia: `configure-gift-local.php`, `check-gift-admin-local.php`, `check-gift-local.cjs` w `local-scripts/one-off/sweet-revenge/`. PROD bez zmian.
+
+Lokalny zestaw 4205: nazwa „Kurzołaki + Sweet Revenge”, cena 250 zł; akrylowe plamy gratis, ujęte w krótkim i pełnym opisie. Osobne akrylowe plamy 803 bez ceny promocyjnej i terminów promocji, cena regularna 35 zł. Nadtytuły kart podstawki i zestawu: 14 px, pogrubione. Skrypty `rename-bundle-local.php` i `bundle-free-stains-local.php` w `local-scripts/one-off/sweet-revenge/`. PROD bez zmian.
+
+Korekta lokalna 30.10.2026: podstawka przed zestawem. Zestaw bez osobnego widocznego nagłówka sekcji „ZESTAW / Kup w zestawie”; nadtytuł pozostaje wewnątrz karty. Obie karty używają wspólnego układu podstawki, identycznych kolumn, rozmiarów nagłówka i wyrównania ceny/przycisku. Zestaw wyróżnia tylko gradient i ramka. Potwierdzone przy 390/1440 px, w obu motywach; na desktopie identyczna pozycja początku tekstu obu kart.
+
+Weryfikacja zestawu lokalnie: ukryty we „Wszystkich” i przy Elekcie, widoczny przy Kurzołakach; poprawny adres produktu, dodanie do koszyka, jasny/ciemny motyw przy 390/1440 px, pełna szerokość wyróżnienia i brak przepełnienia. PHP `shop.php` bez błędów składni. Test: `local-scripts/one-off/sweet-revenge/check-bundle-local.cjs`.
 
 Produkty → edytuj produkt → Dane produktu → Ogólne:
 

@@ -173,5 +173,43 @@
 .wtf-kurz-product-board { margin:30px 0; }
 .wtf-kurz-product-board img { width:100%; height:auto; }
 .wtf-kurz-product-board figcaption { text-align:center; font-size:12px; color:var(--muted); }
+.wtf-bundle-contents{padding-left:20px;margin:8px 0 20px;font-size:14px;line-height:1.6}
+.wtf-bundle-contents li{margin:5px 0}
+.wtf-bundle-contents a{text-decoration:underline;text-underline-offset:3px}
+.wtf-bundle-product-boxes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:100%}
+.wtf-bundle-product-box{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);background:var(--surface)}
+.wtf-bundle-product-box.is-gift{border-color:var(--accent);background:linear-gradient(140deg,#90c11d1a,transparent),var(--surface)}
+.wtf-product-copy .wtf-bundle-box-image{display:flex;align-items:center;justify-content:center;height:240px;padding:20px;box-sizing:border-box}
+.wtf-product-copy .wtf-bundle-box-image img{display:block;width:100%;height:100%;object-fit:contain;margin:0}
+.wtf-bundle-box-copy{display:flex;flex-direction:column;align-items:flex-start;flex:1;padding:20px}
+.wtf-bundle-box-quantity{font-size:12px;color:var(--muted)}
+.wtf-bundle-full-descriptions{grid-column:1/-1;margin-top:0;min-width:0;font-size:15px;line-height:1.85;color:var(--text)}
+.wtf-bundle-component-description{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.5fr);gap:65px;align-items:start;margin:24px 0;padding:28px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.wtf-bundle-component-description>header{min-width:0}
+.wtf-bundle-component-description>header>img{display:block;width:100%;height:auto;max-height:280px;object-fit:contain;margin:16px 0 0}
+.wtf-product-copy .wtf-bundle-component-description>header h3{font:700 clamp(25px,3vw,36px)/1.2 Arial,Helvetica,sans-serif;margin:12px 0 24px}
+.wtf-product-copy .wtf-bundle-component-body{min-width:0;columns:auto;column-count:1;overflow-wrap:break-word}
+.wtf-product-copy:has(.wtf-bundle-full-descriptions){display:contents}
+.wtf-product-copy:has(.wtf-bundle-full-descriptions)>.wtf-bundle-product-boxes{grid-column:2;min-width:0}
+.wtf-bundle-component-body img{max-width:100%;height:auto}
+.wtf-bundle-component-detail{min-width:0}
+.wtf-bundle-component-text{display:flow-root;min-width:0}
+.wtf-bundle-expand[hidden]{display:none}
+@media(max-width:760px){
+ .summary .wtf-bundle-contents,.summary p:has(+.wtf-bundle-contents){display:none}
+ .wtf-product-copy:has(.wtf-bundle-full-descriptions)>.wtf-bundle-product-boxes{display:none}
+ .wtf-bundle-component-detail.is-collapsible:not(.is-expanded)>.wtf-bundle-component-body{position:relative;max-height:220px;overflow:hidden}
+ .wtf-bundle-component-detail.is-collapsible:not(.is-expanded)>.wtf-bundle-component-body:after{content:'';position:absolute;inset:auto 0 0;height:55px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
+ .wtf-bundle-expand{display:block;margin-top:14px;min-height:44px;padding:10px 20px;border:1px solid var(--accent);background:var(--accent);color:#1c263c;font:700 14px/1.3 Arial,Helvetica,sans-serif;cursor:pointer}
+}
+@media(max-width:1100px){.wtf-bundle-component-description{gap:35px}}
+@media(max-width:760px){.wtf-product-copy:has(.wtf-bundle-full-descriptions)>.wtf-bundle-product-boxes{grid-column:1}.wtf-bundle-component-description{grid-template-columns:minmax(0,1fr);gap:20px;padding:18px}.wtf-bundle-component-description>header>img{max-height:220px}}
+.wtf-bundle-box-gift{background:#90c11d;color:#1c263c;font-size:12px;padding:4px 10px;margin-top:8px}
+.wtf-product-copy .wtf-bundle-box-copy h3{font:700 23px/1.2 Arial,Helvetica,sans-serif;margin:12px 0}
+.wtf-product-copy .wtf-bundle-box-copy h3 a{text-decoration:none}
+.wtf-product-copy .wtf-bundle-box-copy p{font-size:14px;line-height:1.6;margin:0 0 18px}
+.wtf-product-copy .wtf-bundle-box-link{margin-top:auto;padding-top:8px;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){.wtf-bundle-product-boxes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.wtf-bundle-product-boxes{grid-template-columns:minmax(0,1fr);gap:18px}}
 .wtf-product--kurzolaki .wtf-product-description h3 { margin:32px 0 14px; font-size:23px; line-height:1.3; }
 .wtf-product-copy .wtf-sweet-description-link{margin:26px 0 32px}.wtf-product-copy a.wtf-sweet-more-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;max-width:100%;box-sizing:border-box;padding:16px 25px;background:#a3345e;color:#fff;font-size:15px;font-weight:800;line-height:1.4;text-align:center;text-decoration:none;border-radius:45% 8% 10% 6% / 8% 14% 9% 12%;box-shadow:4px 4px 0 #283d39;transition:transform .2s,background .2s}.wtf-product-copy a.wtf-sweet-more-button:hover{background:#8e294f;color:#fff;transform:rotate(-2deg)}.wtf-product-copy a.wtf-sweet-more-button:focus-visible{outline:3px solid var(--text);outline-offset:6px}@media(prefers-reduced-motion:reduce){.wtf-product-copy a.wtf-sweet-more-button{transition:none}.wtf-product-copy a.wtf-sweet-more-button:hover{transform:none}}

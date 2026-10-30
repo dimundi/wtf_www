@@ -34,6 +34,7 @@ add_action('wp_enqueue_scripts',function(){
     wp_enqueue_style('photoswipe-default-skin');
     wp_enqueue_script('wc-single-product');
     wp_enqueue_script('wtf-product-gallery',get_theme_file_uri('assets/product-gallery.js'),['jquery','wc-single-product'],filemtime(get_theme_file_path('assets/product-gallery.js')),true);
+    wp_enqueue_script('wtf-bundle-descriptions',get_theme_file_uri('assets/bundle-descriptions.js'),[],filemtime(get_theme_file_path('assets/bundle-descriptions.js')),true);
     add_action('wp_footer','woocommerce_photoswipe');
 },30);
 add_filter('woocommerce_single_product_carousel_options',function($options){
@@ -81,6 +82,8 @@ function wtf_shop_product_trim_empty_paragraphs($html) {
 }
 
 function wtf_shop_product_description_heading() {
+    $current=wc_get_product(get_queried_object_id());
+    if($current&&wtf_shop_product_term($current,'wtf_product_kind')==='zestaw')return 'Zawartość zestawu';
     $title=trim((string)get_post_meta(get_queried_object_id(),'_wtf_product_description_heading',true));
     return $title!==''?$title:'Opis i zawartość';
 }
@@ -109,7 +112,7 @@ function wtf_shop_product_content_sections() {
             remove_filter('woocommerce_product_additional_information_heading','__return_false');
         }
         $wide='';
-        if($key==='description')$body=preg_replace_callback('~<figure\b[^>]*class="[^"]*\bwtf-product-wide-image\b[^"]*"[^>]*>.*?</figure>~is',function($m)use(&$wide){$wide.=$m[0];return '';},$body);
+        if($key==='description'&&(!$product instanceof WC_Product||wtf_shop_product_term($product,'wtf_product_kind')!=='zestaw'))$body=preg_replace_callback('~<figure\b[^>]*class="[^"]*\bwtf-product-wide-image\b[^"]*"[^>]*>.*?</figure>~is',function($m)use(&$wide){$wide.=$m[0];return '';},$body);
         if($split&&$wide!=='')$wide='<div class="wtf-product-illustrations">'.$wide.'</div>';
         echo $body.'</div>'.$wide.'</section>';
     }
@@ -169,7 +172,8 @@ function wtf_shop_product_render() {
     if(isset($parts[1])&&preg_match('/^najniższa cena/iu',trim(wp_strip_all_tags($parts[0])))) {$priceNote=wp_strip_all_tags($parts[0]);$short=$parts[1];}
     if(function_exists('wtfo_note') && wtfo_note($product)) $priceNote='';
     $shortHtml=apply_filters('woocommerce_short_description',$short);
-    $descriptionHtml=wtf_shop_unique_description(apply_filters('the_content',$product->get_description()),$shortHtml);
+    $bundle_description=wtf_shop_product_term($product,'wtf_product_kind')==='zestaw'?wtf_bundle_full_description($product):'';
+    $descriptionHtml=$bundle_description?:wtf_shop_unique_description(apply_filters('the_content',$product->get_description()),$shortHtml);
     $related=[];
     if($game)foreach(wc_get_products(['status'=>'publish','visibility'=>'catalog','stock_status'=>['instock','onbackorder'],'limit'=>-1,'orderby'=>'menu_order','order'=>'ASC']) as $item) {
         if($item->get_id()!==$product->get_id()&&wtf_shop_product_term($item,'wtf_product_game')===$game&&wtf_shop_product_term($item,'wtf_product_kind')==='dodatek')$related[]=$item;
@@ -188,6 +192,7 @@ function wtf_shop_product_render() {
             <?php if($product->get_meta('_wtf_product_lead')): ?><p class="wtf-product-lead"><?php echo esc_html($product->get_meta('_wtf_product_lead')); ?></p><?php endif; ?>
             <div class="wtf-product-purchase">
               <span class="wtf-product-price-label">Cena</span><?php woocommerce_template_single_price(); ?>
+              <?php echo wtf_bundle_description($product); ?>
               <?php if($priceNote): ?><p class="wtf-product-price-note"><?php echo esc_html($priceNote); ?></p><?php endif; ?>
               <?php woocommerce_template_single_add_to_cart(); ?>
             </div>
@@ -197,14 +202,13 @@ function wtf_shop_product_render() {
         <?php if($short): ?>
         <section class="wtf-product-content-section wtf-product-edition" id="product-edition" aria-labelledby="product-edition-title"><header><span class="wtf-product-section-number">01</span><h2 id="product-edition-title">Informacje<br> o produkcie</h2></header><div class="wtf-product-copy"><?php echo $shortHtml; ?></div></section>
         <?php endif; ?>
-        <?php if($product->get_description()): ?>
+        <?php if($product->get_description()||$bundle_description): ?>
         <section class="wtf-product-content-section" id="product-description" aria-labelledby="product-description-title"><header><span class="wtf-product-section-number">02</span><h2 id="product-description-title"><?php echo esc_html(wtf_shop_product_description_heading()); ?></h2><?php if($game==='elekt'): ?><a class="wtf-product-game-link" href="<?php echo esc_url(wtf_ele_local_game_link('https://whatthefrog.pl/elekt/')); ?>">Pełna prezentacja Elekta</a><?php endif; ?></header><div class="wtf-product-copy wtf-product-description"><?php echo $descriptionHtml; ?></div></section>
         <?php endif; ?>
         <?php if($product->has_attributes()): ?><section class="wtf-product-attributes"><h2>Dane produktu</h2><?php wc_display_product_attributes($product); ?></section><?php endif; ?>
         <?php if($related): ?>
         <section class="wtf-product-expansions" id="product-expansions" aria-labelledby="product-expansions-title"><header><div><span class="wtf-product-section-number">ROZBUDUJ SWOJĄ GRĘ</span><h2 id="product-expansions-title">Kolejny ruch należy do Ciebie.</h2></div><a href="<?php echo esc_url($shopUrl.'#'.$game.'-dodatek'); ?>">Zobacz wszystkie dodatki</a></header><div class="shop-products"><?php foreach($related as $item)wtf_shop_card($item); ?></div></section>
         <?php endif; ?>
-        <?php if(comments_open($product->get_id())): ?><section class="wtf-product-reviews"><?php comments_template(); ?></section><?php endif; ?>
       </div>
       <?php WC()->structured_data->generate_product_data($product); ?>
       <?php do_action('woocommerce_after_single_product'); ?>

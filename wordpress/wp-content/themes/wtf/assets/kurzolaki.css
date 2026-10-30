@@ -39,6 +39,12 @@ body.kurzolaki-theme, :root[data-theme=dark] body.kurzolaki-theme { background-i
 /* Nowy kadr pudełka: bok po prawej, naturalna orientacja bez odbijania. */
 .dust-opening-art > img { transform:rotate(3deg); }
 
+/* Warstwy i miękkie cienie ilustracji, jak w hero Sweet Revenge. */
+.dust-opening-art{isolation:isolate;background:transparent}
+.dust-opening-art:before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 32% 25%,#e7efe1 0%,#c6d8ca 45%,#a3bfae 100%);border-radius:46% 54% 33% 67% / 36% 40% 60% 64%;box-shadow:12px 20px 0 #283d390d,inset 0 2px 6px #fff8}
+.dust-opening-art:after{content:'';position:absolute;inset:9% 6% 5%;z-index:-2;background:#d9b36b22;border-radius:60% 40% 49% 51% / 45% 62% 38% 55%;transform:rotate(12deg) translate(-12px,12px)}
+.dust-opening-art>img{filter:drop-shadow(0 15px 9px #59334626)}
+
 /* Większe logo gry w hero. */
 .dust-logo { width:360px; max-width:90%; }
 
