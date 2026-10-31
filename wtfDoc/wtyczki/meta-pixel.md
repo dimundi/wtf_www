@@ -1,5 +1,7 @@
 # Meta Pixel
 
+31.10.2026 sprawdzono również prawdziwy SDK Meta z PROD, przechwytując żądania `/tr/` przed wysłaniem. Pole `dl` poprawne dla `/`, `/kurzolaki/` i `/produkt/kurzolaki/podstawka/`; produkt generuje `PageView` i `ViewContent` z adresem produktu. Nie odtworzono zgłoszenia o stałym adresie głównej. Konfiguracja Meta blokuje domyślny HeadlessChrome jako bota; kontrola z nagłówkiem zwykłego Chrome wykazała prawidłowe żądania. Skrypt poza Git: `local-scripts/one-off/meta-pixel/inspect-real-sdk.cjs`. Bez zmian w integracji.
+
 31.10.2026 wdrożony na PROD na polecenie użytkownika. Nowy zestaw danych „What The Frog — strona i sklep”, ID `2354007262067045`, podany przez użytkownika. Starego „Piksela konta Elekt” nie używamy.
 
 Test PROD przeszedł: brak ruchu przed zgodą/po odmowie, niezależna zgoda, pojedyncze `PageView` i `ViewContent`, cofnięcie i usunięcie cookies, pominięcie stron prywatnych. SDK symulowany, ruch zewnętrzny przechwycony — odbiór w panelu Meta nadal do potwierdzenia. Kopie i zakres: [wdrożenie promocji](../srodowiska/promocja-release-20261031.md).

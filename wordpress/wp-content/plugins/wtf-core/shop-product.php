@@ -53,6 +53,7 @@ add_action('woocommerce_product_options_general_product_data',function(){
     woocommerce_wp_text_input(['id'=>'_wtf_product_description_heading','label'=>'Nagłówek opisu','value'=>$product_object->get_meta('_wtf_product_description_heading'),'placeholder'=>'Opis i zawartość','desc_tip'=>true,'description'=>'Własny nagłówek sekcji opisu. Puste pole oznacza: Opis i zawartość.']);
     woocommerce_wp_checkbox(['id'=>'_wtf_product_editorial','label'=>'Nowy szablon produktu','value'=>$product_object->get_meta('_wtf_product_editorial'),'description'=>'Włącz przygotowywany układ strony produktu.']);
     woocommerce_wp_textarea_input(['id'=>'_wtf_product_lead','label'=>'Krótka zajawka przy cenie','value'=>$product_object->get_meta('_wtf_product_lead'),'desc_tip'=>true,'description'=>'Jedno lub dwa zdania przy panelu zakupu. Pełne opisy pozostają w standardowych polach produktu.']);
+    woocommerce_wp_textarea_input(['id'=>'_wtf_product_purchase_notice','label'=>'Informacja pod ceną','value'=>$product_object->get_meta('_wtf_product_purchase_notice'),'desc_tip'=>true,'description'=>'Komunikat przy cenie i przycisku zakupu. Dopuszczalne proste formatowanie HTML. Puste pole ukrywa komunikat.']);
     echo '</div>';
 });
 add_action('woocommerce_process_product_meta',function($id){
@@ -60,7 +61,16 @@ add_action('woocommerce_process_product_meta',function($id){
     update_post_meta($id,'_wtf_product_editorial',isset($_POST['_wtf_product_editorial'])?'yes':'no');
     if(isset($_POST['_wtf_product_description_heading'])&&is_string($_POST['_wtf_product_description_heading']))update_post_meta($id,'_wtf_product_description_heading',sanitize_text_field(wp_unslash($_POST['_wtf_product_description_heading'])));
     if(isset($_POST['_wtf_product_lead'])&&is_string($_POST['_wtf_product_lead']))update_post_meta($id,'_wtf_product_lead',sanitize_textarea_field(wp_unslash($_POST['_wtf_product_lead'])));
+    if(isset($_POST['_wtf_product_purchase_notice'])&&is_string($_POST['_wtf_product_purchase_notice']))update_post_meta($id,'_wtf_product_purchase_notice',wp_kses_post(wp_unslash($_POST['_wtf_product_purchase_notice'])));
 });
+
+function wtf_shop_product_purchase_notice() {
+    global $product;
+    if(!$product instanceof WC_Product)return;
+    $notice=$product->get_meta('_wtf_product_purchase_notice');
+    if($notice)echo '<div class="wtf-product-purchase-notice">'.wp_kses_post($notice).'</div>';
+}
+add_action('woocommerce_single_product_summary','wtf_shop_product_purchase_notice',11);
 
 function wtf_shop_unique_description($description,$short) {
     // Identyczny akapit krótkiego opisu pokazujemy raz; treści w bazie pozostają edytowalne.
@@ -192,6 +202,7 @@ function wtf_shop_product_render() {
             <?php if($product->get_meta('_wtf_product_lead')): ?><p class="wtf-product-lead"><?php echo esc_html($product->get_meta('_wtf_product_lead')); ?></p><?php endif; ?>
             <div class="wtf-product-purchase">
               <span class="wtf-product-price-label">Cena</span><?php woocommerce_template_single_price(); ?>
+              <?php wtf_shop_product_purchase_notice(); ?>
               <?php echo wtf_bundle_description($product); ?>
               <?php if($priceNote): ?><p class="wtf-product-price-note"><?php echo esc_html($priceNote); ?></p><?php endif; ?>
               <?php woocommerce_template_single_add_to_cart(); ?>

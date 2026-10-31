@@ -203,6 +203,7 @@ body.kurzolaki-theme, :root[data-theme=dark] body.kurzolaki-theme { background-i
 .dust-end .dust-shop-link{margin-inline:12px}.dust-shop-invitation a{text-decoration:underline;text-underline-offset:.18em}
 
 /* Wspólna głębia kolorowych powierzchni, jak pod pudełkiem. */
+.dust-world .dust-shipping-offer{font-size:14px;line-height:1.65;margin:16px 0 0;max-width:460px;padding:14px 18px;border:1px solid #a3345e80;border-radius:8px;background:#ffffff30}.dust-world .dust-shipping-offer strong{display:inline-block;padding:2px 8px;background:#edcf6a80;border-radius:8% 4% 6% 3%;letter-spacing:.04em;white-space:nowrap}.dust-end .dust-shipping-offer{margin:18px auto 0}
 @media(max-width:650px){.dust-opening-copy>.dust-opening-lead{display:none}}
 .dust-world :is(.dust-selling-point,.dust-faction,.dust-bilingual-feature,.dust-bilingual-badge,.dust-review-highlight,.dust-note,.dust-trailer-sound){
  background-image:radial-gradient(ellipse at 32% 25%,#ffffff50 0%,#ffffff08 48%,#283d3920 100%);

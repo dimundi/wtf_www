@@ -37,9 +37,9 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     $gifts=[];
     if($kind==='zestaw')foreach(wtf_bundle_items($product) as $item){
         $gift_id=(int)($item['product_id']??0);
-        if(empty($item['is_gift'])||!$gift_id||$gift_id===$product->get_id())continue;
+        if(!$gift_id||$gift_id===$product->get_id())continue;
         $gift=wc_get_product($gift_id);
-        if($gift&&$gift->get_status()==='publish')$gifts[]=['product'=>$gift,'quantity'=>max(1,(int)($item['quantity']??1))];
+        if($gift&&$gift->get_status()==='publish'&&(!empty($item['is_gift'])||wtf_shop_product_term($gift,'wtf_product_kind')==='akcesorium'))$gifts[]=['product'=>$gift,'quantity'=>max(1,(int)($item['quantity']??1)),'is_gift'=>!empty($item['is_gift'])];
     }
     $has_gift=!empty($gifts);
     $labels=['zestaw'=>'Kup w zestawie','podstawka'=>'Podstawka','dodatek'=>'Dodatek','akcesorium'=>'Akcesorium'];
@@ -49,7 +49,7 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
       <a class="shop-card-image" href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_image('medium_large',['loading'=>'lazy','alt'=>$product->get_name(),'sizes'=>$layout==='base'?'(max-width: 700px) 85vw, 450px':'(max-width: 650px) 40vw, 320px']); ?><?php if($product->is_on_sale())echo apply_filters('woocommerce_sale_flash','<span class="onsale">Promocja!</span>',get_post($product->get_id()),$product); ?></a>
         <?php if($has_gift): ?>
         <a class="shop-bundle-gift" href="<?php echo esc_url($product->get_permalink().($product->get_meta('_wtf_product_editorial')==='yes'?'#product-description':'#product-details-description')); ?>">
-          <strong class="shop-bundle-gift-badge">GRATIS</strong>
+          <?php if(!array_filter($gifts,fn($entry)=>!$entry['is_gift'])): ?><strong class="shop-bundle-gift-badge">GRATIS</strong><?php endif; ?>
           <span class="shop-bundle-gift-art<?php echo count($gifts)>1?' has-multiple':''; ?>"><?php foreach($gifts as $entry): $gift=$entry['product']; ?><span class="shop-bundle-gift-item"><?php echo $gift->get_image('woocommerce_thumbnail',['loading'=>'lazy','alt'=>$gift->get_name(),'sizes'=>'140px']); ?><?php if($entry['quantity']>1): ?><span class="shop-gift-quantity"><?php echo esc_html($entry['quantity']); ?> szt.</span><?php endif; ?></span><?php endforeach; ?></span>
         </a>
         </div>
