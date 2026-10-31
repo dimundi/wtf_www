@@ -1,6 +1,6 @@
 # Polityka cookies
 
-Wersja przygotowana 29.10.2026.
+Wersja przygotowana 31.10.2026. Zmiany dotyczące Meta Pixel przygotowane lokalnie, do wdrożenia razem z integracją.
 
 Serwis whatthefrog.pl, dostępny również pod aliasem whathefrog.pl, prowadzi Dimundi sp. z o.o. Kontakt: biuro@whatthefrog.pl.
 
@@ -18,6 +18,7 @@ Cookies to niewielkie informacje zapisywane przez przeglądarkę na Twoim urząd
 | wordpress_logged_in_*, wordpress_sec_* lub wordpress_* | Utrzymanie zalogowania i bezpieczeństwo konta | Sesja przeglądarki; po wyborze „Zapamiętaj mnie” do 15 dni. Standardowa ważność logowania wynosi 14 dni, z dodatkowym technicznym okresem ważności cookie |
 | wtf_cookies_consent | Zapamiętanie zgód i odmowy, ich daty oraz wersji ustawień | 180 dni od wyboru |
 | _ga, _ga_ZLESXQL7WK | Statystyki Google Analytics, wyłącznie po zgodzie na analitykę | Do 180 dni; automatyczne odnawianie ważności wyłączone |
+| _fbp, _fbc | Pomiar reklam Meta i remarketing, wyłącznie po zgodzie na reklamy Meta; _fbc może pojawić się po przejściu z reklamy | Według ustawień Meta, standardowo do 90 dni; aktywność może odnowić ważność |
 
 Gwiazdka oznacza zmienny fragment nazwy. Cookies koszyka pojawiają się przy korzystaniu z koszyka, a cookies logowania — przy korzystaniu z konta. Cookies niezbędne do transmisji lub realizacji usługi, o którą prosisz, nie wymagają zgody. Pozostałe technologie wymagające zgody nie są niezbędne do zakupów.
 
@@ -33,8 +34,16 @@ Na stronie kontaktu korzystamy z Cloudflare Turnstile w celu ochrony formularz
 
 Zasady dostawców: https://policies.google.com/privacy?hl=pl oraz https://inpost.pl/polityka-prywatnosci. Szczegóły przetwarzania danych przez nas opisuje Polityka prywatności.
 
+## Reklamy Meta
+
+Po osobnej zgodzie na reklamy Meta uruchamiamy Meta Pixel, dostarczany przez Meta Platforms Ireland Limited. Służy pomiarowi skuteczności reklam na Facebooku i Instagramie oraz ponownemu docieraniu do odwiedzających. Pixel przekazuje informacje o odsłonie strony, oglądanym produkcie, adresie IP i przeglądarce. Meta może powiązać te informacje z kontem w swoich usługach.
+
+Nie przekazujemy w ramach tej integracji danych wpisywanych w formularzach, adresu e-mail, telefonu ani danych zamówienia. Automatyczne dopasowanie danych klienta i automatyczne zbieranie zdarzeń są wyłączone. Nie korzystamy z API konwersji. Pixel nie jest uruchamiany na stronach konta, koszyka i zamówienia ani pod adresami z nieprzewidzianymi parametrami.
+
+Przed zgodą i po odmowie nie pobieramy skryptu Meta i nie wysyłamy zdarzeń. Po cofnięciu zgody cofamy ją również w Pixelu, usuwamy własne cookies _fbp i _fbc oraz odświeżamy stronę, aby usunąć działającą bibliotekę. Nie możemy usunąć z naszej domeny cookies zapisanych bezpośrednio przez Meta. Wcześniej przesłane dane podlegają zasadom Meta: https://www.facebook.com/privacy/policy/ oraz https://www.facebook.com/privacy/policies/cookies/.
+
 ## Ustawienia przeglądarki
 
-W banerze możesz zaakceptować opcjonalne technologie, wybrać „Tylko niezbędne” lub osobno ustawić zgodę na statystyki i filmy. Zamknięcie ustawień nie oznacza zgody. Wybór możesz zmienić lub wycofać przez „Ustawienia cookies” w stopce. Po cofnięciu zgody usuwamy odtwarzacze ze strony i nie wczytujemy ich ponownie. Informacje już zapisane przez zewnętrznego dostawcę możesz usunąć w przeglądarce. Zgoda nie jest wymagana do zakupów.
+W banerze możesz zaakceptować opcjonalne technologie, wybrać „Tylko niezbędne” lub osobno ustawić zgodę na statystyki, reklamy Meta i filmy. Zamknięcie ustawień nie oznacza zgody. Wybór możesz zmienić lub wycofać przez „Ustawienia cookies” w stopce. Po cofnięciu zgody usuwamy odtwarzacze ze strony i nie wczytujemy ich ponownie. Informacje już zapisane przez zewnętrznego dostawcę możesz usunąć w przeglądarce. Zgoda nie jest wymagana do zakupów.
 
 Możesz usuwać i blokować cookies w ustawieniach swojej przeglądarki. Usunięcie cookies może wylogować Cię lub wyczyścić powiązanie z koszykiem. Zablokowanie niezbędnych cookies może uniemożliwić korzystanie z konta i zakupów.

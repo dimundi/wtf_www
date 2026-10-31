@@ -2,14 +2,15 @@
 /**
  * Plugin Name: wtf_cookies
  * Description: Zgody na opcjonalne technologie, blokowanie YouTube i odroczone ładowanie mapy InPost.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Requires PHP: 8.0
  * Text Domain: wtf_cookies
  */
 if (!defined('ABSPATH')) exit;
 
-define('WTF_COOKIES_REVISION', 2);
+define('WTF_COOKIES_REVISION', 3);
 require_once __DIR__.'/analytics.php';
+require_once __DIR__.'/meta-pixel.php';
 
 function wtf_cookies_categories() {
     return apply_filters('wtf_cookies_categories', [
@@ -30,7 +31,7 @@ add_action('wp_footer', function () {
     ?>
     <section id="wtfc-banner" class="wtfc-panel" aria-labelledby="wtfc-banner-title" hidden>
         <h2 id="wtfc-banner-title">Twoja prywatność</h2>
-        <p>Niezbędne cookies obsługują koszyk i logowanie. Ty decydujesz, czy zezwolić na statystyki Google Analytics i filmy YouTube. Odmowa nie blokuje zakupów.</p>
+        <p>Niezbędne cookies obsługują koszyk i logowanie. Ty decydujesz, czy zezwolić na statystyki Google Analytics, reklamy Meta i filmy YouTube. Odmowa nie blokuje zakupów.</p>
         <a class="wtfc-policy" href="<?php echo esc_url(home_url('/polityka-cookies/')); ?>">Polityka cookies</a>
         <div class="wtfc-actions">
             <button type="button" data-wtfc-accept>Akceptuję wszystkie</button>
@@ -53,7 +54,7 @@ add_action('wp_footer', function () {
                 <button type="button" data-wtfc-reject>Tylko niezbędne</button>
                 <button type="button" data-wtfc-close>Zamknij</button>
             </div>
-            <p class="wtfc-revoke-note">Po wycofaniu zgody zatrzymamy wczytywanie materiałów. Informacje wcześniej zapisane przez zewnętrznego dostawcę możesz usunąć w ustawieniach przeglądarki.</p>
+            <p class="wtfc-revoke-note">Po wycofaniu zgody zatrzymamy odpowiedni pomiar lub wczytywanie materiałów. Informacje wcześniej zapisane przez zewnętrznego dostawcę możesz usunąć w ustawieniach przeglądarki.</p>
         </div>
     </dialog>
     <noscript><p class="wtfc-nojs">Opcjonalne materiały są wyłączone bez JavaScript. Koszyk i logowanie korzystają z niezbędnych cookies. <a href="<?php echo esc_url(home_url('/polityka-cookies/')); ?>">Polityka cookies</a>.</p></noscript>
@@ -110,6 +111,6 @@ add_filter('style_loader_tag', function ($tag, $handle, $href) {
 add_action('admin_menu', function () {
     add_options_page('WTF Cookies', 'WTF Cookies', 'manage_options', 'wtf-cookies', function () {
         if (!current_user_can('manage_options')) return;
-        echo '<div class="wrap"><h1>WTF Cookies</h1><p>Baner zgód, Google Analytics po zgodzie, blokowanie YouTube przed zgodą i wczytywanie mapy InPost na żądanie klienta.</p><p>Wybór jest zapamiętywany na 180 dni. Meta Pixel nie jest uruchamiany.</p><p>Treść polityki edytujesz w Strony → Polityka cookies.</p></div>';
+        echo '<div class="wrap"><h1>WTF Cookies</h1><p>Baner zgód, Google Analytics i Meta Pixel po osobnych zgodach, blokowanie YouTube przed zgodą i wczytywanie mapy InPost na żądanie klienta.</p><p>Wybór jest zapamiętywany na 180 dni. Identyfikator Meta Pixel ustawisz w Ustawienia → WTF Meta Pixel.</p><p>Treść polityki edytujesz w Strony → Polityka cookies.</p></div>';
     });
 });

@@ -1,5 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit;
+require_once __DIR__.'/social-preview.php';
 
 // The public sitemap contains offer/content pages, not checkout/account utilities.
 add_filter('wp_sitemaps_posts_query_args',function($args,$post_type){
@@ -71,12 +72,7 @@ add_action('wp_head',function(){
     if(function_exists('is_shop') && is_shop() && !is_singular())echo '<link rel="canonical" href="'.esc_url(get_permalink($id)).'">'."\n";
     $title=get_post_meta($id,'_wtf_seo_title',true);$description=get_post_meta($id,'_wtf_seo_description',true);
     if($description!=='')echo '<meta name="description" content="'.esc_attr($description).'">'."\n";
-    if($title!=='' || $description!==''){
-        echo '<meta property="og:site_name" content="What The Frog">'."\n";
-        if($title!=='')echo '<meta property="og:title" content="'.esc_attr($title).'">'."\n";
-        if($description!=='')echo '<meta property="og:description" content="'.esc_attr($description).'">'."\n";
-        echo '<meta property="og:url" content="'.esc_url(get_permalink($id)).'">'."\n";
-    }
+    wtf_social_head($id);
     if(!is_front_page())return;
     $home=home_url('/');
     $graph=['@context'=>'https://schema.org','@graph'=>[

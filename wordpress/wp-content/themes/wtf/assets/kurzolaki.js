@@ -1,3 +1,35 @@
+// Na telefonach ilustracja i logo zamykają pierwszy ekran.
+(() => {
+  const opening = document.querySelector('.dust-opening');
+  const logo = opening?.querySelector('.dust-logo');
+  const art = opening?.querySelector('.dust-opening-art');
+  if (!logo || !art) return;
+  const mobile = matchMedia('(max-width: 650px)');
+  const logoPlace = document.createComment('logo position');
+  const artPlace = document.createComment('art position');
+  logo.before(logoPlace); art.before(artPlace);
+  const stage = document.createElement('div');
+  stage.className = 'dust-mobile-brand-stage';
+  function measure() {
+    if (!stage.isConnected) return;
+    const top = stage.getBoundingClientRect().top + window.scrollY;
+    stage.style.setProperty('--dust-stage-top', `${Math.max(0, top)}px`);
+  }
+  function sync() {
+    if (mobile.matches) {
+      if (!stage.isConnected) { opening.prepend(stage); stage.append(art, logo); }
+      measure();
+    } else {
+      logoPlace.after(logo); artPlace.after(art); stage.remove();
+    }
+  }
+  mobile.addEventListener('change', sync);
+  window.addEventListener('resize', measure, { passive: true });
+  window.addEventListener('load', measure, { once: true });
+  if (document.fonts) document.fonts.ready.then(measure);
+  sync();
+})();
+
 // Menu sekcji Kurzołaków: lista rozwijana i powrót na górę na telefonach.
 (() => {
   const menu = document.querySelector('.dust-local-menu');

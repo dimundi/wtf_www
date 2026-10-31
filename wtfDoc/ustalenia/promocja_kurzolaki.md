@@ -2,13 +2,25 @@
 
 ## Aktualny priorytet
 
+**Ostatnie poprawki mobilne i planszy wdrożone na PROD 31.10.2026:** brak białej kartki pod planszą, zajawka ukryta na telefonach, marginesy PL/EN po 12 px, większa kompozycja pudełka. Sprawdzone na trzech rozmiarach telefonu i desktopie. Logo nadal przy dole pierwszego ekranu; minigra pozostaje lokalna.
+
+Kolejna poprawka wyłącznie lokalna: usunięto białe tło, padding, obrót i prostokątny cień spod planszy w sekcji „Jak grać”. Przezroczysta ilustracja leży bezpośrednio na papierowym tle strony, z delikatnym cieniem dopasowanym do elementów gry. CSS `kurzolaki.css`.
+
+**31.10.2026 — powyższe poprawki strony Kurzołaków wdrożone na PROD na polecenie użytkownika:** zajawka i trzy wyróżniki, pogrubienie asymetrii w akapicie fabularnym, mobilne logo przy dole pierwszego ekranu, ograniczona plama nagłówka oraz cieniowanie kolorowych boksów. Test PROD: 320×568, 390×844, 430×932 i powrót do desktopu, teksty/gradienty poprawne, bez przepełnienia i nachodzenia plamy na zajawkę. Minigra nadal 404. Kopie: `.wtf-staging/kurz-copy-release-20261031/` oraz `backups/promo-release/20261031/kurz-copy-before.tar.gz`.
+
+Lokalnie ograniczono plamę za głównym hasłem, aby nie zachodziła na zajawkę. Plama, kolorowe wyróżniki, boksy informacyjne, plakietki, notatki i tło dodatku otrzymały gradienty, rozświetlenie i miękkie cienie spójne z tłem pudełka; nieregularne kształty i kolory zachowane. Przyciski zachowują ciemny charakterystyczny cień. Obejrzano 390/1440 px, brak przepełnienia. Zmiana w `kurzolaki.css`, bez wdrożenia PROD.
+
+Lokalnie na telefonach do 650 px ilustracja i logo Kurzołaków wypełniają pierwszy ekran; logo kończy się 12 px nad dolną krawędzią, a hasło i opis zaczynają się poniżej. JS przenosi istniejące elementy tylko w układzie mobilnym i przywraca desktop; bez JS zachowana zwykła kolejność strony. Sprawdzone 320×568, 390×844, 430×932 i powrót do 1440 px. Style `kurzolaki.css`, zachowanie `kurzolaki.js`. Wyłącznie lokalnie.
+
+31.10.2026 po wdrożeniu promocji przygotowano kolejną poprawkę **wyłącznie lokalnie**: zajawka „Nie daj się zwieść słodkim pyszczkom…” w pierwszej sekcji oraz trzy wyróżniki przed menu i zwiastunem: asymetryczne frakcje, taktyczne decyzje, bezpośrednia rywalizacja. W akapicie fabularnym pogrubiono „Asymetryczne frakcje”; zastąpiono wcześniejszy długi blok o taktyce, bez powtarzania treści. Edytowalne bloki strony 566 i style `kurzolaki.css`. Sprawdzono układ 1440/390 px, bez przepełnienia. Bez kolejnego wdrożenia PROD.
+
 30.10.2026 na polecenie użytkownika wdrożono na PROD dwa przyciski „Kup Kurzołaki” na każdej ze stron `/kurzolaki/` i `/kurzolaki/historyjki/` oraz subtelny link w opisie gry. Wszystkie prowadzą do `https://whatthefrog.pl/sklep/?game=kurzolaki`. Zmieniono punktowo treści PROD oraz dodano wyłącznie reguły CSS tych linków, bez podmiany stron lokalnymi i bez minigry. HTTP obu stron i sklepu 200; po dwa przyciski, link tekstowy i aktywny filtr potwierdzone. Kopie i receipt: prywatny katalog hostingu `.wtf-staging/kurzolaki-shop-links-20261030/`.
 
 Przygotować testową kampanię na Facebooku z zaakceptowanych ilustracji: landing page, Meta Pixel i pomiar efektów. Najpierw przygotowanie lokalne; wdrożenie i start reklam na polecenie użytkownika. Minigra wykluczona.
 
 Kolejność: ustalić stronę docelową → przygotować landing i pomiar → sprawdzić zgody, przejście do koszyka oraz zdarzenia → skonfigurować kampanię, budżet i czas testu → uruchomić i ocenić wyniki.
 
-Stan techniczny: GA4 i baner zgód istnieją; Meta Pixel nie jest uruchomiony. Integracja Pixela wymaga podłączenia do zgód oraz aktualizacji informacji o pomiarze. Mierzymy drogę od reklamy do zakupu, nie tylko kliknięcia.
+Stan techniczny: 31.10.2026 wdrożono na PROD Pixel `2354007262067045` („What The Frog — strona i sklep”) z osobną zgodą marketingową i uzupełnieniem polityk. Na początek `PageView` i `ViewContent`; koszyk i zakup kolejnym etapem. Wdrożono także podglądy społecznościowe stron i produktów, SEO historyjek, Facebook w stopce i przełącznik grafik wydawnictwa. **Aktywna grafika tymczasowa: AleGramy, stoisko A64, Mucha.** Po targach wyłączyć ją w Ustawienia → Ogólne i zapisać. Minigra nadal poza PROD (404). Szczegóły: `wtfDoc/srodowiska/promocja-release-20261031.md`. Odbiór zdarzeń w Meta do potwierdzenia.
 
 Stroną docelową będzie obecna `/kurzolaki/`, bez osobnego landingu. Odczyt publicznego HTML 30.10.2026: podstawowe parametry gry są na początku, ale brak bezpośredniego linku do zakupu podstawki; link zakupowy w treści prowadzi tylko do Sweet Revenge. Strona podstawki odpowiada HTTP 200 i ma przycisk „Dodaj do koszyka”. Najbliższa proponowana poprawka: „Kup Kurzołaki” na początku i na końcu strony gry, prowadzące do `/produkt/kurzolaki/podstawka/`. Bez zmian podczas audytu; wygląd na telefonie i pełny proces zakupu jeszcze niesprawdzone.
 
