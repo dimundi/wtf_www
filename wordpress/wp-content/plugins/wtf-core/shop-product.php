@@ -52,6 +52,8 @@ add_action('woocommerce_product_options_general_product_data',function(){
     wp_nonce_field('wtf_product_presentation','wtf_product_presentation_nonce');
     woocommerce_wp_text_input(['id'=>'_wtf_product_description_heading','label'=>'Nagłówek opisu','value'=>$product_object->get_meta('_wtf_product_description_heading'),'placeholder'=>'Opis i zawartość','desc_tip'=>true,'description'=>'Własny nagłówek sekcji opisu. Puste pole oznacza: Opis i zawartość.']);
     woocommerce_wp_checkbox(['id'=>'_wtf_product_editorial','label'=>'Nowy szablon produktu','value'=>$product_object->get_meta('_wtf_product_editorial'),'description'=>'Włącz przygotowywany układ strony produktu.']);
+    woocommerce_wp_checkbox(['id'=>'_wtf_bundle_single_image','label'=>'Jedna grafika zestawu','value'=>$product_object->get_meta('_wtf_bundle_single_image'),'description'=>'Na karcie zestawu pokazuj tylko ilustrację wiodącą, bez osobnych grafik akcesoriów i znaku plus.']);
+    woocommerce_wp_checkbox(['id'=>'_wtf_product_hide_section_links','label'=>'Ukryj skróty pod zakupem','value'=>$product_object->get_meta('_wtf_product_hide_section_links'),'description'=>'Ukrywa linki do informacji, opisu i dodatków pod panelem zakupu.']);
     woocommerce_wp_textarea_input(['id'=>'_wtf_product_lead','label'=>'Krótka zajawka przy cenie','value'=>$product_object->get_meta('_wtf_product_lead'),'desc_tip'=>true,'description'=>'Jedno lub dwa zdania przy panelu zakupu. Pełne opisy pozostają w standardowych polach produktu.']);
     woocommerce_wp_textarea_input(['id'=>'_wtf_product_purchase_notice','label'=>'Informacja pod ceną','value'=>$product_object->get_meta('_wtf_product_purchase_notice'),'desc_tip'=>true,'description'=>'Komunikat przy cenie i przycisku zakupu. Dopuszczalne proste formatowanie HTML. Puste pole ukrywa komunikat.']);
     echo '</div>';
@@ -59,6 +61,8 @@ add_action('woocommerce_product_options_general_product_data',function(){
 add_action('woocommerce_process_product_meta',function($id){
     if(!current_user_can('edit_post',$id)||empty($_POST['wtf_product_presentation_nonce'])||!is_string($_POST['wtf_product_presentation_nonce'])||!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wtf_product_presentation_nonce'])),'wtf_product_presentation'))return;
     update_post_meta($id,'_wtf_product_editorial',isset($_POST['_wtf_product_editorial'])?'yes':'no');
+    update_post_meta($id,'_wtf_bundle_single_image',isset($_POST['_wtf_bundle_single_image'])?'yes':'no');
+    update_post_meta($id,'_wtf_product_hide_section_links',isset($_POST['_wtf_product_hide_section_links'])?'yes':'no');
     if(isset($_POST['_wtf_product_description_heading'])&&is_string($_POST['_wtf_product_description_heading']))update_post_meta($id,'_wtf_product_description_heading',sanitize_text_field(wp_unslash($_POST['_wtf_product_description_heading'])));
     if(isset($_POST['_wtf_product_lead'])&&is_string($_POST['_wtf_product_lead']))update_post_meta($id,'_wtf_product_lead',sanitize_textarea_field(wp_unslash($_POST['_wtf_product_lead'])));
     if(isset($_POST['_wtf_product_purchase_notice'])&&is_string($_POST['_wtf_product_purchase_notice']))update_post_meta($id,'_wtf_product_purchase_notice',wp_kses_post(wp_unslash($_POST['_wtf_product_purchase_notice'])));
@@ -67,6 +71,10 @@ add_action('woocommerce_process_product_meta',function($id){
 function wtf_shop_product_purchase_notice() {
     global $product;
     if(!$product instanceof WC_Product)return;
+    if(shortcode_exists('wtf_banner')){
+        $banners=do_shortcode('[wtf_banner miejsce="produkt" produkt="'.$product->get_id().'" forma="pionowa"]');
+        if($banners)echo '<div class="wtf-product-banners">'.$banners.'</div>';
+    }
     $notice=$product->get_meta('_wtf_product_purchase_notice');
     if($notice)echo '<div class="wtf-product-purchase-notice">'.wp_kses_post($notice).'</div>';
 }
@@ -205,9 +213,9 @@ function wtf_shop_product_render() {
               <?php wtf_shop_product_purchase_notice(); ?>
               <?php echo wtf_bundle_description($product); ?>
               <?php if($priceNote): ?><p class="wtf-product-price-note"><?php echo esc_html($priceNote); ?></p><?php endif; ?>
-              <?php woocommerce_template_single_add_to_cart(); ?>
+              <?php woocommerce_template_single_add_to_cart(); if(function_exists('wtf_product_facts_render'))wtf_product_facts_render(); ?>
             </div>
-            <div class="wtf-product-section-links"><?php if($short): ?><a href="#product-edition">Informacje o produkcie</a><?php endif; ?><?php if($product->get_description()): ?><a href="#product-description"><?php echo esc_html(wtf_shop_product_description_heading()); ?></a><?php endif; ?><?php if($related): ?><a href="#product-expansions">Dobierz dodatki</a><?php endif; ?></div>
+            <?php if($product->get_meta('_wtf_product_hide_section_links')!=='yes'): ?><div class="wtf-product-section-links"><?php if($short): ?><a href="#product-edition">Informacje o produkcie</a><?php endif; ?><?php if($product->get_description()): ?><a href="#product-description"><?php echo esc_html(wtf_shop_product_description_heading()); ?></a><?php endif; ?><?php if($related): ?><a href="#product-expansions">Dobierz dodatki</a><?php endif; ?></div><?php endif; ?>
           </div>
         </section>
         <?php if($short): ?>

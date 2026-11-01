@@ -9,13 +9,16 @@
 if (!defined('ABSPATH')) exit;
 
 define('WTF_COOKIES_REVISION', 3);
+require_once __DIR__.'/i18n.php';
 require_once __DIR__.'/analytics.php';
 require_once __DIR__.'/meta-pixel.php';
 
 function wtf_cookies_categories() {
-    return apply_filters('wtf_cookies_categories', [
+    $categories=apply_filters('wtf_cookies_categories', [
         'media'=>['label'=>'Filmy YouTube', 'description'=>'Zgoda na wczytanie odtwarzacza Google/YouTube, który otrzyma dane o urządzeniu i może stosować własne technologie zapisu informacji.'],
     ]);
+    foreach($categories as&$category){$category['label']=wtf_cookies_text($category['label']);$category['description']=wtf_cookies_text($category['description']);}unset($category);
+    return $categories;
 }
 
 add_action('wp_enqueue_scripts', function () {
@@ -24,10 +27,12 @@ add_action('wp_enqueue_scripts', function () {
     wp_add_inline_script('wtf-cookies', 'window.wtfCookiesConfig='.wp_json_encode([
         'revision'=>WTF_COOKIES_REVISION, 'cookie'=>'wtf_cookies_consent', 'days'=>180,
         'categories'=>wtf_cookies_categories(), 'policy'=>home_url('/polityka-cookies/'),
+        'settingsLabel'=>wtf_cookies_text('Ustawienia cookies'),
     ], JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT).';', 'before');
 });
 
 add_action('wp_footer', function () {
+    ob_start('wtf_cookies_translate_markup');
     ?>
     <section id="wtfc-banner" class="wtfc-panel" aria-labelledby="wtfc-banner-title" hidden>
         <h2 id="wtfc-banner-title">Twoja prywatność</h2>
@@ -59,6 +64,7 @@ add_action('wp_footer', function () {
     </dialog>
     <noscript><p class="wtfc-nojs">Opcjonalne materiały są wyłączone bez JavaScript. Koszyk i logowanie korzystają z niezbędnych cookies. <a href="<?php echo esc_url(home_url('/polityka-cookies/')); ?>">Polityka cookies</a>.</p></noscript>
     <?php
+    ob_end_flush();
 }, 30);
 
 function wtf_cookies_media_placeholder($url, $title = 'Film YouTube') {
@@ -67,10 +73,11 @@ function wtf_cookies_media_placeholder($url, $title = 'Film YouTube') {
     if (!in_array($host, ['www.youtube-nocookie.com','youtube-nocookie.com','www.youtube.com','youtube.com'], true)
         || !preg_match('~^/embed/([a-zA-Z0-9_-]+)$~D', $path, $matches)) return '';
     $url = 'https://www.youtube-nocookie.com/embed/'.$matches[1];
-    return '<div class="wtfc-media" data-wtfc-media data-wtfc-src="'.esc_url($url).'" data-wtfc-title="'.esc_attr($title).'">'
+    $html='<div class="wtfc-media" data-wtfc-media data-wtfc-src="'.esc_url($url).'" data-wtfc-title="'.esc_attr($title).'">'
         .'<div class="wtfc-media-notice"><p>'.esc_html($title).'</p><p>Ten film pochodzi z YouTube. Odtwarzacz wczytamy dopiero po Twojej zgodzie na połączenie z Google/YouTube i jego technologie zapisu informacji.</p>'
         .'<button type="button" data-wtfc-media-allow>Zezwól na YouTube</button></div>'
         .'<noscript><a href="https://www.youtube.com/watch?v='.esc_attr($matches[1]).'" rel="noopener noreferrer" target="_blank">Otwórz film w YouTube</a></noscript></div>';
+    return wtf_cookies_translate_markup($html);
 }
 
 add_filter('render_block', function ($html) {
@@ -89,7 +96,7 @@ add_filter('render_block', function ($html) {
 }, 100);
 
 add_filter('render_block_wtf/footer', function ($html) {
-    return str_replace('</footer>', '<button class="wtfc-footer-link" type="button" data-wtfc-open>Ustawienia cookies</button></footer>', $html);
+    return str_replace('</footer>', '<button class="wtfc-footer-link" type="button" data-wtfc-open>'.esc_html(wtf_cookies_text('Ustawienia cookies')).'</button></footer>', $html);
 });
 
 // A single-language release needs no persistent language preference cookie.

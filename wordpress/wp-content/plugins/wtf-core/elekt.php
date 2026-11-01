@@ -32,10 +32,15 @@ add_action('init', function () {
     ]);
     register_block_type('wtf/ele-image', $common + [
         'title'=>'Grafika Elekt',
-        'attributes'=>['image'=>['type'=>'string','default'=>''], 'imageId'=>['type'=>'number','default'=>0], 'mobileId'=>['type'=>'number','default'=>0], 'alt'=>['type'=>'string','default'=>''], 'attributes'=>['type'=>'object','default'=>[]]],
+        'attributes'=>['image'=>['type'=>'string','default'=>''], 'imageId'=>['type'=>'number','default'=>0], 'mobileId'=>['type'=>'number','default'=>0], 'embers'=>['type'=>'boolean','default'=>false], 'alt'=>['type'=>'string','default'=>''], 'attributes'=>['type'=>'object','default'=>[]]],
         'render_callback'=>function ($a) {
             $attrs = array_merge($a['attributes'], ['alt'=>$a['alt'], 'sizes'=>'(max-width: 650px) 100vw, 1200px']);
             $html = wtf_core_image($a, 'full', $attrs);
+            // These masks match the supplied elekt_wo_logo illustration, not arbitrary hero art.
+            $source=$a['imageId']?wp_get_attachment_url($a['imageId']):$a['image'];
+            if(!empty($a['embers'])&&!$a['mobileId']&&str_contains($attrs['class']??'','dominion-art')&&str_starts_with(basename(wp_parse_url($source,PHP_URL_PATH)?:''),'elekt_wo_logo')) {
+                foreach(['eyes','core'] as $part) $html.='<img class="dominion-ember-layer dominion-ember-layer--'.$part.'" src="'.esc_url(get_theme_file_uri('assets/elekt-embers-'.$part.'.svg')).'" alt="" aria-hidden="true" width="2560" height="1439" decoding="async">';
+            }
             if ($a['mobileId']) {
                 $src = wp_get_attachment_image_src($a['mobileId'], 'full');
                 if ($src) {

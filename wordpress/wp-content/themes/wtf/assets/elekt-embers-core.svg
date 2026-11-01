@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1439" viewBox="0 0 2560 1439">
+  <defs>
+    <radialGradient id="ember"><stop stop-color="#f69b29" stop-opacity=".9"/><stop offset=".35" stop-color="#de7710" stop-opacity=".75"/><stop offset=".75" stop-color="#bd4d08" stop-opacity=".35"/><stop offset="1" stop-color="#923100" stop-opacity="0"/></radialGradient>
+    <radialGradient id="throat"><stop stop-color="#ec8a20" stop-opacity=".6"/><stop offset="1" stop-color="#b94a08" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="1610" cy="471" rx="72" ry="89" fill="url(#ember)" transform="rotate(-8 1610 471)"/>
+  <ellipse cx="1608" cy="430" rx="33" ry="20" fill="url(#throat)"/>
+  <ellipse cx="1640" cy="556" rx="32" ry="47" fill="url(#throat)" transform="rotate(24 1640 556)"/>
+</svg>

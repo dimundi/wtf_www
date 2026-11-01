@@ -20,6 +20,7 @@ require_once __DIR__.'/media-groups.php';
 require_once __DIR__.'/shop.php';
 require_once __DIR__.'/shop-classification.php';
 require_once __DIR__.'/shop-product.php';
+require_once __DIR__.'/shop-product-facts.php';
 require_once __DIR__.'/shop-account.php';
 require_once __DIR__.'/shop-downloads.php';
 require_once __DIR__.'/shop-registration.php';
@@ -33,7 +34,14 @@ if (is_admin()) { require_once __DIR__ . '/admin.php'; }
 
 function wtf_core_media($file) { return wp_upload_dir()['baseurl'] . '/media/' . $file; }
 function wtf_core_language() { return function_exists('pll_current_language') ? (pll_current_language('slug') ?: 'pl') : substr(get_locale(), 0, 2); }
-function wtf_core_text($text) { return function_exists('pll__') ? pll__($text) : $text; }
+function wtf_core_text($text) {
+    $translated=function_exists('pll__')?pll__($text):$text;
+    if(wtf_core_language()==='en'&&$translated===$text){
+        $ui=['Zaloguj się'=>'Log in','Moje konto'=>'My account','Koszyk'=>'Cart','Zmień motyw kolorystyczny'=>'Change colour theme','Przejdź do treści'=>'Skip to content','Menu główne'=>'Main navigation','Płatności'=>'Payments'];
+        return $ui[$text]??$text;
+    }
+    return $translated;
+}
 // Korzystamy z metadanych biblioteki: konwersję wykonuje Modern Image Formats.
 function wtf_core_image_id($item) {
     static $ids = [];
@@ -214,7 +222,7 @@ function wtf_core_render($type, $a) {
         <section class="shop-band wrap"><div><span class="eyebrow"><?php echo $e('eyebrow'); ?></span><h2><?php echo $e('title'); ?></h2></div><a class="button" href="<?php echo $url('buttonUrl'); ?>"><?php echo $e('buttonLabel'); ?></a></section>
         <?php
     } elseif ($type==='footer') { ?>
-        <footer class="wrap footer site-footer"><div class="footer-main"><div class="footer-brand"><a href="<?php echo esc_url(home_url('/')); ?>"><?php echo $e('title'); ?></a><p><?php echo $e('description'); ?></p><a href="<?php echo esc_url('mailto:'.$a['email']); ?>"><?php echo $e('email'); ?></a></div><?php foreach(['navigation'=>'navigationLabel','information'=>'informationLabel'] as $group=>$label): ?><div class="footer-column"><h2><?php echo $e($label); ?></h2><?php foreach($a['items'] as $item): if(($item['group']??'')!==$group)continue; ?><a href="<?php echo esc_url($item['url']); ?>"><?php echo esc_html(wtf_core_text($item['title'])); ?></a><?php endforeach; ?></div><?php endforeach; ?></div><div class="footer-bottom"><div>© <?php echo esc_html(wp_date('Y').' '.$a['copyright']); ?></div><div class="footer-payments"><span><?php echo esc_html(wtf_core_text('Płatności')); ?></span><img src="<?php echo $url('image'); ?>" alt="Visa, Mastercard, BLIK, Paynow" width="1024" height="138" loading="lazy"></div></div></footer>
+        <footer class="wrap footer site-footer"><div class="footer-main"><div class="footer-brand"><a href="<?php echo esc_url(function_exists('pll_home_url')?pll_home_url():home_url('/')); ?>"><?php echo $e('title'); ?></a><p><?php echo $e('description'); ?></p><a href="<?php echo esc_url('mailto:'.$a['email']); ?>"><?php echo $e('email'); ?></a></div><?php foreach(['navigation'=>'navigationLabel','information'=>'informationLabel'] as $group=>$label): ?><div class="footer-column"><h2><?php echo $e($label); ?></h2><?php foreach($a['items'] as $item): if(($item['group']??'')!==$group)continue; ?><a href="<?php echo esc_url($item['url']); ?>"><?php echo esc_html(wtf_core_text($item['title'])); ?></a><?php endforeach; ?></div><?php endforeach; ?></div><div class="footer-bottom"><div>© <?php echo esc_html(wp_date('Y').' '.$a['copyright']); ?></div><div class="footer-payments"><span><?php echo esc_html(wtf_core_text('Płatności')); ?></span><img src="<?php echo $url('image'); ?>" alt="Visa, Mastercard, BLIK, Paynow" width="1024" height="138" loading="lazy"></div></div></footer>
         <?php
     }
     return ob_get_clean();

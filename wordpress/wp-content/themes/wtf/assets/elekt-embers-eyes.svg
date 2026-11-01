@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1439" viewBox="0 0 2560 1439">
+  <defs>
+    <radialGradient id="eye"><stop stop-color="#ffac38" stop-opacity=".95"/><stop offset=".25" stop-color="#e88312" stop-opacity=".85"/><stop offset=".6" stop-color="#c45a08" stop-opacity=".4"/><stop offset="1" stop-color="#9c3900" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="1213" cy="645" rx="17" ry="11" fill="url(#eye)" transform="rotate(-12 1213 645)"/>
+</svg>

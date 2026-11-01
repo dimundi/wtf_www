@@ -35,7 +35,7 @@ function wtf_shop_card($product,$layout='card',$introduction='') {
     $games=wtf_shop_games();
     $kind=wtf_shop_product_term($product,'wtf_product_kind');
     $gifts=[];
-    if($kind==='zestaw')foreach(wtf_bundle_items($product) as $item){
+    if($kind==='zestaw'&&$product->get_meta('_wtf_bundle_single_image')!=='yes')foreach(wtf_bundle_items($product) as $item){
         $gift_id=(int)($item['product_id']??0);
         if(!$gift_id||$gift_id===$product->get_id())continue;
         $gift=wc_get_product($gift_id);
@@ -104,7 +104,7 @@ function wtf_shop_render($a=[]) {
     if(is_product_tag()) $args['tag']=[get_queried_object()->slug];
     $products=wc_get_products($args);
     $games=wtf_shop_games();
-    $products=array_values(array_filter($products,fn($p)=>(!$selected||wtf_shop_product_term($p,'wtf_product_game')===$selected)&&($selected||wtf_shop_product_term($p,'wtf_product_kind')!=='zestaw')&&(!$search||mb_stripos($p->get_name().' '.wp_strip_all_tags($p->get_short_description()),$search)!==false)));
+    $products=array_values(array_filter($products,fn($p)=>(!$selected||wtf_shop_product_term($p,'wtf_product_game')===$selected)&&(!$search||mb_stripos($p->get_name().' '.wp_strip_all_tags($p->get_short_description()),$search)!==false)));
     if($order!=='menu_order') usort($products,function($a,$b)use($order){
         if($order==='title') return strnatcasecmp($a->get_name(),$b->get_name());
         $result=(float)$a->get_price()<=>(float)$b->get_price(); return $order==='price-desc'?-$result:$result;
@@ -122,11 +122,14 @@ function wtf_shop_render($a=[]) {
       <header class="shop-heading"><span class="eyebrow"><?php echo esc_html($a['eyebrow']); ?></span><h1><?php echo esc_html($a['title']); ?></h1><p><?php echo esc_html($a['description']); ?></p></header>
       <?php woocommerce_output_all_notices(); ?>
       <div class="shop-browser">
+        <div class="shop-sidebar">
         <form id="shop-filters" class="shop-filters" action="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" method="get" data-shop-filters>
           <h2>Wybierz grę</h2><div class="shop-filter-buttons">
           <?php foreach([''=>'Wszystkie']+$games as $slug=>$label): ?><label class="shop-world <?php echo $selected===$slug?'active':''; ?>"><input type="radio" name="game" value="<?php echo esc_attr($slug); ?>" <?php checked($selected,$slug); ?>><?php echo esc_html($label); ?></label><?php endforeach; ?>
           </div><label for="shop-search">Szukaj produktu</label><div class="shop-search-field"><input id="shop-search" type="search" name="search" value="<?php echo esc_attr($search); ?>" placeholder="Nazwa produktu"><button type="submit" class="shop-search-submit" aria-label="Szukaj produktu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button></div>
         </form>
+        <?php $banner_html=shortcode_exists('wtf_banner')?do_shortcode('[wtf_banner miejsce="sklep" forma="pionowa"]'):''; if($banner_html): ?><aside class="shop-banner-slot" aria-label="Aktualności wydawnictwa"><?php echo $banner_html; ?></aside><?php endif; ?>
+        </div>
         <section class="shop-results" aria-label="Produkty"><div class="shop-results-toolbar">
           <?php if(isset($games[$selected])): ?><h2 class="shop-game-preview-title"><?php echo esc_html($games[$selected]); ?></h2><?php endif; ?>
           <p class="shop-results-count"><?php echo count($products); ?> produktów</p>

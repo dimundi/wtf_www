@@ -1,7 +1,7 @@
 (() => {
   const {createElement:h, Fragment} = wp.element;
   const {useBlockProps, InnerBlocks, RichText, InspectorControls, MediaUpload, MediaUploadCheck} = wp.blockEditor;
-  const {PanelBody, TextControl, Button} = wp.components;
+  const {PanelBody, TextControl, Button, ToggleControl} = wp.components;
   const base={apiVersion:3,category:'wtf',icon:'layout',supports:{html:false}};
   const object={type:'object',default:{}};
   const string=defaultValue=>({type:'string',default:defaultValue});
@@ -14,11 +14,12 @@
     edit:({attributes:a,setAttributes})=>h(Fragment,{},linkPanel(a,setAttributes),h(RichText,{...useBlockProps({className:a.attributes.class}),tagName:a.tag==='a'?'p':a.tag,value:a.content,onChange:content=>setAttributes({content}),placeholder:'Wpisz tekst…'})),save:()=>null,
   });
   function mediaField(a,set,mobile=false){const id=mobile?'mobileId':'imageId';return h(MediaUploadCheck,{},h(MediaUpload,{allowedTypes:['image'],value:a[id],onSelect:m=>set(mobile?{mobileId:m.id}:{imageId:m.id,image:m.url}),render:({open})=>h(Button,{variant:'secondary',onClick:open},mobile?'Wybierz kadr mobilny':'Wybierz grafikę')}));}
-  wp.blocks.registerBlockType('wtf/ele-image',{...base,title:'Grafika Elekt',icon:'format-image',attributes:{image:string(''),imageId:{type:'number',default:0},mobileId:{type:'number',default:0},alt:string(''),attributes:object},
+  wp.blocks.registerBlockType('wtf/ele-image',{...base,title:'Grafika Elekt',icon:'format-image',attributes:{image:string(''),imageId:{type:'number',default:0},mobileId:{type:'number',default:0},embers:{type:'boolean',default:false},alt:string(''),attributes:object},
     edit:({attributes:a,setAttributes})=>h('div',useBlockProps(),
       h('p',{},a.attributes.class==='dominion-art'?'Ilustracja otwarcia: zalecane 1920 × 1080 px. Kadrowana do wysokości ekranu także na telefonie; ważne elementy pośrodku lub po prawej, spokojne tło pod logo po lewej. Bez wbudowanych napisów.':a.attributes.class==='elekt-logotype'?'Logotyp: zachowaj proporcje i przezroczyste tło, zalecana szerokość 960 px.':'Zalecana szerokość 1200 px. Zachowaj proporcje źródła i zapas na kadrowanie; dla pudełek oraz komponentów ważna jest pełna zawartość obrazu, bez dodatkowych napisów.'),
       a.image?h('img',{src:a.image,alt:a.alt,style:{maxHeight:320,maxWidth:'100%',objectFit:'contain'}}):null,
       mediaField(a,setAttributes),a.mobileId?mediaField(a,setAttributes,true):null,
+      a.attributes.class==='dominion-art'?h(ToggleControl,{label:'Bursztynowy żar smoka',help:'Efekt dopasowany do ilustracji elekt_wo_logo. Wymaga tej samej grafiki na telefonie.',checked:a.embers,onChange:embers=>setAttributes({embers})}):null,
       h(TextControl,{label:'Opis alternatywny',value:a.alt,onChange:alt=>setAttributes({alt})})),save:()=>null,
   });
   wp.blocks.registerBlockType('wtf/ele-video',{...base,title:'Film Elekt',icon:'video-alt3',attributes:{url:string(''),title:string('Film Elekt'),clickToPlay:{type:'boolean',default:false}},

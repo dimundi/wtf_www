@@ -1,6 +1,12 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// The native terms link already opens a new tab. Without inline content,
+// WooCommerce does not intercept it to expand a small embedded document.
+add_action('wp_loaded',function () {
+    remove_action('woocommerce_checkout_terms_and_conditions','wc_terms_and_conditions_page_content',30);
+},20);
+
 // Własny formularz korzysta z mapy również bez modułu tworzenia etykiet InPost.
 add_action('wp_enqueue_scripts', function () {
     if (!function_exists('is_checkout') || !is_checkout() || is_wc_endpoint_url()) return;

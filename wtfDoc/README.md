@@ -10,6 +10,10 @@
 
 ## srodowiska
 
+- [Wersja EN — praca etapami](przenoszenie/wersja-en.md)
+
+- [Metryczki produktów — wdrożenie 1.11.2026](srodowiska/metryczki-release-20261101.md)
+
 - [wersja testowa na OVH](srodowiska/test-na-ovh.md)
 - [lokalne środowisko pod OVH](srodowiska/lokalne-ovh.md)
 - [plan uruchomienia i późniejszych aktualizacji](srodowiska/plan-uruchomienia.md)

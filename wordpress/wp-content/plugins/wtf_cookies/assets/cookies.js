@@ -160,7 +160,7 @@
     if (!document.querySelector('.wtfc-footer-link')) {
       const button = document.createElement('button');
       button.type = 'button'; button.className = 'wtfc-footer-link'; button.dataset.wtfcOpen = '';
-      button.textContent = 'Ustawienia cookies';
+      button.textContent = window.wtfCookiesConfig.settingsLabel || 'Ustawienia cookies';
       (document.querySelector('footer') || document.body).append(button);
     }
     syncMedia();

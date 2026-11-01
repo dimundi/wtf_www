@@ -69,7 +69,8 @@ add_action('init', function () {
         'render_callback'=>function ($a) {
             if(!empty($a['fileId'])&&get_post_mime_type($a['fileId'])==='video/mp4'){
                 $url=wp_get_attachment_url($a['fileId']);
-                return '<video class="dust-native-video" controls playsinline preload="none"'.(!empty($a['poster'])?' poster="'.esc_url($a['poster']).'"':'').' aria-label="'.esc_attr($a['title']).'"><source src="'.esc_url($url).'" type="video/mp4">Twoja przeglądarka nie obsługuje filmu. <a href="'.esc_url($url).'">Pobierz film</a>.</video>';
+                $en=wtf_core_language()==='en';
+                return '<video class="dust-native-video" controls playsinline preload="none"'.(!empty($a['poster'])?' poster="'.esc_url($a['poster']).'"':'').' aria-label="'.esc_attr($a['title']).'"><source src="'.esc_url($url).'" type="video/mp4">'.($en?'Your browser does not support this video.':'Twoja przeglądarka nie obsługuje filmu.').' <a href="'.esc_url($url).'">'.($en?'Download the video':'Pobierz film').'</a>.</video>';
             }
             if (!preg_match('~^https://www\.youtube-nocookie\.com/embed/[a-zA-Z0-9_-]+(?:\?.*)?$~', $a['url'])) { return ''; }
             return '<iframe src="'.esc_url($a['url']).'" title="'.esc_attr($a['title']).'" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';

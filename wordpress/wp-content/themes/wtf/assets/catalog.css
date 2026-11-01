@@ -85,3 +85,5 @@
   .catalog-back-to-top{display:flex;align-items:center;justify-content:center;width:36px;height:44px;margin:0;padding:0;border:0;border-radius:3px;background:var(--accent);color:var(--bg);cursor:pointer}
   .catalog #elekt .catalog-feature:after,.catalog #tsukuyumi .catalog-feature:after,.catalog #kurzolaki .catalog-feature:after,.catalog #klanarchia .catalog-feature:after{background:#00000065}
 }
+.catalog-publications:not(:has(.publication-comic))>.publication-echo{grid-column:1/-1}
+.catalog #klanarchia .catalog-side>p{color:var(--world-muted)}.catalog #klanarchia .catalog-side>.eyebrow{color:#90C11D}.catalog-adventure-art img{height:250px}.catalog .klanarchia-adventure h3{font-size:27px;line-height:1.2;margin-bottom:0}.catalog .klanarchia-adventure .catalog-adventure-art{margin:14px 0 20px}.catalog .klanarchia-adventure .expansions-button{margin-top:auto}

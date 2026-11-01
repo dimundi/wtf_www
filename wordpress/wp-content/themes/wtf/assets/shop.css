@@ -242,3 +242,4 @@
 .shop-card .shop-card-image span.wtf-sale-badge { position:absolute; z-index:2; top:7px; right:4px; bottom:auto; left:auto; width:max-content; display:inline-flex; align-items:center; min-width:0; min-height:0; margin:0 0 0 21px; padding:4px 12px 5px 17px; border-radius:0 12px 12px 8px; background:#90C11D; color:#1C263C; font-size:15px; font-weight:700; line-height:1.2; }
 .shop-card .shop-card-image span.wtf-sale-badge::before { content:''; position:absolute; left:-26px; top:50%; transform:translateY(calc(-50% - 4.5px)) rotate(-24deg); width:40px; height:41px; background:#90C11D; mask:url('wtf-frog-foot.svg') center/contain no-repeat; }
 @media(max-width:700px) { .shop-card.shop-card--accessory .shop-card-image span.wtf-sale-badge { font-size:12px; padding-right:7px; } }
+:root:not([data-theme=light]) .shop-page{--surface:#273247}:root:not([data-theme=light]) .shop-page .shop-world.active{background:#273247}
