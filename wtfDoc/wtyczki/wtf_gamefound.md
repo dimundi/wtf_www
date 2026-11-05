@@ -1,5 +1,7 @@
 # WTF Gamefound
 
+Struktura bazy i obsługa importu: [gamefound.md](gamefound.md). Od 5.11.2026 lokalnie jeden import obsługuje **Orders** (zamówienia i klientów) oraz **Order items** (produkty, warianty i elementy). Nowe rekordy zapisuje automatycznie, a każda zmiana istniejących wymaga zaznaczenia i potwierdzenia. Poprzednie dane usunięto po wykonaniu prywatnej kopii; siedem nowych tabel pozostawiono pustych do importu użytkownika. Zakładka Pomoc jest planowana na później. Poniższy opis dotyczy widgetu. Konfiguracja widgetu pozostaje podmenu **Baner** dla aktualnie wybranej zbiórki. W panelu nie ma opcji kasowania danych.
+
 Samodzielna wtyczka `wtf_gamefound`. Menu **WTF Gamefound**: kampanie z adresem HTTPS, datą zakończenia oraz osobnymi nagłówkami, treściami i podpisami przycisków podczas zbiórki i po niej. Data w strefie czasowej witryny wskazanej nad formularzem. Pusty podpis ukrywa przycisk.
 
 Osadzanie w standardowym bloku **Krótki kod**: `[wtf_gamefound id="ID_KAMPANII"]`. Wszystkie wystąpienia korzystają z tych samych ustawień. Można utworzyć kilka kampanii. Komunikat jest renderowany przez PHP; JS przełącza treść także na otwartej lub zapisanej w pamięci podręcznej stronie i pokazuje odliczanie. Bez JS stan odpowiada chwili wygenerowania strony. Po edycji ustawień należy wyczyścić ewentualny cache stron.

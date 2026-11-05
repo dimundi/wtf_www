@@ -67,6 +67,7 @@
 - [wtf_faq](wtyczki/wtf_faq.md)
 - [wtf_quiz](wtyczki/wtf_quiz.md)
 - [wtf_gamefound](wtyczki/wtf_gamefound.md)
+- [Gamefound — plan obsługi zbiórek, import i logowanie](wtyczki/gamefound.md)
 - [wtf_cookies](wtyczki/wtf_cookies.md)
 - [Meta Pixel — zgody i pomiar reklam](wtyczki/meta-pixel.md)
 - [Analityka i mapa strony](wtyczki/analityka-i-mapa-strony.md)

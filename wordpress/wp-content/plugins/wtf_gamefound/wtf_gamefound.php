@@ -1,16 +1,19 @@
 <?php
 /**
  * Plugin Name: wtf_gamefound
- * Description: Wspólne komunikaty kampanii Gamefound przed i po zakończeniu zbiórki.
- * Version: 0.1.0
+ * Description: Banery zbiórek Gamefound oraz administracyjny import produktów, wspierających i zamówień CSV.
+ * Version: 1.0.0
  * Requires PHP: 8.0
  */
 if (!defined('ABSPATH')) { exit; }
 
+// Obsługa katalogu nie jest ładowana podczas publicznych odsłon ani zadań cron.
+if (is_admin()) { require_once __DIR__.'/includes/products-admin.php'; }
+
 add_action('init', function () {
     register_post_type('wtfg_campaign', [
         'labels'=>['name'=>'WTF Gamefound','singular_name'=>'Kampania','add_new_item'=>'Dodaj kampanię','edit_item'=>'Edytuj kampanię'],
-        'public'=>false,'show_ui'=>true,'menu_icon'=>'dashicons-megaphone','supports'=>['title'],
+        'public'=>false,'show_ui'=>true,'show_in_menu'=>false,'menu_icon'=>'dashicons-megaphone','supports'=>['title'],
         'capabilities'=>['edit_posts'=>'manage_options','edit_others_posts'=>'manage_options','publish_posts'=>'manage_options','read_private_posts'=>'manage_options','delete_posts'=>'manage_options','delete_others_posts'=>'manage_options','edit_published_posts'=>'manage_options','delete_published_posts'=>'manage_options'],
         'map_meta_cap'=>true,
     ]);

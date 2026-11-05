@@ -1,5 +1,15 @@
 # Lokalna kopia whatthefrog.pl
 
+## Archiwizacja całego Dockera
+
+Skrypty użytkownika: `D:\GoogleDrive - firmowy\Mój dysk\WhatTheFrog\www\backup\`. **Backup.bat** tworzy datowaną kopię projektu `whatthefrogpl-backup`; **Sprawdz-backup.bat** sprawdza rozmiary i SHA-256; **Przywroc.bat** odtwarza nowy projekt, katalog i wolumeny bez nadpisywania istniejących. Instrukcja i parametry w `CZYTAJ.md`. Źródła skryptów poza Git: `local-scripts/one-off/old-site-archive/`.
+
+Archiwum obejmuje dokładne obrazy trzech kontenerów, aktywne wolumeny `site-local` i `db-local`, dodatkowy SQL oraz konfigurację z `.env`. Wolumeny są kopiowane przy zatrzymanych kontenerach starej kopii; wcześniejszy stan uruchomienia jest przywracany. MySQL z archiwum przechodzi próbę uruchomienia w tymczasowym wolumenie bez sieci. Nowy projekt strony i PROD nie są częścią tej operacji.
+
+Kompletne archiwum ma znacznik **COMPLETE.txt**. Skrypt sprawdza także sumy po skopiowaniu do katalogu Google Drive; zakończenie synchronizacji chmurowej trzeba osobno sprawdzić w aplikacji Google Drive. Archiwum zawiera prywatne dane i hasła. Robocza kopia pozostaje w `%TEMP%\wtf-old-site-archives\`.
+
+5.11.2026 wykonano `whatthefrogpl-backup-20261105-200940` we wskazanym katalogu. Sprawdzono archiwa tar/gzip, uruchomiono odtworzony MySQL bez sieci (187 tabel), wykonano dodatkowy SQL i zweryfikowano pliki po skopiowaniu. Powstał COMPLETE.txt. Całość około 2,58 GB: pliki strony 1 714 384 868 B, surowy MySQL 282 235 983 B, obrazy 540 100 096 B, SQL gzip 43 302 641 B oraz konfiguracja. Tymczasowy kontener/wolumen testowy i pomocnicze tagi usunięto. Nie uruchamiano odtworzonego WordPressa; pełny skrypt odtwarzania sprawdzono składniowo, fizyczne odtworzenie przetestowano dla bazy.
+
 ## Połączenie SSH
 
 - Serwer: `ssh.cluster131.hosting.ovh.net`, port `22`.

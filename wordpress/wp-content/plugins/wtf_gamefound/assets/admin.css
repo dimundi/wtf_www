@@ -1,0 +1,17 @@
+.wtfg-changes { table-layout: fixed; margin-bottom: 16px; }
+.wtfg-changes th:first-child { width: 22%; }
+.wtfg-changes td, .wtfg-changes th { white-space: pre-wrap; overflow-wrap: anywhere; }
+.wtfg-added { background: #e5f4e8 !important; color: #145522; }
+.wtfg-removed { background: #fce8e8 !important; color: #872323; }
+.wtfg-source { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px; background: #f6f7f7; }
+.wtfg-change-card { margin: 20px 0; padding: 16px; background: #fff; border: 1px solid #c3c4c7; }
+.wtfg-change-card h3 { margin-top: 0; }
+.wtfg-change-card table.diff { width: 100%; margin: 12px 0; table-layout: fixed; }
+.wtfg-change-card table.diff td { overflow-wrap: anywhere; white-space: pre-wrap; }
+.wtfg-change-card table.diff .diff-deletedline { background: #fce8e8; }
+.wtfg-change-card table.diff .diff-addedline { background: #e5f4e8; }
+.wtfg-change-card table.diff del { background: #ffc5c5; text-decoration: line-through; }
+.wtfg-change-card table.diff ins { background: #afe0b8; text-decoration: underline; font-weight: 600; }
+.wtfg-change-card table.diff .diff-marker { width: 24px; }
+.wtfg-change-card details { margin-top: 14px; }
+.wtfg-change-card summary { cursor: pointer; }
